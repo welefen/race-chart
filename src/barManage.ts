@@ -8,9 +8,11 @@ const defaultConfig: BarManageConfig = {
   width: 300,
   height: 200,
   showNum: 10,
-  spacing: 5,
+  alignSpacing: 5,
+  justifySpacing: 5,
   x: 0,
-  y: 0
+  y: 0,
+  colors: '#1D6996|#EDAD08|#73AF48|#94346E|#38A6A5|#E17C05|#5F4690|#0F8554|#6F4070|#CC503E|#994E95|#666666'.split('|')
 }
 export class BarManage {
   bars: Bar[];
@@ -29,13 +31,19 @@ export class BarManage {
   }
   initBars() {
     const num = Math.min(BarData.data.length, this.config.showNum)
-    const height = Math.round((this.config.height - this.config.spacing * (num - 1)) / num)
-    BarData.data.forEach((item, index) => {
+    const height = Math.floor((this.config.height - this.config.alignSpacing * (num - 1)) / num);
+    const delta = Math.floor((this.config.height - height * num - (this.config.alignSpacing * (num - 1))) / 2);
+    BarData.data.slice(0, num).forEach((item, index) => {
       const bar = new Bar({
         width: this.config.width,
         height: height,
+        spacing: this.config.justifySpacing,
         label: {
           text: item.label
+        },
+        rect: {
+          width: 200,
+          color: this.config.colors[index]
         },
         value: {
           text: spitValueWidthComma(item.values[0], 3)
@@ -43,7 +51,7 @@ export class BarManage {
       })
       bar.group.attr({
         x: 0,
-        y: (height + this.config.spacing) * index
+        y: (height + this.config.alignSpacing) * index + delta
       })
       this.group.append(bar.group);
     })

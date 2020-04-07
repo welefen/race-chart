@@ -16,9 +16,12 @@ export class BarRace {
     const layer = scene.layer();
     const barmange = new BarManage({
       width: 960,
-      height: 540,
+      height: 500,
+      y: 20,
       data: parseData(BarData, 10),
-      showNum: 10
+      showNum: 10,
+      alignSpacing: 5,
+      justifySpacing: 5,
     })
     layer.append(barmange.group);
 

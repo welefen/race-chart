@@ -49,7 +49,8 @@ export interface BarManageConfig {
   y?: number;
   width?: number; // container height
   height?: number; // container height
-  spacing?: number; // spaceing between bars
+  alignSpacing?: number; // spacing between bars
+  justifySpacing?: number; // spacing beween label, rect, value
   showNum?: number; // show bars num
   colors?: string[]; // bar colors
   data?: BarData;
