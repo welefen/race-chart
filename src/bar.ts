@@ -1,6 +1,8 @@
 import { Group, Label, Rect } from 'spritejs';
 import { BarConfig } from './config';
 import deepmerge from 'ts-deepmerge';
+import { spitValueWidthComma } from './util';
+import TWEEN from '@tweenjs/tween.js';
 
 const defaultConfig: BarConfig = {
   width: 100,
@@ -14,7 +16,7 @@ const defaultConfig: BarConfig = {
     width: 100
   },
   value: {
-    text: 'value',
+    value: 0,
     fontSize: 14,
     fontFamily: '"宋体"',
     color: '#333',
@@ -86,13 +88,15 @@ export class Bar {
   }
   initValue() {
     const valueConfig = this.config.value;
-    this.value = new Label(valueConfig.text || '');
+    this.value = new Label('');
     this.value.attr({
       font: `${valueConfig.fontSize}px ${valueConfig.fontFamily}`,
       fillColor: valueConfig.color,
       width: valueConfig.width
     })
+    this.valueText = valueConfig.value;
     this.group.appendChild(this.value);
+    const start = Date.now();
     return this.value.textImageReady.then(() => {
       const [_, height] = this.value.clientSize;
       valueConfig.textHeight = height;
@@ -102,10 +106,36 @@ export class Bar {
       this.updateValueX();
     })
   }
+  set valueText(value: number) {
+    if (this.config.value.value && this.config.value.value === value) return;
+    this.config.value.value = value;
+    const text = spitValueWidthComma(value, 3);
+    this.value.attr({
+      text
+    })
+  }
   updateValueX() {
     if (!this.value) return;
     this.value.attr({
       x: this.config.label.width + this.config.rect.width + this.config.spacing * 2
+    })
+  }
+  update(rectWidth: number, value: number) {
+    const data = {
+      rectWidth: this.config.rect.width,
+      value: this.config.value.value
+    }
+    const tween = new TWEEN.Tween(data).to({
+      rectWidth,
+      value
+    }, 2000).easing(TWEEN.Easing.Linear.None).onUpdate(() => {
+      this.rectWidth = (data.rectWidth);
+      this.valueText = Math.floor(data.value);
+    }).start();
+    return new Promise(resolve => {
+      tween.onComplete(() => {
+        resolve();
+      });
     })
   }
 }

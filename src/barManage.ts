@@ -1,7 +1,6 @@
 import { Bar } from './bar';
 import { Group } from 'spritejs';
 import { BarManageConfig } from './config';
-import { spitValueWidthComma } from './util';
 import deepmerge from 'ts-deepmerge';
 
 const defaultConfig: BarManageConfig = {
@@ -13,7 +12,7 @@ const defaultConfig: BarManageConfig = {
   x: 0,
   y: 0,
   colors: '#1D6996|#EDAD08|#73AF48|#94346E|#38A6A5|#E17C05|#5F4690|#0F8554|#6F4070|#CC503E|#994E95|#666666'.split('|'),
-  scaleType: 'dynamic',
+  scaleType: 'fixed',
   barLabel: {
     width: 100
   },
@@ -44,18 +43,26 @@ export class BarManage {
   }
   initMaxValue() {
     if (this.config.scaleType === 'dynamic') return;
-    const values = this.config.data.data.map(item => item.values).reduce((a, b) => a.concat(b));
+    const values: number[] = [];
+    this.config.data.data.forEach(item => {
+      values.push(...item.values);
+    });
     this.maxValue = Math.max(...values);
   }
-  updateBarRectWidth() {
+  async updateBarRectWidth() {
+    if(this.currentIndex >= this.config.data.columnNames.length) return;
     let maxValue = this.maxValue;
     if(this.config.scaleType === 'dynamic') {
       maxValue = Math.max(...this.bars.map(bar => bar.config.values[this.currentIndex]));
     }
-    this.bars.forEach(bar => {
-      const width = Math.floor(bar.config.values[this.currentIndex] / maxValue * this.rectMaxWidth);
-      bar.rectWidth = width;
+    const promises = this.bars.map(bar => {
+      const value = bar.config.values[this.currentIndex]
+      const width = Math.floor(value / maxValue * this.rectMaxWidth);
+      return bar.update(width, value);
     })
+    await Promise.all(promises);
+    this.currentIndex++;
+    this.updateBarRectWidth();
   }
   initBars() {
     const num = Math.min(this.config.data.data.length, this.config.showNum)
@@ -76,7 +83,7 @@ export class BarManage {
           color: this.config.colors[index],
         },
         value: {
-          text: spitValueWidthComma(item.values[0], 3),
+          value: item.values[0],
           ...this.config.barValue
         },
         values: item.values

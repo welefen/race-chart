@@ -6,7 +6,7 @@ export interface LabelConfig {
   width?: number;
 }
 export interface ValueConfig {
-  text?: string;
+  value?: number;
   fontSize?: number;
   fontFamily?: string;
   color?: string;

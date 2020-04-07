@@ -16,7 +16,7 @@
 <body>
   <div id="container"></div>
   <script>
-  const {Scene, Group, Rect} = spritejs;
+  const {Scene, Group, Label} = spritejs;
   const scene = new Scene({
     container: document.querySelector('#container'),
     width: 960,
@@ -24,14 +24,17 @@
     displayRatio: 2
   })
   const layer = scene.layer();
-  const rect = new Rect({
-    height: 100,
-    x: 100,
-    y: 100,
-    fillColor: 'red',
-    width: 100,
+  const label = new Label('test')
+  label.attr({
+    font: '32px "宋体"',
+    fillColor: 'red'
   })
-  layer.appendChild(rect);
+  layer.appendChild(label);
+  setTimeout(() => {
+    label.attr({
+      text: 'test2'
+    })
+  }, 2000)
 
   </script>
 </body>
