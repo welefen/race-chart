@@ -1,12 +1,12 @@
 export interface LabelConfig {
-  text: string;
+  text?: string;
   fontSize?: number;
   fontFamily?: string;
   color?: string;
   width?: number;
 }
 export interface ValueConfig {
-  text: string;
+  text?: string;
   fontSize?: number;
   fontFamily?: string;
   color?: string;
@@ -28,7 +28,7 @@ export interface LogoConfig {
   radius?: number;
   disable?: boolean;
 }
-export interface rectConfig {
+export interface RectConfig {
   color?: string;
   minWidth?: number;
   width?: number;
@@ -37,11 +37,12 @@ export interface rectConfig {
 export interface BarConfig {
   label: LabelConfig;
   value: ValueConfig;
-  rect?: rectConfig;
+  rect?: RectConfig;
   logo?: LogoConfig;
   height: number;
   width: number;
   spacing?: number;
+  values?: number[];
 }
 
 export interface BarManageConfig {
@@ -54,6 +55,10 @@ export interface BarManageConfig {
   showNum?: number; // show bars num
   colors?: string[]; // bar colors
   data?: BarData;
+  barLabel?: LabelConfig;
+  barValue?: ValueConfig;
+  barLogo?: LogoConfig;
+  scaleType?: 'fixed' | 'dynamic'
 }
 
 export interface BarDataItem {

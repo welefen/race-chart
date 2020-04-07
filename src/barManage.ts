@@ -1,8 +1,8 @@
 import { Bar } from './bar';
 import { Group } from 'spritejs';
 import { BarManageConfig } from './config';
-import BarData from './data';
 import { spitValueWidthComma } from './util';
+import deepmerge from 'ts-deepmerge';
 
 const defaultConfig: BarManageConfig = {
   width: 300,
@@ -12,14 +12,24 @@ const defaultConfig: BarManageConfig = {
   justifySpacing: 5,
   x: 0,
   y: 0,
-  colors: '#1D6996|#EDAD08|#73AF48|#94346E|#38A6A5|#E17C05|#5F4690|#0F8554|#6F4070|#CC503E|#994E95|#666666'.split('|')
+  colors: '#1D6996|#EDAD08|#73AF48|#94346E|#38A6A5|#E17C05|#5F4690|#0F8554|#6F4070|#CC503E|#994E95|#666666'.split('|'),
+  scaleType: 'dynamic',
+  barLabel: {
+    width: 100
+  },
+  barValue: {
+    width: 100
+  }
 }
 export class BarManage {
   bars: Bar[];
   group: Group;
   config: BarManageConfig;
+  currentIndex: number = 0;
+  rectMaxWidth: number;
+  maxValue: number; // 数值的最大值
   constructor(config: BarManageConfig) {
-    this.config = { ...defaultConfig, ...config };
+    this.config = deepmerge({}, defaultConfig, config);
     this.group = new Group({
       x: this.config.x,
       y: this.config.y,
@@ -27,33 +37,62 @@ export class BarManage {
       height: this.config.height,
       bgcolor: '#ccc'
     });
+    this.rectMaxWidth = this.config.width - this.config.barLabel.width - this.config.barValue.width - 2 * this.config.justifySpacing;
     this.initBars();
+    this.initMaxValue();
+    this.updateBarRectWidth();
+  }
+  initMaxValue() {
+    if (this.config.scaleType === 'dynamic') return;
+    const values = this.config.data.data.map(item => item.values).reduce((a, b) => a.concat(b));
+    this.maxValue = Math.max(...values);
+  }
+  updateBarRectWidth() {
+    let maxValue = this.maxValue;
+    if(this.config.scaleType === 'dynamic') {
+      maxValue = Math.max(...this.bars.map(bar => bar.config.values[this.currentIndex]));
+    }
+    this.bars.forEach(bar => {
+      const width = Math.floor(bar.config.values[this.currentIndex] / maxValue * this.rectMaxWidth);
+      bar.rectWidth = width;
+    })
   }
   initBars() {
-    const num = Math.min(BarData.data.length, this.config.showNum)
+    const num = Math.min(this.config.data.data.length, this.config.showNum)
     const height = Math.floor((this.config.height - this.config.alignSpacing * (num - 1)) / num);
     const delta = Math.floor((this.config.height - height * num - (this.config.alignSpacing * (num - 1))) / 2);
-    BarData.data.slice(0, num).forEach((item, index) => {
+    this.config.data.data.sort((a, b) => a.values[0] < b.values[0] ? 1 : -1);
+    this.bars = this.config.data.data.map((item, index) => {
       const bar = new Bar({
         width: this.config.width,
         height: height,
         spacing: this.config.justifySpacing,
         label: {
-          text: item.label
+          text: item.label,
+          ...this.config.barLabel
         },
         rect: {
-          width: 200,
-          color: this.config.colors[index]
+          width: 0,
+          color: this.config.colors[index],
         },
         value: {
-          text: spitValueWidthComma(item.values[0], 3)
+          text: spitValueWidthComma(item.values[0], 3),
+          ...this.config.barValue
         },
+        values: item.values
       })
       bar.group.attr({
         x: 0,
-        y: (height + this.config.alignSpacing) * index + delta
+        y: (height + this.config.alignSpacing) * Math.min(index, num - 1) + delta
       })
+      // 多余的隐藏
+      if (index >= num) {
+        bar.group.attr({
+          opacity: 0
+        })
+      }
       this.group.append(bar.group);
+      return bar;
     })
   }
 }
