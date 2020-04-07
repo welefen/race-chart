@@ -1,6 +1,8 @@
 import TWEEN from '@tweenjs/tween.js';
-import { Scene, Label } from "spritejs";
+import { Scene } from "spritejs";
 import { BarManage } from './barManage';
+import BarData from './data';
+import { parseData } from './util';
 
 
 export class BarRace {
@@ -14,10 +16,11 @@ export class BarRace {
     const layer = scene.layer();
     const barmange = new BarManage({
       width: 960,
-      height: 540
+      height: 540,
+      data: parseData(BarData, 10),
+      showNum: 10
     })
     layer.append(barmange.group);
-
 
     function animate() {
       requestAnimationFrame(animate);

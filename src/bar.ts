@@ -6,7 +6,7 @@ const defaultConfig: BarConfig = {
   width: 100,
   height: 30,
   spacing: 5, // name, rect, value 之间的间距
-  name: {
+  label: {
     text: 'name',
     fontSize: 16,
     fontFamily: '"宋体"',
@@ -43,12 +43,12 @@ export class Bar {
       height: this.config.height,
       width: this.config.width
     });
-    this.initName();
+    this.initLabel();
     this.initRect();
     this.initValue();
   }
-  initName() {
-    const nameConfig = this.config.name;
+  initLabel() {
+    const nameConfig = this.config.label;
     this.name = new Label(nameConfig.text || '');
     this.name.attr({
       font: `${nameConfig.fontSize}px ${nameConfig.fontFamily}`,
@@ -68,7 +68,7 @@ export class Bar {
     this.rect = new Rect({
       height: this.config.height,
       fillColor: rectConfig.color,
-      x: this.config.name.width + this.config.spacing
+      x: this.config.label.width + this.config.spacing
     });
     this.group.appendChild(this.rect);
     this.rectWidth = rectConfig.width;
@@ -105,7 +105,7 @@ export class Bar {
   updateValueX() {
     if (!this.value) return;
     this.value.attr({
-      x: this.config.name.width + this.config.rect.width + this.config.spacing * 2
+      x: this.config.label.width + this.config.rect.width + this.config.spacing * 2
     })
   }
 }

@@ -1,4 +1,4 @@
-export interface NameConfig {
+export interface LabelConfig {
   text: string;
   fontSize?: number;
   fontFamily?: string;
@@ -35,7 +35,7 @@ export interface rectConfig {
 }
 
 export interface BarConfig {
-  name: NameConfig;
+  label: LabelConfig;
   value: ValueConfig;
   rect?: rectConfig;
   logo?: LogoConfig;
@@ -45,9 +45,24 @@ export interface BarConfig {
 }
 
 export interface BarManageConfig {
+  x?: number;
+  y?: number;
   width?: number; // container height
   height?: number; // container height
   spacing?: number; // spaceing between bars
   showNum?: number; // show bars num
   colors?: string[]; // bar colors
+  data?: BarData;
+}
+
+export interface BarDataItem {
+  image?: string;
+  label: string;
+  values: number[];
+  category: string;
+}
+export interface BarData {
+  columnNames: string[];
+  data: BarDataItem[],
+  totalValues?: number[]
 }
