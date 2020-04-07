@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+  *{padding: 0; margin: 0;}
+  #container {
+    width: 960px;
+    height: 540px;
+  }
+  </style>
+  <script src="https://unpkg.com/spritejs@3.4.17/dist/spritejs.js"></script>
+</head>
+<body>
+  <div id="container"></div>
+  <script>
+  const {Scene, Group, Rect} = spritejs;
+  const scene = new Scene({
+    container: document.querySelector('#container'),
+    width: 960,
+    height: 540,
+    displayRatio: 2
+  })
+  const layer = scene.layer();
+  const group = new Group({
+    width: 300,
+    height: 300,
+    bgcolor: 'blue',
+    x: 100,
+    y: 100
+  })
+  layer.appendChild(group);
+  const rect = new Rect({
+    width: 100,
+    height: 100,
+    x: 100,
+    fillColor: 'red'
+  })
+  group.appendChild(rect);
+
+  </script>
+</body>
+</html>
