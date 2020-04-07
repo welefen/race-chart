@@ -43,6 +43,7 @@ export interface BarConfig {
   width: number;
   spacing?: number;
   values?: number[];
+  index?: number;
 }
 
 export interface BarManageConfig {
@@ -58,7 +59,8 @@ export interface BarManageConfig {
   barLabel?: LabelConfig;
   barValue?: ValueConfig;
   barLogo?: LogoConfig;
-  scaleType?: 'fixed' | 'dynamic'
+  scaleType?: 'fixed' | 'dynamic';
+  duration?: number; // 单个动画时长
 }
 
 export interface BarDataItem {

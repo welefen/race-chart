@@ -39,15 +39,17 @@ export class Bar {
   rect: Rect;
   value: Label;
   config: BarConfig;
+  labelPromise: Promise<any>;
   constructor(config: BarConfig) {
     this.config = deepmerge({}, defaultConfig, config);
     this.group = new Group({
       height: this.config.height,
       width: this.config.width
     });
-    this.initLabel();
+    const p1 = this.initLabel();
     this.initRect();
-    this.initValue();
+    const p2 = this.initValue();
+    this.labelPromise = Promise.all([p1, p2]);
   }
   initLabel() {
     const nameConfig = this.config.label;
@@ -118,24 +120,6 @@ export class Bar {
     if (!this.value) return;
     this.value.attr({
       x: this.config.label.width + this.config.rect.width + this.config.spacing * 2
-    })
-  }
-  update(rectWidth: number, value: number) {
-    const data = {
-      rectWidth: this.config.rect.width,
-      value: this.config.value.value
-    }
-    const tween = new TWEEN.Tween(data).to({
-      rectWidth,
-      value
-    }, 2000).easing(TWEEN.Easing.Linear.None).onUpdate(() => {
-      this.rectWidth = (data.rectWidth);
-      this.valueText = Math.floor(data.value);
-    }).start();
-    return new Promise(resolve => {
-      tween.onComplete(() => {
-        resolve();
-      });
     })
   }
 }

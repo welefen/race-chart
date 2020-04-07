@@ -6,6 +6,7 @@ import { parseData } from './util';
 
 
 export class BarRace {
+  barManage: BarManage;
   constructor() {
     const scene = new Scene({
       container: document.querySelector('#container'),
@@ -14,7 +15,7 @@ export class BarRace {
       displayRatio: 2
     })
     const layer = scene.layer();
-    const barmange = new BarManage({
+    this.barManage = new BarManage({
       width: 960,
       height: 500,
       y: 20,
@@ -23,13 +24,18 @@ export class BarRace {
       alignSpacing: 5,
       justifySpacing: 5,
     })
-    layer.append(barmange.group);
+    layer.append(this.barManage.group);
 
     function animate() {
       requestAnimationFrame(animate);
       TWEEN.update();
     }
     requestAnimationFrame(animate);
-
+  }
+  async update() {
+    console.log('update')
+    const promises = this.barManage.bars.map(bar => bar.labelPromise);
+    await Promise.all(promises);
+    this.barManage.update();
   }
 }
