@@ -21,7 +21,7 @@ export function parseData(data: BarData, showNum: number = 10) {
   return data;
 }
 
-export function spitValueWidthComma(value: number, num: number = 3) {
+export function splitValue(value: number, type: string = ',', num: number = 3) {
   const reg = new RegExp(`(?=(?!\\b)(\\d{${num}})+$)`, 'g');
-  return (value + '').replace(reg, ',');
+  return (value + '').replace(reg, type);
 }

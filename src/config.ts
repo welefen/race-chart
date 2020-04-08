@@ -16,7 +16,7 @@ export interface ValueConfig {
 }
 
 export interface ValueSplitConfig {
-  type?: 'comma';
+  type?: ',';
   length?: number;
 }
 
@@ -133,7 +133,7 @@ export const defaultBarsConfig: BarsConfig = {
     width: 100
   },
   valueSplit: {
-    type: 'comma',
+    type: ',',
     length: 3
   }
 }

@@ -1,7 +1,7 @@
 import { Group, Label, Rect } from 'spritejs';
 import { BarConfig, defaultBarConfig } from './config';
 import deepmerge from 'ts-deepmerge';
-import { spitValueWidthComma } from './util';
+import { splitValue } from './util';
 
 export class Bar {
   private group: Group;
@@ -89,13 +89,12 @@ export class Bar {
     })
   }
   set valueText(value: number) {
-    const prevValue = this.config.value.value;
+    const valueConf = this.config.value;
+    const prevValue = valueConf.value;
     if (prevValue && prevValue === value) return;
-    this.config.value.value = value;
-    const text = spitValueWidthComma(value, 3);
-    this.value.attr({
-      text
-    })
+    valueConf.value = value;
+    const text = splitValue(value, valueConf.split.type, valueConf.split.length);
+    this.value.attr({ text });
   }
   private updateValueX() {
     if (!this.value) return;

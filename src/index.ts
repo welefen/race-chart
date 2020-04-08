@@ -29,7 +29,7 @@ export class BarRace {
       alignSpacing: 5,
       justifySpacing: 5,
       valueSplit: {
-        type: 'comma',
+        type: ',',
         length: 3
       }
     })

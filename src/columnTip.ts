@@ -1,7 +1,7 @@
 import { Group, Label } from 'spritejs';
 import { defaultBarColumn, defaultBarTotal, BarColumnConfig, BarTotalConfig, BarConfig } from './config';
 import deepmerge from 'ts-deepmerge';
-import { spitValueWidthComma } from './util';
+import { splitValue } from './util';
 
 interface Config {
   width?: number;
@@ -45,9 +45,10 @@ export class ColumnTip {
     return this.config.barTotal.value;
   }
   setTotalText(value: number) {
-    if (this.config.barTotal.disabled) return Promise.resolve();
-    this.config.barTotal.value = value;
-    const text = spitValueWidthComma(value, 3);
+    const barTotal = this.config.barTotal;
+    if (barTotal.disabled) return Promise.resolve();
+    barTotal.value = value;
+    const text = splitValue(value, barTotal.split.type, barTotal.split.length);
     this.totalLabel.attr({
       text: `${this.config.barTotal.prefix}${text}`
     })

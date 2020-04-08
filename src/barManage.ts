@@ -25,7 +25,7 @@ export class BarManage {
       y: this.config.y,
       width: this.config.width,
       height: this.config.height,
-      bgcolor: '#efefef'
+      // bgcolor: '#efefef'
     });
     const { width, barLabel, barValue, justifySpacing, height, alignSpacing, showNum } = this.config;
     this.rectMaxWidth = width - barLabel.width - barValue.width - 2 * justifySpacing;
