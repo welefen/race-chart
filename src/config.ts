@@ -80,6 +80,7 @@ export interface BarData {
 export interface BarColumnConfig {
   text?: string;
   fontSize?: number;
+  fontWeight?: string;
   color?: string;
   fontFamily?: string;
 }
@@ -97,16 +98,17 @@ export interface BarTotalConfig {
 export const defaultBarColumn = {
   text: '2011',
   fontSize: 78,
-  color: '#ccc',
-  fontFamily: '"宋体"'
+  color: '#bbb',
+  fontFamily: '"宋体"',
+  fontWeight: 'bold'
 }
 
 export const defaultBarTotal = {
   disabled: false,
   value: 0,
   fontSize: 24,
-  color: '#ccc',
-  prefix: 'total:',
+  color: '#bbb',
+  prefix: 'total: ',
   fontFamily: '"宋体"',
   split: {
     type: ',',
@@ -124,7 +126,7 @@ export const defaultBarsConfig: BarsConfig = {
   x: 0,
   y: 0,
   colors: '#1D6996|#EDAD08|#73AF48|#94346E|#38A6A5|#E17C05|#5F4690|#0F8554|#6F4070|#CC503E|#994E95|#666666'.split('|'),
-  scaleType: 'dynamic',
+  scaleType: 'fixed',
   barLabel: {
     width: 100
   },

@@ -55,7 +55,7 @@ export class ColumnTip {
       this.totalLabelHeight = height;
       this.totalLabel.attr({
         x: this.config.width - width - 30,
-        y: this.config.height - height - 20
+        y: this.config.height - height - 10
       })
     })
   }
@@ -77,7 +77,7 @@ export class ColumnTip {
       const [width, height] = this.columnLabel.clientSize;
       this.columnLabel.attr({
         x: this.config.width - width - 20,
-        y: this.config.height - height - (this.totalLabelHeight ? this.totalLabelHeight + 5 : 0) - 20
+        y: this.config.height - height - (this.totalLabelHeight ? this.totalLabelHeight + 5 : 0) - 10
       })
     })
   }
@@ -86,6 +86,7 @@ export class ColumnTip {
     const label = new Label('');
     label.attr({
       font: `${barColumn.fontSize}px ${barColumn.fontFamily}`,
+      fontWeight: barColumn.fontWeight,
       fillColor: barColumn.color
     })
     this.columnLabel = label;
