@@ -4,6 +4,11 @@ import { BarManage } from './barManage';
 import BarData from './data';
 import { parseData } from './util';
 
+function animate() {
+  requestAnimationFrame(animate);
+  TWEEN.update();
+}
+requestAnimationFrame(animate);
 
 export class BarRace {
   barManage: BarManage;
@@ -24,13 +29,7 @@ export class BarRace {
       alignSpacing: 5,
       justifySpacing: 5,
     })
-    layer.append(this.barManage.group);
-
-    function animate() {
-      requestAnimationFrame(animate);
-      TWEEN.update();
-    }
-    requestAnimationFrame(animate);
+    this.barManage.appendTo(layer);
   }
   async update() {
     // console.log('update')

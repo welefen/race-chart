@@ -1,5 +1,5 @@
 import { Bar } from './bar';
-import { Group } from 'spritejs';
+import { Group, Layer } from 'spritejs';
 import { BarsConfig, BarDataItem } from './config';
 import deepmerge from 'ts-deepmerge';
 import TWEEN from '@tweenjs/tween.js';
@@ -50,6 +50,9 @@ export class BarManage {
     this.config.data.data.sort((a, b) => a.values[0] < b.values[0] ? 1 : -1);
     this.initMaxValue();
     this.initBars();
+  }
+  appendTo(layer: Layer) {
+    layer.appendChild(this.group);
   }
   private initMaxValue() {
     if (this.config.scaleType === 'dynamic') return;
