@@ -77,13 +77,50 @@ export interface BarData {
   totalValues?: number[]
 }
 
+export interface BarColumnConfig {
+  text?: string;
+  fontSize?: number;
+  color?: string;
+  fontFamily?: string;
+}
+
+export interface BarTotalConfig {
+  disabled?: boolean;
+  value?: number;
+  fontSize?: number;
+  fontFamily?: string;
+  color?: string;
+  prefix?: string;
+  split?: ValueSplitConfig;
+}
+
+export const defaultBarColumn = {
+  text: '2011',
+  fontSize: 78,
+  color: '#ccc',
+  fontFamily: '"宋体"'
+}
+
+export const defaultBarTotal = {
+  disabled: false,
+  value: 0,
+  fontSize: 24,
+  color: '#ccc',
+  prefix: 'total:',
+  fontFamily: '"宋体"',
+  split: {
+    type: ',',
+    length: 3
+  }
+}
+
 export const defaultBarsConfig: BarsConfig = {
   width: 300,
   height: 200,
   showNum: 10,
   alignSpacing: 5,
   justifySpacing: 5,
-  duration: 2000,
+  duration: 200,
   x: 0,
   y: 0,
   colors: '#1D6996|#EDAD08|#73AF48|#94346E|#38A6A5|#E17C05|#5F4690|#0F8554|#6F4070|#CC503E|#994E95|#666666'.split('|'),

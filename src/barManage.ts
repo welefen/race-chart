@@ -1,8 +1,9 @@
 import { Bar } from './bar';
-import { Group, Layer, Label } from 'spritejs';
+import { Group, Layer } from 'spritejs';
 import { BarsConfig, BarDataItem, defaultBarsConfig } from './config';
 import deepmerge from 'ts-deepmerge';
 import TWEEN from '@tweenjs/tween.js';
+import { ColumnTip } from './columnTip';
 
 
 export class BarManage {
@@ -14,6 +15,8 @@ export class BarManage {
   barHeight: number; // 单个 bar 的高度
   delta: number;
   maxValue: number; // 数值的最大值
+  columnTip: ColumnTip;
+  promises: Promise<any>[] = [];
   constructor(config: BarsConfig) {
     this.config = deepmerge({}, defaultBarsConfig, config);
     this.config.showNum = Math.min(this.config.showNum, this.config.data.data.length);
@@ -22,7 +25,7 @@ export class BarManage {
       y: this.config.y,
       width: this.config.width,
       height: this.config.height,
-      bgcolor: '#ccc'
+      bgcolor: '#efefef'
     });
     const { width, barLabel, barValue, justifySpacing, height, alignSpacing, showNum } = this.config;
     this.rectMaxWidth = width - barLabel.width - barValue.width - 2 * justifySpacing;
@@ -32,6 +35,13 @@ export class BarManage {
     this.config.data.data.sort((a, b) => a.values[0] < b.values[0] ? 1 : -1);
     this.initMaxValue();
     this.initBars();
+    this.initColumnTip();
+  }
+  private initColumnTip() {
+    const tip = new ColumnTip(this.config.width, this.config.height);
+    this.promises.push(tip.promise);
+    this.columnTip = tip;
+    tip.appendTo(this.group);
   }
   appendTo(layer: Layer) {
     layer.appendChild(this.group);
@@ -89,6 +99,8 @@ export class BarManage {
   }
   update() {
     if (this.currentIndex >= this.config.data.columnNames.length) return;
+    this.columnTip.setColumnText(this.config.data.columnNames[this.currentIndex]);
+
     const values = this.bars.map(bar => bar.values[this.currentIndex]);
     values.sort((a, b) => a < b ? 1 : -1);
     const maxValue = this.config.scaleType === 'dynamic' ? values[0] : this.maxValue;
@@ -99,14 +111,18 @@ export class BarManage {
     }, this.config.duration).easing(TWEEN.Easing.Linear.None).onUpdate(() => {
       const percent = timeData.time / this.config.duration;
       this.updateBars(prevData, maxValue, percent);
+      const total = Math.floor(this.columnTip.totalValue + (this.config.data.totalValues[this.currentIndex] - this.columnTip.totalValue) * percent)
+      this.columnTip.setTotalText(total);
     }).start();
     tween.onComplete(() => {
       this.bars.forEach((bar, index) => {
+        bar.valueText = bar.values[this.currentIndex];
         bar.config.index = prevData[index].newIndex;
         bar.attr({
           opacity: bar.config.index >= this.config.showNum ? 0 : 1
         })
       })
+      this.columnTip.setTotalText(this.config.data.totalValues[this.currentIndex]);
       this.currentIndex++;
       this.update();
     })
@@ -140,10 +156,8 @@ export class BarManage {
       bar.appendTo(this.group);
       // 多余的隐藏
       if (index >= this.config.showNum) {
-        bar.labelPromise.then(() => {
-          bar.attr({
-            opacity: 0
-          })
+        bar.attr({
+          opacity: 0
         })
       }
       return bar;

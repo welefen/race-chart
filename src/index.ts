@@ -32,9 +32,7 @@ export class BarRace {
     this.barManage.appendTo(layer);
   }
   async update() {
-    // console.log('update')
-    const promises = this.barManage.bars.map(bar => bar.labelPromise);
-    await Promise.all(promises);
+    await Promise.all(this.barManage.promises);
     this.barManage.update();
   }
 }
