@@ -1,28 +1,10 @@
 import { Bar } from './bar';
 import { Group, Layer, Label } from 'spritejs';
-import { BarsConfig, BarDataItem } from './config';
+import { BarsConfig, BarDataItem, defaultBarsConfig } from './config';
 import deepmerge from 'ts-deepmerge';
 import TWEEN from '@tweenjs/tween.js';
 
 
-const defaultConfig: BarsConfig = {
-  width: 300,
-  height: 200,
-  showNum: 10,
-  alignSpacing: 5,
-  justifySpacing: 5,
-  duration: 2000,
-  x: 0,
-  y: 0,
-  colors: '#1D6996|#EDAD08|#73AF48|#94346E|#38A6A5|#E17C05|#5F4690|#0F8554|#6F4070|#CC503E|#994E95|#666666'.split('|'),
-  scaleType: 'dynamic',
-  barLabel: {
-    width: 100
-  },
-  barValue: {
-    width: 100
-  }
-}
 export class BarManage {
   bars: Bar[];
   group: Group;
@@ -33,7 +15,7 @@ export class BarManage {
   delta: number;
   maxValue: number; // 数值的最大值
   constructor(config: BarsConfig) {
-    this.config = deepmerge({}, defaultConfig, config);
+    this.config = deepmerge({}, defaultBarsConfig, config);
     this.config.showNum = Math.min(this.config.showNum, this.config.data.data.length);
     this.group = new Group({
       x: this.config.x,

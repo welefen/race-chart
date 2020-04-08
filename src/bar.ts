@@ -1,39 +1,7 @@
 import { Group, Label, Rect } from 'spritejs';
-import { BarConfig } from './config';
+import { BarConfig, defaultBarConfig } from './config';
 import deepmerge from 'ts-deepmerge';
 import { spitValueWidthComma } from './util';
-import TWEEN from '@tweenjs/tween.js';
-
-const defaultConfig: BarConfig = {
-  x: 0,
-  y: 0,
-  width: 100,
-  height: 30,
-  spacing: 5, // name, rect, value 之间的间距
-  label: {
-    text: 'name',
-    fontSize: 16,
-    fontFamily: '"宋体"',
-    color: '#333',
-    width: 100
-  },
-  value: {
-    value: 0,
-    fontSize: 14,
-    fontFamily: '"宋体"',
-    color: '#333',
-    width: 100,
-    split: {
-      type: ',',
-      length: 3
-    }
-  },
-  rect: {
-    minWidth: 10,
-    width: 0,
-    color: 'red',
-  }
-}
 
 export class Bar {
   private group: Group;
@@ -43,7 +11,7 @@ export class Bar {
   config: BarConfig;
   labelPromise: Promise<any>;
   constructor(config: BarConfig) {
-    this.config = deepmerge({}, defaultConfig, config);
+    this.config = deepmerge({}, defaultBarConfig, config);
     this.group = new Group({
       x: this.config.x,
       y: this.config.y,

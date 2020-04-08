@@ -76,3 +76,53 @@ export interface BarData {
   data: BarDataItem[],
   totalValues?: number[]
 }
+
+export const defaultBarsConfig: BarsConfig = {
+  width: 300,
+  height: 200,
+  showNum: 10,
+  alignSpacing: 5,
+  justifySpacing: 5,
+  duration: 2000,
+  x: 0,
+  y: 0,
+  colors: '#1D6996|#EDAD08|#73AF48|#94346E|#38A6A5|#E17C05|#5F4690|#0F8554|#6F4070|#CC503E|#994E95|#666666'.split('|'),
+  scaleType: 'dynamic',
+  barLabel: {
+    width: 100
+  },
+  barValue: {
+    width: 100
+  }
+}
+
+export const defaultBarConfig: BarConfig = {
+  x: 0,
+  y: 0,
+  width: 100,
+  height: 30,
+  spacing: 5, // name, rect, value 之间的间距
+  label: {
+    text: 'name',
+    fontSize: 16,
+    fontFamily: '"宋体"',
+    color: '#333',
+    width: 100
+  },
+  value: {
+    value: 0,
+    fontSize: 14,
+    fontFamily: '"宋体"',
+    color: '#333',
+    width: 100,
+    split: {
+      type: ',',
+      length: 3
+    }
+  },
+  rect: {
+    minWidth: 10,
+    width: 0,
+    color: 'red',
+  }
+}
