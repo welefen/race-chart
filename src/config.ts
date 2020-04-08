@@ -35,6 +35,8 @@ export interface RectConfig {
 }
 
 export interface BarConfig {
+  x?: number; // group x
+  y?: number; // group y
   label: LabelConfig;
   value: ValueConfig;
   rect?: RectConfig;
@@ -46,7 +48,7 @@ export interface BarConfig {
   index?: number;
 }
 
-export interface BarManageConfig {
+export interface BarsConfig {
   x?: number;
   y?: number;
   width?: number; // container height

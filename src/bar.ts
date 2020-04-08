@@ -5,6 +5,8 @@ import { spitValueWidthComma } from './util';
 import TWEEN from '@tweenjs/tween.js';
 
 const defaultConfig: BarConfig = {
+  x: 0,
+  y: 0,
   width: 100,
   height: 30,
   spacing: 5, // name, rect, value 之间的间距
@@ -34,15 +36,17 @@ const defaultConfig: BarConfig = {
 }
 
 export class Bar {
-  group: Group;
-  label: Label;
-  rect: Rect;
-  value: Label;
+  private group: Group;
+  private label: Label;
+  private rect: Rect;
+  private value: Label;
   config: BarConfig;
   labelPromise: Promise<any>;
   constructor(config: BarConfig) {
     this.config = deepmerge({}, defaultConfig, config);
     this.group = new Group({
+      x: this.config.x,
+      y: this.config.y,
       height: this.config.height,
       width: this.config.width
     });
@@ -51,9 +55,14 @@ export class Bar {
     const p2 = this.initValue();
     this.labelPromise = Promise.all([p1, p2]);
   }
-  appendTo(node: Group): Group {
+  get values() {
+    return this.config.values;
+  }
+  attr(attrs: Record<string, any>) {
+    this.group.attr(attrs);
+  }
+  appendTo(node: Group) {
     node.appendChild(this.group);
-    return node;
   }
   private initLabel() {
     const nameConfig = this.config.label;
