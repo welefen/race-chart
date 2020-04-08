@@ -22,12 +22,16 @@ export class BarRace {
     const layer = scene.layer();
     this.barManage = new BarManage({
       width: 960,
-      height: 500,
-      y: 20,
+      height: 480,
+      y: 60,
       data: parseData(BarData, 10),
       showNum: 10,
       alignSpacing: 5,
       justifySpacing: 5,
+      valueSplit: {
+        type: 'comma',
+        length: 3
+      }
     })
     this.barManage.appendTo(layer);
   }

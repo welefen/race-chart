@@ -10,6 +10,7 @@ interface Config {
   barTotal?: BarTotalConfig;
 }
 
+// 显示列和总数
 export class ColumnTip {
   private config: Config;
   private columnLabel: Label;
@@ -34,7 +35,7 @@ export class ColumnTip {
       height: this.config.height
     })
     this.promise = this.initTotal().then(() => {
-      this.initColumn();
+      return this.initColumn();
     })
   }
   appendTo(group: Group) {

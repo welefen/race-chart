@@ -38,7 +38,10 @@ export class BarManage {
     this.initColumnTip();
   }
   private initColumnTip() {
-    const tip = new ColumnTip(this.config.width, this.config.height);
+    const tip = new ColumnTip(this.config.width, this.config.height, this.config.barColumn, {
+      split: this.config.valueSplit,
+      ...this.config.barTotal
+    });
     this.promises.push(tip.promise);
     this.columnTip = tip;
     tip.appendTo(this.group);
@@ -144,7 +147,8 @@ export class BarManage {
       },
       value: {
         value: item.values[0],
-        ...this.config.barValue
+        split: this.config.valueSplit || {},
+        ...this.config.barValue,
       },
       values: item.values,
       index

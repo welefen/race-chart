@@ -10,13 +10,13 @@ export interface ValueConfig {
   fontSize?: number;
   fontFamily?: string;
   color?: string;
-  split?: ValueSplitConfig;
   width?: number;
   textHeight?: number;
+  split?: ValueSplitConfig;
 }
 
 export interface ValueSplitConfig {
-  type?: string;
+  type?: 'comma';
   length?: number;
 }
 
@@ -63,6 +63,9 @@ export interface BarsConfig {
   barLogo?: LogoConfig;
   scaleType?: 'fixed' | 'dynamic';
   duration?: number; // 单个动画时长
+  valueSplit?: ValueSplitConfig;
+  barColumn?: BarColumnConfig;
+  barTotal?: BarTotalConfig;
 }
 
 export interface BarDataItem {
@@ -110,10 +113,6 @@ export const defaultBarTotal = {
   color: '#bbb',
   prefix: 'total: ',
   fontFamily: '"宋体"',
-  split: {
-    type: ',',
-    length: 3
-  }
 }
 
 export const defaultBarsConfig: BarsConfig = {
@@ -132,6 +131,10 @@ export const defaultBarsConfig: BarsConfig = {
   },
   barValue: {
     width: 100
+  },
+  valueSplit: {
+    type: 'comma',
+    length: 3
   }
 }
 
