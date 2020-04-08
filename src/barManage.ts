@@ -14,7 +14,7 @@ const defaultConfig: BarManageConfig = {
   duration: 1000,
   x: 0,
   y: 0,
-  colors: '#1D6996|#EDAD08|#73AF48|#94346E|#38A6A5|#E17C05|#5F4690|#0F8554|#6F4070|#CC503E|#994E95|#666666'.split('|'),
+  colors: '#1D6996|#EDAD08|#73AF48|#94346E|#38A6A5|#E17C05|#5F4690|#0F8554|#6F4070|#CC503E|#994E95|#666666|#994E95|#994E95'.split('|'),
   scaleType: 'dynamic',
   barLabel: {
     width: 100

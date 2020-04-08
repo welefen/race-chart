@@ -33,7 +33,7 @@ export class BarRace {
     requestAnimationFrame(animate);
   }
   async update() {
-    console.log('update')
+    // console.log('update')
     const promises = this.barManage.bars.map(bar => bar.labelPromise);
     await Promise.all(promises);
     this.barManage.update();

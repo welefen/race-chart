@@ -35,7 +35,7 @@ const defaultConfig: BarConfig = {
 
 export class Bar {
   group: Group;
-  name: Label;
+  label: Label;
   rect: Rect;
   value: Label;
   config: BarConfig;
@@ -46,28 +46,32 @@ export class Bar {
       height: this.config.height,
       width: this.config.width
     });
-    const p1 = this.initLabel();
     this.initRect();
+    const p1 = this.initLabel();
     const p2 = this.initValue();
     this.labelPromise = Promise.all([p1, p2]);
   }
-  initLabel() {
+  appendTo(node: Group): Group {
+    node.appendChild(this.group);
+    return node;
+  }
+  private initLabel() {
     const nameConfig = this.config.label;
-    this.name = new Label(nameConfig.text || '');
-    this.name.attr({
+    this.label = new Label(nameConfig.text || '');
+    this.label.attr({
       font: `${nameConfig.fontSize}px ${nameConfig.fontFamily}`,
       fillColor: nameConfig.color
     });
-    this.group.appendChild(this.name);
-    return this.name.textImageReady.then(() => {
-      const [width, height] = this.name.clientSize;
-      this.name.attr({
+    this.group.appendChild(this.label);
+    return this.label.textImageReady.then(() => {
+      const [width, height] = this.label.clientSize;
+      this.label.attr({
         x: nameConfig.width - width,
         y: Math.round((this.config.height - height) / 2)
       })
     })
   }
-  initRect() {
+  private initRect() {
     const rectConfig = this.config.rect;
     this.rect = new Rect({
       height: this.config.height,
@@ -88,7 +92,7 @@ export class Bar {
     })
     this.updateValueX();
   }
-  initValue() {
+  private initValue() {
     const valueConfig = this.config.value;
     this.value = new Label('');
     this.value.attr({
@@ -98,10 +102,8 @@ export class Bar {
     })
     this.valueText = valueConfig.value;
     this.group.appendChild(this.value);
-    const start = Date.now();
     return this.value.textImageReady.then(() => {
       const [_, height] = this.value.clientSize;
-      valueConfig.textHeight = height;
       this.value.attr({
         y: Math.round((this.config.height - height) / 2)
       })
@@ -109,14 +111,15 @@ export class Bar {
     })
   }
   set valueText(value: number) {
-    if (this.config.value.value && this.config.value.value === value) return;
+    const prevValue = this.config.value.value;
+    if (prevValue && prevValue === value) return;
     this.config.value.value = value;
     const text = spitValueWidthComma(value, 3);
     this.value.attr({
       text
     })
   }
-  updateValueX() {
+  private updateValueX() {
     if (!this.value) return;
     this.value.attr({
       x: this.config.label.width + this.config.rect.width + this.config.spacing * 2
