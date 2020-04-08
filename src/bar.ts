@@ -69,7 +69,8 @@ export class Bar {
     this.label = new Label(nameConfig.text || '');
     this.label.attr({
       font: `${nameConfig.fontSize}px ${nameConfig.fontFamily}`,
-      fillColor: nameConfig.color
+      fillColor: nameConfig.color,
+      // bgcolor: 'red'
     });
     this.group.appendChild(this.label);
     return this.label.textImageReady.then(() => {

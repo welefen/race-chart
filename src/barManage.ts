@@ -1,5 +1,5 @@
 import { Bar } from './bar';
-import { Group, Layer } from 'spritejs';
+import { Group, Layer, Label } from 'spritejs';
 import { BarsConfig, BarDataItem } from './config';
 import deepmerge from 'ts-deepmerge';
 import TWEEN from '@tweenjs/tween.js';
@@ -11,10 +11,10 @@ const defaultConfig: BarsConfig = {
   showNum: 10,
   alignSpacing: 5,
   justifySpacing: 5,
-  duration: 1000,
+  duration: 2000,
   x: 0,
   y: 0,
-  colors: '#1D6996|#EDAD08|#73AF48|#94346E|#38A6A5|#E17C05|#5F4690|#0F8554|#6F4070|#CC503E|#994E95|#666666|#994E95|#994E95'.split('|'),
+  colors: '#1D6996|#EDAD08|#73AF48|#94346E|#38A6A5|#E17C05|#5F4690|#0F8554|#6F4070|#CC503E|#994E95|#666666'.split('|'),
   scaleType: 'dynamic',
   barLabel: {
     width: 100
@@ -142,7 +142,7 @@ export class BarManage {
       },
       rect: {
         width: 0,
-        color: this.config.colors[index],
+        color: this.config.colors[index % this.config.colors.length],
       },
       value: {
         value: item.values[0],
