@@ -1,39 +1,20 @@
 import { Group, Label } from 'spritejs';
-import { defaultBarColumn, defaultBarTotal, BarColumnConfig, BarTotalConfig, BarConfig } from './config';
+import { ColumnTipConfig } from './type';
 import deepmerge from 'ts-deepmerge';
 import { splitValue } from './util';
 
-interface Config {
-  width?: number;
-  height?: number;
-  barColumn?: BarColumnConfig;
-  barTotal?: BarTotalConfig;
-}
-
 // 显示列和总数
 export class ColumnTip {
-  private config: Config;
+  private config: ColumnTipConfig;
   private columnLabel: Label;
   private totalLabel: Label;
   private totalLabelHeight: number = 0;
   private group: Group;
   promise: Promise<any>;
-  constructor(width: number, height: number, barColumnConfig?: BarColumnConfig, barTotalConfig?: BarTotalConfig) {
-    this.config = deepmerge({}, {
-      width,
-      height,
-      barColumn: defaultBarColumn,
-      barTotal: defaultBarTotal
-    }, {
-      barColumn: barColumnConfig || {},
-      barTotal: barTotalConfig || {}
-    })
-    this.group = new Group({
-      x: 0,
-      y: 0,
-      width: this.config.width,
-      height: this.config.height
-    })
+  constructor(config: ColumnTipConfig) {
+    this.config = deepmerge({}, config);
+    const { x, y, width, height } = this.config;
+    this.group = new Group({ x, y, width, height });
     this.promise = this.initTotal().then(() => {
       return this.initColumn();
     })
@@ -48,10 +29,11 @@ export class ColumnTip {
     const barTotal = this.config.barTotal;
     if (barTotal.disabled) return Promise.resolve();
     barTotal.value = value;
-    const text = splitValue(value, barTotal.split.type, barTotal.split.length);
+    const text = splitValue(value, this.config.valueSplit.type, this.config.valueSplit.length);
     this.totalLabel.attr({
       text: `${this.config.barTotal.prefix}${text}`
     })
+    // if (this.totalLabelHeight) return Promise.resolve();
     return this.totalLabel.textImageReady.then(() => {
       const [width, height] = this.totalLabel.clientSize;
       this.totalLabelHeight = height;

@@ -1,5 +1,5 @@
 import { Group, Label, Rect } from 'spritejs';
-import { BarConfig, defaultBarConfig } from './config';
+import { BarConfig, BarDataItem } from './type';
 import deepmerge from 'ts-deepmerge';
 import { splitValue } from './util';
 
@@ -9,22 +9,17 @@ export class Bar {
   private rect: Rect;
   private value: Label;
   config: BarConfig;
-  labelPromise: Promise<any>;
-  constructor(config: BarConfig) {
-    this.config = deepmerge({}, defaultBarConfig, config);
-    this.group = new Group({
-      x: this.config.x,
-      y: this.config.y,
-      height: this.config.height,
-      width: this.config.width
-    });
+  values?: number[];
+  index: number = 0;
+  constructor(config: BarConfig, index?: number, values?: number[]) {
+    this.config = deepmerge({}, config);
+    const { x, y, width, height } = this.config;
+    this.group = new Group({ x, y, width, height });
+    this.index = index;
+    this.values = values;
+    this.initLabel();
     this.initRect();
-    const p1 = this.initLabel();
-    const p2 = this.initValue();
-    this.labelPromise = Promise.all([p1, p2]);
-  }
-  get values() {
-    return this.config.values;
+    this.initValue();
   }
   attr(attrs: Record<string, any>) {
     this.group.attr(attrs);
@@ -54,7 +49,7 @@ export class Bar {
     this.rect = new Rect({
       height: this.config.height,
       fillColor: rectConfig.color,
-      x: this.config.label.width + this.config.spacing
+      x: this.config.label.width + this.config.justifySpacing
     });
     this.group.appendChild(this.rect);
     this.rectWidth = rectConfig.width;
@@ -93,13 +88,13 @@ export class Bar {
     const prevValue = valueConf.value;
     if (prevValue && prevValue === value) return;
     valueConf.value = value;
-    const text = splitValue(value, valueConf.split.type, valueConf.split.length);
+    const text = splitValue(value, this.config.valueSplit.type, this.config.valueSplit.length);
     this.value.attr({ text });
   }
   private updateValueX() {
     if (!this.value) return;
     this.value.attr({
-      x: this.config.label.width + this.config.rect.width + this.config.spacing * 2
+      x: this.config.label.width + this.config.rect.width + this.config.justifySpacing * 2
     })
   }
 }

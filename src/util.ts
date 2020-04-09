@@ -1,4 +1,4 @@
-import { BarData, BarDataItem } from './config';
+import { BarData, BarDataItem, SortType } from './type';
 export function parseData(data: BarData, showNum: number = 10) {
   const set = new Set();
   const totals: number[] = [];
@@ -24,4 +24,11 @@ export function parseData(data: BarData, showNum: number = 10) {
 export function splitValue(value: number, type: string = ',', num: number = 3) {
   const reg = new RegExp(`(?=(?!\\b)(\\d{${num}})+$)`, 'g');
   return (value + '').replace(reg, type);
+}
+
+export function sortValues(values: BarDataItem[], index: number, type: SortType) {
+  const [i, j] = type === 'asc' ? [-1, 1] : [1, -1];
+  values.sort((a, b) => {
+    return a.values[index] < b.values[index] ? i : j;
+  })
 }
