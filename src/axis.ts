@@ -7,7 +7,8 @@ export class Axis {
   config: AxisConfig;
   group: Group;
   ticks: Tick[] = [];
-  maxValue: number;
+  maxValue: number = 0;
+  step: number = 0;
   constructor(config: AxisConfig) {
     this.config = deepmerge({}, config);
     this.group = new Group({
@@ -15,26 +16,33 @@ export class Axis {
       height: this.config.height,
       x: this.config.x,
       y: this.config.y,
-      // bgcolor: 'red'
     })
   }
   private getTickValues(value: number) {
     const item = Math.floor(value / this.config.maxTick).toString();
     const itemValue = item.length === 1 ? parseInt(item, 10) : parseInt(item.substr(0, 1), 10) * Math.pow(10, item.length - 1);
-    return [...new Array(this.config.maxTick)].map((_, index) => index * itemValue);
+    return [...new Array(this.config.maxTick + 1)].map((_, index) => index * itemValue);
   }
-  private updateTicks(values: number[]) {
-    const ticks = values.map(value => {
-      const x = Math.floor(value / this.maxValue * this.config.width);
-      const group = this.generateTick(x, value);
-      this.group.appendChild(group);
-      return {
-        value,
-        group
+  // 更新 tick 的 x 位置
+  private updateTicksX(percent: number) {
+    const opacity = 1 - percent;
+    this.ticks.forEach(tick => {
+      const x = tick.value / this.maxValue * this.config.width;
+      tick.group.attr({ x });
+      if (tick.remove) {
+        tick.group.attr({ opacity });
       }
     })
   }
-  generateTick(x: number, value: number) {
+  private addTicks(values: number[]) {
+    values.forEach(value => {
+      const x = Math.floor(value / this.maxValue * this.config.width);
+      const group = this.generateTick(x, value);
+      this.group.appendChild(group);
+      this.ticks.push({ value, group });
+    })
+  }
+  private generateTick(x: number, value: number) {
     const group = new Group({
       x,
       y: 0,
@@ -66,7 +74,59 @@ export class Axis {
   setMaxValue(value: number) {
     this.maxValue = value;
     const values = this.getTickValues(value);
-    this.updateTicks(values);
+    if (this.ticks.length === 0) return this.addTicks(values);
+    // // 去除已经有的 value
+    // const newValues = values.filter(value => {
+    //   return !this.ticks.some(item => item.value === value);
+    // })
+    // // 如果已有的 tick 在新的里面不存在，则删除
+    // this.ticks = this.ticks.filter(tick => {
+    //   const flag = values.some(value => value === tick.value);
+    //   if (!flag) {
+    //     this.group.removeChild(tick.group);
+    //   }
+    //   return flag;
+    // })
+    // if (newValues.length === 0) return;
+    // this.updateTicks(this.ticks.length ? [] : values);
+  }
+  beforeAnimate(value: number) {
+    const values = this.getTickValues(value);
+    if (!this.maxValue) {
+      this.maxValue = value;
+      return this.addTicks(values);
+    } else {
+      // 如果已有的 tick 在新的里面不存在，标记删除
+      this.ticks.forEach(tick => {
+        const flag = values.some(value => value === tick.value);
+        if (!flag) {
+          tick.remove = true;
+        }
+      })
+    }
+  }
+  afterAnimate(value: number) {
+    this.ticks = this.ticks.filter(tick => {
+      if (tick.remove) {
+        this.group.removeChild(tick.group);
+        return false;
+      }
+      return true;
+    })
+    const values = this.getTickValues(value);
+    // 去除已经有的 value
+    const newValues = values.filter(value => {
+      return !this.ticks.some(item => item.value === value);
+    })
+    console.log('newValues', newValues)
+    if (newValues.length === 0) return;
+    this.addTicks(newValues);
+  }
+  update(prevValue: number, value: number, percent: number) {
+    if (prevValue === value || value < this.maxValue) return;
+    const v = Math.floor(prevValue + (value - prevValue) * percent);
+    this.maxValue = v;
+    this.updateTicksX(percent);
   }
   appendTo(layer: Layer) {
     layer.appendChild(this.group);

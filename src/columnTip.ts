@@ -33,13 +33,12 @@ export class ColumnTip {
     this.totalLabel.attr({
       text: `${this.config.barTotal.prefix}${text}`
     })
-    // if (this.totalLabelHeight) return Promise.resolve();
     return this.totalLabel.textImageReady.then(() => {
       const [width, height] = this.totalLabel.clientSize;
       this.totalLabelHeight = height;
       this.totalLabel.attr({
         x: this.config.width - width - 30,
-        y: this.config.height - height - 10
+        y: this.config.height - height
       })
     })
   }
@@ -53,15 +52,15 @@ export class ColumnTip {
     })
     this.totalLabel = label;
     this.group.appendChild(label);
-    return this.setTotalText(barTotal.value)
+    return this.setTotalText(barTotal.value || 0)
   }
   setColumnText(text: string) {
-    this.columnLabel.attr({ text })
+    this.columnLabel.attr({ text });
     return this.columnLabel.textImageReady.then(() => {
       const [width, height] = this.columnLabel.clientSize;
       this.columnLabel.attr({
         x: this.config.width - width - 20,
-        y: this.config.height - height - (this.totalLabelHeight ? this.totalLabelHeight + 5 : 0) - 10
+        y: this.config.height - height - (this.totalLabelHeight ? this.totalLabelHeight + 5 : 0)
       })
     })
   }
@@ -76,5 +75,12 @@ export class ColumnTip {
     this.columnLabel = label;
     this.group.appendChild(label);
     return this.setColumnText(barColumn.text);
+  }
+  beforeAnimate(column: string) {
+    this.setColumnText(column);
+  }
+  update(prevTotal: number, total: number, percent: number) {
+    const value = Math.floor(prevTotal + (total - prevTotal) * percent);
+    this.setTotalText(value);
   }
 }

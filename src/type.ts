@@ -82,6 +82,7 @@ interface Position {
 
 export interface Tick {
   value: number;
+  remove?: boolean;
   group: Group;
 }
 
@@ -126,7 +127,7 @@ export interface BarConfig extends Position {
 }
 
 export interface ColumnTipConfig extends Position {
-  barColumn: BarColumnConfig;
-  barTotal: BarTotalConfig;
-  valueSplit: ValueSplitConfig;
+  barColumn?: BarColumnConfig;
+  barTotal?: BarTotalConfig;
+  valueSplit?: ValueSplitConfig;
 }

@@ -53,8 +53,9 @@ const title: TitleConfig = {
 const barTotal: BarTotalConfig = {
   disabled: false,
   prefix: 'Total:',
+  fontSize: 18,
   fontFamily,
-  color: '#333'
+  color: '#aaa'
 }
 
 export const defaultBarRace: BarRaceConfig = {
@@ -69,7 +70,7 @@ export const defaultBarRace: BarRaceConfig = {
   barValue,
   barTotal,
   barColumn,
-  duration: 2000,
+  duration: 1000,
   alignSpacing: 5,
   justifySpacing: 5,
   scaleType: 'dynamic',
