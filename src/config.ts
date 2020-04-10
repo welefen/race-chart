@@ -13,7 +13,7 @@ const axis: AxisConfig = {
   lineColor: '#eee',
   fontSize: 12,
   fontFamily,
-  tipHeight: 20
+  tipHeight: 25
 }
 
 const barColumn: BarColumnConfig = {
