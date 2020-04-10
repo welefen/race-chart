@@ -82,12 +82,13 @@ export class BarRace {
   private async renderTitle(config: TitleConfig): Promise<number> {
     if (!config.text) return 0;
     const label = createLabel(config.text, config);
+    const { x, y, width, padding, align } = config;
     label.attr({
-      x: config.x,
-      y: config.y,
-      width: config.width,
-      padding: config.padding,
-      textAlign: config.align
+      x,
+      y,
+      width,
+      padding,
+      textAlign: align
     })
     this.layer.appendChild(label);
     await label.textImageReady;
