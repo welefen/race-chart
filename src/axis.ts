@@ -18,7 +18,7 @@ export class Axis {
       y: this.config.y,
     })
   }
-  private getTickValues(value: number) {
+  private getSteps(value: number) {
     const item = Math.floor(value / this.config.maxTick).toString();
     const itemValue = item.length === 1 ? parseInt(item, 10) : parseInt(item.substr(0, 1), 10) * Math.pow(10, item.length - 1);
     return [...new Array(this.config.maxTick + 1)].map((_, index) => index * itemValue);
@@ -31,15 +31,25 @@ export class Axis {
       tick.group.attr({ x });
       if (tick.remove) {
         tick.group.attr({ opacity });
+      } else if (tick.value < this.maxValue) {
+        tick.group.attr({ opacity: 1 });
       }
     })
   }
   private addTicks(values: number[]) {
+    if (values.length === 0) return;
     values.forEach(value => {
       const x = Math.floor(value / this.maxValue * this.config.width);
       const group = this.generateTick(x, value);
+      if (value > this.maxValue) {
+        group.attr({ opacity: 0 });
+      }
       this.group.appendChild(group);
       this.ticks.push({ value, group });
+    })
+    // 从小到大排序
+    this.ticks.sort((a, b) => {
+      return a.value > b.value ? 1 : -1;
     })
   }
   private generateTick(x: number, value: number) {
@@ -71,56 +81,45 @@ export class Axis {
     group.appendChild(line);
     return group;
   }
-  setMaxValue(value: number) {
-    this.maxValue = value;
-    const values = this.getTickValues(value);
-    if (this.ticks.length === 0) return this.addTicks(values);
-    // // 去除已经有的 value
-    // const newValues = values.filter(value => {
-    //   return !this.ticks.some(item => item.value === value);
-    // })
-    // // 如果已有的 tick 在新的里面不存在，则删除
-    // this.ticks = this.ticks.filter(tick => {
-    //   const flag = values.some(value => value === tick.value);
-    //   if (!flag) {
-    //     this.group.removeChild(tick.group);
-    //   }
-    //   return flag;
-    // })
-    // if (newValues.length === 0) return;
-    // this.updateTicks(this.ticks.length ? [] : values);
-  }
   beforeAnimate(value: number) {
-    const values = this.getTickValues(value);
+    if (this.maxValue === value) return;
     if (!this.maxValue) {
       this.maxValue = value;
-      return this.addTicks(values);
+      const steps = this.getSteps(value);
+      this.step = steps[1]; // steps[0] is zero
+      return this.addTicks(steps);
     } else {
-      // 如果已有的 tick 在新的里面不存在，标记删除
-      this.ticks.forEach(tick => {
-        const flag = values.some(value => value === tick.value);
-        if (!flag) {
-          tick.remove = true;
+      const max = this.ticks[this.ticks.length - 1].value;
+      if (max + this.step < value) {
+        let num = 0;
+        let max = 0;
+        this.ticks.forEach(tick => {
+          if (tick.value % this.step === 0 && tick.value % (this.step * 2) !== 0) {
+            tick.remove = true;
+            num++;
+          } else {
+            max = tick.value;
+          }
+        })
+        this.step *= 2;
+        if (num) {
+          const values = [];
+          while (num) {
+            values.push(max + this.step);
+            num--;
+            max += this.step;
+          }
+          this.addTicks(values);
         }
-      })
+      }
     }
   }
   afterAnimate(value: number) {
+    if (this.maxValue === value) return;
     this.ticks = this.ticks.filter(tick => {
-      if (tick.remove) {
-        this.group.removeChild(tick.group);
-        return false;
-      }
-      return true;
+      if (!tick.remove) return true;
+      this.group.removeChild(tick.group);
     })
-    const values = this.getTickValues(value);
-    // 去除已经有的 value
-    const newValues = values.filter(value => {
-      return !this.ticks.some(item => item.value === value);
-    })
-    console.log('newValues', newValues)
-    if (newValues.length === 0) return;
-    this.addTicks(newValues);
   }
   update(prevValue: number, value: number, percent: number) {
     if (prevValue === value || value < this.maxValue) return;
