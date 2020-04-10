@@ -3,6 +3,7 @@ import { Group, Layer } from 'spritejs';
 import { Bar } from './bar';
 import { BarsConfig, BarDataItem, AnimateData } from './type';
 import { BarRace } from './index';
+import { createGroup } from './util';
 
 export class Bars {
   private bars: Bar[] = [];
@@ -13,13 +14,7 @@ export class Bars {
   private animateData: AnimateData[];
   constructor(config: BarsConfig) {
     this.config = config;
-    this.group = new Group({
-      x: this.config.x,
-      y: this.config.y,
-      width: this.config.width,
-      height: this.config.height,
-      // bgcolor: '#efefef'
-    });
+    this.group = createGroup(this.config);
     const { width, barLabel, barValue, justifySpacing, height, alignSpacing, showNum } = this.config;
     this.rectMaxWidth = width - barLabel.width - barValue.width - 2 * justifySpacing;
     this.barHeight = (height - alignSpacing * (showNum - 1)) / showNum;

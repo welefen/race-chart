@@ -1,6 +1,6 @@
-import { Label } from 'spritejs';
+import { Label, Group } from 'spritejs';
 
-import { BarData, BarDataItem, SortType, Font } from './type';
+import { BarData, BarDataItem, SortType, Font, Position } from './type';
 
 /**
  * 移除完全不会显示的数据，减少创建的 bar 个数
@@ -73,4 +73,9 @@ export function createLabel(text?: string, config?: Font): Label {
     fillColor: color
   })
   return label;
+}
+
+export function createGroup(config?: Position): Group {
+  const { x, y, width, height } = config;
+  return new Group({ x, y, width, height });
 }

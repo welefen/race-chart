@@ -1,7 +1,7 @@
 import { Group, Layer, Polyline } from 'spritejs';
 
-import { AxisConfig, Tick, ScaleType } from './type';
-import { splitValue, createLabel } from './util';
+import { AxisConfig, Tick } from './type';
+import { splitValue, createLabel, createGroup } from './util';
 import { BarRace } from './index';
 
 
@@ -13,13 +13,7 @@ export class Axis {
   private step: number = 0;
   constructor(config: AxisConfig) {
     this.config = config;
-    const { x, y, width, height } = this.config;
-    this.group = new Group({
-      x,
-      y,
-      width,
-      height,
-    })
+    this.group = createGroup(this.config);
   }
   private getSteps(value: number) {
     const item = Math.floor(value / this.config.maxTick).toString();

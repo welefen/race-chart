@@ -2,7 +2,7 @@ import { Group, Label, Rect, Sprite } from 'spritejs';
 import deepmerge from 'ts-deepmerge';
 
 import { BarConfig } from './type';
-import { splitValue, createLabel } from './util';
+import { splitValue, createLabel, createGroup } from './util';
 
 export class Bar {
   private group: Group;
@@ -15,8 +15,7 @@ export class Bar {
   index: number = 0;
   constructor(config: BarConfig, index?: number, values?: number[]) {
     this.config = deepmerge({}, config);
-    const { x, y, width, height } = this.config;
-    this.group = new Group({ x, y, width, height });
+    this.group = createGroup(this.config);
     this.index = index;
     this.values = values;
   }

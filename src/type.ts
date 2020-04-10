@@ -72,7 +72,7 @@ interface Axis extends Font {
 
 type TitleAlign = 'left' | 'center' | 'right';
 
-interface Position {
+export interface Position {
   x?: number;
   y?: number;
   width?: number;

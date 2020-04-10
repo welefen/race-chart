@@ -1,7 +1,7 @@
 import { Group, Label } from 'spritejs';
 
 import { ColumnTipConfig } from './type';
-import { splitValue, createLabel } from './util';
+import { splitValue, createLabel, createGroup } from './util';
 import { BarRace } from './index';
 
 // 显示列和总数
@@ -13,8 +13,7 @@ export class ColumnTip {
   private group: Group;
   constructor(config: ColumnTipConfig) {
     this.config = config;
-    const { x, y, width, height } = this.config;
-    this.group = new Group({ x, y, width, height });
+    this.group = createGroup(this.config);
   }
   appendTo(group: Group) {
     group.appendChild(this.group);
