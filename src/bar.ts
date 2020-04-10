@@ -1,5 +1,5 @@
-import { Group, Label, Rect } from 'spritejs';
-import { BarConfig, BarDataItem } from './type';
+import { Group, Label, Rect, Sprite } from 'spritejs';
+import { BarConfig } from './type';
 import deepmerge from 'ts-deepmerge';
 import { splitValue } from './util';
 
@@ -8,6 +8,7 @@ export class Bar {
   private label: Label;
   private rect: Rect;
   private value: Label;
+  private logo: Sprite;
   config: BarConfig;
   values?: number[];
   index: number = 0;
@@ -22,10 +23,11 @@ export class Bar {
     this.group.attr(attrs);
   }
   async appendTo(node: Group) {
+    node.appendChild(this.group);
     await this.initLabel();
     this.initRect();
-    await this.initValue();
-    node.appendChild(this.group);
+    await this.initLogo();
+    return this.initValue();
   }
   private initLabel() {
     const nameConfig = this.config.label;
@@ -64,6 +66,7 @@ export class Bar {
       width
     })
     this.updateValueX();
+    this.updateLogoX();
   }
   private initValue() {
     const valueConfig = this.config.value;
@@ -73,7 +76,7 @@ export class Bar {
       fillColor: valueConfig.color,
       width: valueConfig.width
     })
-    this.valueText = valueConfig.value;
+    // this.valueText = valueConfig.value;
     this.group.appendChild(this.value);
     return this.value.textImageReady.then(() => {
       const [_, height] = this.value.clientSize;
@@ -81,6 +84,26 @@ export class Bar {
         y: Math.round((this.config.height - height) / 2)
       })
       this.updateValueX();
+    })
+  }
+  private initLogo() {
+    const { logo } = this.config;
+    if (!logo.src || logo.disabled) return;
+    const sprite = new Sprite({
+      texture: logo.src,
+      width: logo.width,
+      height: logo.height,
+    })
+    this.logo = sprite;
+    this.group.appendChild(sprite);
+    return sprite.textureImageReady.then(() => {
+      const [width, height] = sprite.clientSize;
+      if (!logo.width) logo.width = width;
+      if (!logo.height) logo.height = height;
+      sprite.attr({
+        y: (this.config.height - height) / 2
+      })
+      this.updateLogoX();
     })
   }
   set valueText(value: number) {
@@ -95,6 +118,13 @@ export class Bar {
     if (!this.value) return;
     this.value.attr({
       x: this.config.label.width + this.config.rect.width + this.config.justifySpacing * 2
+    })
+  }
+  private updateLogoX() {
+    if (!this.logo) return;
+    this.logo.attr({
+      x: this.config.label.width + this.config.rect.width - (this.config.logo.width || 0),
+      opacity: this.config.rect.width > this.config.logo.width ? 1 : 0
     })
   }
 }

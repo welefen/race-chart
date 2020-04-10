@@ -208,7 +208,7 @@ export class BarRace {
     this.axis.beforeAnimate(this.maxValues[this.index], this.config.scaleType);
   }
   private afterAnimate() {
-    this.bars.afterAnimate(this.values, this.index);
+    this.bars.afterAnimate(this.values, this.index, this.maxValues[this.index]);
     this.axis.afterAnimate(this.maxValues[this.index], this.config.scaleType);
   }
   private onUpdate(percent: number) {

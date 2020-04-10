@@ -23,9 +23,9 @@ export class Bars {
     this.rectMaxWidth = width - barLabel.width - barValue.width - 2 * justifySpacing;
     this.barHeight = (height - alignSpacing * (showNum - 1)) / showNum;
   }
-  async appendTo(layer: Layer): Promise<void> {
-    await this.initBars();
+  appendTo(layer: Layer): Promise<void> {
     layer.appendChild(this.group);
+    return this.initBars();
   }
   beforeAnimate(values: number[], index: number): void {
     this.animateData = this.bars.map(bar => {
@@ -70,8 +70,9 @@ export class Bars {
       }
     })
   }
-  afterAnimate(values: number[], index: number): void {
+  afterAnimate(values: number[], index: number, maxValue: number): void {
     this.bars.forEach((bar, idx) => {
+      bar.rectWidth = Math.floor(bar.values[index] / maxValue * this.rectMaxWidth);
       bar.valueText = bar.values[index];
       bar.index = this.animateData[idx].newIndex;
       bar.attr({
@@ -97,6 +98,10 @@ export class Bars {
       value: {
         value: item.values[0],
         ...this.config.barValue,
+      },
+      logo: {
+        src: item.image,
+        ...this.config.barLogo
       },
       valueSplit: this.config.valueSplit
     }, index, item.values)
