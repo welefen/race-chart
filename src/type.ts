@@ -27,7 +27,7 @@ export interface ValueSplitConfig {
 
 
 export interface BarLogoConfig {
-  src: string;
+  src?: string;
   width?: number;
   height?: number;
   radius?: number;
@@ -95,6 +95,7 @@ export interface BarRaceConfig {
   barLabel?: BarLabelConfig;
   barRect?: BarRectConfig;
   barValue?: BarValueConfig;
+  barLogo?: BarLogoConfig;
   barColumn?: BarColumnConfig;
   barTotal?: BarTotalConfig;
   duration?: number; // 单个动画时长
@@ -147,6 +148,7 @@ export interface BarConfig extends Position {
   label?: BarLabelConfig;
   rect?: BarRectConfig;
   value?: BarValueConfig;
+  logo?: BarLogoConfig;
   valueSplit?: ValueSplitConfig;
   justifySpacing?: number;
 }

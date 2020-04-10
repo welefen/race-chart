@@ -1,4 +1,4 @@
-import { ValueSplitConfig, BarRaceConfig, Title, SubTitle, AxisConfig, BarColumnConfig, BarLabelConfig, BarRectConfig, BarValueConfig, BarTotalConfig } from './type';
+import { ValueSplitConfig, BarRaceConfig, Title, SubTitle, AxisConfig, BarColumnConfig, BarLabelConfig, BarRectConfig, BarValueConfig, BarTotalConfig, BarLogoConfig } from './type';
 
 const valueSplit: ValueSplitConfig = {
   type: ',',
@@ -68,6 +68,11 @@ const barTotal: BarTotalConfig = {
   color: '#aaa'
 }
 
+const barLogo: BarLogoConfig = {
+  disabled: false,
+  radius: 0
+}
+
 export const defaultBarRace: BarRaceConfig = {
   width: 960,
   height: 540,
@@ -81,6 +86,7 @@ export const defaultBarRace: BarRaceConfig = {
   barValue,
   barTotal,
   barColumn,
+  barLogo,
   duration: 1000,
   alignSpacing: 5,
   justifySpacing: 5,

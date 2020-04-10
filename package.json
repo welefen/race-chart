@@ -18,9 +18,10 @@
     "url": "https://github.com/welefen/DataRace/issues"
   },
   "devDependencies": {
+    "@q/qcdn": "^3.1.0",
     "@tweenjs/tween.js": "^18.5.0",
     "@types/tween.js": "^18.5.0",
-    "spritejs": "^3.4.17",
+    "spritejs": "^3.4.24",
     "ts-deepmerge": "^1.0.5",
     "ts-loader": "^6.2.2",
     "typescript": "^3.8.3",
