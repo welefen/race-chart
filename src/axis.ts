@@ -3,6 +3,7 @@ import { Group, Layer, Polyline } from 'spritejs';
 
 import { AxisConfig, Tick, ScaleType } from './type';
 import { splitValue, createLabel } from './util';
+import { BarRace } from './index';
 
 
 export class Axis {
@@ -79,7 +80,9 @@ export class Axis {
     group.appendChild(line);
     return group;
   }
-  beforeAnimate(value: number, scaleType: ScaleType) {
+  beforeAnimate(barRace: BarRace) {
+    const value = barRace.maxValues[barRace.index];
+    const scaleType = barRace.config.scaleType;
     if (!this.maxValue) {
       this.maxValue = value;
       const steps = this.getSteps(value);
@@ -111,14 +114,17 @@ export class Axis {
       }
     }
   }
-  afterAnimate(value: number, scaleType: ScaleType) {
+  afterAnimate(barRace: BarRace) {
+    const scaleType = barRace.config.scaleType;
     if (scaleType === 'fixed') return;
     this.ticks = this.ticks.filter(tick => {
       if (!tick.remove) return true;
       this.group.removeChild(tick.group);
     })
   }
-  update(prevValue: number, value: number, percent: number) {
+  update(barRace: BarRace, percent: number) {
+    const prevValue = barRace.index === 0 ? 0 : barRace.maxValues[barRace.index - 1];
+    const value = barRace.maxValues[barRace.index];
     if (prevValue === value || value < this.maxValue) return;
     const v = Math.floor(prevValue + (value - prevValue) * percent);
     this.maxValue = v;

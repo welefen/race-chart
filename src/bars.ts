@@ -2,6 +2,7 @@ import { Group, Layer } from 'spritejs';
 
 import { Bar } from './bar';
 import { BarsConfig, BarDataItem, AnimateData } from './type';
+import { BarRace } from './index';
 
 export class Bars {
   private bars: Bar[] = [];
@@ -27,7 +28,8 @@ export class Bars {
     layer.appendChild(this.group);
     return this.initBars();
   }
-  beforeAnimate(values: number[], index: number): void {
+  beforeAnimate(barRace: BarRace): void {
+    const { values, index } = barRace;
     this.animateData = this.bars.map(bar => {
       const data = {
         value: bar.config.value.value,
@@ -44,7 +46,9 @@ export class Bars {
       return data;
     })
   }
-  update(values: number[], index: number, percent: number, maxValue: number): void {
+  update(barRace: BarRace, percent: number): void {
+    const index = barRace.index;
+    const maxValue = barRace.maxValues[index];
     const showNum = this.config.showNum;
     this.bars.forEach((bar, idx) => {
       const item = this.animateData[idx];
@@ -70,7 +74,9 @@ export class Bars {
       }
     })
   }
-  afterAnimate(values: number[], index: number, maxValue: number): void {
+  afterAnimate(barRace: BarRace): void {
+    const { index } = barRace;
+    const maxValue = barRace.maxValues[index];
     this.bars.forEach((bar, idx) => {
       bar.rectWidth = Math.floor(bar.values[index] / maxValue * this.rectMaxWidth);
       bar.valueText = bar.values[index];

@@ -3,6 +3,7 @@ import deepmerge from 'ts-deepmerge';
 
 import { ColumnTipConfig } from './type';
 import { splitValue, createLabel } from './util';
+import { BarRace } from './index';
 
 // 显示列和总数
 export class ColumnTip {
@@ -68,10 +69,14 @@ export class ColumnTip {
     this.group.appendChild(label);
     return this.setColumnText(barColumn.text);
   }
-  beforeAnimate(column: string) {
+  beforeAnimate(barRace: BarRace) {
+    const column = barRace.config.data.columnNames[barRace.index];
     this.setColumnText(column);
   }
-  update(prevTotal: number, total: number, percent: number) {
+  update(barRace: BarRace, percent: number) {
+    const totals = barRace.config.data.totalValues;
+    const prevTotal = barRace.index === 0 ? 0 : totals[barRace.index - 1];
+    const total = totals[barRace.index];
     const value = Math.floor(prevTotal + (total - prevTotal) * percent);
     this.setTotalText(value);
   }

@@ -17,10 +17,10 @@ export class BarRace {
   private bars: Bars;
   private axis: Axis;
   private columnTip: ColumnTip;
-  private config: BarRaceConfig;
-  private index: number = 0; // 当前所在的数据 index
-  private values: number[] = [];
-  private maxValues: number[];
+  config: BarRaceConfig;
+  index: number = 0; // 当前所在的数据 index
+  values: number[] = [];
+  maxValues: number[];
   private deferred: Deferred;
   private recorder: any;
   constructor(config: BarRaceConfig) {
@@ -202,18 +202,17 @@ export class BarRace {
   private beforeAnimate() {
     sortValues(this.config.data.data, this.index, this.config.sortType);
     this.values = this.config.data.data.map(item => item.values[this.index]);
-    this.bars.beforeAnimate(this.values, this.index);
-    this.columnTip.beforeAnimate(this.config.data.columnNames[this.index]);
-    this.axis.beforeAnimate(this.maxValues[this.index], this.config.scaleType);
+    this.bars.beforeAnimate(this);
+    this.columnTip.beforeAnimate(this);
+    this.axis.beforeAnimate(this);
   }
   private afterAnimate() {
-    this.bars.afterAnimate(this.values, this.index, this.maxValues[this.index]);
-    this.axis.afterAnimate(this.maxValues[this.index], this.config.scaleType);
+    this.bars.afterAnimate(this);
+    this.axis.afterAnimate(this);
   }
   private onUpdate(percent: number) {
-    this.bars.update(this.values, this.index, percent, this.maxValues[this.index]);
-    const totals = this.config.data.totalValues;
-    this.columnTip.update(this.index === 0 ? 0 : totals[this.index - 1], totals[this.index], percent);
-    this.axis.update(this.index === 0 ? 0 : this.maxValues[this.index - 1], this.maxValues[this.index], percent);
+    this.bars.update(this, percent);
+    this.columnTip.update(this, percent);
+    this.axis.update(this, percent);
   }
 }
