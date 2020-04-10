@@ -92,8 +92,7 @@ export class BarRace {
     })
     this.layer.appendChild(label);
     await label.textImageReady;
-    const [_, height] = label.clientSize;
-    return height;
+    return label.clientSize[1];
   }
   private renderAxis(x: number, y: number, width: number, height: number) {
     this.axis = new Axis({
