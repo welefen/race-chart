@@ -30,7 +30,8 @@ export class ColumnTip {
     const barTotal = this.config.barTotal;
     if (barTotal.disabled) return Promise.resolve();
     barTotal.value = value;
-    const text = splitValue(value, this.config.valueSplit.type, this.config.valueSplit.length);
+    const { type, length } = this.config.valueSplit;
+    const text = splitValue(value, type, length);
     this.totalLabel.attr({
       text: `${this.config.barTotal.prefix}${text}`
     })
