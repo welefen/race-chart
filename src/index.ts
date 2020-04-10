@@ -17,12 +17,12 @@ export class BarRace {
   private bars: Bars;
   private axis: Axis;
   private columnTip: ColumnTip;
+  private deferred: Deferred;
+  private recorder: any;
   config: BarRaceConfig;
   index: number = 0; // 当前所在的数据 index
   values: number[] = [];
   maxValues: number[];
-  private deferred: Deferred;
-  private recorder: any;
   constructor(config: BarRaceConfig) {
     this.config = deepmerge({}, defaultBarRace, config);
     this.config.padding = parseCombineValue(this.config.padding);
