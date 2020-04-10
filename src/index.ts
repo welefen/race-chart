@@ -118,7 +118,7 @@ export class BarRace {
       width,
       height: height - this.config.axis.tipHeight,
     });
-    this.bars.appendTo(this.layer);
+    return this.bars.appendTo(this.layer);
   }
   private renderColumnTip(x: number, y: number, width: number, height: number) {
     this.columnTip = new ColumnTip({
@@ -152,7 +152,7 @@ export class BarRace {
     height -= subTitleHeight;
 
     this.renderAxis(x, y, width, height);
-    this.renderBars(x, y, width, height);
+    await this.renderBars(x, y, width, height);
     await this.renderColumnTip(x, y, width, height);
 
     // 开始动画

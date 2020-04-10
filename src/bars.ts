@@ -1,19 +1,9 @@
 import { Bar } from './bar';
 import { Group, Layer } from 'spritejs';
-import { BarsConfig, BarDataItem } from './type';
-import { sortValues } from './util';
-
-interface AnimateData {
-  value: number;
-  width: number;
-  index: number;
-  newIndex: number;
-  pos: number;
-  newPos: number;
-}
+import { BarsConfig, BarDataItem, AnimateData } from './type';
 
 export class Bars {
-  bars: Bar[];
+  bars: Bar[] = [];
   group: Group;
   config: BarsConfig;
   rectMaxWidth: number; // 矩形最大宽度
@@ -32,12 +22,12 @@ export class Bars {
     const { width, barLabel, barValue, justifySpacing, height, alignSpacing, showNum } = this.config;
     this.rectMaxWidth = width - barLabel.width - barValue.width - 2 * justifySpacing;
     this.barHeight = (height - alignSpacing * (showNum - 1)) / showNum;
-    this.initBars();
   }
-  appendTo(layer: Layer) {
+  async appendTo(layer: Layer): Promise<void> {
+    await this.initBars();
     layer.appendChild(this.group);
   }
-  beforeAnimate(values: number[], index: number) {
+  beforeAnimate(values: number[], index: number): void {
     this.animateData = this.bars.map(bar => {
       const data = {
         value: bar.config.value.value,
@@ -54,7 +44,7 @@ export class Bars {
       return data;
     })
   }
-  update(values: number[], index: number, percent: number, maxValue: number) {
+  update(values: number[], index: number, percent: number, maxValue: number): void {
     const showNum = this.config.showNum;
     this.bars.forEach((bar, idx) => {
       const item = this.animateData[idx];
@@ -80,7 +70,7 @@ export class Bars {
       }
     })
   }
-  afterAnimate(values: number[], index: number) {
+  afterAnimate(values: number[], index: number): void {
     this.bars.forEach((bar, idx) => {
       bar.valueText = bar.values[index];
       bar.index = this.animateData[idx].newIndex;
@@ -89,7 +79,7 @@ export class Bars {
       })
     })
   }
-  private getBarInstance(item: BarDataItem, index: number) {
+  private getBarInstance(item: BarDataItem, index: number): Bar {
     return new Bar({
       x: 0,
       y: this.getBarY(index),
@@ -111,16 +101,17 @@ export class Bars {
       valueSplit: this.config.valueSplit
     }, index, item.values)
   }
-  private initBars() {
-    this.bars = this.config.data.data.map((item, index) => {
+  private initBars(): Promise<any> {
+    const promises = this.config.data.data.map((item, index) => {
       const bar = this.getBarInstance(item, index);
-      bar.appendTo(this.group);
+      this.bars.push(bar);
       // 多余的隐藏
       if (index >= this.config.showNum) {
         bar.attr({ opacity: 0 })
       }
-      return bar;
+      return bar.appendTo(this.group);
     })
+    return Promise.all(promises);
   }
   private getBarY(index: number) {
     return (this.barHeight + this.config.alignSpacing) * Math.min(index, this.config.showNum - 1);

@@ -175,3 +175,12 @@ export interface Deferred {
   resolve?: (value?: any) => void;
   reject?: (reason?: any) => void;
 }
+
+export interface AnimateData {
+  value: number;
+  width: number;
+  index: number;
+  newIndex: number;
+  pos: number;
+  newPos: number;
+}

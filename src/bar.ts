@@ -17,14 +17,14 @@ export class Bar {
     this.group = new Group({ x, y, width, height });
     this.index = index;
     this.values = values;
-    this.initLabel();
-    this.initRect();
-    this.initValue();
   }
   attr(attrs: Record<string, any>) {
     this.group.attr(attrs);
   }
-  appendTo(node: Group) {
+  async appendTo(node: Group) {
+    await this.initLabel();
+    this.initRect();
+    await this.initValue();
     node.appendChild(this.group);
   }
   private initLabel() {
