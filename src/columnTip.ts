@@ -33,7 +33,7 @@ export class ColumnTip {
     const { type, length } = this.config.valueSplit;
     const text = splitValue(value, type, length);
     this.totalLabel.attr({
-      text: `${this.config.barTotal.prefix}${text}`
+      text: `${barTotal.prefix}${text}`
     })
     return this.totalLabel.textImageReady.then(() => {
       const [width, height] = this.totalLabel.clientSize;
@@ -63,7 +63,7 @@ export class ColumnTip {
     })
   }
   private initColumn() {
-    const barColumn = this.config.barColumn;
+    const { barColumn } = this.config;
     const label = createLabel('', barColumn);
     this.columnLabel = label;
     this.group.appendChild(label);
