@@ -1,4 +1,4 @@
-import { ValueSplitConfig, BarRaceConfig, TitleConfig, AxisConfig, BarColumnConfig, BarLabelConfig, BarRectConfig, BarValueConfig, BarTotalConfig } from './type';
+import { ValueSplitConfig, BarRaceConfig, Title, SubTitle, AxisConfig, BarColumnConfig, BarLabelConfig, BarRectConfig, BarValueConfig, BarTotalConfig } from './type';
 
 const valueSplit: ValueSplitConfig = {
   type: ',',
@@ -43,8 +43,15 @@ const barValue: BarValueConfig = {
   width: 100
 }
 
-const title: TitleConfig = {
+const title: Title = {
   fontSize: 30,
+  fontFamily,
+  color: '#333',
+  align: 'center'
+};
+
+const subTitle: SubTitle = {
+  fontSize: 20,
   fontFamily,
   color: '#333',
   align: 'center'
@@ -65,6 +72,7 @@ export const defaultBarRace: BarRaceConfig = {
   valueSplit,
   axis,
   title,
+  subTitle,
   barLabel,
   barRect,
   barValue,
@@ -77,4 +85,6 @@ export const defaultBarRace: BarRaceConfig = {
   sortType: 'desc',
   showNum: 10,
   colors,
+  padding: [0],
+  background: {}
 }

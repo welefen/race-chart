@@ -1,4 +1,9 @@
 import { BarData, BarDataItem, SortType } from './type';
+/**
+ * 移除完全不会显示的数据，减少创建的 bar 个数
+ * @param data 
+ * @param showNum 
+ */
 export function parseData(data: BarData, showNum: number = 10) {
   const set = new Set();
   const totals: number[] = [];
@@ -31,4 +36,16 @@ export function sortValues(values: BarDataItem[], index: number, type: SortType)
   values.sort((a, b) => {
     return a.values[index] < b.values[index] ? i : j;
   })
+}
+export function parseCombineValue(value: number | number[]): number[] {
+  if (!Array.isArray(value)) {
+    value = [value, value, value, value];
+  } else if (value.length === 1) {
+    value = [value[0], value[0], value[0], value[0]];
+  } else if (value.length === 2) {
+    value = [value[0], value[1], value[0], value[1]];
+  } else if (value.length === 3) {
+    value[3] = value[1];
+  }
+  return value;
 }

@@ -1,6 +1,6 @@
-import { Scene, Layer } from "spritejs";
+import { Scene, Layer, Rect, Sprite } from "spritejs";
 import { Bars } from './bars';
-import { parseData, sortValues } from './util';
+import { parseData, sortValues, parseCombineValue } from './util';
 import { Timer } from './timer';
 import { BarRaceConfig } from './type';
 import deepmerge from 'ts-deepmerge';
@@ -9,6 +9,7 @@ import { Axis } from './axis';
 import { ColumnTip } from './columnTip';
 
 export class BarRace {
+  scene: Scene;
   layer: Layer;
   timer: Timer;
   bars: Bars;
@@ -20,6 +21,7 @@ export class BarRace {
   maxValues: number[];
   constructor(config: BarRaceConfig) {
     this.config = deepmerge({}, defaultBarRace, config);
+    this.config.padding = parseCombineValue(this.config.padding);
     this.config.data = parseData(this.config.data, this.config.showNum);
     // 按第一个数据从大到小排序
     sortValues(this.config.data.data, 0, this.config.sortType);
@@ -29,8 +31,9 @@ export class BarRace {
       container: document.querySelector(this.config.selector),
       width: this.config.width,
       height: this.config.height,
-      displayRatio: this.config.displayRatio
+      displayRatio: this.config.displayRatio,
     })
+    this.scene = scene;
     this.layer = scene.layer();
     this.timer = new Timer(this.config.duration, this.onUpdate.bind(this));
     this.initMaxValues();
@@ -46,7 +49,31 @@ export class BarRace {
     }
     this.maxValues = values;
   }
+  async renderBackground() {
+    const { image, color } = this.config.background;
+    const { width, height } = this.config;
+    if (color) {
+      const rect = new Rect({
+        fillColor: color,
+        width, height
+      })
+      this.layer.appendChild(rect);
+    }
+    if (image) {
+      await this.scene.preload({
+        id: 'backgroundImage',
+        src: image,
+      });
+      const sprite = new Sprite({
+        texture: 'backgroundImage',
+        width, height
+      })
+      this.layer.appendChild(sprite);
+    }
+  }
   async render() {
+    await this.renderBackground();
+
     const titleHeight = 50;
     this.axis = new Axis({
       x: this.config.barLabel.width + this.config.justifySpacing,
@@ -79,6 +106,7 @@ export class BarRace {
     this.columnTip.appendTo(this.layer);
     await this.columnTip.promise;
 
+    // return;
     // 开始动画
     const length = this.config.data.columnNames.length;
     while (this.index < length) {

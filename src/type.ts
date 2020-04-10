@@ -1,7 +1,6 @@
 import { Group } from 'spritejs';
 
 export type ScaleType = 'fixed' | 'dynamic';
-
 export type SortType = 'asc' | 'desc';
 
 export interface Font {
@@ -68,10 +67,6 @@ interface Axis extends Font {
 
 type TitleAlign = 'left' | 'center' | 'right';
 
-interface Title extends Font {
-  text?: string;
-  align?: TitleAlign
-}
 interface Position {
   x?: number;
   y?: number;
@@ -93,6 +88,7 @@ export interface BarRaceConfig {
   displayRatio?: number;
   valueSplit?: ValueSplitConfig;
   title?: Title;
+  subTitle?: SubTitle;
   axis?: Axis;
   barLabel?: BarLabelConfig;
   barRect?: BarRectConfig;
@@ -107,14 +103,39 @@ export interface BarRaceConfig {
   colors?: string[]; // bar colors
   data?: BarData;
   sortType?: SortType;
+  padding?: number | number[];
+  background?: Background;
+}
+
+export interface Background {
+  color?: string;
+  image?: string;
+}
+
+export interface BackgroundConfig extends Background, Position {
+
 }
 
 export interface AxisConfig extends Axis, Position {
   valueSplit?: ValueSplitConfig
 }
+export interface Title extends Font {
+  text?: string;
+  align?: TitleAlign;
+}
+
 export interface TitleConfig extends Title, Position {
 
 }
+
+export interface SubTitle extends Title {
+
+}
+
+export interface SubTitleConfig extends TitleConfig {
+
+}
+
 export interface BarsConfig extends BarRaceConfig, Position {
 
 }
