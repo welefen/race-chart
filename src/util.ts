@@ -1,4 +1,5 @@
-import { BarData, BarDataItem, SortType } from './type';
+import { BarData, BarDataItem, SortType, Font } from './type';
+import { Label } from 'spritejs';
 /**
  * 移除完全不会显示的数据，减少创建的 bar 个数
  * @param data 
@@ -49,4 +50,25 @@ export function parseCombineValue(value: number | number[]): number[] {
     value[3] = value[1];
   }
   return value;
+}
+
+/**
+ * create label
+ * @param text string
+ * @param config 
+ */
+export function createLabel(text?: string, config?: Font) {
+  const label = new Label(text || '');
+  const { fontSize, fontStretch, fontFamily, fontWeight, fontStyle, fontVariant, lineHeight, color } = config;
+  label.attr({
+    fontSize,
+    fontFamily,
+    fontWeight,
+    fontStyle,
+    fontStretch,
+    fontVariant,
+    lineHeight,
+    fillColor: color
+  })
+  return label;
 }

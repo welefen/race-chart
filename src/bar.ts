@@ -1,7 +1,7 @@
 import { Group, Label, Rect, Sprite } from 'spritejs';
 import { BarConfig } from './type';
 import deepmerge from 'ts-deepmerge';
-import { splitValue } from './util';
+import { splitValue, createLabel } from './util';
 
 export class Bar {
   private group: Group;
@@ -30,18 +30,13 @@ export class Bar {
     return this.initValue();
   }
   private initLabel() {
-    const nameConfig = this.config.label;
-    this.label = new Label(nameConfig.text || '');
-    this.label.attr({
-      font: `${nameConfig.fontSize}px ${nameConfig.fontFamily}`,
-      fillColor: nameConfig.color,
-      // bgcolor: 'red'
-    });
+    const { width, text } = this.config.label;
+    this.label = createLabel(text || '', this.config.label);
     this.group.appendChild(this.label);
     return this.label.textImageReady.then(() => {
-      const [width, height] = this.label.clientSize;
+      const [w, height] = this.label.clientSize;
       this.label.attr({
-        x: nameConfig.width - width,
+        x: width - w,
         y: Math.round((this.config.height - height) / 2)
       })
     })
@@ -69,14 +64,8 @@ export class Bar {
     this.updateLogoX();
   }
   private initValue() {
-    const valueConfig = this.config.value;
-    this.value = new Label('');
-    this.value.attr({
-      font: `${valueConfig.fontSize}px ${valueConfig.fontFamily}`,
-      fillColor: valueConfig.color,
-      width: valueConfig.width
-    })
-    // this.valueText = valueConfig.value;
+    this.value = createLabel('', this.config.value);
+    this.value.attr({ width: this.config.value.width })
     this.group.appendChild(this.value);
     return this.value.textImageReady.then(() => {
       const [_, height] = this.value.clientSize;
@@ -93,6 +82,7 @@ export class Bar {
       texture: logo.src,
       width: logo.width,
       height: logo.height,
+      borderRadius: logo.radius
     })
     this.logo = sprite;
     this.group.appendChild(sprite);

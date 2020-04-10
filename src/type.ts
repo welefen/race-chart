@@ -7,6 +7,9 @@ export interface Font {
   fontSize?: number;
   fontFamily?: string;
   fontWeight?: string;
+  fontStyle?: string;
+  fontStretch?: string;
+  fontVariant?: string;
   lineHeight?: number;
   color?: string;
 }

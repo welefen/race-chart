@@ -82,7 +82,8 @@ export class BarRace {
     if (!config.text) return 0;
     const label = new Label({
       text: config.text,
-      font: `${config.fontSize}px ${config.fontFamily}`,
+      fontSize: config.fontSize,
+      fontFamily: config.fontFamily,
       lineHeight: config.lineHeight,
       fillColor: config.color,
       x: config.x,

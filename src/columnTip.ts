@@ -1,7 +1,7 @@
 import { Group, Label } from 'spritejs';
 import { ColumnTipConfig } from './type';
 import deepmerge from 'ts-deepmerge';
-import { splitValue } from './util';
+import { splitValue, createLabel } from './util';
 
 // 显示列和总数
 export class ColumnTip {
@@ -45,11 +45,7 @@ export class ColumnTip {
   private initTotal() {
     if (this.config.barTotal.disabled) return Promise.resolve();
     const barTotal = this.config.barTotal;
-    const label = new Label('');
-    label.attr({
-      font: `${barTotal.fontSize}px ${barTotal.fontFamily}`,
-      fillColor: barTotal.color
-    })
+    const label = createLabel('', barTotal);
     this.totalLabel = label;
     this.group.appendChild(label);
     return this.setTotalText(barTotal.value || 0)
@@ -66,12 +62,7 @@ export class ColumnTip {
   }
   private initColumn() {
     const barColumn = this.config.barColumn;
-    const label = new Label('');
-    label.attr({
-      font: `${barColumn.fontSize}px ${barColumn.fontFamily}`,
-      fontWeight: barColumn.fontWeight,
-      fillColor: barColumn.color
-    })
+    const label = createLabel('', barColumn);
     this.columnLabel = label;
     this.group.appendChild(label);
     return this.setColumnText(barColumn.text);

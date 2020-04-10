@@ -1,6 +1,6 @@
 import { AxisConfig, Tick, ScaleType } from './type';
-import { Group, Layer, Polyline, Label } from 'spritejs';
-import { splitValue } from './util';
+import { Group, Layer, Polyline } from 'spritejs';
+import { splitValue, createLabel } from './util';
 import deepmerge from 'ts-deepmerge';
 
 export class Axis {
@@ -60,11 +60,7 @@ export class Axis {
       height: this.config.height
     })
     const valueStr = splitValue(value, this.config.valueSplit.type, this.config.valueSplit.length);
-    const label = new Label(valueStr);
-    label.attr({
-      font: `${this.config.fontSize}px ${this.config.fontFamily}`,
-      fillColor: this.config.color,
-    });
+    const label = createLabel(valueStr, this.config);
     group.appendChild(label);
     label.textImageReady.then(() => {
       const [width, height] = label.clientSize;
