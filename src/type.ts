@@ -107,6 +107,7 @@ export interface BarRaceConfig {
   sortType?: SortType;
   padding?: number | number[];
   background?: Background;
+  captureStream?: boolean;
 }
 
 export interface Background {
@@ -154,4 +155,21 @@ export interface ColumnTipConfig extends Position {
   barColumn?: BarColumnConfig;
   barTotal?: BarTotalConfig;
   valueSplit?: ValueSplitConfig;
+}
+
+
+export interface CanvasElement extends HTMLCanvasElement {
+  captureStream(): void;
+}
+
+export interface MediaRecorderEvent {
+  data: {
+    size: number
+  }
+}
+
+export interface Deferred {
+  promise?: Promise<any>;
+  resolve?: (value?: any) => void;
+  reject?: (reason?: any) => void;
 }

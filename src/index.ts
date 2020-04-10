@@ -2,12 +2,13 @@ import { Scene, Layer, Rect, Sprite, Label } from "spritejs";
 import { Bars } from './bars';
 import { parseData, sortValues, parseCombineValue } from './util';
 import { Timer } from './timer';
-import { BarRaceConfig, TitleConfig } from './type';
+import { BarRaceConfig, TitleConfig, Deferred, MediaRecorderEvent, CanvasElement } from './type';
 import deepmerge from 'ts-deepmerge';
 import { defaultBarRace } from './config';
 import { Axis } from './axis';
 import { ColumnTip } from './columnTip';
 
+declare var MediaRecorder: any;
 export class BarRace {
   scene: Scene;
   layer: Layer;
@@ -19,6 +20,8 @@ export class BarRace {
   index: number = 0; // 当前所在的数据 index
   values: number[] = [];
   maxValues: number[];
+  deferred: Deferred;
+  recorder: any;
   constructor(config: BarRaceConfig) {
     this.config = deepmerge({}, defaultBarRace, config);
     this.config.padding = parseCombineValue(this.config.padding);
@@ -34,7 +37,9 @@ export class BarRace {
       displayRatio: this.config.displayRatio,
     })
     this.scene = scene;
-    this.layer = scene.layer();
+    this.layer = scene.layer('layer', {
+      handleEvent: false
+    });
     this.timer = new Timer(this.config.duration, this.onUpdate.bind(this));
     this.initMaxValues();
   }
@@ -128,6 +133,7 @@ export class BarRace {
     return this.columnTip.appendTo(this.layer);
   }
   async render() {
+    this.captureStream();
     await this.renderBackground();
     let [y, paddingRight, paddingBottom, x] = <number[]>this.config.padding;
     let width = this.config.width - x - paddingRight;
@@ -157,6 +163,42 @@ export class BarRace {
       this.afterAnimate();
       this.index++;
     }
+    // stop recorder
+    if (this.recorder) {
+      this.recorder.stop();
+    }
+  }
+  /**
+   * capture canvas stream
+   */
+  private captureStream() {
+    if (!this.config.captureStream) return;
+    const deferred: Deferred = {};
+    deferred.promise = new Promise((resolve, reject) => {
+      deferred.resolve = resolve;
+      deferred.reject = reject;
+    })
+    this.deferred = deferred;
+    const stream = (<CanvasElement>this.layer.canvas).captureStream();
+    const recorder = new MediaRecorder(stream, { mimeType: "video/webm" });
+    const data: any[] = [];
+    recorder.ondataavailable = function (event: MediaRecorderEvent) {
+      if (event.data && event.data.size) {
+        data.push(event.data);
+      }
+    };
+    recorder.onstop = () => {
+      const url = URL.createObjectURL(new Blob(data, { type: "video/webm" }));
+      this.deferred.resolve(url);
+    };
+    recorder.start();
+    this.recorder = recorder;
+  }
+  getStreamURL(): Promise<Blob> {
+    if (!this.config.captureStream) {
+      return Promise.reject(new Error('need enable captureStream options before'));
+    }
+    return this.deferred.promise;
   }
   private beforeAnimate() {
     sortValues(this.config.data.data, this.index, this.config.sortType);

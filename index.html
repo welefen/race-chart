@@ -15,6 +15,10 @@
 </head>
 <body>
   <div id="container"></div>
+  <div>
+      <h2>视频</h2>
+      <video width="960" height="540" controls="true" autoplay="true" id="video"></video>
+  </div>
   <script src="./dist/bundle.js"></script>
   <script>
   window.RaceData = {
@@ -14063,7 +14067,7 @@
     data: RaceData,
     background: {
         // image: 'http://p6.qhimg.com/t017ec8f9cdf9938276.jpg',
-        // color: '#efefef'
+        // color: '#fff'
     },
     padding: [10],
     title: {
@@ -14074,9 +14078,13 @@
         // text: 'test',
         align: 'center',
         padding: [0, 0, 20, 0]
-    }
+    },
+    captureStream: true
   });
   instance.render();
+  instance.getStreamURL().then(url => {
+    document.querySelector('#video').setAttribute('src', url);
+  })
   </script>
 </body>
 </html>

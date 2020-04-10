@@ -81,12 +81,15 @@ export const defaultBarRace: BarRaceConfig = {
   barValue,
   barTotal,
   barColumn,
-  duration: 1000,
+  duration: 200,
   alignSpacing: 5,
   justifySpacing: 5,
   scaleType: 'dynamic',
   sortType: 'desc',
   showNum: 10,
   colors,
-  background: {}
+  background: {
+    color: '#fff'
+  },
+  captureStream: false
 }
