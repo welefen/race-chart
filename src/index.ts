@@ -93,11 +93,11 @@ export class BarRace {
     this.values = this.config.data.data.map(item => item.values[this.index]);
     this.bars.beforeAnimate(this.values, this.index);
     this.columnTip.beforeAnimate(this.config.data.columnNames[this.index]);
-    this.axis.beforeAnimate(this.maxValues[this.index]);
+    this.axis.beforeAnimate(this.maxValues[this.index], this.config.scaleType);
   }
   private afterAnimate() {
     this.bars.afterAnimate(this.values, this.index);
-    this.axis.afterAnimate(this.maxValues[this.index]);
+    this.axis.afterAnimate(this.maxValues[this.index], this.config.scaleType);
   }
   private onUpdate(percent: number) {
     this.bars.update(this.values, this.index, percent, this.maxValues[this.index]);

@@ -1,4 +1,4 @@
-import { AxisConfig, Tick } from './type';
+import { AxisConfig, Tick, ScaleType } from './type';
 import { Group, Layer, Polyline, Label } from 'spritejs';
 import { splitValue } from './util';
 import deepmerge from 'ts-deepmerge';
@@ -81,41 +81,40 @@ export class Axis {
     group.appendChild(line);
     return group;
   }
-  beforeAnimate(value: number) {
-    if (this.maxValue === value) return;
+  beforeAnimate(value: number, scaleType: ScaleType) {
     if (!this.maxValue) {
       this.maxValue = value;
       const steps = this.getSteps(value);
       this.step = steps[1]; // steps[0] is zero
       return this.addTicks(steps);
-    } else {
-      const max = this.ticks[this.ticks.length - 1].value;
-      if (max + this.step < value) {
-        let num = 0;
-        let max = 0;
-        this.ticks.forEach(tick => {
-          if (tick.value % this.step === 0 && tick.value % (this.step * 2) !== 0) {
-            tick.remove = true;
-            num++;
-          } else {
-            max = tick.value;
-          }
-        })
-        this.step *= 2;
-        if (num) {
-          const values = [];
-          while (num) {
-            values.push(max + this.step);
-            num--;
-            max += this.step;
-          }
-          this.addTicks(values);
+    }
+    if (scaleType === 'fixed') return;
+    const max = this.ticks[this.ticks.length - 1].value;
+    if (max + this.step < value) {
+      let num = 0;
+      let max = 0;
+      this.ticks.forEach(tick => {
+        if (tick.value % this.step === 0 && tick.value % (this.step * 2) !== 0) {
+          tick.remove = true;
+          num++;
+        } else {
+          max = tick.value;
         }
+      })
+      this.step *= 2;
+      if (num) {
+        const values = [];
+        while (num) {
+          values.push(max + this.step);
+          num--;
+          max += this.step;
+        }
+        this.addTicks(values);
       }
     }
   }
-  afterAnimate(value: number) {
-    if (this.maxValue === value) return;
+  afterAnimate(value: number, scaleType: ScaleType) {
+    if (scaleType === 'fixed') return;
     this.ticks = this.ticks.filter(tick => {
       if (!tick.remove) return true;
       this.group.removeChild(tick.group);

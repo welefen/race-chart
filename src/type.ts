@@ -1,6 +1,6 @@
 import { Group } from 'spritejs';
 
-type ScaleType = 'fixed' | 'dynamic';
+export type ScaleType = 'fixed' | 'dynamic';
 
 export type SortType = 'asc' | 'desc';
 
