@@ -96,35 +96,38 @@ export class BarRace {
     return label.clientSize[1];
   }
   private renderAxis(x: number, y: number, width: number, height: number) {
+    const { barLabel, justifySpacing, valueSplit, barValue, axis } = this.config;
     this.axis = new Axis({
-      x: x + this.config.barLabel.width + this.config.justifySpacing,
+      x: x + barLabel.width + justifySpacing,
       y,
-      width: width - this.config.barLabel.width - this.config.justifySpacing * 2 - this.config.barValue.width,
+      width: width - barLabel.width - justifySpacing * 2 - barValue.width,
       height,
-      valueSplit: this.config.valueSplit,
-      ...this.config.axis
+      valueSplit: valueSplit,
+      ...axis
     });
     this.axis.appendTo(this.layer);
   }
   private renderBars(x: number, y: number, width: number, height: number) {
+    const { tipHeight } = this.config.axis;
     this.bars = new Bars({
       ...this.config,
       x,
-      y: y + this.config.axis.tipHeight,
+      y: y + tipHeight,
       width,
-      height: height - this.config.axis.tipHeight,
+      height: height - tipHeight,
     });
     return this.bars.appendTo(this.layer);
   }
   private renderColumnTip(x: number, y: number, width: number, height: number) {
+    const { barTotal, barColumn, valueSplit } = this.config;
     this.columnTip = new ColumnTip({
       x,
       y,
       width,
       height,
-      barTotal: this.config.barTotal,
-      barColumn: this.config.barColumn,
-      valueSplit: this.config.valueSplit
+      barTotal,
+      barColumn,
+      valueSplit
     });
     return this.columnTip.appendTo(this.layer);
   }
