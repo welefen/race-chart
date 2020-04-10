@@ -1,8 +1,8 @@
-import { Scene, Layer, Rect, Sprite } from "spritejs";
+import { Scene, Layer, Rect, Sprite, Label } from "spritejs";
 import { Bars } from './bars';
 import { parseData, sortValues, parseCombineValue } from './util';
 import { Timer } from './timer';
-import { BarRaceConfig } from './type';
+import { BarRaceConfig, TitleConfig } from './type';
 import deepmerge from 'ts-deepmerge';
 import { defaultBarRace } from './config';
 import { Axis } from './axis';
@@ -49,6 +49,7 @@ export class BarRace {
     }
     this.maxValues = values;
   }
+  // 渲染背景
   async renderBackground() {
     const { image, color } = this.config.background;
     const { width, height } = this.config;
@@ -72,15 +73,50 @@ export class BarRace {
       this.layer.appendChild(sprite);
     }
   }
+  async renderTitle(config: TitleConfig): Promise<number> {
+    if (!config.text) return 0;
+    const label = new Label({
+      text: config.text,
+      font: `${config.fontSize}px ${config.fontFamily}`,
+      lineHeight: config.lineHeight,
+      fillColor: config.color,
+      x: config.x,
+      y: config.y,
+      padding: config.padding
+    })
+    this.layer.appendChild(label);
+    await label.textImageReady;
+    const [width, height] = label.clientSize;
+    if (config.align === 'center') {
+      label.attr({ x: config.x + config.width / 2 - width / 2 })
+    } else if (config.align === 'right') {
+      label.attr({ x: config.width - width });
+    }
+    return height;
+  }
   async render() {
     await this.renderBackground();
+    let [y, paddingRight, paddingBottom, x] = <number[]>this.config.padding;
+    let width = this.config.width - x - paddingRight;
+    let height = this.config.height - y - paddingBottom;
+    const titleHeight = await this.renderTitle({
+      ...this.config.title,
+      x, y, width, height
+    })
+    y += titleHeight;
+    height -= titleHeight;
+    const subTitleHeight = await this.renderTitle({
+      ...this.config.subTitle,
+      x, y, width, height
+    })
+    y += subTitleHeight;
+    height -= subTitleHeight;
 
-    const titleHeight = 50;
     this.axis = new Axis({
-      x: this.config.barLabel.width + this.config.justifySpacing,
-      y: titleHeight,
-      width: this.config.width - this.config.barLabel.width - this.config.justifySpacing * 2 - this.config.barValue.width,
-      height: this.config.height - titleHeight,
+      x: x + this.config.barLabel.width + this.config.justifySpacing,
+      y,
+      width: width - this.config.barLabel.width - this.config.justifySpacing * 2 - this.config.barValue.width,
+      height: height - titleHeight,
       valueSplit: this.config.valueSplit,
       ...this.config.axis
     });
@@ -88,18 +124,18 @@ export class BarRace {
 
     this.bars = new Bars({
       ...this.config,
-      x: 0,
-      y: titleHeight + 30,
-      width: this.config.width,
-      height: this.config.height - 80,
+      x,
+      y: y + this.config.axis.tipHeight,
+      width,
+      height: height - this.config.axis.tipHeight,
     });
     this.bars.appendTo(this.layer);
 
     this.columnTip = new ColumnTip({
-      x: 0,
-      y: titleHeight + 30,
-      width: this.config.width,
-      height: this.config.height - 80,
+      x,
+      y,
+      width,
+      height,
       barTotal: this.config.barTotal,
       barColumn: this.config.barColumn,
       valueSplit: this.config.valueSplit
@@ -107,7 +143,6 @@ export class BarRace {
     this.columnTip.appendTo(this.layer);
     await this.columnTip.promise;
 
-    // return;
     // 开始动画
     const length = this.config.data.columnNames.length;
     while (this.index < length) {

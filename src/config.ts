@@ -12,7 +12,8 @@ const axis: AxisConfig = {
   color: '#666',
   lineColor: '#eee',
   fontSize: 12,
-  fontFamily
+  fontFamily,
+  tipHeight: 20
 }
 
 const barColumn: BarColumnConfig = {
@@ -46,15 +47,17 @@ const barValue: BarValueConfig = {
 const title: Title = {
   fontSize: 30,
   fontFamily,
-  color: '#333',
-  align: 'center'
+  color: '#444',
+  align: 'center',
+  lineHeight: 40,
 };
 
 const subTitle: SubTitle = {
   fontSize: 20,
   fontFamily,
-  color: '#333',
-  align: 'center'
+  color: '#444',
+  align: 'center',
+  lineHeight: 30,
 };
 
 const barTotal: BarTotalConfig = {
@@ -85,6 +88,5 @@ export const defaultBarRace: BarRaceConfig = {
   sortType: 'desc',
   showNum: 10,
   colors,
-  padding: [0],
   background: {}
 }

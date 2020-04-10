@@ -7,6 +7,7 @@ export interface Font {
   fontSize?: number;
   fontFamily?: string;
   fontWeight?: string;
+  lineHeight?: number;
   color?: string;
 }
 
@@ -63,6 +64,7 @@ export interface BarTotalConfig extends Font {
 interface Axis extends Font {
   maxTick?: number; // 最多显示几个
   lineColor?: string;
+  tipHeight: number;
 }
 
 type TitleAlign = 'left' | 'center' | 'right';
@@ -122,6 +124,7 @@ export interface AxisConfig extends Axis, Position {
 export interface Title extends Font {
   text?: string;
   align?: TitleAlign;
+  padding?: number[];
 }
 
 export interface TitleConfig extends Title, Position {

@@ -37,7 +37,7 @@ export class ColumnTip {
       const [width, height] = this.totalLabel.clientSize;
       this.totalLabelHeight = height;
       this.totalLabel.attr({
-        x: this.config.width - width - 30,
+        x: this.config.width - width - 20,
         y: this.config.height - height
       })
     })

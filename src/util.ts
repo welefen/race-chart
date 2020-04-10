@@ -38,6 +38,7 @@ export function sortValues(values: BarDataItem[], index: number, type: SortType)
   })
 }
 export function parseCombineValue(value: number | number[]): number[] {
+  if (!value) return [0, 0, 0, 0];
   if (!Array.isArray(value)) {
     value = [value, value, value, value];
   } else if (value.length === 1) {
