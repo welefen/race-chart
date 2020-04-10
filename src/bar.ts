@@ -25,7 +25,7 @@ export class Bar {
   }
   async appendTo(node: Group) {
     node.appendChild(this.group);
-    await this.initLabel();
+    this.initLabel();
     this.initRect();
     await this.initLogo();
     return this.initValue();
@@ -33,14 +33,12 @@ export class Bar {
   private initLabel() {
     const { width, text } = this.config.label;
     this.label = createLabel(text || '', this.config.label);
-    this.group.appendChild(this.label);
-    return this.label.textImageReady.then(() => {
-      const [w, height] = this.label.clientSize;
-      this.label.attr({
-        x: width - w,
-        y: Math.round((this.config.height - height) / 2)
-      })
+    this.label.attr({
+      width,
+      textAlign: 'right',
+      lineHeight: this.config.height
     })
+    this.group.appendChild(this.label);
   }
   private initRect() {
     const rectConfig = this.config.rect;
@@ -66,15 +64,12 @@ export class Bar {
   }
   private initValue() {
     this.value = createLabel('', this.config.value);
-    this.value.attr({ width: this.config.value.width })
-    this.group.appendChild(this.value);
-    return this.value.textImageReady.then(() => {
-      const [_, height] = this.value.clientSize;
-      this.value.attr({
-        y: Math.round((this.config.height - height) / 2)
-      })
-      this.updateValueX();
+    this.value.attr({
+      width: this.config.value.width,
+      lineHeight: this.config.height
     })
+    this.group.appendChild(this.value);
+    this.updateValueX();
   }
   private initLogo() {
     const { logo } = this.config;

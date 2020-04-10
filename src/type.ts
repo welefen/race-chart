@@ -133,7 +133,7 @@ export interface Title extends Font {
 }
 
 export interface TitleConfig extends Title, Position {
-
+  width?: number;
 }
 
 export interface SubTitle extends Title {

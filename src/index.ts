@@ -2,7 +2,7 @@ import { Scene, Layer, Rect, Sprite, Label } from "spritejs";
 import deepmerge from 'ts-deepmerge';
 
 import { Bars } from './bars';
-import { parseData, sortValues, parseCombineValue } from './util';
+import { parseData, sortValues, parseCombineValue, createLabel } from './util';
 import { Timer } from './timer';
 import { BarRaceConfig, TitleConfig, Deferred, MediaRecorderEvent, CanvasElement } from './type';
 import { defaultBarRace } from './config';
@@ -81,24 +81,17 @@ export class BarRace {
   }
   private async renderTitle(config: TitleConfig): Promise<number> {
     if (!config.text) return 0;
-    const label = new Label({
-      text: config.text,
-      fontSize: config.fontSize,
-      fontFamily: config.fontFamily,
-      lineHeight: config.lineHeight,
-      fillColor: config.color,
+    const label = createLabel(config.text, config);
+    label.attr({
       x: config.x,
       y: config.y,
-      padding: config.padding
+      width: config.width,
+      padding: config.padding,
+      textAlign: config.align
     })
     this.layer.appendChild(label);
     await label.textImageReady;
-    const [width, height] = label.clientSize;
-    if (config.align === 'center') {
-      label.attr({ x: config.x + config.width / 2 - width / 2 })
-    } else if (config.align === 'right') {
-      label.attr({ x: config.width - width });
-    }
+    const [_, height] = label.clientSize;
     return height;
   }
   private renderAxis(x: number, y: number, width: number, height: number) {
