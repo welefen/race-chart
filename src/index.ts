@@ -50,7 +50,7 @@ export class BarRace {
     this.maxValues = values;
   }
   // 渲染背景
-  async renderBackground() {
+  private async renderBackground() {
     const { image, color } = this.config.background;
     const { width, height } = this.config;
     if (color) {
@@ -73,7 +73,7 @@ export class BarRace {
       this.layer.appendChild(sprite);
     }
   }
-  async renderTitle(config: TitleConfig): Promise<number> {
+  private async renderTitle(config: TitleConfig): Promise<number> {
     if (!config.text) return 0;
     const label = new Label({
       text: config.text,
@@ -94,6 +94,39 @@ export class BarRace {
     }
     return height;
   }
+  private renderAxis(x: number, y: number, width: number, height: number) {
+    this.axis = new Axis({
+      x: x + this.config.barLabel.width + this.config.justifySpacing,
+      y,
+      width: width - this.config.barLabel.width - this.config.justifySpacing * 2 - this.config.barValue.width,
+      height,
+      valueSplit: this.config.valueSplit,
+      ...this.config.axis
+    });
+    this.axis.appendTo(this.layer);
+  }
+  private renderBars(x: number, y: number, width: number, height: number) {
+    this.bars = new Bars({
+      ...this.config,
+      x,
+      y: y + this.config.axis.tipHeight,
+      width,
+      height: height - this.config.axis.tipHeight,
+    });
+    this.bars.appendTo(this.layer);
+  }
+  private renderColumnTip(x: number, y: number, width: number, height: number) {
+    this.columnTip = new ColumnTip({
+      x,
+      y,
+      width,
+      height,
+      barTotal: this.config.barTotal,
+      barColumn: this.config.barColumn,
+      valueSplit: this.config.valueSplit
+    });
+    return this.columnTip.appendTo(this.layer);
+  }
   async render() {
     await this.renderBackground();
     let [y, paddingRight, paddingBottom, x] = <number[]>this.config.padding;
@@ -112,36 +145,9 @@ export class BarRace {
     y += subTitleHeight;
     height -= subTitleHeight;
 
-    this.axis = new Axis({
-      x: x + this.config.barLabel.width + this.config.justifySpacing,
-      y,
-      width: width - this.config.barLabel.width - this.config.justifySpacing * 2 - this.config.barValue.width,
-      height,
-      valueSplit: this.config.valueSplit,
-      ...this.config.axis
-    });
-    this.axis.appendTo(this.layer);
-
-    this.bars = new Bars({
-      ...this.config,
-      x,
-      y: y + this.config.axis.tipHeight,
-      width,
-      height: height - this.config.axis.tipHeight,
-    });
-    this.bars.appendTo(this.layer);
-
-    this.columnTip = new ColumnTip({
-      x,
-      y,
-      width,
-      height,
-      barTotal: this.config.barTotal,
-      barColumn: this.config.barColumn,
-      valueSplit: this.config.valueSplit
-    });
-    this.columnTip.appendTo(this.layer);
-    await this.columnTip.promise;
+    this.renderAxis(x, y, width, height);
+    this.renderBars(x, y, width, height);
+    await this.renderColumnTip(x, y, width, height);
 
     // 开始动画
     const length = this.config.data.columnNames.length;

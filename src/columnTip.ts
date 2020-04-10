@@ -15,12 +15,12 @@ export class ColumnTip {
     this.config = deepmerge({}, config);
     const { x, y, width, height } = this.config;
     this.group = new Group({ x, y, width, height });
-    this.promise = this.initTotal().then(() => {
-      return this.initColumn();
-    })
   }
   appendTo(group: Group) {
     group.appendChild(this.group);
+    return this.initTotal().then(() => {
+      return this.initColumn();
+    })
   }
   get totalValue(): number {
     return this.config.barTotal.value;
