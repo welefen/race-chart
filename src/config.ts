@@ -81,7 +81,7 @@ export const defaultBarRace: BarRaceConfig = {
   barValue,
   barTotal,
   barColumn,
-  duration: 200,
+  duration: 1000,
   alignSpacing: 5,
   justifySpacing: 5,
   scaleType: 'dynamic',

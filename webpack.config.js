@@ -20,6 +20,7 @@ module.exports = {
     libraryTarget: 'umd',
   },
   externals: {
-    spritejs: 'spritejs'
+    spritejs: 'spritejs',
+    '@tweenjs/tween.js': 'TWEEN'
   }
 };
