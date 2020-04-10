@@ -60,12 +60,13 @@ export class BarRace {
       this.layer.appendChild(rect);
     }
     if (image) {
+      const id = 'bg';
       await this.scene.preload({
-        id: 'backgroundImage',
+        id,
         src: image,
       });
       const sprite = new Sprite({
-        texture: 'backgroundImage',
+        texture: id,
         width, height
       })
       this.layer.appendChild(sprite);
