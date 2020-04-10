@@ -1,5 +1,4 @@
 import { Group, Label } from 'spritejs';
-import deepmerge from 'ts-deepmerge';
 
 import { ColumnTipConfig } from './type';
 import { splitValue, createLabel } from './util';
@@ -13,7 +12,7 @@ export class ColumnTip {
   private totalLabelHeight: number = 0;
   private group: Group;
   constructor(config: ColumnTipConfig) {
-    this.config = deepmerge({}, config);
+    this.config = config;
     const { x, y, width, height } = this.config;
     this.group = new Group({ x, y, width, height });
   }
@@ -22,9 +21,6 @@ export class ColumnTip {
     return this.initTotal().then(() => {
       return this.initColumn();
     })
-  }
-  get totalValue(): number {
-    return this.config.barTotal.value;
   }
   setTotalText(value: number) {
     const barTotal = this.config.barTotal;

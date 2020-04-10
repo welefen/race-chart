@@ -1,4 +1,3 @@
-import deepmerge from 'ts-deepmerge';
 import { Group, Layer, Polyline } from 'spritejs';
 
 import { AxisConfig, Tick, ScaleType } from './type';
@@ -13,12 +12,13 @@ export class Axis {
   private maxValue: number = 0;
   private step: number = 0;
   constructor(config: AxisConfig) {
-    this.config = deepmerge({}, config);
+    this.config = config;
+    const { x, y, width, height } = this.config;
     this.group = new Group({
-      width: this.config.width,
-      height: this.config.height,
-      x: this.config.x,
-      y: this.config.y,
+      x,
+      y,
+      width,
+      height,
     })
   }
   private getSteps(value: number) {
