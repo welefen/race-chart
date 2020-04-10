@@ -82,6 +82,7 @@ export class Bars {
     })
   }
   private getBarInstance(item: BarDataItem, index: number): Bar {
+    const { colors } = this.config;
     return new Bar({
       x: 0,
       y: this.getBarY(index),
@@ -94,7 +95,7 @@ export class Bars {
       },
       rect: {
         width: 0,
-        color: this.config.colors[index % this.config.colors.length],
+        color: colors[index % colors.length],
       },
       value: {
         value: item.values[0],
