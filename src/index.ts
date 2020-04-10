@@ -32,7 +32,7 @@ export class BarRace {
     // 可能数据长度不足 showNum 的大小
     this.config.showNum = Math.min(this.config.showNum, this.config.data.data.length);
     const scene = new Scene({
-      container: document.querySelector(this.config.selector),
+      container: this.config.container,
       width: this.config.width,
       height: this.config.height,
       displayRatio: this.config.displayRatio,
@@ -45,13 +45,14 @@ export class BarRace {
     this.initMaxValues();
   }
   private initMaxValues() {
-    let values: number[] = this.config.data.columnNames.map((_, idx) => {
-      const values = this.config.data.data.map(item => item.values[idx]);
+    const { columnNames, data } = this.config.data;
+    let values: number[] = columnNames.map((_, idx) => {
+      const values = data.map(item => item.values[idx]);
       return Math.max(...values);
     })
     if (this.config.scaleType === 'fixed') {
       const max = Math.max(...values);
-      values = [...new Array(this.config.data.columnNames.length)].fill(max);
+      values = [...new Array(columnNames.length)].fill(max);
     }
     this.maxValues = values;
   }

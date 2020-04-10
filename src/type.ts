@@ -87,7 +87,7 @@ export interface Tick {
 }
 
 export interface BarRaceConfig {
-  selector?: string; // 选择器
+  container?: HTMLElement; // 选择器
   width?: number;
   height?: number;
   displayRatio?: number;
