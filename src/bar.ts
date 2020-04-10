@@ -97,7 +97,8 @@ export class Bar {
     const prevValue = valueConf.value;
     if (prevValue && prevValue === value) return;
     valueConf.value = value;
-    const text = splitValue(value, this.config.valueSplit.type, this.config.valueSplit.length);
+    const { type, length } = this.config.valueSplit;
+    const text = splitValue(value, type, length);
     this.value.attr({ text });
   }
   private updateValueX() {
