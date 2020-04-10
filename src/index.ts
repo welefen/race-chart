@@ -116,7 +116,7 @@ export class BarRace {
       x: x + this.config.barLabel.width + this.config.justifySpacing,
       y,
       width: width - this.config.barLabel.width - this.config.justifySpacing * 2 - this.config.barValue.width,
-      height: height - titleHeight,
+      height,
       valueSplit: this.config.valueSplit,
       ...this.config.axis
     });
