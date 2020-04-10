@@ -21,8 +21,8 @@ export class BarRace {
   private recorder: any;
   config: BarRaceConfig;
   index: number = 0; // 当前所在的数据 index
-  values: number[] = [];
-  maxValues: number[];
+  values: number[] = []; //当前 index 所在的 values
+  maxValues: number[]; // 最大的 values 列表
   constructor(config: BarRaceConfig) {
     this.config = deepmerge({}, defaultBarRace, config);
     this.config.padding = parseCombineValue(this.config.padding);
