@@ -1,5 +1,7 @@
-import { BarData, BarDataItem, SortType, Font } from './type';
 import { Label } from 'spritejs';
+
+import { BarData, BarDataItem, SortType, Font } from './type';
+
 /**
  * 移除完全不会显示的数据，减少创建的 bar 个数
  * @param data 

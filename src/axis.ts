@@ -1,7 +1,9 @@
-import { AxisConfig, Tick, ScaleType } from './type';
-import { Group, Layer, Polyline } from 'spritejs';
-import { splitValue, createLabel } from './util';
 import deepmerge from 'ts-deepmerge';
+import { Group, Layer, Polyline } from 'spritejs';
+
+import { AxisConfig, Tick, ScaleType } from './type';
+import { splitValue, createLabel } from './util';
+
 
 export class Axis {
   config: AxisConfig;

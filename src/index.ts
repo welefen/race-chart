@@ -1,9 +1,10 @@
 import { Scene, Layer, Rect, Sprite, Label } from "spritejs";
+import deepmerge from 'ts-deepmerge';
+
 import { Bars } from './bars';
 import { parseData, sortValues, parseCombineValue } from './util';
 import { Timer } from './timer';
 import { BarRaceConfig, TitleConfig, Deferred, MediaRecorderEvent, CanvasElement } from './type';
-import deepmerge from 'ts-deepmerge';
 import { defaultBarRace } from './config';
 import { Axis } from './axis';
 import { ColumnTip } from './columnTip';

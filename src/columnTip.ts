@@ -1,6 +1,7 @@
 import { Group, Label } from 'spritejs';
-import { ColumnTipConfig } from './type';
 import deepmerge from 'ts-deepmerge';
+
+import { ColumnTipConfig } from './type';
 import { splitValue, createLabel } from './util';
 
 // 显示列和总数

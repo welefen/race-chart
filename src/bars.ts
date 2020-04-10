@@ -1,5 +1,6 @@
-import { Bar } from './bar';
 import { Group, Layer } from 'spritejs';
+
+import { Bar } from './bar';
 import { BarsConfig, BarDataItem, AnimateData } from './type';
 
 export class Bars {

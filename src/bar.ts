@@ -1,6 +1,7 @@
 import { Group, Label, Rect, Sprite } from 'spritejs';
-import { BarConfig } from './type';
 import deepmerge from 'ts-deepmerge';
+
+import { BarConfig } from './type';
 import { splitValue, createLabel } from './util';
 
 export class Bar {
