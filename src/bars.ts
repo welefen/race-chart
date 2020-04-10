@@ -4,13 +4,12 @@ import { Bar } from './bar';
 import { BarsConfig, BarDataItem, AnimateData } from './type';
 
 export class Bars {
-  bars: Bar[] = [];
-  group: Group;
-  config: BarsConfig;
-  rectMaxWidth: number; // 矩形最大宽度
-  barHeight: number; // 单个 bar 的高度
-  maxValue: number; // 数值的最大值
-  animateData: AnimateData[];
+  private bars: Bar[] = [];
+  private group: Group;
+  private config: BarsConfig;
+  private rectMaxWidth: number; // 矩形最大宽度
+  private barHeight: number; // 单个 bar 的高度
+  private animateData: AnimateData[];
   constructor(config: BarsConfig) {
     this.config = config;
     this.group = new Group({

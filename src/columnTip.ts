@@ -11,7 +11,6 @@ export class ColumnTip {
   private totalLabel: Label;
   private totalLabelHeight: number = 0;
   private group: Group;
-  promise: Promise<any>;
   constructor(config: ColumnTipConfig) {
     this.config = deepmerge({}, config);
     const { x, y, width, height } = this.config;

@@ -11,18 +11,18 @@ import { ColumnTip } from './columnTip';
 
 declare var MediaRecorder: any;
 export class BarRace {
-  scene: Scene;
-  layer: Layer;
-  timer: Timer;
-  bars: Bars;
-  axis: Axis;
-  columnTip: ColumnTip;
-  config: BarRaceConfig;
-  index: number = 0; // 当前所在的数据 index
-  values: number[] = [];
-  maxValues: number[];
-  deferred: Deferred;
-  recorder: any;
+  private scene: Scene;
+  private layer: Layer;
+  private timer: Timer;
+  private bars: Bars;
+  private axis: Axis;
+  private columnTip: ColumnTip;
+  private config: BarRaceConfig;
+  private index: number = 0; // 当前所在的数据 index
+  private values: number[] = [];
+  private maxValues: number[];
+  private deferred: Deferred;
+  private recorder: any;
   constructor(config: BarRaceConfig) {
     this.config = deepmerge({}, defaultBarRace, config);
     this.config.padding = parseCombineValue(this.config.padding);

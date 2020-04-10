@@ -1,24 +1,19 @@
 import TWEEN from '@tweenjs/tween.js';
 
+import { TimeData } from './type';
+
 function animate() {
   requestAnimationFrame(animate);
   TWEEN.update();
 }
 requestAnimationFrame(animate);
 
-interface TimeData {
-  time: number;
-}
-
-type Callback = (object?: any) => void;
-
 export class Timer {
-  duration: number;
+  private duration: number;
   private timerData: TimeData;
-  private update: Callback = () => { };
-  private complete: Callback = () => { };
+  private update: Function;
   private tween: TWEEN.Tween;
-  constructor(duration: number, update: Callback) {
+  constructor(duration: number, update: Function) {
     this.duration = duration;
     this.update = update;
   }

@@ -7,7 +7,7 @@ import { BarData, BarDataItem, SortType, Font } from './type';
  * @param data 
  * @param showNum 
  */
-export function parseData(data: BarData, showNum: number = 10) {
+export function parseData(data: BarData, showNum: number = 10): BarData {
   const set = new Set();
   const totals: number[] = [];
   data.columnNames.forEach((_, index) => {
@@ -29,12 +29,12 @@ export function parseData(data: BarData, showNum: number = 10) {
   return data;
 }
 
-export function splitValue(value: number, type: string = ',', num: number = 3) {
+export function splitValue(value: number, type: string = ',', num: number = 3): string {
   const reg = new RegExp(`(?=(?!\\b)(\\d{${num}})+$)`, 'g');
   return (value + '').replace(reg, type);
 }
 
-export function sortValues(values: BarDataItem[], index: number, type: SortType) {
+export function sortValues(values: BarDataItem[], index: number, type: SortType): void {
   const [i, j] = type === 'asc' ? [-1, 1] : [1, -1];
   values.sort((a, b) => {
     return a.values[index] < b.values[index] ? i : j;
@@ -59,7 +59,7 @@ export function parseCombineValue(value: number | number[]): number[] {
  * @param text string
  * @param config 
  */
-export function createLabel(text?: string, config?: Font) {
+export function createLabel(text?: string, config?: Font): Label {
   const label = new Label(text || '');
   const { fontSize, fontStretch, fontFamily, fontWeight, fontStyle, fontVariant, lineHeight, color } = config;
   label.attr({

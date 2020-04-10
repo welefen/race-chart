@@ -187,3 +187,7 @@ export interface AnimateData {
   pos: number;
   newPos: number;
 }
+
+export interface TimeData {
+  time: number;
+}

@@ -7,10 +7,10 @@ import { splitValue, createLabel } from './util';
 
 export class Axis {
   config: AxisConfig;
-  group: Group;
-  ticks: Tick[] = [];
-  maxValue: number = 0;
-  step: number = 0;
+  private group: Group;
+  private ticks: Tick[] = [];
+  private maxValue: number = 0;
+  private step: number = 0;
   constructor(config: AxisConfig) {
     this.config = deepmerge({}, config);
     this.group = new Group({
