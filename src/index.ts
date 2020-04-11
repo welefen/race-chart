@@ -146,7 +146,6 @@ export class BarRace {
     this.captureStream();
     await this.renderBackground();
     await this.renderWatermark();
-    // return;
     let [y, paddingRight, paddingBottom, x] = <number[]>this.config.padding;
     let width = this.config.width - x - paddingRight;
     let height = this.config.height - y - paddingBottom;
