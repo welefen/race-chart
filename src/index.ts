@@ -213,6 +213,7 @@ export class BarRace {
   }
   private beforeAnimate() {
     sortValues(this.config.data.data, this.index, this.config.sortType);
+    // 值可能会出现相同的情况
     this.values = this.config.data.data.map(item => item.values[this.index]);
     this.bars.beforeAnimate(this);
     this.columnTip.beforeAnimate(this);

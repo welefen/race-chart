@@ -26,11 +26,13 @@ export class Bars {
   beforeAnimate(barRace: BarRace): void {
     const { values, index } = barRace;
     this.animateData = this.bars.map(bar => {
+      const newIndex = values.indexOf(bar.values[index]);
+      values[newIndex] = -1; // 处理可能值相同的情况
       const data = {
         value: bar.config.value.value,
         width: bar.config.rect.width,
         index: bar.index,
-        newIndex: values.indexOf(bar.values[index]),
+        newIndex,
         pos: 0,
         newPos: -1
       }

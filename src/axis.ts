@@ -74,6 +74,11 @@ export class Axis {
     group.appendChild(line);
     return group;
   }
+  private getFormatValue(value: number) {
+    const str = value.toString();
+    if (str.length <= 2) return value;
+    return parseInt(str.substr(0, 2)) * Math.pow(10, str.length - 2);
+  }
   beforeAnimate(barRace: BarRace) {
     const value = barRace.maxValues[barRace.index];
     const scaleType = barRace.config.scaleType;
@@ -88,8 +93,8 @@ export class Axis {
     if (max + this.step < value) {
       let num = 0;
       let max = 0;
-      this.ticks.forEach(tick => {
-        if (tick.value % this.step === 0 && tick.value % (this.step * 2) !== 0) {
+      this.ticks.forEach((tick, index) => {
+        if (index % 2 === 1) {
           tick.remove = true;
           num++;
         } else {
@@ -100,7 +105,7 @@ export class Axis {
       if (num) {
         const values = [];
         while (num) {
-          values.push(max + this.step);
+          values.push(this.getFormatValue(max + this.step));
           num--;
           max += this.step;
         }
@@ -121,6 +126,7 @@ export class Axis {
     const value = barRace.maxValues[barRace.index];
     if (prevValue === value || value < this.maxValue) return;
     const v = Math.floor(prevValue + (value - prevValue) * percent);
+    if (!v) return;
     this.maxValue = v;
     this.updateTicksX(percent);
   }
