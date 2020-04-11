@@ -17,7 +17,8 @@ export class Axis {
   }
   private getSteps(value: number) {
     const item = Math.floor(value / this.config.maxTick).toString();
-    const itemValue = item.length === 1 ? parseInt(item, 10) : parseInt(item.substr(0, 1), 10) * Math.pow(10, item.length - 1);
+    let itemValue = item.length === 1 ? parseInt(item, 10) : parseInt(item.substr(0, 1), 10) * Math.pow(10, item.length - 1);
+    itemValue = Math.max(1, itemValue);
     return [...new Array(this.config.maxTick + 1)].map((_, index) => index * itemValue);
   }
   // 更新 tick 的 x 位置

@@ -1,1295 +1,232 @@
 {
-  "columnNames": [],
-  "data": [
-    {
-      "image": "http://p5.qhimg.com/t014895ec8287387110.png",
-      "label": "Angola",
-      "values": [],
-      "category": "Africa"
-    },
-    {
-      "image": "http://p5.qhimg.com/t01ebcbb5f75e3d8b0d.png",
-      "label": "Burundi",
-      "values": [],
-      "category": "Africa"
-    },
-    {
-      "image": "http://p8.qhimg.com/t014a1a70ee8979ccd4.png",
-      "label": "Benin",
-      "values": [],
-      "category": "Africa"
-    },
-    {
-      "image": "http://p0.qhimg.com/t011c18a4b053edf8b2.png",
-      "label": "Burkina Faso",
-      "values": [],
-      "category": "Africa"
-    },
-    {
-      "image": "http://p4.qhimg.com/t01f0de69dd9dfc186d.png",
-      "label": "Botswana",
-      "values": [],
-      "category": "Africa"
-    },
-    {
-      "image": "http://p1.qhimg.com/t01706bad850a27adc7.png",
-      "label": "Central African Republic",
-      "values": [],
-      "category": "Africa"
-    },
-    {
-      "image": "http://p9.qhimg.com/t015990a58c442e512c.png",
-      "label": "Cote d'Ivoire",
-      "values": [],
-      "category": "Africa"
-    },
-    {
-      "image": "http://p2.qhimg.com/t01702b4c5ea0e1d948.png",
-      "label": "Cameroon",
-      "values": [],
-      "category": "Africa"
-    },
-    {
-      "image": "http://p9.qhimg.com/t017cb0444a388998c4.png",
-      "label": "Congo, Dem. Rep.",
-      "values": [],
-      "category": "Africa"
-    },
-    {
-      "image": "http://p6.qhimg.com/t015e182c788e1c44da.png",
-      "label": "Congo, Rep.",
-      "values": [],
-      "category": "Africa"
-    },
-    {
-      "image": "http://p1.qhimg.com/t0137398a4e181385e4.png",
-      "label": "Comoros",
-      "values": [],
-      "category": "Africa"
-    },
-    {
-      "image": "http://p3.qhimg.com/t01bc179e0bb6a10754.png",
-      "label": "Cabo Verde",
-      "values": [],
-      "category": "Africa"
-    },
-    {
-      "image": "http://p8.qhimg.com/t013cd462e8474034c0.png",
-      "label": "Djibouti",
-      "values": [],
-      "category": "Africa"
-    },
-    {
-      "image": "http://p0.qhimg.com/t015b3c5618f62dcd23.png",
-      "label": "Algeria",
-      "values": [],
-      "category": "Africa"
-    },
-    {
-      "image": "http://p4.qhimg.com/t01618f0b8afb05ae49.png",
-      "label": "Egypt, Arab Rep.",
-      "values": [],
-      "category": "Africa"
-    },
-    {
-      "image": "http://p1.qhimg.com/t018c218fd9f6b8a1b1.png",
-      "label": "Eritrea",
-      "values": [],
-      "category": "Africa"
-    },
-    {
-      "image": "http://p4.qhimg.com/t01b282a4f523b93754.png",
-      "label": "Ethiopia",
-      "values": [],
-      "category": "Africa"
-    },
-    {
-      "image": "http://p6.qhimg.com/t0122ed3f4ec0f1f022.png",
-      "label": "Gabon",
-      "values": [],
-      "category": "Africa"
-    },
-    {
-      "image": "http://p1.qhimg.com/t013b47fc655a0b9055.png",
-      "label": "Ghana",
-      "values": [],
-      "category": "Africa"
-    },
-    {
-      "image": "http://p1.qhimg.com/t01e4c5ba68d54019d5.png",
-      "label": "Guinea",
-      "values": [],
-      "category": "Africa"
-    },
-    {
-      "image": "http://p9.qhimg.com/t01197b650bfb46a779.png",
-      "label": "Gambia, The",
-      "values": [],
-      "category": "Africa"
-    },
-    {
-      "image": "http://p0.qhimg.com/t01849bce840a28e52b.png",
-      "label": "Guinea-Bissau",
-      "values": [],
-      "category": "Africa"
-    },
-    {
-      "image": "http://p5.qhimg.com/t0103b8de5b4401e53e.png",
-      "label": "Equatorial Guinea",
-      "values": [],
-      "category": "Africa"
-    },
-    {
-      "image": "http://p5.qhimg.com/t01b8a274f48316126e.png",
-      "label": "Kenya",
-      "values": [],
-      "category": "Africa"
-    },
-    {
-      "image": "http://p2.qhimg.com/t0126ddfc78fe95e915.png",
-      "label": "Liberia",
-      "values": [],
-      "category": "Africa"
-    },
-    {
-      "image": "http://p5.qhimg.com/t01c3267764db93fb71.png",
-      "label": "Libya",
-      "values": [],
-      "category": "Africa"
-    },
-    {
-      "image": "http://p3.qhimg.com/t0108c9285c74c94c68.png",
-      "label": "Lesotho",
-      "values": [],
-      "category": "Africa"
-    },
-    {
-      "image": "http://p2.qhimg.com/t01733e53e43b6c2002.png",
-      "label": "Morocco",
-      "values": [],
-      "category": "Africa"
-    },
-    {
-      "image": "http://p1.qhimg.com/t01d44b17b333d6439e.png",
-      "label": "Madagascar",
-      "values": [],
-      "category": "Africa"
-    },
-    {
-      "image": "http://p3.qhimg.com/t015523c481a97b2211.png",
-      "label": "Mali",
-      "values": [],
-      "category": "Africa"
-    },
-    {
-      "image": "http://p6.qhimg.com/t01eab7221a36951c57.png",
-      "label": "Mozambique",
-      "values": [],
-      "category": "Africa"
-    },
-    {
-      "image": "http://p5.qhimg.com/t01fdd84dd59757bd88.png",
-      "label": "Mauritania",
-      "values": [],
-      "category": "Africa"
-    },
-    {
-      "image": "http://p1.qhimg.com/t016ab313a4d12863d0.png",
-      "label": "Mauritius",
-      "values": [],
-      "category": "Africa"
-    },
-    {
-      "image": "http://p0.qhimg.com/t01947a69772d7f0057.png",
-      "label": "Malawi",
-      "values": [],
-      "category": "Africa"
-    },
-    {
-      "image": "http://p1.qhimg.com/t015ef68ed490168c53.png",
-      "label": "Namibia",
-      "values": [],
-      "category": "Africa"
-    },
-    {
-      "image": "http://p7.qhimg.com/t01081d5f1154cc8148.png",
-      "label": "Niger",
-      "values": [],
-      "category": "Africa"
-    },
-    {
-      "image": "http://p9.qhimg.com/t0103ee515135d930dc.png",
-      "label": "Nigeria",
-      "values": [],
-      "category": "Africa"
-    },
-    {
-      "image": "http://p1.qhimg.com/t01612f7cf8151aa0cd.png",
-      "label": "Rwanda",
-      "values": [],
-      "category": "Africa"
-    },
-    {
-      "image": "http://p3.qhimg.com/t014e11fc966e997737.png",
-      "label": "Sudan",
-      "values": [],
-      "category": "Africa"
-    },
-    {
-      "image": "http://p8.qhimg.com/t01cdfaa0b39969af7e.png",
-      "label": "Senegal",
-      "values": [],
-      "category": "Africa"
-    },
-    {
-      "image": "http://p5.qhimg.com/t018c344e7640b0a6eb.png",
-      "label": "Sierra Leone",
-      "values": [],
-      "category": "Africa"
-    },
-    {
-      "image": "http://p7.qhimg.com/t0115fa3836b24fff54.png",
-      "label": "Somalia",
-      "values": [],
-      "category": "Africa"
-    },
-    {
-      "image": "http://p5.qhimg.com/t01f53ef111271e59da.png",
-      "label": "South Sudan",
-      "values": [],
-      "category": "Africa"
-    },
-    {
-      "image": "http://p9.qhimg.com/t01075cae92281af806.png",
-      "label": "Sao Tome and Principe",
-      "values": [],
-      "category": "Africa"
-    },
-    {
-      "image": "http://p7.qhimg.com/t01de0150c30d48d9de.png",
-      "label": "Eswatini",
-      "values": [],
-      "category": "Africa"
-    },
-    {
-      "image": "http://p0.qhimg.com/t01ed2acf87029d94d6.png",
-      "label": "Seychelles",
-      "values": [],
-      "category": "Africa"
-    },
-    {
-      "image": "http://p7.qhimg.com/t013c46133104706faf.png",
-      "label": "Chad",
-      "values": [],
-      "category": "Africa"
-    },
-    {
-      "image": "http://p3.qhimg.com/t0126fd0157ebe22ee3.png",
-      "label": "Togo",
-      "values": [],
-      "category": "Africa"
-    },
-    {
-      "image": "http://p3.qhimg.com/t010f14818288300948.png",
-      "label": "Tunisia",
-      "values": [],
-      "category": "Africa"
-    },
-    {
-      "image": "http://p5.qhimg.com/t01663d676795dd29ed.png",
-      "label": "Tanzania",
-      "values": [],
-      "category": "Africa"
-    },
-    {
-      "image": "http://p9.qhimg.com/t0178648338ea34d7dd.png",
-      "label": "Uganda",
-      "values": [],
-      "category": "Africa"
-    },
-    {
-      "image": "http://p7.qhimg.com/t01a2bc46f45bc7bfa2.png",
-      "label": "South Africa",
-      "values": [],
-      "category": "Africa"
-    },
-    {
-      "image": "http://p8.qhimg.com/t01544741412f08f3bd.png",
-      "label": "Zambia",
-      "values": [],
-      "category": "Africa"
-    },
-    {
-      "image": "http://p3.qhimg.com/t0166bc18daf4544186.png",
-      "label": "Zimbabwe",
-      "values": [],
-      "category": "Africa"
-    },
-    {
-      "image": "http://p8.qhimg.com/t01dd065d950e219d11.png",
-      "label": "Aruba",
-      "values": [],
-      "category": "Americas"
-    },
-    {
-      "image": "http://p4.qhimg.com/t01f5431a3ad3baaa8b.png",
-      "label": "Argentina",
-      "values": [],
-      "category": "Americas"
-    },
-    {
-      "image": "http://p5.qhimg.com/t016462209c8c26519d.png",
-      "label": "Antigua and Barbuda",
-      "values": [],
-      "category": "Americas"
-    },
-    {
-      "image": "http://p9.qhimg.com/t0143910d1053d83fed.png",
-      "label": "Bahamas, The",
-      "values": [],
-      "category": "Americas"
-    },
-    {
-      "image": "http://p2.qhimg.com/t01065309029caad896.png",
-      "label": "Belize",
-      "values": [],
-      "category": "Americas"
-    },
-    {
-      "image": "http://p3.qhimg.com/t0196dd8ff92bbd3596.png",
-      "label": "Bermuda",
-      "values": [],
-      "category": "Americas"
-    },
-    {
-      "image": "http://p0.qhimg.com/t01d4bbaf668ba6ada0.png",
-      "label": "Bolivia",
-      "values": [],
-      "category": "Americas"
-    },
-    {
-      "image": "http://p0.qhimg.com/t018c5b0c3549d116ff.png",
-      "label": "Brazil",
-      "values": [],
-      "category": "Americas"
-    },
-    {
-      "image": "http://p6.qhimg.com/t010242acefaa65ef86.png",
-      "label": "Barbados",
-      "values": [],
-      "category": "Americas"
-    },
-    {
-      "image": "http://p1.qhimg.com/t01b37f9710d8c2e9ee.png",
-      "label": "Canada",
-      "values": [],
-      "category": "Americas"
-    },
-    {
-      "image": "http://p9.qhimg.com/t016a921bb1e0a9d09d.png",
-      "label": "Chile",
-      "values": [],
-      "category": "Americas"
-    },
-    {
-      "image": "http://p8.qhimg.com/t01d2c9657d84fd9733.png",
-      "label": "Colombia",
-      "values": [],
-      "category": "Americas"
-    },
-    {
-      "image": "http://p1.qhimg.com/t0197cce7386f12a669.png",
-      "label": "Costa Rica",
-      "values": [],
-      "category": "Americas"
-    },
-    {
-      "image": "http://p4.qhimg.com/t011f113c8d591d78da.png",
-      "label": "Cuba",
-      "values": [],
-      "category": "Americas"
-    },
-    {
-      "image": "http://p9.qhimg.com/t01ae71632f6a3a3769.png",
-      "label": "Curacao",
-      "values": [],
-      "category": "Americas"
-    },
-    {
-      "image": "http://p9.qhimg.com/t017f0db4da69686c25.png",
-      "label": "Cayman Islands",
-      "values": [],
-      "category": "Americas"
-    },
-    {
-      "image": "http://p2.qhimg.com/t01c9a419939c6df446.png",
-      "label": "Dominica",
-      "values": [],
-      "category": "Americas"
-    },
-    {
-      "image": "http://p4.qhimg.com/t019291f6fb27bb97e0.png",
-      "label": "Dominican Republic",
-      "values": [],
-      "category": "Americas"
-    },
-    {
-      "image": "http://p1.qhimg.com/t014b8941cb2a3c4fdc.png",
-      "label": "Ecuador",
-      "values": [],
-      "category": "Americas"
-    },
-    {
-      "image": "http://p3.qhimg.com/t01924be6e0b13aa7ea.png",
-      "label": "Grenada",
-      "values": [],
-      "category": "Americas"
-    },
-    {
-      "image": "http://p6.qhimg.com/t01ddb4f4da18151c72.png",
-      "label": "Greenland",
-      "values": [],
-      "category": "Americas"
-    },
-    {
-      "image": "http://p4.qhimg.com/t01340c3c26511d6f8e.png",
-      "label": "Guatemala",
-      "values": [],
-      "category": "Americas"
-    },
-    {
-      "image": "http://p5.qhimg.com/t013e701eb00e3e3d0c.png",
-      "label": "Guyana",
-      "values": [],
-      "category": "Americas"
-    },
-    {
-      "image": "http://p7.qhimg.com/t0152a552b709553bec.png",
-      "label": "Honduras",
-      "values": [],
-      "category": "Americas"
-    },
-    {
-      "image": "http://p5.qhimg.com/t010d57c2587a6184d8.png",
-      "label": "Haiti",
-      "values": [],
-      "category": "Americas"
-    },
-    {
-      "image": "http://p5.qhimg.com/t0115291fbb319f60a9.png",
-      "label": "Jamaica",
-      "values": [],
-      "category": "Americas"
-    },
-    {
-      "image": "http://p8.qhimg.com/t018e53e4bb988e2735.png",
-      "label": "St. Kitts and Nevis",
-      "values": [],
-      "category": "Americas"
-    },
-    {
-      "image": "http://p0.qhimg.com/t01e07812435db8fec8.png",
-      "label": "St. Lucia",
-      "values": [],
-      "category": "Americas"
-    },
-    {
-      "image": "http://p4.qhimg.com/t0105a0d9898d96da4e.png",
-      "label": "St. Martin (French part)",
-      "values": [],
-      "category": "Americas"
-    },
-    {
-      "image": "http://p8.qhimg.com/t0116ade1639fc55502.png",
-      "label": "Mexico",
-      "values": [],
-      "category": "Americas"
-    },
-    {
-      "image": "http://p9.qhimg.com/t0196032abb891ffb95.png",
-      "label": "Nicaragua",
-      "values": [],
-      "category": "Americas"
-    },
-    {
-      "image": "http://p2.qhimg.com/t01c26e14e26366cf93.png",
-      "label": "Panama",
-      "values": [],
-      "category": "Americas"
-    },
-    {
-      "image": "http://p4.qhimg.com/t01dfc5b1106e2fccfe.png",
-      "label": "Peru",
-      "values": [],
-      "category": "Americas"
-    },
-    {
-      "image": "http://p5.qhimg.com/t015581d688cb3e0544.png",
-      "label": "Puerto Rico",
-      "values": [],
-      "category": "Americas"
-    },
-    {
-      "image": "http://p0.qhimg.com/t0170403ef24df1ec63.png",
-      "label": "Paraguay",
-      "values": [],
-      "category": "Americas"
-    },
-    {
-      "image": "http://p4.qhimg.com/t016fff8c4921afe01f.png",
-      "label": "El Salvador",
-      "values": [],
-      "category": "Americas"
-    },
-    {
-      "image": "http://p7.qhimg.com/t0145f0da9481dba9b5.png",
-      "label": "Suriname",
-      "values": [],
-      "category": "Americas"
-    },
-    {
-      "image": "http://p6.qhimg.com/t01281d20ebe683f245.png",
-      "label": "Sint Maarten (Dutch part)",
-      "values": [],
-      "category": "Americas"
-    },
-    {
-      "image": "http://p3.qhimg.com/t015ada02f1b8ed9575.png",
-      "label": "Turks and Caicos Islands",
-      "values": [],
-      "category": "Americas"
-    },
-    {
-      "image": "http://p9.qhimg.com/t0110fb38a7a8f7d355.png",
-      "label": "Trinidad and Tobago",
-      "values": [],
-      "category": "Americas"
-    },
-    {
-      "image": "http://p7.qhimg.com/t0195766bf340523deb.png",
-      "label": "Uruguay",
-      "values": [],
-      "category": "Americas"
-    },
-    {
-      "image": "http://p4.qhimg.com/t010128d12b60321e2a.png",
-      "label": "USA",
-      "values": [],
-      "category": "Americas"
-    },
-    {
-      "image": "http://p5.qhimg.com/t017aab02319e95cdc9.png",
-      "label": "St. Vincent and the Grenadines",
-      "values": [],
-      "category": "Americas"
-    },
-    {
-      "image": "http://p8.qhimg.com/t0152ea1aa45361ccda.png",
-      "label": "Venezuela, RB",
-      "values": [],
-      "category": "Americas"
-    },
-    {
-      "image": "http://p7.qhimg.com/t014e09f562daf8c72e.png",
-      "label": "British Virgin Islands",
-      "values": [],
-      "category": "Americas"
-    },
-    {
-      "image": "http://p1.qhimg.com/t01518a50d7ee13e41d.png",
-      "label": "Virgin Islands (U.S.)",
-      "values": [],
-      "category": "Americas"
-    },
-    {
-      "image": "http://p9.qhimg.com/t012d74141550e4c173.png",
-      "label": "Afghanistan",
-      "values": [],
-      "category": "Asia"
-    },
-    {
-      "image": "http://p8.qhimg.com/t01ff3f67ce4039a9a1.png",
-      "label": "UAE",
-      "values": [],
-      "category": "Asia"
-    },
-    {
-      "image": "http://p0.qhimg.com/t015bd6489636aa1407.png",
-      "label": "Armenia",
-      "values": [],
-      "category": "Asia"
-    },
-    {
-      "image": "http://p1.qhimg.com/t015cc1b833f2809fc6.png",
-      "label": "Azerbaijan",
-      "values": [],
-      "category": "Asia"
-    },
-    {
-      "image": "http://p8.qhimg.com/t01a9fdb9ffb1528fc4.png",
-      "label": "Bangladesh",
-      "values": [],
-      "category": "Asia"
-    },
-    {
-      "image": "http://p2.qhimg.com/t01738c8241e9b343a4.png",
-      "label": "Bahrain",
-      "values": [],
-      "category": "Asia"
-    },
-    {
-      "image": "http://p9.qhimg.com/t0188596bfa5305badc.png",
-      "label": "Brunei Darussalam",
-      "values": [],
-      "category": "Asia"
-    },
-    {
-      "image": "http://p4.qhimg.com/t0176f2cea6fea4108e.png",
-      "label": "Bhutan",
-      "values": [],
-      "category": "Asia"
-    },
-    {
-      "image": "http://p5.qhimg.com/t01ab1042209ecbe130.png",
-      "label": "China",
-      "values": [],
-      "category": "Asia"
-    },
-    {
-      "image": "http://p5.qhimg.com/t01d32cc00046a62654.png",
-      "label": "Cyprus",
-      "values": [],
-      "category": "Asia"
-    },
-    {
-      "image": "http://p4.qhimg.com/t0149431ebf198400cb.png",
-      "label": "Georgia",
-      "values": [],
-      "category": "Asia"
-    },
-    {
-      "image": "http://p2.qhimg.com/t01139e4cd3df590799.png",
-      "label": "Hong Kong SAR, China",
-      "values": [],
-      "category": "Asia"
-    },
-    {
-      "image": "http://p6.qhimg.com/t0179068da24cdff1de.png",
-      "label": "Indonesia",
-      "values": [],
-      "category": "Asia"
-    },
-    {
-      "image": "http://p7.qhimg.com/t010fe2b08cbd487dde.png",
-      "label": "India",
-      "values": [],
-      "category": "Asia"
-    },
-    {
-      "image": "http://p0.qhimg.com/t0108cbe625090fdae0.png",
-      "label": "Iran, Islamic Rep.",
-      "values": [],
-      "category": "Asia"
-    },
-    {
-      "image": "http://p0.qhimg.com/t01b0f89f5e69bddb75.png",
-      "label": "Iraq",
-      "values": [],
-      "category": "Asia"
-    },
-    {
-      "image": "http://p7.qhimg.com/t01e89486d24a01646a.png",
-      "label": "Israel",
-      "values": [],
-      "category": "Asia"
-    },
-    {
-      "image": "http://p3.qhimg.com/t01407ff7664cb52a57.png",
-      "label": "Jordan",
-      "values": [],
-      "category": "Asia"
-    },
-    {
-      "image": "http://p0.qhimg.com/t0172d4c167dd093208.png",
-      "label": "Japan",
-      "values": [],
-      "category": "Asia"
-    },
-    {
-      "image": "http://p7.qhimg.com/t01165112154da5071b.png",
-      "label": "Kazakhstan",
-      "values": [],
-      "category": "Asia"
-    },
-    {
-      "image": "http://p8.qhimg.com/t012958d2567a5e36de.png",
-      "label": "Kyrgyz Republic",
-      "values": [],
-      "category": "Asia"
-    },
-    {
-      "image": "http://p5.qhimg.com/t0150d8118b0b986d35.png",
-      "label": "Cambodia",
-      "values": [],
-      "category": "Asia"
-    },
-    {
-      "image": "http://p5.qhimg.com/t01696dd5be68d29bad.png",
-      "label": "Korea, Rep.",
-      "values": [],
-      "category": "Asia"
-    },
-    {
-      "image": "http://p6.qhimg.com/t018dfd0737934252e1.png",
-      "label": "Kuwait",
-      "values": [],
-      "category": "Asia"
-    },
-    {
-      "image": "http://p3.qhimg.com/t01501a0f6688f4471c.png",
-      "label": "Lao PDR",
-      "values": [],
-      "category": "Asia"
-    },
-    {
-      "image": "http://p2.qhimg.com/t01e449aa4102a5838b.png",
-      "label": "Lebanon",
-      "values": [],
-      "category": "Asia"
-    },
-    {
-      "image": "http://p9.qhimg.com/t0164bec7a3f42c6bd4.png",
-      "label": "Sri Lanka",
-      "values": [],
-      "category": "Asia"
-    },
-    {
-      "image": "http://p6.qhimg.com/t015c030b0814573b4c.png",
-      "label": "Macao SAR, China",
-      "values": [],
-      "category": "Asia"
-    },
-    {
-      "image": "http://p3.qhimg.com/t01d925d54ca2c0a6bf.png",
-      "label": "Maldives",
-      "values": [],
-      "category": "Asia"
-    },
-    {
-      "image": "http://p3.qhimg.com/t01cfa79c4c9ce4dd07.png",
-      "label": "Myanmar",
-      "values": [],
-      "category": "Asia"
-    },
-    {
-      "image": "http://p4.qhimg.com/t01964a4d2b16cee28e.png",
-      "label": "Mongolia",
-      "values": [],
-      "category": "Asia"
-    },
-    {
-      "image": "http://p1.qhimg.com/t01964ee4e3069e2d48.png",
-      "label": "Malaysia",
-      "values": [],
-      "category": "Asia"
-    },
-    {
-      "image": "http://p0.qhimg.com/t01b7933972e559c25f.png",
-      "label": "Nepal",
-      "values": [],
-      "category": "Asia"
-    },
-    {
-      "image": "http://p2.qhimg.com/t01264df19534c90d15.png",
-      "label": "Oman",
-      "values": [],
-      "category": "Asia"
-    },
-    {
-      "image": "http://p2.qhimg.com/t0165f25c26c686089a.png",
-      "label": "Pakistan",
-      "values": [],
-      "category": "Asia"
-    },
-    {
-      "image": "http://p1.qhimg.com/t01fa4c268d89ee2000.png",
-      "label": "Philippines",
-      "values": [],
-      "category": "Asia"
-    },
-    {
-      "image": "http://p2.qhimg.com/t01446af09554bf5e37.png",
-      "label": "Korea, Dem. People’s Rep.",
-      "values": [],
-      "category": "Asia"
-    },
-    {
-      "image": "http://p7.qhimg.com/t01675a80df8dbd1bd6.png",
-      "label": "West Bank and Gaza",
-      "values": [],
-      "category": "Asia"
-    },
-    {
-      "image": "http://p5.qhimg.com/t012d4cbcb94e73e8ea.png",
-      "label": "Qatar",
-      "values": [],
-      "category": "Asia"
-    },
-    {
-      "image": "http://p5.qhimg.com/t01b715f84f43256a55.png",
-      "label": "Saudi Arabia",
-      "values": [],
-      "category": "Asia"
-    },
-    {
-      "image": "http://p0.qhimg.com/t01087fa40e39dfc270.png",
-      "label": "Singapore",
-      "values": [],
-      "category": "Asia"
-    },
-    {
-      "image": "http://p0.qhimg.com/t01eab0c59fef639c4f.png",
-      "label": "Syrian Arab Republic",
-      "values": [],
-      "category": "Asia"
-    },
-    {
-      "image": "http://p0.qhimg.com/t012db0739f73f460c1.png",
-      "label": "Thailand",
-      "values": [],
-      "category": "Asia"
-    },
-    {
-      "image": "http://p0.qhimg.com/t012ed662b522aa7aff.png",
-      "label": "Tajikistan",
-      "values": [],
-      "category": "Asia"
-    },
-    {
-      "image": "http://p4.qhimg.com/t01951b567b26a9b5f8.png",
-      "label": "Turkmenistan",
-      "values": [],
-      "category": "Asia"
-    },
-    {
-      "image": "http://p1.qhimg.com/t012200a06f42947f0f.png",
-      "label": "Timor-Leste",
-      "values": [],
-      "category": "Asia"
-    },
-    {
-      "image": "http://p0.qhimg.com/t01221544634131e6ce.png",
-      "label": "Turkey",
-      "values": [],
-      "category": "Asia"
-    },
-    {
-      "image": "http://p5.qhimg.com/t016acd4514dbdd0520.png",
-      "label": "Uzbekistan",
-      "values": [],
-      "category": "Asia"
-    },
-    {
-      "image": "http://p6.qhimg.com/t01e7b69dbd65b285b4.png",
-      "label": "Vietnam",
-      "values": [],
-      "category": "Asia"
-    },
-    {
-      "image": "http://p9.qhimg.com/t015a3eb65167828223.png",
-      "label": "Yemen, Rep.",
-      "values": [],
-      "category": "Asia"
-    },
-    {
-      "image": "http://p0.qhimg.com/t01dbbce5e043a8f6fd.png",
-      "label": "Albania",
-      "values": [],
-      "category": "Europe"
-    },
-    {
-      "image": "http://p3.qhimg.com/t01e24b0689734d38ea.png",
-      "label": "Andorra",
-      "values": [],
-      "category": "Europe"
-    },
-    {
-      "image": "http://p6.qhimg.com/t0140e9e2b4162a50bc.png",
-      "label": "Austria",
-      "values": [],
-      "category": "Europe"
-    },
-    {
-      "image": "http://p6.qhimg.com/t01ac135c90bbcf5822.png",
-      "label": "Belgium",
-      "values": [],
-      "category": "Europe"
-    },
-    {
-      "image": "http://p9.qhimg.com/t01a2ff822b2711b7f2.png",
-      "label": "Bulgaria",
-      "values": [],
-      "category": "Europe"
-    },
-    {
-      "image": "http://p3.qhimg.com/t01576a5de8f3ec3f04.png",
-      "label": "Bosnia and Herzegovina",
-      "values": [],
-      "category": "Europe"
-    },
-    {
-      "image": "http://p3.qhimg.com/t015d59baeb96b61185.png",
-      "label": "Belarus",
-      "values": [],
-      "category": "Europe"
-    },
-    {
-      "image": "http://p9.qhimg.com/t01eebae0db80958258.png",
-      "label": "Switzerland",
-      "values": [],
-      "category": "Europe"
-    },
-    {
-      "image": "http://p8.qhimg.com/t012bcf1d869ad0800c.png",
-      "label": "Czech Republic",
-      "values": [],
-      "category": "Europe"
-    },
-    {
-      "image": "http://p4.qhimg.com/t01132c23239596a65d.png",
-      "label": "Germany",
-      "values": [],
-      "category": "Europe"
-    },
-    {
-      "image": "http://p5.qhimg.com/t01a789643fb0f9b96f.png",
-      "label": "Denmark",
-      "values": [],
-      "category": "Europe"
-    },
-    {
-      "image": "http://p8.qhimg.com/t01fe597225ce6f54bf.png",
-      "label": "Spain",
-      "values": [],
-      "category": "Europe"
-    },
-    {
-      "image": "http://p2.qhimg.com/t01e1e175c32401ebb8.png",
-      "label": "Estonia",
-      "values": [],
-      "category": "Europe"
-    },
-    {
-      "image": "http://p0.qhimg.com/t01a0118834df4bb9a7.png",
-      "label": "Finland",
-      "values": [],
-      "category": "Europe"
-    },
-    {
-      "image": "http://p4.qhimg.com/t01b7d80b84c0386d74.png",
-      "label": "France",
-      "values": [],
-      "category": "Europe"
-    },
-    {
-      "image": "http://p6.qhimg.com/t0153142f5eb54ec3ce.png",
-      "label": "Faroe Islands",
-      "values": [],
-      "category": "Europe"
-    },
-    {
-      "image": "http://p8.qhimg.com/t010f9b9d51550b0686.png",
-      "label": "UK",
-      "values": [],
-      "category": "Europe"
-    },
-    {
-      "image": "http://p2.qhimg.com/t0178601b92620d661f.png",
-      "label": "Gibraltar",
-      "values": [],
-      "category": "Europe"
-    },
-    {
-      "image": "http://p4.qhimg.com/t01d62571fea4fe232f.png",
-      "label": "Greece",
-      "values": [],
-      "category": "Europe"
-    },
-    {
-      "image": "http://p9.qhimg.com/t01c27d1a3e78b7f200.png",
-      "label": "Croatia",
-      "values": [],
-      "category": "Europe"
-    },
-    {
-      "image": "http://p7.qhimg.com/t012f97acfe6d89603a.png",
-      "label": "Hungary",
-      "values": [],
-      "category": "Europe"
-    },
-    {
-      "image": "http://p9.qhimg.com/t01611084187a259bd6.png",
-      "label": "Isle of Man",
-      "values": [],
-      "category": "Europe"
-    },
-    {
-      "image": "http://p7.qhimg.com/t011483b79089f3b32b.png",
-      "label": "Ireland",
-      "values": [],
-      "category": "Europe"
-    },
-    {
-      "image": "http://p5.qhimg.com/t0151e5f455cf4566f5.png",
-      "label": "Iceland",
-      "values": [],
-      "category": "Europe"
-    },
-    {
-      "image": "http://p7.qhimg.com/t01ba492ea406df0fc7.png",
-      "label": "Italy",
-      "values": [],
-      "category": "Europe"
-    },
-    {
-      "image": "http://p4.qhimg.com/t0139b9b7c902dc7694.png",
-      "label": "Liechtenstein",
-      "values": [],
-      "category": "Europe"
-    },
-    {
-      "image": "http://p4.qhimg.com/t0181034f9cd2e710f1.png",
-      "label": "Lithuania",
-      "values": [],
-      "category": "Europe"
-    },
-    {
-      "image": "http://p0.qhimg.com/t0163e00ac39dc5a9bb.png",
-      "label": "Luxembourg",
-      "values": [],
-      "category": "Europe"
-    },
-    {
-      "image": "http://p1.qhimg.com/t01056f24cbb45c10c6.png",
-      "label": "Latvia",
-      "values": [],
-      "category": "Europe"
-    },
-    {
-      "image": "http://p6.qhimg.com/t0179068da24cdff1de.png",
-      "label": "Monaco",
-      "values": [],
-      "category": "Europe"
-    },
-    {
-      "image": "http://p8.qhimg.com/t01b8034485f4439d45.png",
-      "label": "Moldova",
-      "values": [],
-      "category": "Europe"
-    },
-    {
-      "image": "http://p8.qhimg.com/t01b6c0d8e1a13a1837.png",
-      "label": "Macedonia, FYR",
-      "values": [],
-      "category": "Europe"
-    },
-    {
-      "image": "http://p2.qhimg.com/t016bc35b781658dce5.png",
-      "label": "Malta",
-      "values": [],
-      "category": "Europe"
-    },
-    {
-      "image": "http://p7.qhimg.com/t010889cb004f5de0ea.png",
-      "label": "Montenegro",
-      "values": [],
-      "category": "Europe"
-    },
-    {
-      "image": "http://p5.qhimg.com/t014a2a4a5914c13aaf.png",
-      "label": "Netherlands",
-      "values": [],
-      "category": "Europe"
-    },
-    {
-      "image": "http://p6.qhimg.com/t012e19ac4964c98fb8.png",
-      "label": "Norway",
-      "values": [],
-      "category": "Europe"
-    },
-    {
-      "image": "http://p6.qhimg.com/t01b001f409505c7561.png",
-      "label": "Poland",
-      "values": [],
-      "category": "Europe"
-    },
-    {
-      "image": "http://p8.qhimg.com/t0178c5042a07b70f79.png",
-      "label": "Portugal",
-      "values": [],
-      "category": "Europe"
-    },
-    {
-      "image": "http://p4.qhimg.com/t01e76f2b9059c13a87.png",
-      "label": "Romania",
-      "values": [],
-      "category": "Europe"
-    },
-    {
-      "image": "http://p6.qhimg.com/t014fd56dfb8899d8ee.png",
-      "label": "Russia",
-      "values": [],
-      "category": "Europe"
-    },
-    {
-      "image": "http://p1.qhimg.com/t0172494fa72477b6e7.png",
-      "label": "San Marino",
-      "values": [],
-      "category": "Europe"
-    },
-    {
-      "image": "http://p1.qhimg.com/t010d68f24283af445a.png",
-      "label": "Serbia",
-      "values": [],
-      "category": "Europe"
-    },
-    {
-      "image": "http://p5.qhimg.com/t0197147c16ca34253a.png",
-      "label": "Slovak Republic",
-      "values": [],
-      "category": "Europe"
-    },
-    {
-      "image": "http://p3.qhimg.com/t012fa36d9b06cf0d29.png",
-      "label": "Slovenia",
-      "values": [],
-      "category": "Europe"
-    },
-    {
-      "image": "http://p3.qhimg.com/t016f7ab7d85ab99761.png",
-      "label": "Sweden",
-      "values": [],
-      "category": "Europe"
-    },
-    {
-      "image": "http://p0.qhimg.com/t01abe699b3ca185100.png",
-      "label": "Ukraine",
-      "values": [],
-      "category": "Europe"
-    },
-    {
-      "image": "http://p1.qhimg.com/t01f3bc7da33c135364.png",
-      "label": "American Samoa",
-      "values": [],
-      "category": "Oceania"
-    },
-    {
-      "image": "http://p9.qhimg.com/t015d7f9cb90c8778f6.png",
-      "label": "Australia",
-      "values": [],
-      "category": "Oceania"
-    },
-    {
-      "image": "http://p5.qhimg.com/t01ad20853321b5c8b1.png",
-      "label": "Fiji",
-      "values": [],
-      "category": "Oceania"
-    },
-    {
-      "image": "http://p2.qhimg.com/t011f63056d9b40a074.png",
-      "label": "Micronesia, Fed. Sts.",
-      "values": [],
-      "category": "Oceania"
-    },
-    {
-      "image": "http://p8.qhimg.com/t01c0a4379f5583d613.png",
-      "label": "Guam",
-      "values": [],
-      "category": "Oceania"
-    },
-    {
-      "image": "http://p8.qhimg.com/t0192f91f5b72c20f84.png",
-      "label": "Kiribati",
-      "values": [],
-      "category": "Oceania"
-    },
-    {
-      "image": "http://p0.qhimg.com/t0106a39f5232f40ceb.png",
-      "label": "Marshall Islands",
-      "values": [],
-      "category": "Oceania"
-    },
-    {
-      "image": "http://p8.qhimg.com/t0184a355ac0935f9fe.png",
-      "label": "Northern Mariana Islands",
-      "values": [],
-      "category": "Oceania"
-    },
-    {
-      "image": "http://p7.qhimg.com/t01fedd9c0d88abbdf5.png",
-      "label": "New Caledonia",
-      "values": [],
-      "category": "Oceania"
-    },
-    {
-      "image": "http://p1.qhimg.com/t01ffc9fdbd62f97879.png",
-      "label": "Nauru",
-      "values": [],
-      "category": "Oceania"
-    },
-    {
-      "image": "http://p6.qhimg.com/t014178a65820d60bbb.png",
-      "label": "New Zealand",
-      "values": [],
-      "category": "Oceania"
-    },
-    {
-      "image": "http://p2.qhimg.com/t01d3fec9813f62d08f.png",
-      "label": "Palau",
-      "values": [],
-      "category": "Oceania"
-    },
-    {
-      "image": "http://p5.qhimg.com/t01b174536892193a6f.png",
-      "label": "Papua New Guinea",
-      "values": [],
-      "category": "Oceania"
-    },
-    {
-      "image": "http://p4.qhimg.com/t01c6b89100fb5ee340.png",
-      "label": "French Polynesia",
-      "values": [],
-      "category": "Oceania"
-    },
-    {
-      "image": "http://p1.qhimg.com/t01d7352a7a1b1295ea.png",
-      "label": "Solomon Islands",
-      "values": [],
-      "category": "Oceania"
-    },
-    {
-      "image": "http://p0.qhimg.com/t015a1b3ed3ef3a0f5d.png",
-      "label": "Tonga",
-      "values": [],
-      "category": "Oceania"
-    },
-    {
-      "image": "http://p0.qhimg.com/t01715e69d088f7f310.png",
-      "label": "Tuvalu",
-      "values": [],
-      "category": "Oceania"
-    },
-    {
-      "image": "http://p9.qhimg.com/t013571ae4fd0e4f688.png",
-      "label": "Vanuatu",
-      "values": [],
-      "category": "Oceania"
-    },
-    {
-      "image": "http://p6.qhimg.com/t01e53e160df117fdc1.png",
-      "label": "Samoa",
-      "values": [],
-      "category": "Oceania"
-    }
-  ]
+  "Afghanistan":"阿富汗",
+  "Aland Islands":"奥兰群岛",
+  "Albania":"阿尔巴尼亚",
+  "Algeria":"阿尔及利亚",
+  "American Samoa":"美属萨摩亚",
+  "Andorra":"安道尔",
+  "Angola":"安哥拉",
+  "Anguilla":"安圭拉",
+  "Antigua and Barbuda":"安提瓜和巴布达",
+  "Argentina":"阿根廷",
+  "Armenia":"亚美尼亚",
+  "Aruba":"阿鲁巴",
+  "Australia":"澳大利亚",
+  "Austria":"奥地利",
+  "Azerbaijan":"阿塞拜疆",
+  "Bangladesh":"孟加拉",
+  "Bahrain":"巴林",
+  "Bahamas":"巴哈马",
+  "Barbados":"巴巴多斯",
+  "Belarus":"白俄罗斯",
+  "Belgium":"比利时",
+  "Belize":"伯利兹",
+  "Benin":"贝宁",
+  "Bermuda":"百慕大",
+  "Bhutan":"不丹",
+  "Bolivia":"玻利维亚",
+  "Bosnia and Herzegovina":"波斯尼亚和黑塞哥维那",
+  "Botswana":"博茨瓦纳",
+  "Bouvet Island":"布维岛",
+  "Brazil":"巴西",
+  "Brunei":"文莱",
+  "Bulgaria":"保加利亚",
+  "Burkina Faso":"布基纳法索",
+  "Burundi":"布隆迪",
+  "Cambodia":"柬埔寨",
+  "Cameroon":"喀麦隆",
+  "Canada":"加拿大",
+  "Cape Verde":"佛得角",
+  "Central African Republic":"中非",
+  "Chad":"乍得",
+  "Chile":"智利",
+  "Christmas Islands":"圣诞岛",
+  "Cocos (keeling) Islands":"科科斯（基林）群岛",
+  "Colombia":"哥伦比亚",
+  "Comoros":"科摩罗",
+  "Congo (Congo-Kinshasa)":"刚果（金）",
+  "Congo":"刚果",
+  "Cook Islands":"库克群岛",
+  "Costa Rica":"哥斯达黎加",
+  "Cote D'Ivoire":"科特迪瓦",
+  "China":"中国",
+  "Croatia":"克罗地亚",
+  "Cuba":"古巴",
+  "Czech":"捷克",
+  "Cyprus":"塞浦路斯",
+  "Denmark":"丹麦",
+  "Djibouti":"吉布提",
+  "Dominica":"多米尼加",
+  "East Timor":"东帝汶",
+  "Ecuador":"厄瓜多尔",
+  "Egypt":"埃及",
+  "Equatorial Guinea":"赤道几内亚",
+  "Eritrea":"厄立特里亚",
+  "Estonia":"爱沙尼亚",
+  "Ethiopia":"埃塞俄比亚",
+  "Faroe Islands":"法罗群岛",
+  "Fiji":"斐济",
+  "Finland":"Finland",
+  "France":"法国",
+  "Franch Metropolitan":"法国大都会",
+  "Franch Guiana":"法属圭亚那",
+  "French Polynesia":"法属波利尼西亚",
+  "Gabon":"加蓬",
+  "Gambia":"冈比亚",
+  "Georgia":"格鲁吉亚",
+  "Germany":"德国",
+  "Ghana":"加纳",
+  "Gibraltar":"直布罗陀",
+  "Greece":"希腊",
+  "Grenada":"格林纳达",
+  "Guadeloupe":"瓜德罗普岛",
+  "Guam":"关岛",
+  "Guatemala":"危地马拉",
+  "Guernsey":"根西岛",
+  "Guinea-Bissau":"几内亚比绍",
+  "Guinea":"几内亚",
+  "Guyana":"圭亚那",
+  "Hong Kong":"香港 （中国）",
+  "Haiti":"海地",
+  "Honduras":"洪都拉斯",
+  "Hungary":"匈牙利",
+  "Iceland":"冰岛",
+  "India":"印度",
+  "Indonesia":"印度尼西亚",
+  "Iran":"伊朗",
+  "Iraq":"伊拉克",
+  "Ireland":"爱尔兰",
+  "Isle of Man":"马恩岛",
+  "Israel":"以色列",
+  "Italy":"意大利",
+  "Jamaica":"牙买加",
+  "Japan":"日本",
+  "Jersey":"泽西岛",
+  "Jordan":"约旦",
+  "Kazakhstan":"哈萨克斯坦",
+  "Kenya":"肯尼亚",
+  "Kiribati":"基里巴斯",
+  "Korea (South)":"韩国",
+  "Korea (North)":"朝鲜",
+  "Kuwait":"科威特",
+  "Kyrgyzstan":"吉尔吉斯斯坦",
+  "Laos":"老挝",
+  "Latvia":"拉脱维亚",
+  "Lebanon":"黎巴嫩",
+  "Lesotho":"莱索托",
+  "Liberia":"利比里亚",
+  "Libya":"利比亚",
+  "Liechtenstein":"列支敦士登",
+  "Lithuania":"立陶宛",
+  "Luxembourg":"卢森堡",
+  "Macau":"澳门（中国）",
+  "Macedonia":"马其顿",
+  "Malawi":"马拉维",
+  "Malaysia":"马来西亚",
+  "Madagascar":"马达加斯加",
+  "Maldives":"马尔代夫",
+  "Mali":"马里",
+  "Malta":"马耳他",
+  "Marshall Islands":"马绍尔群岛",
+  "Martinique":"马提尼克岛",
+  "Mauritania":"毛里塔尼亚",
+  "Mauritius":"毛里求斯",
+  "Mayotte":"马约特",
+  "Mexico":"墨西哥",
+  "Micronesia":"密克罗尼西亚",
+  "Moldova":"摩尔多瓦",
+  "Monaco":"摩纳哥",
+  "Mongolia":"蒙古",
+  "Montenegro":"黑山",
+  "Montserrat":"蒙特塞拉特",
+  "Morocco":"摩洛哥",
+  "Mozambique":"莫桑比克",
+  "Myanmar":"缅甸",
+  "Namibia":"纳米比亚",
+  "Nauru":"瑙鲁",
+  "Nepal":"尼泊尔",
+  "Netherlands":"荷兰",
+  "New Caledonia":"新喀里多尼亚",
+  "New Zealand":"新西兰",
+  "Nicaragua":"尼加拉瓜",
+  "Niger":"尼日尔",
+  "Nigeria":"尼日利亚",
+  "Niue":"纽埃",
+  "Norfolk Island":"诺福克岛",
+  "Norway":"挪威",
+  "Oman":"阿曼",
+  "Pakistan":"巴基斯坦",
+  "Palau":"帕劳",
+  "Palestine":"巴勒斯坦",
+  "Panama":"巴拿马",
+  "Papua New Guinea":"巴布亚新几内亚",
+  "Paraguay":"巴拉圭",
+  "Peru":"秘鲁",
+  "Philippines":"菲律宾",
+  "Pitcairn Islands":"皮特凯恩群岛",
+  "Poland":"波兰",
+  "Portugal":"葡萄牙",
+  "Puerto Rico":"波多黎各",
+  "Qatar":"卡塔尔",
+  "Reunion":"留尼汪岛",
+  "Romania":"罗马尼亚",
+  "Rwanda":"卢旺达",
+  "Russian Federation":"俄罗斯联邦",
+  "Saint Helena":"圣赫勒拿",
+  "Saint Kitts-Nevis":"圣基茨和尼维斯",
+  "Saint Lucia":"圣卢西亚",
+  "Saint Vincent and the Grenadines":"圣文森特和格林纳丁斯",
+  "El Salvador":"萨尔瓦多",
+  "Samoa":"萨摩亚",
+  "San Marino":"圣马力诺",
+  "Sao Tome and Principe":"圣多美和普林西比",
+  "Saudi Arabia":"沙特阿拉伯",
+  "Senegal":"塞内加尔",
+  "Seychelles":"塞舌尔",
+  "Sierra Leone":"塞拉利昂",
+  "Singapore":"新加坡",
+  "Serbia":"塞尔维亚",
+  "Slovakia":"斯洛伐克",
+  "Slovenia":"斯洛文尼亚",
+  "Solomon Islands":"所罗门群岛",
+  "Somalia":"索马里",
+  "South Africa":"南非",
+  "Spain":"西班牙",
+  "Sri Lanka":"斯里兰卡",
+  "Sudan":"苏丹",
+  "Suriname":"苏里南",
+  "Swaziland":"斯威士兰",
+  "Sweden":"瑞典",
+  "Switzerland":"瑞士",
+  "Syria":"叙利亚",
+  "Tajikistan":"塔吉克斯坦",
+  "Tanzania":"坦桑尼亚",
+  "Taiwan":"台湾 （中国）",
+  "Thailand":"泰国",
+  "Trinidad and Tobago":"特立尼达和多巴哥",
+  "Timor-Leste":"东帝汶",
+  "Togo":"多哥",
+  "Tokelau":"托克劳",
+  "Tonga":"汤加",
+  "Tunisia":"突尼斯",
+  "Turkey":"土耳其",
+  "Turkmenistan":"土库曼斯坦",
+  "Tuvalu":"图瓦卢",
+  "Uganda":"乌干达",
+  "Ukraine":"乌克兰",
+  "United Arab Emirates":"阿拉伯联合酋长国",
+  "United Kingdom":"英国",
+  "United States":"美国",
+  "Uruguay":"乌拉圭",
+  "Uzbekistan":"乌兹别克斯坦",
+  "Vanuatu":"瓦努阿图",
+  "Vatican City":"梵蒂冈",
+  "Venezuela":"委内瑞拉",
+  "Vietnam":"越南",
+  "Wallis and Futuna":"瓦利斯群岛和富图纳群岛",
+  "Western Sahara":"西撒哈拉",
+  "Yemen":"也门",
+  "Yugoslavia":"南斯拉夫",
+  "Zambia":"赞比亚",
+  "Zimbabwe":"津巴布韦"
 }
