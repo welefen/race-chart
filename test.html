@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+  *{padding: 0; margin: 0;}
+  #container {
+    width: 540px;
+    height: 960px;
+  }
+  </style>
+  <script src="https://unpkg.com/spritejs@3.4.21/dist/spritejs.js"></script>
+  <script src="http://s9.qhres.com/static/0847e42b9c814c4b.js"></script>
+</head>
+<body>
+  <div id="container">
+    <canvas width="540" height="960"></canvas>
+  </div>
+  <div>
+      <h2>视频</h2>
+      <video width="540" height="960" controls="true" autoplay="true" id="video"></video>
+  </div>
+  <script>
+    const canvas = document.querySelector('canvas');
+    var ctx=canvas.getContext("2d");
+    ctx.fillStyle="#0000ff";
+    ctx.fillRect(20,20,150,100);
+    setTimeout(() => {
+      ctx.fillRect(120,120,150,100);
+    }, 3000)
+    setTimeout(() => {
+      ctx.fillRect(220,220,150,100);
+    }, 6000)
+
+    const stream = canvas.captureStream();
+    const recorder = new MediaRecorder(stream, { mimeType: "video/webm" });
+    const data = [];
+    let i = 0;
+    recorder.ondataavailable = function (event) {
+      console.log('data', i++, event.data.size)
+      if (event.data && event.data.size) {
+        data.push(event.data);
+      }
+    };
+    recorder.onstop = () => {
+      const url = URL.createObjectURL(new Blob(data, { type: "video/webm" }));
+      document.querySelector('video').setAttribute('src', url);
+    };
+    recorder.start(1000);
+
+    setTimeout(() => {
+      recorder.stop();
+    }, 7000)
+  </script>
+</body>
+</html>

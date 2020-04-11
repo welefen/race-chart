@@ -120,11 +120,11 @@ export class BarRace {
     return this.bars.appendTo(this.layer);
   }
   private renderColumnTip(x: number, y: number, width: number, height: number) {
-    const { barTotal, barColumn, valueSplit } = this.config;
+    const { barTotal, barColumn, barValue, valueSplit } = this.config;
     this.columnTip = new ColumnTip({
       x,
       y,
-      width,
+      width: width - barValue.width / 2,
       height,
       barTotal,
       barColumn,
@@ -132,7 +132,7 @@ export class BarRace {
     });
     return this.columnTip.appendTo(this.layer);
   }
-  renderWatermark(): Promise<void> {
+  renderWatermark(): Promise<Watermark> {
     const watermark = new Watermark({
       x: 0,
       y: 0,
@@ -140,12 +140,12 @@ export class BarRace {
       height: this.config.height,
       ...this.config.watermark
     })
-    return watermark.appendTo(this.layer);
+    return watermark.appendTo(this.layer).then(_ => watermark);
   }
   async render() {
     this.captureStream();
     await this.renderBackground();
-    await this.renderWatermark();
+    const watermark = await this.renderWatermark();
     let [y, paddingRight, paddingBottom, x] = <number[]>this.config.padding;
     let width = this.config.width - x - paddingRight;
     let height = this.config.height - y - paddingBottom;
@@ -178,10 +178,12 @@ export class BarRace {
     }
     // stop recorder
     if (this.recorder) {
-      // 多截取一秒
-      setTimeout(() => {
-        this.recorder.stop();
-      }, this.config.lastStayTime);
+      const { lastStayTime } = this.config;
+      const timer = new Timer(lastStayTime, percent => {
+        watermark.opacity = 1 - <number>percent;
+      })
+      await timer.animate();
+      this.recorder.stop();
     }
   }
   /**
@@ -198,9 +200,7 @@ export class BarRace {
     const stream = (<CanvasElement>this.layer.canvas).captureStream(60);
     const recorder = new MediaRecorder(stream, { mimeType: "video/webm" });
     const data: any[] = [];
-    console.log('data')
     recorder.ondataavailable = function (event: MediaRecorderEvent) {
-      console.log('data')
       if (event.data && event.data.size) {
         data.push(event.data);
       }
@@ -209,7 +209,7 @@ export class BarRace {
       const url = URL.createObjectURL(new Blob(data, { type: "video/webm" }));
       this.deferred.resolve(url);
     };
-    recorder.start();
+    recorder.start(1000);
     this.recorder = recorder;
   }
   getStreamURL(): Promise<Blob> {

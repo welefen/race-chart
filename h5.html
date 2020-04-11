@@ -35,12 +35,12 @@
         color: '#fff'
     },
     barLabel: {
-      width: 60
+      width: 80
     },
     barValue: {
-      width: 60
+      width: 80
     },
-    padding: [50, 10],
+    padding: [120, 20],
     title: {
         text: '新冠疫情死亡人数趋势',
         padding: [0,0,20,0]
@@ -50,14 +50,15 @@
         fontSize: 16,
         color: '#aaa',
         align: 'center',
-        padding: [0, 0, 20, 0]
+        padding: [0, 0, 30, 0]
     },
     duration: 300,
     captureStream: true,
     watermark: {
       text: 'welefen',
       opacity: 0.2,
-    }
+    },
+    lastStayTime: 2000
   });
   instance.render();
   instance.getStreamURL().then(url => {

@@ -4,15 +4,16 @@ import { createLabel, createGroup } from './util';
 // 水印
 export class Watermark {
   private config: WatermarkConfig;
+  private group: Group;
   constructor(config: WatermarkConfig) {
     this.config = config;
   }
   async appendTo(layer: Layer) {
     const { image, text } = this.config;
     if (!image && !text) return;
-    const group = createGroup(this.config);
-    layer.appendChild(group);
-    let item = await this.create(group);
+    this.group = createGroup(this.config);
+    layer.appendChild(this.group);
+    let item = await this.create(this.group);
     const rect = item.getBoundingClientRect();
     const x = Math.abs(rect.x);
     const y = Math.abs(rect.y);
@@ -24,7 +25,7 @@ export class Watermark {
       for (let j = 0; j < vNum; j++) {
         if (i !== 0 || j !== 0) {
           item = <Sprite | Label>item.cloneNode(true);
-          group.appendChild(item);
+          this.group.appendChild(item);
         }
         item.attr({
           x: x + rect.width * 3 * i + rect.width + hDelta * (i * 2 + 1),
@@ -32,6 +33,9 @@ export class Watermark {
         })
       }
     }
+  }
+  set opacity(value: number) {
+    this.group.attr({ opacity: value });
   }
   private async create(group: Group): Promise<Sprite | Label> {
     const { text, image, rotate, opacity } = this.config;

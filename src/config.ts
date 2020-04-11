@@ -5,7 +5,7 @@ const valueSplit: ValueSplitConfig = {
   length: 3
 }
 const fontFamily: string = '"宋体"';
-const colors: string[] = '#1D6996|#EDAD08|#73AF48|#94346E|#38A6A5|#E17C05|#5F4690|#0F8554|#6F4070|#CC503E|#994E95|#666666'.split('|');
+const colors: string[] = '#1D6996|#EDAD08|#73AF48|#94346E|#38A6A5|#E17C05|#5F4690|#0F8554|#6F4070|#CC503E|#994E95|#666666|#11A579|#3969AC|#F2B701|#7F3C8D|#80BA5A|#E68310|#CF1C90|#008695|#F97B72|#4B4B8F|#A5AA99'.split('|');
 
 const axis: AxisConfig = {
   maxTick: 4,

@@ -37,6 +37,9 @@ export function splitValue(value: number, type: string = ',', num: number = 3): 
 export function sortValues(values: BarDataItem[], index: number, type: SortType): void {
   const [i, j] = type === 'asc' ? [-1, 1] : [1, -1];
   values.sort((a, b) => {
+    if (a.values[index] === b.values[index]) {
+      return a.label.length > b.label.length ? 1 : -1;
+    }
     return a.values[index] < b.values[index] ? i : j;
   })
 }

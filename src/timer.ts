@@ -2,6 +2,8 @@ import TWEEN from '@tweenjs/tween.js';
 
 import { TimeData } from './type';
 
+type UPDATE_CALLBACK = (percent: number) => void;
+
 function animate() {
   requestAnimationFrame(animate);
   TWEEN.update();
@@ -11,9 +13,9 @@ requestAnimationFrame(animate);
 export class Timer {
   private duration: number;
   private timerData: TimeData;
-  private update: Function;
+  private update: UPDATE_CALLBACK;
   private tween: TWEEN.Tween;
-  constructor(duration: number, update: Function) {
+  constructor(duration: number, update: UPDATE_CALLBACK) {
     this.duration = duration;
     this.update = update;
   }

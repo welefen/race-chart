@@ -15,7 +15,7 @@ export class ColumnTip {
     this.config = config;
     this.group = createGroup(this.config);
   }
-  appendTo(group: Group) {
+  appendTo(group: Group): Promise<void> {
     group.appendChild(this.group);
     return this.initTotal().then(() => {
       return this.initColumn();
@@ -28,13 +28,14 @@ export class ColumnTip {
     const { type, length } = this.config.valueSplit;
     const text = splitValue(value, type, length);
     this.totalLabel.attr({
-      text: `${barTotal.prefix}${text}`
+      width: this.config.width,
+      text: `${barTotal.prefix}${text}`,
+      textAlign: 'right'
     })
     return this.totalLabel.textImageReady.then(() => {
-      const [width, height] = this.totalLabel.clientSize;
+      const [_, height] = this.totalLabel.clientSize;
       this.totalLabelHeight = height;
       this.totalLabel.attr({
-        x: this.config.width - width - 20,
         y: this.config.height - height
       })
     })
@@ -48,11 +49,14 @@ export class ColumnTip {
     return this.setTotalText(barTotal.value || 0)
   }
   setColumnText(text: string) {
-    this.columnLabel.attr({ text });
+    this.columnLabel.attr({
+      text,
+      textAlign: 'right',
+      width: this.config.width
+    });
     return this.columnLabel.textImageReady.then(() => {
-      const [width, height] = this.columnLabel.clientSize;
+      const [_, height] = this.columnLabel.clientSize;
       this.columnLabel.attr({
-        x: this.config.width - width - 20,
         y: this.config.height - height - (this.totalLabelHeight ? this.totalLabelHeight + 5 : 0)
       })
     })
