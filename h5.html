@@ -18,7 +18,7 @@
   <div id="container"></div>
   <div>
       <h2>视频</h2>
-      <!-- <video width="960" height="540" controls="true" autoplay="true" id="video"></video> -->
+      <video width="540" height="960" controls="true" autoplay="true" id="video"></video>
   </div>
   <script src="./dist/bundle.js"></script>
   <script>
@@ -38,7 +38,7 @@
       width: 60
     },
     barValue: {
-      width: 80
+      width: 60
     },
     padding: [50, 10],
     title: {
@@ -46,23 +46,23 @@
         padding: [0,0,20,0]
     },
     subTitle: {
-        text: '更新至 4.11，制作人：李成银',
+        text: '更新至 4.11，制作人：welefen',
         fontSize: 16,
         color: '#aaa',
         align: 'center',
         padding: [0, 0, 20, 0]
     },
-    duration: 500,
-    // captureStream: true,
+    duration: 300,
+    captureStream: true,
     watermark: {
       text: 'welefen',
       opacity: 0.2,
     }
   });
   instance.render();
-  // instance.getStreamURL().then(url => {
-  //   document.querySelector('#video').setAttribute('src', url);
-  // })
+  instance.getStreamURL().then(url => {
+    document.querySelector('#video').setAttribute('src', url);
+  })
   </script>
 </body>
 </html>

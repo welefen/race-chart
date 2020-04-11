@@ -170,13 +170,18 @@ export class BarRace {
     const length = this.config.data.columnNames.length;
     while (this.index < length) {
       this.beforeAnimate();
-      await this.timer.animate();
+      if (this.index) {
+        await this.timer.animate();
+      }
       this.afterAnimate();
       this.index++;
     }
     // stop recorder
     if (this.recorder) {
-      this.recorder.stop();
+      // 多截取一秒
+      setTimeout(() => {
+        this.recorder.stop();
+      }, this.config.lastStayTime);
     }
   }
   /**
@@ -190,10 +195,12 @@ export class BarRace {
       deferred.reject = reject;
     })
     this.deferred = deferred;
-    const stream = (<CanvasElement>this.layer.canvas).captureStream();
+    const stream = (<CanvasElement>this.layer.canvas).captureStream(60);
     const recorder = new MediaRecorder(stream, { mimeType: "video/webm" });
     const data: any[] = [];
+    console.log('data')
     recorder.ondataavailable = function (event: MediaRecorderEvent) {
+      console.log('data')
       if (event.data && event.data.size) {
         data.push(event.data);
       }

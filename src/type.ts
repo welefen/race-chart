@@ -113,6 +113,7 @@ export interface BarRaceConfig {
   background?: Background;
   captureStream?: boolean;
   watermark?: Watermark;
+  lastStayTime?: number;
 }
 
 export interface Background {
@@ -175,7 +176,7 @@ export interface WatermarkConfig extends Watermark, Position {
 }
 
 export interface CanvasElement extends HTMLCanvasElement {
-  captureStream(): void;
+  captureStream(frameRate?: number): void;
 }
 
 export interface MediaRecorderEvent {
