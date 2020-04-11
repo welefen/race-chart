@@ -8,6 +8,7 @@ import { BarRaceConfig, TitleConfig, Deferred, MediaRecorderEvent, CanvasElement
 import { defaultBarRace } from './config';
 import { Axis } from './axis';
 import { ColumnTip } from './columnTip';
+import { Watermark } from './watermark';
 
 declare var MediaRecorder: any;
 export class BarRace {
@@ -131,9 +132,21 @@ export class BarRace {
     });
     return this.columnTip.appendTo(this.layer);
   }
+  renderWatermark(): Promise<void> {
+    const watermark = new Watermark({
+      x: 0,
+      y: 0,
+      width: this.config.width,
+      height: this.config.height,
+      ...this.config.watermark
+    })
+    return watermark.appendTo(this.layer);
+  }
   async render() {
     this.captureStream();
     await this.renderBackground();
+    await this.renderWatermark();
+    // return;
     let [y, paddingRight, paddingBottom, x] = <number[]>this.config.padding;
     let width = this.config.width - x - paddingRight;
     let height = this.config.height - y - paddingBottom;

@@ -42,7 +42,11 @@
         align: 'center',
         padding: [0, 0, 20, 0]
     },
-    captureStream: true
+    captureStream: true,
+    watermark: {
+      text: 'welefen',
+      opacity: 0.2,
+    }
   });
   instance.render();
   instance.getStreamURL().then(url => {

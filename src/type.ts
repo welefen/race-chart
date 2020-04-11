@@ -112,6 +112,7 @@ export interface BarRaceConfig {
   padding?: number | number[];
   background?: Background;
   captureStream?: boolean;
+  watermark?: Watermark;
 }
 
 export interface Background {
@@ -162,6 +163,16 @@ export interface ColumnTipConfig extends Position {
   valueSplit?: ValueSplitConfig;
 }
 
+export interface Watermark extends Font {
+  image?: string;
+  text?: string;
+  rotate?: number;
+  opacity?: number;
+}
+
+export interface WatermarkConfig extends Watermark, Position {
+
+}
 
 export interface CanvasElement extends HTMLCanvasElement {
   captureStream(): void;

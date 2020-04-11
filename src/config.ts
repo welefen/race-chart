@@ -1,4 +1,4 @@
-import { ValueSplitConfig, BarRaceConfig, Title, SubTitle, AxisConfig, BarColumnConfig, BarLabelConfig, BarRectConfig, BarValueConfig, BarTotalConfig, BarLogoConfig } from './type';
+import { ValueSplitConfig, BarRaceConfig, Title, SubTitle, AxisConfig, BarColumnConfig, BarLabelConfig, BarRectConfig, BarValueConfig, BarTotalConfig, BarLogoConfig, WatermarkConfig } from './type';
 
 const valueSplit: ValueSplitConfig = {
   type: ',',
@@ -73,6 +73,13 @@ const barLogo: BarLogoConfig = {
   radius: 0
 }
 
+const watermark: WatermarkConfig = {
+  fontSize: 16,
+  fontFamily,
+  color: '#ccc',
+  rotate: -45,
+}
+
 export const defaultBarRace: BarRaceConfig = {
   width: 960,
   height: 540,
@@ -94,8 +101,7 @@ export const defaultBarRace: BarRaceConfig = {
   sortType: 'desc',
   showNum: 10,
   colors,
-  background: {
-    color: '#fff'
-  },
-  captureStream: false
+  background: {},
+  captureStream: false,
+  watermark
 }
