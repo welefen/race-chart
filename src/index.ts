@@ -197,7 +197,7 @@ export class BarRace {
       deferred.reject = reject;
     })
     this.deferred = deferred;
-    const stream = (<CanvasElement>this.layer.canvas).captureStream(60);
+    const stream = (<CanvasElement>this.layer.canvas).captureStream();
     const recorder = new MediaRecorder(stream, { mimeType: "video/webm" });
     const data: any[] = [];
     recorder.ondataavailable = function (event: MediaRecorderEvent) {
@@ -209,7 +209,7 @@ export class BarRace {
       const url = URL.createObjectURL(new Blob(data, { type: "video/webm" }));
       this.deferred.resolve(url);
     };
-    recorder.start(1000);
+    recorder.start();
     this.recorder = recorder;
   }
   getStreamURL(): Promise<Blob> {
