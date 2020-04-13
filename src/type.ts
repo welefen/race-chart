@@ -87,6 +87,7 @@ export interface Tick {
   group: Group;
 }
 
+type Duration = (index: number, length: number) => number;
 export interface BarRaceConfig {
   container?: HTMLElement; // 选择器
   width?: number;
@@ -102,7 +103,7 @@ export interface BarRaceConfig {
   barLogo?: BarLogoConfig;
   barColumn?: BarColumnConfig;
   barTotal?: BarTotalConfig;
-  duration?: number; // 单个动画时长
+  duration?: number | Duration; // 单个动画时长
   alignSpacing?: number;
   justifySpacing?: number;
   scaleType?: ScaleType;

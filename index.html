@@ -43,7 +43,9 @@
         padding: [0, 0, 20, 0]
     },
     captureStream: true,
-    duration: 200,
+    duration: function(index, length) {
+      return index < 70 ? 200 : 1000;
+    },
     watermark: {
       text: 'welefen',
       opacity: 0.2,

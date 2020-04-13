@@ -42,7 +42,7 @@ export class BarRace {
     this.layer = scene.layer('layer', {
       handleEvent: false
     });
-    this.timer = new Timer(this.config.duration, this.onUpdate.bind(this));
+    this.timer = new Timer(<number>this.config.duration, this.onUpdate.bind(this));
     this.initMaxValues();
   }
   private initMaxValues() {
@@ -168,14 +168,19 @@ export class BarRace {
 
     // 开始动画
     const length = this.config.data.columnNames.length;
+    let { duration } = this.config;
     while (this.index < length) {
       this.beforeAnimate();
       if (this.index) {
-        await this.timer.animate();
+        const dur = typeof duration === 'function' ? duration(this.index, length) : duration;
+        await this.timer.animate(dur);
       }
       this.afterAnimate();
       this.index++;
     }
+    await this.stopRecorder();
+  }
+  private async stopRecorder() {
     // stop recorder
     if (this.recorder) {
       const { lastStayTime } = this.config;
