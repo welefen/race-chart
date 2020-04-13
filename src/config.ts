@@ -102,7 +102,6 @@ export const defaultBarRace: BarRaceConfig = {
   showNum: 10,
   colors,
   background: {},
-  captureStream: false,
   watermark,
   lastStayTime: 3000
 }

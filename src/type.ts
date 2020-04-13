@@ -113,7 +113,6 @@ export interface BarRaceConfig {
   sortType?: SortType;
   padding?: number | number[];
   background?: Background;
-  captureStream?: boolean;
   watermark?: Watermark;
   lastStayTime?: number;
 }
@@ -177,21 +176,6 @@ export interface WatermarkConfig extends Watermark, Position {
 
 }
 
-export interface CanvasElement extends HTMLCanvasElement {
-  captureStream(frameRate?: number): void;
-}
-
-export interface MediaRecorderEvent {
-  data: {
-    size: number
-  }
-}
-
-export interface Deferred {
-  promise?: Promise<any>;
-  resolve?: (value?: any) => void;
-  reject?: (reason?: any) => void;
-}
 
 export interface AnimateData {
   value: number;

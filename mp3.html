@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      #container {
+        width: 960px;
+        height: 540px;
+      }
+    </style>
+  </head>
+  <body>
+    <div style="width: 960px; margin: auto;">
+      <div id="container"></div>
+    </div>
+    <script>
+      const context = new AudioContext();
+      fetch("http://s5.qhres.com/static/465f1f953f1e6ff2.mp3")
+        .then((response) => response.arrayBuffer())
+        .then((arrayBuffer) => context.decodeAudioData(arrayBuffer))
+        .then((audioBuffer) => {
+          const streamDestination = context.createMediaStreamDestination();
+          const source = context.createBufferSource();
+          const length = audioBuffer.duration;
+          source.buffer = audioBuffer;
+          source.connect(streamDestination);
+          source.loop = true;
+          source.start();
+        });
+    </script>
+  </body>
+</html>
