@@ -60,7 +60,7 @@ export class ColumnTip {
     return this.columnLabel.textImageReady.then(() => {
       const [_, height] = this.columnLabel.clientSize;
       this.columnLabel.attr({
-        y: this.config.height - height - (this.totalLabelHeight ? this.totalLabelHeight + 5 : 0)
+        y: this.config.height - height - (this.totalLabelHeight || 0)
       })
     })
   }
