@@ -179,8 +179,8 @@ export class BarRace {
     // stop recorder
     if (this.recorder) {
       const { lastStayTime } = this.config;
-      const timer = new Timer(lastStayTime, percent => {
-        watermark.opacity = 1 - <number>percent;
+      const timer = new Timer(lastStayTime, _ => {
+        this.columnTip.totalOpacity = Math.random() > 0.5 ? 0.8 : 1;
       })
       await timer.animate();
       this.recorder.stop();

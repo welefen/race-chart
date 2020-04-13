@@ -21,6 +21,9 @@ export class ColumnTip {
       return this.initColumn();
     })
   }
+  set totalOpacity(opacity: number) {
+    this.totalLabel.attr({ opacity });
+  }
   setTotalText(value: number) {
     const barTotal = this.config.barTotal;
     if (barTotal.disabled) return Promise.resolve();

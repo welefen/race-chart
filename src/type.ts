@@ -12,6 +12,7 @@ export interface Font {
   fontVariant?: string;
   lineHeight?: number;
   color?: string;
+  opactiy?: number;
 }
 
 export interface BarLabelConfig extends Font {

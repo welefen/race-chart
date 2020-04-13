@@ -11,14 +11,14 @@
     height: 540px;
   }
   </style>
-  <script src="https://unpkg.com/spritejs@3.4.21/dist/spritejs.js"></script>
+  <script src="https://unpkg.com/spritejs@3.4.24/dist/spritejs.min.js"></script>
   <script src="http://s9.qhres.com/static/0847e42b9c814c4b.js"></script>
 </head>
 <body>
   <div id="container"></div>
   <div>
       <h2>视频</h2>
-      <!-- <video width="960" height="540" controls="true" autoplay="true" id="video"></video> -->
+      <video width="960" height="540" controls="true" autoplay="true" id="video"></video>
   </div>
   <script src="./dist/bundle.js"></script>
   <script>
@@ -42,16 +42,17 @@
         align: 'center',
         padding: [0, 0, 20, 0]
     },
-    // captureStream: true,
+    captureStream: true,
+    duration: 200,
     watermark: {
       text: 'welefen',
       opacity: 0.2,
     }
   });
   instance.render();
-  // instance.getStreamURL().then(url => {
-  //   document.querySelector('#video').setAttribute('src', url);
-  // })
+  instance.getStreamURL().then(url => {
+    document.querySelector('#video').setAttribute('src', url);
+  })
   </script>
 </body>
 </html>

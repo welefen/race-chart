@@ -34,9 +34,6 @@ export class Watermark {
       }
     }
   }
-  set opacity(value: number) {
-    this.group.attr({ opacity: value });
-  }
   private async create(group: Group): Promise<Sprite | Label> {
     const { text, image, rotate, opacity } = this.config;
     if (image) {
