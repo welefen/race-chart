@@ -5,7 +5,15 @@ const valueSplit: ValueSplitConfig = {
   length: 3
 }
 const fontFamily: string = '"宋体"';
-const colors: string[] = '#1D6996|#EDAD08|#73AF48|#94346E|#38A6A5|#E17C05|#5F4690|#0F8554|#6F4070|#CC503E|#994E95|#11A579|#F2B701|#7F3C8D|#80BA5A|#E68310|#CF1C90|#008695|#F97B72|#4B4B8F|#A5AA99'.split('|');
+const colors: string[] = [
+  "#1D6996", "#EDAD08", "#73AF48", "#94346E", "#38A6A5", "#E17C05", "#5F4690",
+  "#0F8554", "#6F4070", "#CC503E", "#994E95", "#11A579", "#F2B701", "#7F3C8D",
+  "#80BA5A", "#E68310", "#CF1C90", "#008695", "#F97B72", "#4B4B8F", "#A5AA99",
+  '#D98880', '#C39BD3', '#7FB3D5', '#76D7C4', '#7DCEA0', '#F7DC6F', '#F0B27A',
+  '#D7DBDD', '#85929E', '#922B21', '#76448A', '#1F618D', '#148F77', '#1E8449',
+  '#B7950B', '#AF601A', '#A04000', '#515A5A'
+];
+
 
 const axis: AxisConfig = {
   maxTick: 4,
