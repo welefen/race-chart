@@ -110,7 +110,7 @@ export class Bar {
     if (!this.logo) return;
     this.logo.attr({
       x: this.config.label.width + this.config.rect.width - (this.config.logo.width || 0),
-      opacity: this.config.rect.width > this.config.logo.width ? 1 : 0
+      opacity: this.config.rect.width > (this.config.logo.width + this.config.justifySpacing * 2) ? 1 : 0
     })
   }
 }
