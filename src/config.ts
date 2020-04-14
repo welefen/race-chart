@@ -70,8 +70,8 @@ const subTitle: SubTitle = {
 
 const barTotal: BarTotalConfig = {
   disabled: false,
-  prefix: 'Total:',
-  fontSize: 18,
+  prefix: 'Total: ',
+  fontSize: 22,
   fontFamily,
   color: '#aaa'
 }

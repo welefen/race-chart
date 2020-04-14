@@ -37,20 +37,23 @@
         color: '#fff'
     },
     padding: [10],
+    barLabel: {
+      width: 120
+    },
     title: {
         text: 'COVID-19 Cases in Top 10 Countries Worldwide',
         padding: [20,0,10,0]
     },
     subTitle: {
-        text: 'Update to 4.13, @welefen',
+        text: 'Update to 4.14, by welefen',
         align: 'center',
         color: '#888',
         fontSize: 18,
         padding: [0, 0, 30, 0]
     },
     duration: function(index, length) {
-      if(index < 40) return 200;
-      if(index < 65) return 1000;
+      if(index < 40) return 800;
+      if(index < 65) return 1200;
       return 2000;
     },
     watermark: {
