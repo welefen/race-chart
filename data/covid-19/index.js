@@ -1,11 +1,37 @@
 const fetch = require("node-fetch");
 const fs = require("fs");
 const path = require("path");
+const countries = require("../country.json");
 
-// const filepath = path.join(__dirname, "data.json");
-const conpath = path.join(__dirname, "con.json");
-const deathpath = path.join(__dirname, "death.json");
-const econpath = path.join(__dirname, "econ.json");
+function getCountryEnName(zh) {
+  let en = "";
+  countries.some((item) => {
+    if (item.zh === zh) {
+      en = item.en;
+      return true;
+    }
+  });
+  return en;
+}
+
+function getCountryImage(zh) {
+  let image = "";
+  countries.some((item) => {
+    if (item.zh === zh) {
+      image = item.image;
+      return true;
+    }
+  });
+  return image;
+}
+
+const conCNPath = path.join(__dirname, "con_cn.json");
+const deathCNPath = path.join(__dirname, "death_cn.json");
+const econCNPath = path.join(__dirname, "econ_cn.json");
+
+const conENPath = path.join(__dirname, "con_en.json");
+const deathENPath = path.join(__dirname, "death_en.json");
+const econENPath = path.join(__dirname, "econ_en.json");
 
 const d = new Date();
 const today =
@@ -22,6 +48,7 @@ const today =
   const { historylist } = data.data;
   const itemData = {
     label: "中国", //国家名称
+    image: getCountryImage("中国"),
     columnNames: [], //日期
     contotal: [], // 确诊总数
     deathtotal: [], // 死亡总数
@@ -44,6 +71,7 @@ const today =
   for (const item of data.data.worldlist) {
     const itemData = {
       label: item.name, //国家名称
+      image: getCountryImage(item.name),
       columnNames: [], //日期
       contotal: [], // 确诊总数
       deathtotal: [], // 死亡总数
@@ -57,14 +85,16 @@ const today =
       itemData.columnNames.push(item.date);
       itemData.contotal.push(parseInt(item.conNum));
       itemData.deathtotal.push(parseInt(item.deathNum));
-      itemData.econNum.push(parseInt(item.conNum) - parseInt(item.cureNum))
+      itemData.econNum.push(parseInt(item.conNum) - parseInt(item.cureNum));
     });
     if (!itemData.columnNames.includes(today)) {
       itemData.columnNames.push(today);
     }
     itemData.contotal.push(parseInt(data.data.contotal));
     itemData.deathtotal.push(parseInt(data.data.deathtotal));
-    itemData.econNum.push(parseInt(data.data.contotal) - parseInt(data.data.curetotal))
+    itemData.econNum.push(
+      parseInt(data.data.contotal) - parseInt(data.data.curetotal)
+    );
     result.data.push(itemData);
   }
 
@@ -79,8 +109,8 @@ const today =
   };
   const econData = {
     columnNames,
-    data: []
-  }
+    data: [],
+  };
   result.data.forEach((item) => {
     let prevIndex = -1;
     const contotal = [];
@@ -107,18 +137,33 @@ const today =
     });
     conData.data.push({
       label: item.label,
+      image: getCountryImage(item.label),
       values: contotal,
     });
     deathData.data.push({
       label: item.label,
+      image: getCountryImage(item.label),
       values: deathtotal,
     });
     econData.data.push({
-      label:item.label,
-      values: econNum
-    })
-    fs.writeFileSync(conpath, JSON.stringify(conData));
-    fs.writeFileSync(deathpath, JSON.stringify(deathData));
-    fs.writeFileSync(econpath, JSON.stringify(econData));
+      label: item.label,
+      image: getCountryImage(item.label),
+      values: econNum,
+    });
   });
+  fs.writeFileSync(conCNPath, JSON.stringify(conData));
+  fs.writeFileSync(deathCNPath, JSON.stringify(deathData));
+  fs.writeFileSync(econCNPath, JSON.stringify(econData));
+  conData.data.forEach((item) => {
+    item.label = getCountryEnName(item.label);
+  });
+  deathData.data.forEach((item) => {
+    item.label = getCountryEnName(item.label);
+  });
+  econData.data.forEach((item) => {
+    item.label = getCountryEnName(item.label);
+  });
+  fs.writeFileSync(conENPath, JSON.stringify(conData));
+  fs.writeFileSync(deathENPath, JSON.stringify(deathData));
+  fs.writeFileSync(econENPath, JSON.stringify(econData));
 })();
