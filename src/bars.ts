@@ -53,8 +53,11 @@ export class Bars {
       const width = Math.floor(value / maxValue * this.rectMaxWidth);
       const calValue = item.value + (value - item.value) * percent;
       const calWidth = item.width + (width - item.width) * percent;
-      bar.rectWidth = calWidth;
-      bar.valueText = Math.floor(calValue);
+      //if bar is hidden, dont't change rect width & value, only update in after animate
+      if (item.index < showNum || item.newIndex < showNum) {
+        bar.rectWidth = calWidth;
+        bar.valueText = Math.floor(calValue);
+      }
       if (item.newPos > -1) {
         bar.attr({
           y: item.pos + (item.newPos - item.pos) * Math.min(percent * 2, 1)

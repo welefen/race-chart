@@ -47,8 +47,9 @@ export interface BarRectConfig {
 export interface BarDataItem {
   image?: string;
   label: string;
+  index?: number; // 在数组中的位置
   values: number[];
-  category: string;
+  category?: string;
 }
 export interface BarData {
   columnNames: string[];

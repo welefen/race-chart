@@ -10,19 +10,28 @@ import { BarData, BarDataItem, SortType, Font, Position } from './type';
 export function parseData(data: BarData, showNum: number = 10): BarData {
   const set = new Set();
   const totals: number[] = [];
+  data.data.forEach((item, index) => {
+    if (item.index === undefined) {
+      item.index = index;
+    }
+  })
   data.columnNames.forEach((_, index) => {
-    let values = data.data.map(item => item.values[index]);
-    values.sort((a, b) => a < b ? 1 : -1);
-    values = values.slice(0, showNum);
     let total = 0;
     data.data.forEach(item => {
-      const value = item.values[index];
-      total += value;
-      if (values.indexOf(value) > -1) {
-        set.add(item);
-      }
+      total += item.values[index];
     })
     totals.push(total);
+    data.data.sort((a, b) => {
+      const aValue = a.values[index];
+      const bValue = b.values[index];
+      if (aValue === bValue) {
+        return a.index > b.index ? 1 : -1;
+      }
+      return aValue < bValue ? 1 : -1;
+    })
+    data.data.slice(0, showNum).forEach(item => {
+      set.add(item);
+    })
   })
   data.data = <BarDataItem[]>Array.from(set);
   data.totalValues = totals;
