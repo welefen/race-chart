@@ -1,5 +1,5 @@
 import { Scene, Layer, Rect, Sprite, } from "spritejs";
-import deepmerge from 'ts-deepmerge';
+import { deepmerge } from './util';
 
 import { Bars } from './bars';
 import { parseData, sortValues, parseCombineValue, createLabel } from './util';
@@ -30,7 +30,7 @@ export class BarRace {
     // 可能数据长度不足 showNum 的大小
     this.config.showNum = Math.min(this.config.showNum, this.config.data.data.length);
     const scene = new Scene({
-      container: this.config.container,
+      container: document.querySelector(this.config.selector),
       width: this.config.width,
       height: this.config.height,
       displayRatio: this.config.displayRatio,

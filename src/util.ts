@@ -1,6 +1,14 @@
 import { Label, Group } from 'spritejs';
+import merge from 'deepmerge';
 
 import { BarData, BarDataItem, SortType, Font, Position } from './type';
+
+export function deepmerge<T extends Record<string, any>>(...source: T[]): T {
+  const data = merge.all(source, {
+    arrayMerge: (_, sourceArray) => sourceArray,
+  });
+  return <T>data;
+}
 
 /**
  * 移除完全不会显示的数据，减少创建的 bar 个数

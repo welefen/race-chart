@@ -91,7 +91,7 @@ export interface Tick {
 
 type Duration = (index: number, length: number) => number;
 export interface BarRaceConfig {
-  container?: HTMLElement; // 选择器
+  selector?: string; // 选择器
   width?: number;
   height?: number;
   displayRatio?: number;
