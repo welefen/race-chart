@@ -44,7 +44,11 @@
     barLogo: {
       disabled: true,
     },
-    alignSpacing: 3,
+    barRect: {
+      type: '3d',
+    },
+    justifySpacing: 12,
+    alignSpacing: 10,
     title: {
         text: 'COVID-19 Cases in Top 10 Countries Worldwide',
         padding: [0,0,10,0]
@@ -57,7 +61,7 @@
         padding: [0, 0, 30, 0]
     },
     duration: function(index, length) {
-      return 100;
+      return 200;
       if(index < 40) return 1000;
       if(index < 65) return 1500;
       return 2000;

@@ -1,4 +1,4 @@
-import { Group, Label, Block, Sprite } from 'spritejs';
+import { Group, Label, Sprite, Polyline, Block, Parallel } from 'spritejs';
 import { deepmerge } from './util';
 
 import { BarConfig } from './type';
@@ -7,7 +7,8 @@ import { splitValue, createLabel, createGroup } from './util';
 export class Bar {
   private group: Group;
   private label: Label;
-  private rect: Block;
+  private rect: Group;
+  private polylines: Polyline[] = [];
   private value: Label;
   private logo: Sprite;
   config: BarConfig;
@@ -16,6 +17,7 @@ export class Bar {
   constructor(config: BarConfig, index?: number, values?: number[]) {
     this.config = deepmerge({}, config);
     this.group = createGroup(this.config);
+    // this.group.attr({bgcolor: 'blue'})
     this.index = index;
     this.values = values;
   }
@@ -41,14 +43,53 @@ export class Bar {
   }
   private initRect() {
     const rectConfig = this.config.rect;
-    this.rect = new Block({
-      height: this.config.height,
-      bgcolor: rectConfig.color,
-      borderTopRightRadius: [rectConfig.radius, rectConfig.radius],
-      borderBottomRightRadius: [rectConfig.radius, rectConfig.radius],
-      x: this.config.label.width + this.config.justifySpacing
-    });
-    this.group.appendChild(this.rect);
+    if (rectConfig.type === '3d') {
+      const { sideHeight, angle } = rectConfig;
+      const sinAngle = Math.sin(angle / 180 * Math.PI);
+      const cosAngle = Math.cos(angle / 180 * Math.PI);
+      const left = this.config.label.width + this.config.justifySpacing - sideHeight * cosAngle;
+      this.rect = new Group({
+        width: rectConfig.width,
+        height: this.config.height,
+        bgcolor: rectConfig.color,
+        opacity: .95,
+        x: left
+      });
+      this.group.appendChild(this.rect);
+      const strokeColor = 'rgba(255, 255, 255, 0.3)';
+      const topp = new Parallel({
+        sides: [rectConfig.width, sideHeight],
+        x: left + sideHeight * sinAngle,
+        y: -sideHeight * cosAngle,
+        angle: angle + 90,
+        lineWidth: 0.5,
+        strokeColor,
+        fillColor: rectConfig.color,
+      });
+      this.polylines.push(topp);
+      this.group.appendChild(topp);
+      const rightp = new Parallel({
+        sides: [this.config.height, sideHeight],
+        x: left + sideHeight * sinAngle,
+        y: -sideHeight * cosAngle,
+        angle,
+        rotate: 90,
+        lineWidth: 0.5,
+        strokeColor,
+        fillColor: rectConfig.color,
+      });
+      this.polylines.push(rightp);
+      this.group.appendChild(rightp);
+    } else {
+      this.rect = new Group({
+        height: this.config.height,
+        bgcolor: rectConfig.color,
+        borderTopRightRadius: [rectConfig.radius, rectConfig.radius],
+        borderBottomRightRadius: [rectConfig.radius, rectConfig.radius],
+        x: this.config.label.width + this.config.justifySpacing
+      });
+      this.group.appendChild(this.rect);
+    }
     this.rectWidth = rectConfig.width;
   }
   set rectWidth(width: number) {
@@ -57,9 +98,16 @@ export class Bar {
       width = Math.max(width, rectConfig.minWidth);
     }
     this.config.rect.width = width;
-    this.rect.attr({
-      width
-    })
+    this.rect.attr({ width });
+    if (this.polylines.length) {
+      const { sideHeight, angle } = rectConfig;
+      this.polylines[0].attr({ sides: [width, sideHeight] });
+      const delta = sideHeight * (Math.sin(angle / 180 * Math.PI) - Math.cos(angle / 180 * Math.PI));
+      this.polylines[1].attr({
+        opacity: width ? 1 : 0,
+        x: this.config.rect.width + this.config.label.width + this.config.justifySpacing + delta
+      })
+    }
     this.updateValueX();
     this.updateLogoX();
   }

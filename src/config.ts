@@ -36,6 +36,9 @@ const barRect: BarRectConfig = {
   width: 0,
   color: 'red',
   radius: 3,
+  type: '2d',
+  angle: 45,
+  sideHeight: 10,
 }
 
 const barValue: BarValueConfig = {

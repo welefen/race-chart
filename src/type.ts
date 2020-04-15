@@ -42,6 +42,9 @@ export interface BarRectConfig {
   minWidth?: number; // 最小宽度
   width?: number; // 实时宽度
   radius?: number;
+  type?: '2d' | '3d';
+  angle?: number;
+  sideHeight?: number;
 }
 
 export interface BarDataItem {
