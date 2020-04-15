@@ -41,6 +41,7 @@ export interface BarRectConfig {
   color?: string;
   minWidth?: number; // 最小宽度
   width?: number; // 实时宽度
+  radius?: number;
 }
 
 export interface BarDataItem {

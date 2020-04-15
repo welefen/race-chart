@@ -1,4 +1,4 @@
-import { Group, Label, Rect, Sprite } from 'spritejs';
+import { Group, Label, Block, Sprite } from 'spritejs';
 import deepmerge from 'ts-deepmerge';
 
 import { BarConfig } from './type';
@@ -7,7 +7,7 @@ import { splitValue, createLabel, createGroup } from './util';
 export class Bar {
   private group: Group;
   private label: Label;
-  private rect: Rect;
+  private rect: Block;
   private value: Label;
   private logo: Sprite;
   config: BarConfig;
@@ -41,9 +41,11 @@ export class Bar {
   }
   private initRect() {
     const rectConfig = this.config.rect;
-    this.rect = new Rect({
+    this.rect = new Block({
       height: this.config.height,
-      fillColor: rectConfig.color,
+      bgcolor: rectConfig.color,
+      borderTopRightRadius: [rectConfig.radius, rectConfig.radius],
+      borderBottomRightRadius: [rectConfig.radius, rectConfig.radius],
       x: this.config.label.width + this.config.justifySpacing
     });
     this.group.appendChild(this.rect);

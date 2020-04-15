@@ -96,6 +96,7 @@ export class Bars {
         ...this.config.barLabel
       },
       rect: {
+        ...this.config.barRect,
         width: 0,
         color: colors[index % colors.length],
       },

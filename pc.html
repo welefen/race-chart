@@ -40,18 +40,23 @@
     barLabel: {
       width: 120
     },
+    barLogo: {
+      disabled: true,
+    },
+    alignSpacing: 3,
     title: {
         text: 'COVID-19 Cases in Top 10 Countries Worldwide',
-        padding: [20,0,10,0]
+        padding: [0,0,10,0]
     },
     subTitle: {
-        text: 'Update to 4.14, by welefen',
+        // text: 'Update to 4.14, by welefen',
         align: 'center',
         color: '#888',
         fontSize: 18,
         padding: [0, 0, 30, 0]
     },
     duration: function(index, length) {
+      return 100;
       if(index < 40) return 1000;
       if(index < 65) return 1500;
       return 2000;
@@ -59,7 +64,7 @@
     watermark: {
       // text: 'welefen',
       opacity: 0.2,
-    }
+    },
   });
   const videoInstance = new Canvas2Video({
     canvas: instance.layer.canvas,
