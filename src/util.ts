@@ -47,7 +47,7 @@ export function parseData(data: BarData, showNum: number = 10): BarData {
 }
 
 export function formatter(value: number, type: FormatterType): string {
-  return (value + '').replace(/(?=(?!\b)(\d{3})+$)/g, ',');
+  return Math.floor(value).toString().replace(/(?=(?!\b)(\d{3})+$)/g, ',');
 }
 
 export function sortValues(values: BarDataItem[], index: number, type: SortType): void {

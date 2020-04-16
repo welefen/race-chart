@@ -142,10 +142,7 @@ export class Bar {
     })
   }
   set valueText(value: number) {
-    const valueConf = this.config.value;
-    const prevValue = valueConf.value;
-    if (prevValue && prevValue === value) return;
-    valueConf.value = value;
+    this.config.value.value = value;
     const text = this.config.formatter(value, 'column');
     this.value.attr({ text });
   }

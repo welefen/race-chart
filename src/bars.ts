@@ -51,12 +51,10 @@ export class Bars {
       const item = this.animateData[idx];
       const value = bar.values[index];
       const width = Math.floor(value / maxValue * this.rectMaxWidth);
-      const calValue = item.value + (value - item.value) * percent;
-      const calWidth = item.width + (width - item.width) * percent;
       //if bar is hidden, dont't change rect width & value, only update in after animate
       if (item.index < showNum || item.newIndex < showNum) {
-        bar.rectWidth = calWidth;
-        bar.valueText = Math.floor(calValue);
+        bar.rectWidth = item.width + (width - item.width) * percent;
+        bar.valueText = item.value + (value - item.value) * percent;
       }
       if (item.newPos > -1) {
         bar.attr({

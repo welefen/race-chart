@@ -71,6 +71,7 @@
         padding: [0, 0, 30, 0]
     },
     formatter(value, type) {
+      value = Math.floor(value);
       if(type === 'axis') return `${value}`;
       return `${value}亿`
     },
