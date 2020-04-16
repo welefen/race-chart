@@ -176,7 +176,7 @@ export class BarRace {
     }
     const { lastStayTime } = this.config;
     const timer = new Timer(lastStayTime, _ => {
-      this.columnTip.totalOpacity = Math.random() > 0.5 ? 0.8 : 1;
+      this.columnTip.columnOpacity = Math.random() > 0.5 ? 0.8 : 1;
     })
     await timer.animate();
   }

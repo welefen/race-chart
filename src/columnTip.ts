@@ -21,8 +21,8 @@ export class ColumnTip {
       return this.initColumn();
     })
   }
-  set totalOpacity(opacity: number) {
-    this.totalLabel.attr({ opacity });
+  set columnOpacity(opacity: number) {
+    this.columnLabel.attr({ opacity });
   }
   setTotalText(value: number) {
     const barTotal = this.config.barTotal;
