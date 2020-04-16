@@ -94,13 +94,13 @@ export class BarRace {
     return label.clientSize[1];
   }
   private renderAxis(x: number, y: number, width: number, height: number) {
-    const { barLabel, justifySpacing, valueSplit, barValue, axis } = this.config;
+    const { barLabel, justifySpacing, formatter, barValue, axis } = this.config;
     this.axis = new Axis({
       x: x + barLabel.width + justifySpacing,
       y,
       width: width - barLabel.width - justifySpacing * 2 - barValue.width,
       height,
-      valueSplit: valueSplit,
+      formatter,
       ...axis
     });
     this.axis.appendTo(this.layer);
@@ -117,7 +117,7 @@ export class BarRace {
     return this.bars.appendTo(this.layer);
   }
   private renderColumnTip(x: number, y: number, width: number, height: number) {
-    const { barTotal, barColumn, barValue, valueSplit } = this.config;
+    const { barTotal, barColumn, barValue, formatter } = this.config;
     this.columnTip = new ColumnTip({
       x,
       y,
@@ -125,7 +125,7 @@ export class BarRace {
       height,
       barTotal,
       barColumn,
-      valueSplit
+      formatter
     });
     return this.columnTip.appendTo(this.layer);
   }

@@ -1,7 +1,7 @@
 import { Label, Group } from 'spritejs';
 import merge from 'deepmerge';
 
-import { BarData, BarDataItem, SortType, Font, Position } from './type';
+import { FormatterType, BarData, BarDataItem, SortType, Font, Position } from './type';
 
 export function deepmerge<T extends Record<string, any>>(...source: T[]): T {
   const data = merge.all(source, {
@@ -46,9 +46,8 @@ export function parseData(data: BarData, showNum: number = 10): BarData {
   return data;
 }
 
-export function splitValue(value: number, type: string = ',', num: number = 3): string {
-  const reg = new RegExp(`(?=(?!\\b)(\\d{${num}})+$)`, 'g');
-  return (value + '').replace(reg, type);
+export function formatter(value: number, type: FormatterType): string {
+  return (value + '').replace(/(?=(?!\b)(\d{3})+$)/g, ',');
 }
 
 export function sortValues(values: BarDataItem[], index: number, type: SortType): void {

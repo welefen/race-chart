@@ -1,12 +1,9 @@
-import { ValueSplitConfig, BarRaceConfig, Title, SubTitle, AxisConfig, BarColumnConfig, BarLabelConfig, BarRectConfig, BarValueConfig, BarTotalConfig, BarLogoConfig, WatermarkConfig } from './type';
+import { BarRaceConfig, Title, SubTitle, AxisConfig, BarColumnConfig, BarLabelConfig, BarRectConfig, BarValueConfig, BarTotalConfig, BarLogoConfig, WatermarkConfig } from './type';
+import { formatter } from './util';
 
-const valueSplit: ValueSplitConfig = {
-  type: ',',
-  length: 3
-}
 const fontFamily: string = '"宋体"';
 const colors: string[] = ["#67b7dc", "#6794dc", "#6771dc", "#8067dc", "#a367dc", "#c767dc", "#dc67ce", "#dc67ab", "#dc6788", "#dc6967", "#dc8c67", "#dcaf67", "#dcd267", "#c3dc67", "#a0dc67", "#7ddc67", "#67dc75", "#67dc98", "#67dcbb", "#67dadc"];
-
+colors.sort(_ => Math.random() > 0.5 ? 1 : -1);
 
 const axis: AxisConfig = {
   maxTick: 4,
@@ -89,7 +86,7 @@ export const defaultBarRace: BarRaceConfig = {
   width: 960,
   height: 540,
   displayRatio: 2,
-  valueSplit,
+  formatter,
   axis,
   title,
   subTitle,

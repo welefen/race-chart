@@ -111,7 +111,7 @@ export class Bars {
         src: item.image,
         ...this.config.barLogo
       },
-      valueSplit: this.config.valueSplit
+      formatter: this.config.formatter
     }, index, item.values)
   }
   private initBars(): Promise<any> {

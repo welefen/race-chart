@@ -1,7 +1,7 @@
 import { Group, Layer, Polyline } from 'spritejs';
 
 import { AxisConfig, Tick } from './type';
-import { splitValue, createLabel, createGroup } from './util';
+import { createLabel, createGroup } from './util';
 import { BarRace } from './index';
 
 
@@ -57,7 +57,7 @@ export class Axis {
       width: 20,
       height: this.config.height
     })
-    const valueStr = splitValue(value, this.config.valueSplit.type, this.config.valueSplit.length);
+    const valueStr = this.config.formatter(value, 'axis');
     const label = createLabel(valueStr, this.config);
     group.appendChild(label);
     label.textImageReady.then(() => {

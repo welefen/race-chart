@@ -1,7 +1,7 @@
 import { Group, Label } from 'spritejs';
 
 import { ColumnTipConfig } from './type';
-import { splitValue, createLabel, createGroup } from './util';
+import { createLabel, createGroup } from './util';
 import { BarRace } from './index';
 
 // 显示列和总数
@@ -28,8 +28,7 @@ export class ColumnTip {
     const barTotal = this.config.barTotal;
     if (barTotal.disabled) return Promise.resolve();
     barTotal.value = value;
-    const { type, length } = this.config.valueSplit;
-    const text = splitValue(value, type, length);
+    const text = this.config.formatter(value, 'total');
     this.totalLabel.attr({
       width: this.config.width,
       text: `${barTotal.prefix}${text}`,

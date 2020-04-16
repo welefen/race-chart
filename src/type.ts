@@ -24,10 +24,8 @@ export interface BarValueConfig extends Font {
   width?: number;
 }
 
-export interface ValueSplitConfig {
-  type?: ',';
-  length?: number;
-}
+export type FormatterType = 'axis' | 'total' | 'column';
+export type Formatter = (value: number, type: FormatterType) => string;
 
 
 export interface BarLogoConfig {
@@ -98,7 +96,7 @@ export interface BarRaceConfig {
   width?: number;
   height?: number;
   displayRatio?: number;
-  valueSplit?: ValueSplitConfig;
+  formatter?: Formatter;
   title?: Title;
   subTitle?: SubTitle;
   axis?: Axis;
@@ -132,7 +130,7 @@ export interface BackgroundConfig extends Background, Position {
 }
 
 export interface AxisConfig extends Axis, Position {
-  valueSplit?: ValueSplitConfig
+  formatter?: Formatter
 }
 export interface Title extends Font {
   text?: string;
@@ -160,14 +158,14 @@ export interface BarConfig extends Position {
   rect?: BarRectConfig;
   value?: BarValueConfig;
   logo?: BarLogoConfig;
-  valueSplit?: ValueSplitConfig;
+  formatter?: Formatter;
   justifySpacing?: number;
 }
 
 export interface ColumnTipConfig extends Position {
   barColumn?: BarColumnConfig;
   barTotal?: BarTotalConfig;
-  valueSplit?: ValueSplitConfig;
+  formatter?: Formatter;
 }
 
 export interface Watermark extends Font {

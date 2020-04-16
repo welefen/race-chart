@@ -2,7 +2,7 @@ import { Group, Label, Sprite, Polyline, Block, Parallel } from 'spritejs';
 import { deepmerge } from './util';
 
 import { BarConfig } from './type';
-import { splitValue, createLabel, createGroup } from './util';
+import { createLabel, createGroup } from './util';
 
 export class Bar {
   private group: Group;
@@ -146,8 +146,7 @@ export class Bar {
     const prevValue = valueConf.value;
     if (prevValue && prevValue === value) return;
     valueConf.value = value;
-    const { type, length } = this.config.valueSplit;
-    const text = splitValue(value, type, length);
+    const text = this.config.formatter(value, 'column');
     this.value.attr({ text });
   }
   private updateValueX() {
