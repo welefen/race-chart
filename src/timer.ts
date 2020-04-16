@@ -19,14 +19,15 @@ export class Timer {
     this.duration = duration;
     this.update = update;
   }
-  animate(duration?: number) {
+  start(duration?: number, update?: UPDATE_CALLBACK) {
     duration = duration || this.duration;
+    update = update || this.update;
     this.timerData = { time: 0 };
     this.tween = new TWEEN.Tween(this.timerData).to({
       time: duration
     }, duration).easing(TWEEN.Easing.Linear.None).onUpdate(() => {
       const percent = this.timerData.time / duration;
-      this.update(percent);
+      update(percent);
     });
     return new Promise(resolve => {
       this.tween.onComplete(() => {
@@ -34,5 +35,10 @@ export class Timer {
       });
       this.tween.start();
     })
+  }
+  stop() {
+    if (this.tween) {
+      this.tween.stop();
+    }
   }
 }

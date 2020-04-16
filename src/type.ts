@@ -2,6 +2,7 @@ import { Group } from 'spritejs';
 
 export type ScaleType = 'fixed' | 'dynamic';
 export type SortType = 'asc' | 'desc';
+export type STATUS = 'run' | 'stop';
 
 export interface Font {
   fontSize?: number;
@@ -118,6 +119,7 @@ export interface BarRaceConfig {
   background?: Background;
   watermark?: Watermark;
   lastStayTime?: number;
+  loop?: boolean; // 是否循环播放
 }
 
 export interface Background {

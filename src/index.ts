@@ -4,7 +4,7 @@ import { deepmerge } from './util';
 import { Bars } from './bars';
 import { parseData, sortValues, parseCombineValue, createLabel } from './util';
 import { Timer } from './timer';
-import { BarRaceConfig, TitleConfig } from './type';
+import { BarRaceConfig, TitleConfig, STATUS } from './type';
 import { defaultBarRace } from './config';
 import { Axis } from './axis';
 import { ColumnTip } from './columnTip';
@@ -15,14 +15,27 @@ export class BarRace {
   private timer: Timer;
   private bars: Bars;
   private axis: Axis;
+  private status: STATUS = 'run';
   private columnTip: ColumnTip;
   layer: Layer;
-  config: BarRaceConfig;
+  config: BarRaceConfig = {};
   index: number = 0; // 当前所在的数据 index
   values: number[] = []; //当前 index 所在的 values
   maxValues: number[]; // 最大的 values 列表
   constructor(config: BarRaceConfig) {
-    this.config = deepmerge({}, defaultBarRace, config);
+    this.setConfig(config);
+    this.scene = new Scene({
+      container: this.config.selector,
+      width: this.config.width,
+      height: this.config.height,
+      displayRatio: this.config.displayRatio,
+    })
+    this.layer = this.scene.layer('layer', {
+      handleEvent: false
+    });
+  }
+  setConfig(config: BarRaceConfig) {
+    this.config = deepmerge({}, defaultBarRace, this.config, config);
     this.config.padding = parseCombineValue(this.config.padding);
     this.config.data = parseData(this.config.data, this.config.showNum);
     // 按第一个数据从大到小排序
@@ -32,16 +45,6 @@ export class BarRace {
     if (typeof this.config.selector === 'string') {
       this.config.selector = <HTMLElement>document.querySelector(<string>this.config.selector);
     }
-    const scene = new Scene({
-      container: this.config.selector,
-      width: this.config.width,
-      height: this.config.height,
-      displayRatio: this.config.displayRatio,
-    })
-    this.scene = scene;
-    this.layer = scene.layer('layer', {
-      handleEvent: false
-    });
     this.timer = new Timer(<number>this.config.duration, this.onUpdate.bind(this));
     this.initMaxValues();
   }
@@ -142,7 +145,8 @@ export class BarRace {
     })
     return watermark.appendTo(this.layer).then(_ => watermark);
   }
-  async render() {
+  private async render() {
+    this.layer.removeAllChildren();
     await this.renderBackground();
     await this.renderWatermark();
     let [y, paddingRight, paddingBottom, x] = <number[]>this.config.padding;
@@ -164,24 +168,43 @@ export class BarRace {
     this.renderAxis(x, y, width, height);
     await this.renderBars(x, y, width, height);
     await this.renderColumnTip(x, y, width, height);
-
-    // 开始动画
+    this.beforeAnimate();
+    this.afterAnimate();
+  }
+  async start() {
+    await this.render();
     const length = this.config.data.columnNames.length;
     let { duration } = this.config;
     while (this.index < length) {
+      if (this.status === 'stop') {
+        return;
+      };
       this.beforeAnimate();
-      if (this.index) {
-        const dur = typeof duration === 'function' ? duration(this.index, length) : duration;
-        await this.timer.animate(dur);
-      }
+      const dur = typeof duration === 'function' ? duration(this.index, length) : duration;
+      await this.timer.start(dur);
       this.afterAnimate();
       this.index++;
     }
     const { lastStayTime } = this.config;
-    const timer = new Timer(lastStayTime, _ => {
-      this.columnTip.columnOpacity = Math.random() > 0.5 ? 0.8 : 1;
-    })
-    await timer.animate();
+    if (lastStayTime && this.status !== 'stop') {
+      await this.timer.start(lastStayTime, _ => {
+        this.columnTip.columnOpacity = Math.random() > 0.5 ? 0.8 : 1;
+      })
+    }
+    if (this.config.loop) {
+      this.index = 0;
+      await this.render();
+      return this.start();
+    }
+  }
+  stop() {
+    this.status = 'stop';
+    this.timer.stop();
+  }
+  restart() {
+    this.status = 'run';
+    this.index = 0;
+    return this.start();
   }
   private beforeAnimate() {
     sortValues(this.config.data.data, this.index, this.config.sortType);
