@@ -29,8 +29,11 @@ export class BarRace {
     sortValues(this.config.data.data, 0, this.config.sortType);
     // 可能数据长度不足 showNum 的大小
     this.config.showNum = Math.min(this.config.showNum, this.config.data.data.length);
+    if (typeof this.config.selector === 'string') {
+      this.config.selector = <HTMLElement>document.querySelector(<string>this.config.selector);
+    }
     const scene = new Scene({
-      container: document.querySelector(this.config.selector),
+      container: this.config.selector,
       width: this.config.width,
       height: this.config.height,
       displayRatio: this.config.displayRatio,
