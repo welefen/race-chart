@@ -18,15 +18,18 @@
     "url": "https://github.com/welefen/DataRace/issues"
   },
   "devDependencies": {
-    "@tweenjs/tween.js": "^18.5.0",
     "@types/tween.js": "^18.5.0",
-    "deepmerge": "^4.2.2",
     "node-fetch": "^2.6.0",
-    "spritejs": "^3.4.24",
     "ts-loader": "^6.2.2",
     "typescript": "^3.8.3",
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11"
   },
-  "homepage": "https://github.com/welefen/DataRace#readme"
+  "homepage": "https://github.com/welefen/DataRace#readme",
+  "dependencies": {
+    "is-mergeable-object": "^1.1.1",
+    "@tweenjs/tween.js": "^18.5.0",
+    "deepmerge": "^4.2.2",
+    "spritejs": "^3.4.24"
+  }
 }

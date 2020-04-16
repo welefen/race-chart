@@ -1,11 +1,18 @@
 import { Label, Group } from 'spritejs';
 import merge from 'deepmerge';
+import isMergeObject from 'is-mergeable-object';
 
 import { FormatterType, BarData, BarDataItem, SortType, Font, Position } from './type';
 
 export function deepmerge<T extends Record<string, any>>(...source: T[]): T {
   const data = merge.all(source, {
     arrayMerge: (_, sourceArray) => sourceArray,
+    isMergeableObject(value) {
+      if (value instanceof HTMLElement) {
+        return false;
+      }
+      return isMergeObject(value);
+    }
   });
   return <T>data;
 }
