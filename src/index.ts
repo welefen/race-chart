@@ -28,8 +28,7 @@ export class BarRace {
       container: this.config.selector,
       width: this.config.width,
       height: this.config.height,
-      displayRatio: this.config.displayRatio,
-      autoResize: false
+      displayRatio: this.config.displayRatio
     })
     this.layer = this.scene.layer('layer', {
       handleEvent: false
