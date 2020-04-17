@@ -2,7 +2,7 @@
   "name": "@welefen/bar-race",
   "version": "1.0.0",
   "description": "dynamic bar race, support 2d & 3d",
-  "main": "index.js",
+  "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
     "build": "tsc -d",
