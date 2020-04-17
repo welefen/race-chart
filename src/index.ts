@@ -11,12 +11,12 @@ import { ColumnTip } from './columnTip';
 import { Watermark } from './watermark';
 
 export class BarRace {
-  private scene: Scene;
   private timer: Timer;
   private bars: Bars;
   private axis: Axis;
   private status: STATUS = 'run';
   private columnTip: ColumnTip;
+  scene: Scene;
   layer: Layer;
   config: BarRaceConfig = {};
   index: number = 0; // 当前所在的数据 index
