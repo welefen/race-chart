@@ -1,19 +1,20 @@
 {
-  "name": "datarace",
+  "name": "@welefen/bar-race",
   "version": "1.0.0",
-  "description": "",
+  "description": "dynamic bar race, support 2d & 3d",
   "main": "index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
     "build": "tsc -d",
     "start": "webpack --watch",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prepublish": "npm run build && npm test"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/welefen/DataRace.git"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/welefen/DataRace/issues"
   },
