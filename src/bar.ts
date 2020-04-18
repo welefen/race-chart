@@ -36,6 +36,7 @@ export class Bar {
     this.label = createLabel(text || '', this.config.label);
     this.label.attr({
       width,
+      fillColor: this.config.rect.color,
       textAlign: 'right',
       lineHeight: this.config.height
     })
@@ -132,12 +133,20 @@ export class Bar {
     this.logo = sprite;
     this.group.appendChild(sprite);
     return sprite.textureImageReady.then(() => {
-      const [width, height] = sprite.clientSize;
-      if (!logo.width) logo.width = width;
-      if (!logo.height) logo.height = height;
-      sprite.attr({
-        y: (this.config.height - height) / 2
-      })
+      let [width, height] = sprite.clientSize;
+      if (!logo.height) {
+        width *= this.config.height / height;
+        logo.width = width;
+        logo.height = height;
+        sprite.attr({
+          width,
+          height: this.config.height
+        })
+      } else {
+        sprite.attr({
+          y: (this.config.height - height) / 2
+        })
+      }
       this.updateLogoX();
     })
   }
@@ -155,8 +164,8 @@ export class Bar {
   private updateLogoX() {
     if (!this.logo) return;
     this.logo.attr({
-      x: this.config.label.width + this.config.rect.width - (this.config.logo.width || 0),
-      opacity: this.config.rect.width > (this.config.logo.width + this.config.justifySpacing * 2) ? 1 : 0
+      x: this.config.label.width + this.config.justifySpacing,
+      opacity: this.config.rect.width > this.config.logo.width ? 1 : 0
     })
   }
 }
