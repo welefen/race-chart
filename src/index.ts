@@ -64,12 +64,12 @@ export class BarRace extends Events {
   }
   // 渲染背景
   private async renderBackground() {
-    const { image, color } = this.config.background;
+    const { image, color, opacity } = this.config.background;
     const { width, height } = this.config;
     if (color) {
       const rect = new Rect({
         fillColor: color,
-        width, height
+        width, height, opacity
       })
       this.layer.appendChild(rect);
     }
@@ -81,7 +81,8 @@ export class BarRace extends Events {
       });
       const sprite = new Sprite({
         texture: id,
-        width, height
+        width, height,
+        opacity
       })
       this.layer.appendChild(sprite);
     }
@@ -129,7 +130,7 @@ export class BarRace extends Events {
     this.columnTip = new ColumnTip({
       x,
       y,
-      width: width - barValue.width / 2,
+      width,
       height,
       barTotal,
       barColumn,
@@ -175,6 +176,7 @@ export class BarRace extends Events {
   }
   async start() {
     await this.render();
+    this.emit('start');
     const length = this.config.data.columnNames.length;
     let { duration } = this.config;
     while (this.index < length) {
@@ -182,9 +184,10 @@ export class BarRace extends Events {
         this.emit('stop');
         return;
       };
-      this.emit('round', this.index);
+      const column = this.config.data.columnNames[this.index];
+      this.emit('change', column);
       this.beforeAnimate();
-      const dur = typeof duration === 'function' ? duration(this.index, length) : duration;
+      const dur = typeof duration === 'function' ? duration(column, this.index, length) : duration;
       await this.timer.start(dur);
       this.afterAnimate();
       this.index++;
@@ -192,7 +195,7 @@ export class BarRace extends Events {
     const { lastStayTime } = this.config;
     if (lastStayTime && this.status !== 'stop') {
       await this.timer.start(lastStayTime, _ => {
-        this.columnTip.columnOpacity = Math.random() > 0.5 ? 0.8 : 1;
+        this.columnTip.columnOpacity = Math.random() > 0.5 ? 0.95 : 1;
       })
     }
     this.emit('end');

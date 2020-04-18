@@ -91,7 +91,7 @@ export interface Tick {
   group: Group;
 }
 
-type Duration = (index: number, length: number) => number;
+type Duration = (column: string, index: number, length: number) => number;
 export interface BarRaceConfig {
   selector?: string | HTMLElement; // 选择器
   width?: number;
@@ -125,6 +125,7 @@ export interface BarRaceConfig {
 export interface Background {
   color?: string;
   image?: string;
+  opacity?: number;
 }
 
 export interface BackgroundConfig extends Background, Position {
