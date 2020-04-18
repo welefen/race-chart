@@ -1,4 +1,5 @@
 import { Scene, Layer, Rect, Sprite, } from "spritejs";
+import Events from 'eventemitter3';
 import { deepmerge } from './util';
 
 import { Bars } from './bars';
@@ -9,8 +10,7 @@ import { defaultBarRace } from './config';
 import { Axis } from './axis';
 import { ColumnTip } from './columnTip';
 import { Watermark } from './watermark';
-
-export class BarRace {
+export class BarRace extends Events {
   private timer: Timer;
   private bars: Bars;
   private axis: Axis;
@@ -23,6 +23,7 @@ export class BarRace {
   values: number[] = []; //当前 index 所在的 values
   maxValues: number[]; // 最大的 values 列表
   constructor(config: BarRaceConfig) {
+    super();
     this.setConfig(config);
     this.scene = new Scene({
       container: this.config.selector,
@@ -178,8 +179,10 @@ export class BarRace {
     let { duration } = this.config;
     while (this.index < length) {
       if (this.status === 'stop') {
+        this.emit('stop');
         return;
       };
+      this.emit('round', this.index);
       this.beforeAnimate();
       const dur = typeof duration === 'function' ? duration(this.index, length) : duration;
       await this.timer.start(dur);
@@ -192,9 +195,9 @@ export class BarRace {
         this.columnTip.columnOpacity = Math.random() > 0.5 ? 0.8 : 1;
       })
     }
+    this.emit('end');
     if (this.config.loop) {
       this.index = 0;
-      await this.render();
       return this.start();
     }
   }
