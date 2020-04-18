@@ -33,6 +33,9 @@ export class Bar {
   }
   private initLabel() {
     const { width, text } = this.config.label;
+    if (this.config.label.color === 'currentColor') {
+      this.config.label.color = this.config.rect.color;
+    }
     this.label = createLabel(text || '', this.config.label);
     this.label.attr({
       width,
@@ -113,6 +116,9 @@ export class Bar {
     this.updateLogoX();
   }
   private initValue() {
+    if (this.config.value.color === 'currentColor') {
+      this.config.value.color = this.config.rect.color;
+    }
     this.value = createLabel('', this.config.value);
     this.value.attr({
       width: this.config.value.width,

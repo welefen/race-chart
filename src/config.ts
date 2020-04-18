@@ -25,7 +25,7 @@ const barColumn: BarColumnConfig = {
 const barLabel: BarLabelConfig = {
   fontSize: 16,
   fontFamily,
-  color: '#333',
+  color: 'currentColor',
   width: 100
 }
 const barRect: BarRectConfig = {
@@ -42,7 +42,7 @@ const barValue: BarValueConfig = {
   value: 0,
   fontSize: 14,
   fontFamily,
-  color: '#333',
+  color: 'currentColor',
   width: 100
 }
 
