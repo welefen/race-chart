@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      #container {
+        margin-top: 20px;
+        width: 540px;
+        height: 960px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2),
+          inset 0 0 0 1px hsla(0, 0%, 100%, 0.2);
+      }
+    </style>
+    <script src="https://unpkg.com/spritejs@3.4.26/dist/spritejs.min.js"></script>
+    <script src="http://s9.qhres.com/static/0847e42b9c814c4b/tween.js"></script>
+  </head>
+  <body>
+    <div style="width: 540px; margin: auto;">
+      <div id="container"></div>
+      <div id="videoContainer" style="display: none;">
+        <h2>视频</h2>
+        <video
+          width="540"
+          height="960"
+          controls="true"
+          autoplay="true"
+          id="video"
+        ></video>
+      </div>
+    </div>
+    <script src="../dist/barRace.js"></script>
+    <!-- <script src="http://s8.qhres.com/static/49dc5f5662a566ee.js"></script> -->
+    <script src="http://s8.qhres.com/static/8f1f3a4fcc9aaa3a/canvas2video.js"></script>
+    <script src="https://unpkg.com/@ffmpeg/ffmpeg@0.7.0/dist/ffmpeg.min.js"></script>
+    <script>
+      fetch("../data/gdp/china_summary/china.json")
+        .then((res) => res.json())
+        .then((data) => {
+          const instance = new BarRace({
+            width: 540,
+            height: 960,
+            selector: document.querySelector("#container"),
+            data: data,
+            showNum: 10,
+            background: {
+              // image: 'http://p9.qhimg.com/t01598eaefa47f3997d.jpg',
+              // opacity: 0.1,
+              color: "#fff",
+            },
+            // scaleType: 'fixed',
+            // colors: ['red'],
+            padding: [100, 40, 200, 40],
+            barLabel: {
+              width: 90,
+              fontSize: 20,
+              fontWeight: "bold",
+            },
+            barValue: {
+              fontSize: 20,
+              width: 80,
+            },
+            barLogo: {
+              disabled: true,
+            },
+            barRect: {
+              type: "2d",
+              sideHeight: 40,
+              radius: 10,
+            },
+            barTotal: {
+              disabled: true,
+            },
+            justifySpacing: 5,
+            alignSpacing: 20,
+            title: {
+              text: "中国 GDP 增长趋势",
+              padding: [20, 0, 0, 0],
+            },
+            subTitle: {
+              text: "数据来源：国家统计局",
+              padding: [10, 0, 30, 0],
+              color: '#888',
+              fontSize: 16
+            },
+            duration: function (column, index, length) {
+              // return 100;
+              if (index < 50) return 400;
+              return 1000;
+            },
+            formatter(value, type) {
+              value = Math.floor(value);
+              if (type === "axis") return `${value}`;
+              return `${value}亿`;
+            },
+            axis: {
+              tipHeight: 35,
+            },
+            watermark: {
+              text: "DataRace",
+              opacity: 0.1,
+            },
+            lastStayTime: 2000,
+          });
+          const videoInstance = new Canvas2Video({
+            canvas: instance.layer.canvas,
+            mimeType: "video/webm",
+            outVideoType: "mp4",
+            audio: "http://s6.qhres.com/static/8b52098f6453e7dd.mp3",
+          });
+          videoInstance.startRecord();
+          instance.start();
+          instance.on("start", () => {});
+          instance.on("change", (column) => {});
+          instance.on("end", () => {
+            videoInstance.getStreamURL().then((url) => {
+              const container = document.querySelector("#videoContainer");
+              container.style.display = "block";
+              container.querySelector("video").src = url;
+            });
+            videoInstance.stopRecord();
+          });
+        });
+    </script>
+  </body>
+</html>

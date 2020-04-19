@@ -24,7 +24,8 @@
     "ts-loader": "^6.2.2",
     "typescript": "^3.8.3",
     "webpack": "^4.42.1",
-    "webpack-cli": "^3.3.11"
+    "webpack-cli": "^3.3.11",
+    "cheerio": "^1.0.0-rc.3"
   },
   "homepage": "https://github.com/welefen/DataRace#readme",
   "dependencies": {
