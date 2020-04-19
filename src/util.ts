@@ -44,7 +44,7 @@ export function parseData(data: BarData, showNum: number = 10): BarData {
       }
       return aValue < bValue ? 1 : -1;
     })
-    data.data.slice(0, showNum).forEach(item => {
+    data.data.slice(0, showNum).filter(item => item.values[index]).forEach(item => {
       set.add(item);
     })
   })
