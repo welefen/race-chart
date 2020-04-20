@@ -138,7 +138,7 @@ export class BarRace extends Events {
     });
     return this.columnTip.appendTo(this.layer);
   }
-  renderWatermark(): Promise<Watermark> {
+  private renderWatermark(): Promise<Watermark> {
     const watermark = new Watermark({
       x: 0,
       y: 0,
@@ -148,8 +148,27 @@ export class BarRace extends Events {
     })
     return watermark.appendTo(this.layer).then(_ => watermark);
   }
+  private async renderPrefix(): Promise<void> {
+    const { image, opacity, time } = this.config.prefix;
+    if (!image) return;
+    const sprite = new Sprite({
+      texture: image,
+      opacity,
+      width: this.config.width,
+      height: this.config.height
+    })
+    this.layer.appendChild(sprite);
+    await sprite.textureImageReady;
+    return new Promise(resolve => {
+      setTimeout(() => {
+        resolve();
+        this.layer.removeChild(sprite);
+      }, time);
+    })
+  }
   private async render() {
     this.layer.removeAllChildren();
+    await this.renderPrefix();
     await this.renderBackground();
     await this.renderWatermark();
     let [y, paddingRight, paddingBottom, x] = <number[]>this.config.padding;

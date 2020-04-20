@@ -39,7 +39,7 @@
     <script src="http://s8.qhres.com/static/8f1f3a4fcc9aaa3a/canvas2video.js"></script>
     <script src="https://unpkg.com/@ffmpeg/ffmpeg@0.7.0/dist/ffmpeg.min.js"></script>
     <script>
-      fetch("../data/gdp/china_summary/china.json")
+      fetch("../data/gdp/china_province/province.json")
         .then((res) => res.json())
         .then((data) => {
           const instance = new BarRace({
@@ -47,7 +47,7 @@
             height: 960,
             selector: document.querySelector("#container"),
             data: data,
-            showNum: 10,
+            showNum: 31,
             background: {
               // image: 'http://p9.qhimg.com/t01598eaefa47f3997d.jpg',
               // opacity: 0.1,
@@ -58,11 +58,11 @@
             padding: [100, 40, 200, 40],
             barLabel: {
               width: 90,
-              fontSize: 20,
+              fontSize: 14,
               fontWeight: "bold",
             },
             barValue: {
-              fontSize: 20,
+              fontSize: 14,
               width: 80,
             },
             barLogo: {
@@ -71,15 +71,15 @@
             barRect: {
               type: "2d",
               sideHeight: 40,
-              radius: 10,
+              radius: 5,
             },
             barTotal: {
               disabled: true,
             },
             justifySpacing: 5,
-            alignSpacing: 20,
+            alignSpacing: 1,
             title: {
-              text: "中国 GDP 增长趋势",
+              text: "中国各省GDP增长趋势",
               padding: [20, 0, 0, 0],
             },
             subTitle: {
@@ -90,8 +90,8 @@
             },
             duration: function (column, index, length) {
               // return 100;
-              if (index < 50) return 400;
-              return 1000;
+              // if (index < 50) return 400;
+              return 1200;
             },
             formatter(value, type) {
               value = Math.floor(value);
@@ -99,7 +99,7 @@
               return `${value}亿`;
             },
             axis: {
-              tipHeight: 35,
+              tipHeight: 25,
             },
             watermark: {
               text: "DataRace",

@@ -106,5 +106,6 @@ export const defaultBarRace: BarRaceConfig = {
   background: {},
   watermark,
   lastStayTime: 0,
-  loop: false
+  loop: false,
+  prefix: {}
 }

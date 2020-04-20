@@ -12,14 +12,14 @@ const data = {
 lines.forEach((line, index) => {
   const items = line.split(",");
   if (index) {
-    data.columnNames.push(items[0]);
+    data.columnNames.push(items[0].trim());
     items.slice(1).forEach((item, idx) => {
       data.data[idx].values.push(parseFloat(item));
     });
   } else {
     items.slice(1).forEach((item) => {
       data.data.push({
-        label: item,
+        label: item.trim(),
         values: [],
       });
     });

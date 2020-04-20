@@ -91,6 +91,12 @@ export interface Tick {
   group: Group;
 }
 
+export interface Prefix {
+  image?: string;
+  opacity?: number;
+  time?: number;
+}
+
 type Duration = (column: string, index: number, length: number) => number;
 export interface BarRaceConfig {
   selector?: string | HTMLElement; // 选择器
@@ -120,6 +126,7 @@ export interface BarRaceConfig {
   watermark?: Watermark;
   lastStayTime?: number;
   loop?: boolean; // 是否循环播放
+  prefix?: Prefix;
 }
 
 export interface Background {
