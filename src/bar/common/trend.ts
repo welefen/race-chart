@@ -95,16 +95,7 @@ export class BarTrend extends Events {
     await label.textImageReady;
     return label.clientSize[1];
   }
-  async render() {
-    await this.preload();
-    this.emit('startRender');
-    this.layer.removeAllChildren();
-    await this.renderOpeningImage();
-    await this.renderBackground();
-  }
-  protected onUpdate(percent: number): void {
 
-  }
   protected renderAxis(x: number, y: number, width: number, height: number) {
     const { label, justifySpacing, value } = this.config.bar;
     this.axis = new Axis({
@@ -116,5 +107,17 @@ export class BarTrend extends Events {
       ...this.config.axis,
     });
     this.axis.appendTo(this.layer);
+  }
+  async render() {
+    await this.preload();
+    this.layer.removeAllChildren();
+    this.emit('start');
+    await this.renderOpeningImage();
+    await this.renderBackground();
+    await this.renderWatermark();
+  }
+
+  protected onUpdate(percent: number): void {
+
   }
 }

@@ -40,9 +40,7 @@ export class BarRace extends BarTrend {
     this.maxValues = values;
   }
   async render() {
-    this.layer.removeAllChildren();
-    await this.renderBackground();
-    await this.renderWatermark();
+    await super.render();
     let [y, paddingRight, paddingBottom, x] = <number[]>this.config.padding;
     let width = this.config.width - x - paddingRight;
     let height = this.config.height - y - paddingBottom;
@@ -72,20 +70,8 @@ export class BarRace extends BarTrend {
     });
     return this.bars.appendTo(this.layer);
   }
-  private beforeAnimate() {
-    sortValues(this.config.data.data, this.index, this.config.sortType);
-    // 值可能会出现相同的情况
-    this.values = this.config.data.data.map(item => item.values[this.index]);
-    this.bars.beforeAnimate(this);
-    this.axis.beforeAnimate(this);
-  }
-  private afterAnimate() {
-    this.bars.afterAnimate(this);
-    this.axis.afterAnimate(this);
-  }
   async start() {
     await this.render();
-    this.emit('start');
     const length = this.config.data.columnNames.length;
     let { duration } = this.config;
     while (this.index < length) {
@@ -104,14 +90,23 @@ export class BarRace extends BarTrend {
     const { lastStayTime } = this.config;
     if (lastStayTime && this.status !== 'stop') {
       await this.timer.start(lastStayTime, _ => {
-        // this.columnTip.columnOpacity = Math.random() > 0.5 ? 0.95 : 1;
+
       })
     }
     this.emit('end');
   }
+  private beforeAnimate() {
+    sortValues(this.config.data.data, this.index, this.config.sortType);
+    this.values = this.config.data.data.map(item => item.values[this.index]);
+    this.bars.beforeAnimate(this);
+    this.axis.beforeAnimate(this);
+  }
+  private afterAnimate() {
+    this.bars.afterAnimate(this);
+    this.axis.afterAnimate(this);
+  }
   protected onUpdate(percent: number) {
     this.bars.update(this, percent);
-    // this.columnTip.update(this, percent);
     this.axis.update(this, percent);
   }
 }
