@@ -12,12 +12,11 @@ export class Bar {
   private value: Label;
   private logo: Sprite;
   config: BarConfig;
-  values?: number[];
+  values?: number[] = [];
   index: number = 0;
   constructor(config: BarConfig, index?: number, values?: number[]) {
     this.config = deepmerge({}, config);
     this.group = createGroup(this.config);
-    // this.group.attr({bgcolor: 'blue'})
     this.index = index;
     this.values = values;
   }

@@ -34,7 +34,7 @@
         ></video>
       </div>
     </div>
-    <script src="../dist/barRace.js"></script>
+    <script src="../dist/barRank.js"></script>
     <!-- <script src="http://s8.qhres.com/static/49dc5f5662a566ee.js"></script> -->
     <script src="http://s8.qhres.com/static/8f1f3a4fcc9aaa3a/canvas2video.js"></script>
     <script src="https://unpkg.com/@ffmpeg/ffmpeg@0.7.0/dist/ffmpeg.min.js"></script>
@@ -42,7 +42,13 @@
       fetch("../data/gdp/china_province/province.json")
         .then((res) => res.json())
         .then((data) => {
-          const instance = new BarRace({
+          data = data.data.map((item) => {
+            return {
+              label: item.label,
+              value: item.values[item.values.length - 1],
+            };
+          });
+          const instance = new BarRank({
             selector: document.querySelector("#container"),
             data,
             background: {
@@ -71,19 +77,14 @@
                 // padding: [20, 20, 20, 20]
               },
               justifySpacing: 10,
-              alignSpacing: 1,
+              alignSpacing: 10,
             },
-            showNum: 31,
+            duration: 3000,
+            showNum: 10,
             formatter(value, type) {
               value = Math.floor(value);
               if (type === "axis") return `${value}`;
               return `${value}亿`;
-            },
-            duration: function (column, index, length) {
-              column = parseInt(column);
-              if (column < 2000) return 1400;
-              if (column < 2010) return 2000;
-              return 2500;
             },
             axis: {
               tipHeight: 20,
@@ -100,19 +101,21 @@
             outVideoType: "mp4",
             audio: "http://s6.qhres.com/static/8b52098f6453e7dd.mp3",
           });
-          videoInstance.startRecord();
+          
           instance.start();
 
-          instance.on("start", () => {});
-          instance.on("change", (column) => {});
-          instance.on("end", () => {
-            videoInstance.getStreamURL().then((url) => {
-              const container = document.querySelector("#videoContainer");
-              container.style.display = "block";
-              container.querySelector("video").src = url;
-            });
-            videoInstance.stopRecord();
-          });
+          // instance.on("start", () => {
+          //   videoInstance.startRecord();
+          // });
+          // instance.on("change", (column) => {});
+          // instance.on("end", () => {
+          //   videoInstance.getStreamURL().then((url) => {
+          //     const container = document.querySelector("#videoContainer");
+          //     container.style.display = "block";
+          //     container.querySelector("video").src = url;
+          //   });
+          //   videoInstance.stopRecord();
+          // });
         });
     </script>
   </body>

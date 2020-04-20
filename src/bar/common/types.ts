@@ -1,10 +1,13 @@
 import { Config, Font, Position, Formatter } from '../../common/types';
 import { Group } from 'spritejs';
 
-export type Duration = (column: string, index: number, length: number) => number;
+
 export type ScaleType = 'fixed' | 'dynamic';
 export type SortType = 'asc' | 'desc';
 export type Status = 'run' | 'stop';
+export type NumberOrString = number | string;
+
+export type Duration = (...args: NumberOrString[]) => number;
 
 export interface AxisConfig extends Font, Position {
   maxTick?: number; // 最多显示几个
@@ -75,11 +78,11 @@ export interface BarConfig extends Position {
 export interface BarTrendConfig extends Config {
   axis?: AxisConfig,
   showNum?: number; // 展现的条数
-  duration?: number | Duration; // 单个动画时长
   scaleType?: ScaleType; // bar 缩放方式
   sortType?: SortType; // 数据排序方式
   formatter?: Formatter; //数据格式化函数
   bar?: BarConfig;
   lastStayTime?: number;
+  duration?: number | Duration;
 }
 

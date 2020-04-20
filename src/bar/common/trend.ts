@@ -53,7 +53,7 @@ export class BarTrend extends Events {
     if (color) {
       const rect = new Rect({
         fillColor: color,
-        width, height, opacity
+        width, height
       })
       this.layer.appendChild(rect);
     }

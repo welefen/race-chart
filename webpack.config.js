@@ -3,7 +3,8 @@ const path = require('path');
 module.exports = {
   mode: 'production',
   entry: {
-    barRace: './src/bar/race/index.ts'
+    barRace: './src/bar/race/index.ts',
+    barRank: './src/bar/rank/index.ts'
   },
   module: {
     rules: [

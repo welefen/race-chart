@@ -73,10 +73,10 @@ export const barTrendConfig: BarTrendConfig = {
   ...config,
   axis,
   showNum: 10,
-  duration: 1000,
   scaleType: 'dynamic',
   sortType: 'desc',
   formatter: valueFormatter,
   bar,
-  lastStayTime: 0
+  lastStayTime: 0,
+  duration: 1000
 }
