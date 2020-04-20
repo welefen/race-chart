@@ -2,7 +2,9 @@ const path = require('path');
 
 module.exports = {
   mode: 'production',
-  entry: './src/index.ts',
+  entry: {
+    barRace: './src/bar/race/index.ts'
+  },
   module: {
     rules: [
       {
@@ -16,7 +18,7 @@ module.exports = {
     extensions: [ '.ts', '.js' ]
   },
   output: {
-    filename: 'barRace.js',
+    filename: '[name].js',
     path: path.resolve(__dirname, 'dist'),
     libraryTarget: 'umd',
   },

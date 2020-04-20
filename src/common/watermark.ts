@@ -1,4 +1,4 @@
-import { WatermarkConfig } from './type';
+import { WatermarkConfig } from './types';
 import { Layer, Sprite, Group, Label } from 'spritejs';
 import { createLabel, createGroup } from './util';
 // 水印

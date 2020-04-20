@@ -1,14 +1,12 @@
 import { Group, Layer, Polyline } from 'spritejs';
-
-import { AxisConfig, Tick } from './type';
-import { createLabel, createGroup } from './util';
-import { BarRace } from './index';
-
+import { AxisConfig, AxisTick } from './types';
+import { createLabel, createGroup } from '../../common/util';
+import { BarRace } from '../race/index';
 
 export class Axis {
   config: AxisConfig;
   private group: Group;
-  private ticks: Tick[] = [];
+  private ticks: AxisTick[] = [];
   private maxValue: number = 0;
   private step: number = 0;
   constructor(config: AxisConfig) {

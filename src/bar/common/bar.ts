@@ -1,8 +1,8 @@
 import { Group, Label, Sprite, Polyline, Block, Parallel } from 'spritejs';
-import { deepmerge } from './util';
+import { deepmerge } from '../../common/util';
 
-import { BarConfig } from './type';
-import { createLabel, createGroup } from './util';
+import { BarConfig } from './types';
+import { createLabel, createGroup } from '../../common/util';
 
 export class Bar {
   private group: Group;
@@ -34,12 +34,12 @@ export class Bar {
   private initLabel() {
     const { width, text } = this.config.label;
     if (this.config.label.color === 'currentColor') {
-      this.config.label.color = this.config.rect.color;
+      this.config.label.color = this.config.color;
     }
     this.label = createLabel(text || '', this.config.label);
     this.label.attr({
       width,
-      fillColor: this.config.rect.color,
+      fillColor: this.config.label.color,
       textAlign: 'right',
       lineHeight: this.config.height
     })
@@ -55,7 +55,7 @@ export class Bar {
       this.rect = new Group({
         width: rectConfig.width,
         height: this.config.height,
-        bgcolor: rectConfig.color,
+        bgcolor: this.config.color,
         opacity: .95,
         x: left
       });
@@ -68,7 +68,7 @@ export class Bar {
         angle: angle + 90,
         lineWidth: 0.5,
         strokeColor,
-        fillColor: rectConfig.color,
+        fillColor: this.config.color,
       });
       this.polylines.push(topp);
       this.group.appendChild(topp);
@@ -80,14 +80,14 @@ export class Bar {
         rotate: 90,
         lineWidth: 0.5,
         strokeColor,
-        fillColor: rectConfig.color,
+        fillColor: this.config.color,
       });
       this.polylines.push(rightp);
       this.group.appendChild(rightp);
     } else {
       this.rect = new Group({
         height: this.config.height,
-        bgcolor: rectConfig.color,
+        bgcolor: this.config.color,
         borderTopRightRadius: [rectConfig.radius, rectConfig.radius],
         borderBottomRightRadius: [rectConfig.radius, rectConfig.radius],
         x: this.config.label.width + this.config.justifySpacing
@@ -117,7 +117,7 @@ export class Bar {
   }
   private initValue() {
     if (this.config.value.color === 'currentColor') {
-      this.config.value.color = this.config.rect.color;
+      this.config.value.color = this.config.color;
     }
     this.value = createLabel('', this.config.value);
     this.value.attr({
@@ -129,36 +129,25 @@ export class Bar {
   }
   private initLogo() {
     const { logo } = this.config;
-    if (!logo.src || logo.disabled) return;
+    if (!logo.image || logo.disabled) return;
     const sprite = new Sprite({
-      texture: logo.src,
-      width: logo.width,
-      height: logo.height,
-      borderRadius: logo.radius
+      texture: logo.image
     })
     this.logo = sprite;
     this.group.appendChild(sprite);
     return sprite.textureImageReady.then(() => {
       let [width, height] = sprite.clientSize;
-      if (!logo.height) {
-        width *= this.config.height / height;
-        logo.width = width;
-        logo.height = height;
-        sprite.attr({
-          width,
-          height: this.config.height
-        })
-      } else {
-        sprite.attr({
-          y: (this.config.height - height) / 2
-        })
-      }
+      width *= this.config.height / height;
+      sprite.attr({
+        width,
+        height: this.config.height
+      })
       this.updateLogoX();
     })
   }
   set valueText(value: number) {
     this.config.value.value = value;
-    const text = this.config.formatter(value, 'column');
+    const text = this.config.value.formatter(value, 'column');
     this.value.attr({ text });
   }
   private updateValueX() {
@@ -170,8 +159,7 @@ export class Bar {
   private updateLogoX() {
     if (!this.logo) return;
     this.logo.attr({
-      x: this.config.label.width + this.config.justifySpacing,
-      opacity: this.config.rect.width > this.config.logo.width ? 1 : 0
+      x: this.config.label.width + this.config.justifySpacing
     })
   }
 }

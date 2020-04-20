@@ -1,9 +1,11 @@
-import { Group, Layer } from 'spritejs';
+import { Group, Layer, Label } from 'spritejs';
 
-import { Bar } from './bar';
-import { BarsConfig, BarDataItem, AnimateData } from './type';
+import { Bar } from '../common/bar';
 import { BarRace } from './index';
-import { createGroup } from './util';
+import { BarsConfig, BarDataItem, AnimateData } from './types';
+import { BarConfig } from '../common/types';
+import { createGroup, createLabel } from '../../common/util';
+import deepmerge from 'deepmerge';
 
 export class Bars {
   private bars: Bar[] = [];
@@ -12,16 +14,22 @@ export class Bars {
   private rectMaxWidth: number; // 矩形最大宽度
   private barHeight: number; // 单个 bar 的高度
   private animateData: AnimateData[];
+  private totalLabel: Label;
+  private totalLabelHeight: number;
+  private columnLabel: Label;
   constructor(config: BarsConfig) {
     this.config = config;
     this.group = createGroup(this.config);
-    const { width, barLabel, barValue, justifySpacing, height, alignSpacing, showNum } = this.config;
-    this.rectMaxWidth = width - barLabel.width - barValue.width - 2 * justifySpacing;
+    const { width, height, showNum } = this.config;
+    const { label, value, justifySpacing, alignSpacing } = this.config.bar;
+    this.rectMaxWidth = width - label.width - value.width - 2 * justifySpacing;
     this.barHeight = (height - alignSpacing * (showNum - 1)) / showNum;
   }
-  appendTo(layer: Layer): Promise<void> {
+  async appendTo(layer: Layer): Promise<void> {
     layer.appendChild(this.group);
-    return this.initBars();
+    await this.initBars();
+    await this.initTotal();
+    return this.initColumn();
   }
   beforeAnimate(barRace: BarRace): void {
     const { values, index } = barRace;
@@ -42,6 +50,7 @@ export class Bars {
       }
       return data;
     })
+    this.setColumnText(barRace.config.data.columnNames[barRace.index]);
   }
   update(barRace: BarRace, percent: number): void {
     const index = barRace.index;
@@ -71,6 +80,14 @@ export class Bars {
         }
       }
     })
+    // 更新总数
+    if (!this.config.bar.total.disabled) {
+      const totals = barRace.config.data.totalValues;
+      const prevTotal = barRace.index === 0 ? 0 : totals[barRace.index - 1];
+      const total = totals[barRace.index];
+      const value = Math.floor(prevTotal + (total - prevTotal) * percent);
+      this.setTotalText(value);
+    }
   }
   afterAnimate(barRace: BarRace): void {
     const { index } = barRace;
@@ -85,32 +102,26 @@ export class Bars {
     })
   }
   private getBarInstance(item: BarDataItem, index: number): Bar {
-    const { colors } = this.config;
-    return new Bar({
+    const color = this.config.colors[index % this.config.colors.length];
+    const data: BarConfig = {
       x: 0,
       y: this.getBarY(index),
       width: this.config.width,
       height: this.barHeight,
-      justifySpacing: this.config.justifySpacing,
       label: {
-        text: item.label,
-        ...this.config.barLabel
+        text: item.label
       },
-      rect: {
-        ...this.config.barRect,
-        width: 0,
-        color: colors[index % colors.length],
-      },
+      color,
       value: {
         value: item.values[0],
-        ...this.config.barValue,
+        formatter: this.config.formatter
       },
       logo: {
-        src: item.image,
-        ...this.config.barLogo
-      },
-      formatter: this.config.formatter
-    }, index, item.values)
+        image: item.image
+      }
+    }
+    const config = deepmerge(this.config.bar, data);
+    return new Bar(config, index, item.values)
   }
   private initBars(): Promise<any> {
     const promises = this.config.data.data.map((item, index) => {
@@ -124,7 +135,53 @@ export class Bars {
     })
     return Promise.all(promises);
   }
+  setTotalText(value: number) {
+    const total = this.config.bar.total;
+    if (total.disabled) return Promise.resolve();
+    total.value = value;
+    const text = this.config.formatter(value, 'total');
+    this.totalLabel.attr({
+      text: `${total.prefix}${text}`,
+    })
+  }
+  private initTotal() {
+    if (this.config.bar.total.disabled) return Promise.resolve();
+    const barTotal = this.config.bar.total;
+    const label = createLabel('', barTotal);
+    label.attr({
+      width: this.config.width
+    })
+    this.totalLabel = label;
+    this.group.appendChild(label);
+    this.setTotalText(barTotal.value || 0);
+    return this.totalLabel.textImageReady.then(() => {
+      const [_, height] = this.totalLabel.clientSize;
+      this.totalLabelHeight = height;
+      this.totalLabel.attr({
+        y: this.config.height - height
+      })
+    })
+  }
+  setColumnText(text: string) {
+    this.columnLabel.attr({ text });
+  }
+  private initColumn() {
+    const { column } = this.config.bar;
+    const label = createLabel('', column);
+    label.attr({
+      width: this.config.width
+    })
+    this.columnLabel = label;
+    this.group.appendChild(label);
+    this.setColumnText(column.text);
+    return this.columnLabel.textImageReady.then(() => {
+      const [_, height] = this.columnLabel.clientSize;
+      this.columnLabel.attr({
+        y: this.config.height - height - (this.totalLabelHeight || 0)
+      })
+    })
+  }
   private getBarY(index: number) {
-    return (this.barHeight + this.config.alignSpacing) * Math.min(index, this.config.showNum - 1);
+    return (this.barHeight + this.config.bar.alignSpacing) * Math.min(index, this.config.showNum - 1);
   }
 }

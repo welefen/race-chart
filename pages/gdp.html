@@ -45,56 +45,35 @@
           const instance = new BarRace({
             selector: document.querySelector("#container"),
             data,
-            // prefix: {
-            //   image: 'http://p8.qhimg.com/t01b8daad915aea3a0c.png',
-            //   time: 2000
-            // },
             background: {
-              image: 'http://p1.qhimg.com/t010bcafe1844b67796.png',
+              image: "http://p1.qhimg.com/t010bcafe1844b67796.png",
               opacity: 0.8,
               color: "#fff",
             },
-            // scaleType: 'fixed',
-            // colors: ['red'],
             padding: [10, 10, 10, 10],
-            barLabel: {
-              width: 100,
-              fontSize: 14,
+            bar: {
+              label: {
+                width: 100,
+                fontSize: 14,
+              },
+              rect: {
+                type: "2d",
+                sideHeight: 25,
+              },
+              total: {
+                // padding: [40, 40, 40, 40]
+                // disabled: true,
+              },
+              column: {
+                fontSize: 120,
+                color: "rgba(166, 139, 87, 0.6)",
+                opacity: 0.8,
+                // padding: [20, 20, 20, 20]
+              },
+              justifySpacing: 10,
+              alignSpacing: 1,
             },
             showNum: 31,
-            barValue: {
-              fontSize: 14,
-              width: 120,
-              // color: "#aaa",
-            },
-            barLogo: {
-              // disabled: true,
-            },
-            barRect: {
-              type: "2d",
-              sideHeight: 25,
-            },
-            barTotal: {
-              disabled: true,
-            },
-            barColumn: {
-              fontSize: 120,
-              color: 'rgba(166, 139, 87, 0.6)',
-              opacity: 0.8
-            },
-            justifySpacing: 10,
-            alignSpacing: 1,
-            // title: {
-            //   text: "中国1952-2019年GDP增长趋势，厉害了！",
-            //   padding: [0, 0, 10, 0],
-            // },
-            // subTitle: {
-            //   text: "数据来源：国家统计局",
-            //   align: "center",
-            //   color: "#888",
-            //   fontSize: 18,
-            //   padding: [0, 0, 20, 0],
-            // },
             formatter(value, type) {
               value = Math.floor(value);
               if (type === "axis") return `${value}`;
