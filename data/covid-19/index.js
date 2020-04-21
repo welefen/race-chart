@@ -34,10 +34,10 @@ const deathENPath = path.join(__dirname, "death_en.json");
 const econENPath = path.join(__dirname, "econ_en.json");
 
 const d = new Date();
-const today =
-  `0${d.getMonth() + 1}`.slice(-2) + "." + `0${d.getDate()}`.slice(-2);
+// const today = `0${d.getMonth() + 1}`.slice(-2) + "." + `0${d.getDate()}`.slice(-2);
+const today = '04.20';
 
-(async function () {
+;(async function () {
   const data = await fetch(
     "https://gwpre.sina.cn/interface/fymap2020_data.json"
   ).then((res) => res.json());

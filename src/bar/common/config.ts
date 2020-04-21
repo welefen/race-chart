@@ -50,8 +50,8 @@ const total: BarTotalConfig = {
 }
 
 const column: BarColumnConfig = {
-  text: '2011',
-  fontSize: 78,
+  text: '',
+  fontSize: 80,
   color: '#bbb',
   fontFamily,
   fontWeight: 'bold',

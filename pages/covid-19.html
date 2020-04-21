@@ -38,7 +38,7 @@
     <script src="http://s8.qhres.com/static/8f1f3a4fcc9aaa3a/canvas2video.js"></script>
     <script src="https://unpkg.com/@ffmpeg/ffmpeg@0.7.0/dist/ffmpeg.min.js"></script>
     <script>
-      fetch('../data/covid-19/econ_en.json').then(res => res.json()).then(data => {
+      fetch('../data/covid-19/con_en.json').then(res => res.json()).then(data => {
         const instance = new BarRace({
         selector: document.querySelector("#container"),
         data: data,
@@ -51,30 +51,35 @@
         // scaleType: 'fixed',
         // colors: ['red'],
         padding: [10, 20, 20, 10],
-        barLabel: {
-          width: 150,
-          fontSize: 20,
-          fontWeight: 'bold'
+        bar: {
+          label: {
+            width: 150,
+            fontSize: 20,
+            fontWeight: 'bold'
+          },
+          value: {
+            fontSize: 20,
+            width: 100
+          },
+          logo: {
+            disabled: true
+          },
+          rect: {
+            type: '3d',
+            sideHeight: 10,
+            radius: 5
+          },
+          column: {
+            fontSize: 80
+          },
+          total: {
+            fontSize: 40
+          },
+          justifySpacing: 20,
+          alignSpacing: 10,
         },
-        barValue: {
-          fontSize: 20,
-          width: 80
-        },
-        barLogo: {
-          disabled: true,
-        },
-        barRect: {
-          type: "2d",
-          sideHeight: 10,
-          radius: 5,
-        },
-        barTotal: {
-          // disabled: true,
-        },
-        justifySpacing: 15,
-        alignSpacing: 3,
         title: {
-          text: "Active cases of Coronavirus by Country",
+          // text: "Active cases of Coronavirus by Country",
           padding: [0, 0, 10, 0],
         },
         duration: function (column, index, length) {
@@ -83,7 +88,7 @@
           return 1500;
         },
         axis: {
-          tipHeight: 25,
+          tipHeight: 35,
         },
         watermark: {
           text: "DataRace",
