@@ -132,7 +132,7 @@ export class BarTrend extends Events {
     await this.renderWatermark();
     this.emit('start');
     await this.renderOpeningImage();
-    this.emit('openingImageEnd')
+    this.emit('startRace')
   }
 
   protected onUpdate(percent: number): void {
