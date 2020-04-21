@@ -27,3 +27,9 @@ ffmpeg -i video.mp4 -i 1.mp3 -c:v copy -c:a aac -strict experimental -shortest o
   ]
 }
 ```
+
+## 视频转 gif
+
+```
+ffmpeg -t 3 -ss 00:00:02 -i small.webm small-clip.gif
+```
