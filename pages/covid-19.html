@@ -55,6 +55,10 @@
           image: 'http://p3.qhimg.com/t01f902739d6791fc9b.png',
           time: 3000
         },
+        endingImage: {
+          image: 'http://p2.qhimg.com/t0140b9b54927bb4fcb.png',
+          time: 3000
+        },
         bar: {
           label: {
             width: 150,
@@ -87,7 +91,7 @@
           padding: [0, 0, 10, 0],
         },
         duration: function (column, index, length) {
-          // return 3000;
+          // return 30;
           if(index < 30) return 600;
           return 1500;
         },

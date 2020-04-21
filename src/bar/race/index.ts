@@ -88,11 +88,13 @@ export class BarRace extends BarTrend {
       this.index++;
     }
     const { lastStayTime } = this.config;
-    if (lastStayTime && this.status !== 'stop') {
+    if (lastStayTime) {
+      const el = this.layer.children[0];
       await this.timer.start(lastStayTime, _ => {
-
+        el.attr({ opacity: Math.random() > 0.5 ? 0.99 : 1 });
       })
     }
+    await this.renderEndingImage();
     this.emit('end');
   }
   private beforeAnimate() {
@@ -108,5 +110,13 @@ export class BarRace extends BarTrend {
   protected onUpdate(percent: number) {
     this.bars.update(this, percent);
     this.axis.update(this, percent);
+  }
+  stop() {
+    this.status = 'stop';
+    this.timer.stop();
+  }
+  restart() {
+    this.status = 'run';
+    return this.start();
   }
 }

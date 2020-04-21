@@ -135,6 +135,25 @@ export class BarTrend extends Events {
     this.emit('startRace')
   }
 
+  protected async renderEndingImage() {
+    const { image, time } = this.config.endingImage;
+    if (!image) return;
+    this.layer.removeAllChildren();
+    const sprite = new Sprite({
+      texture: 'endingImage',
+      width: this.config.width,
+      height: this.config.height
+    })
+    this.layer.appendChild(sprite);
+    await sprite.textureImageReady;
+    const lastSecondPercent = 1 - 300 / time;
+    return this.timer.start(time, percent => {
+      if (percent > lastSecondPercent) {
+        sprite.attr({ opacity: Math.random() > 0.5 ? 0.99 : 1 });
+      }
+    });
+  }
+
   protected onUpdate(percent: number): void {
 
   }
