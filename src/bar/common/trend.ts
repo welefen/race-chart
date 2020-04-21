@@ -35,8 +35,23 @@ export class BarTrend extends Events {
       this.config.selector = <HTMLElement>document.querySelector(<string>selector);
     }
   }
-  preload() {
-
+  async preload() {
+    const { openingImage, background, endingImage } = this.config;
+    const list = [{
+      id: 'openingImage',
+      src: openingImage.image
+    }, {
+      id: 'backgroundImage',
+      src: background.image
+    }, {
+      id: 'endingImage',
+      src: endingImage.image
+    }];
+    for (const item of list) {
+      if (item.src) {
+        await this.scene.preload(item);
+      }
+    }
   }
   protected renderWatermark(): Promise<void> {
     const { width, height } = this.config;
@@ -59,7 +74,7 @@ export class BarTrend extends Events {
     }
     if (image) {
       const sprite = new Sprite({
-        texture: image,
+        texture: 'backgroundImage',
         width, height,
         opacity
       })
@@ -69,7 +84,7 @@ export class BarTrend extends Events {
   /**
    * 渲染片头图片
    */
-  protected async renderOpeningImage(): Promise<void> {
+  protected async renderOpeningImage() {
     const { image, time } = this.config.openingImage;
     if (!image) return;
     const sprite = new Sprite({
@@ -79,12 +94,14 @@ export class BarTrend extends Events {
     })
     this.layer.appendChild(sprite);
     await sprite.textureImageReady;
-    return new Promise(resolve => {
-      setTimeout(() => {
-        resolve();
-        this.layer.removeChild(sprite);
-      }, time);
-    })
+    const lastSecondPercent = 1 - 300 / time;
+    await this.timer.start(time, percent => {
+      if (percent > lastSecondPercent) {
+        const opacity = 1 - (percent - lastSecondPercent) / (1 - lastSecondPercent);
+        sprite.attr({ opacity })
+      }
+    });
+    this.layer.removeChild(sprite);
   }
   protected async renderTitle(config: TitleConfig): Promise<number> {
     if (!config.text) return 0;
@@ -111,10 +128,11 @@ export class BarTrend extends Events {
   async render() {
     await this.preload();
     this.layer.removeAllChildren();
-    this.emit('start');
-    await this.renderOpeningImage();
     await this.renderBackground();
     await this.renderWatermark();
+    this.emit('start');
+    await this.renderOpeningImage();
+    this.emit('openingImageEnd')
   }
 
   protected onUpdate(percent: number): void {

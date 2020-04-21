@@ -51,6 +51,10 @@
         // scaleType: 'fixed',
         // colors: ['red'],
         padding: [10, 20, 20, 10],
+        openingImage: {
+          image: 'http://p3.qhimg.com/t01f902739d6791fc9b.png',
+          time: 3000
+        },
         bar: {
           label: {
             width: 150,
@@ -83,7 +87,7 @@
           padding: [0, 0, 10, 0],
         },
         duration: function (column, index, length) {
-          // return 100;
+          // return 3000;
           if(index < 30) return 600;
           return 1500;
         },
@@ -100,12 +104,12 @@
         canvas: instance.layer.canvas,
         mimeType: "video/webm",
         outVideoType: "mp4",
-        audio: "http://s5.qhres.com/static/465f1f953f1e6ff2.mp3",
+        // audio: "http://s5.qhres.com/static/465f1f953f1e6ff2.mp3",
       });
-      videoInstance.startRecord();
+      
       instance.start();
       instance.on("start", () => {
-        
+        videoInstance.startRecord();
       });
       instance.on("change", (column) => {
         
