@@ -149,7 +149,7 @@ export class BarTrend extends Events {
     const lastSecondPercent = 1 - 300 / time;
     return this.timer.start(time, percent => {
       if (percent > lastSecondPercent) {
-        sprite.attr({ opacity: Math.random() > 0.5 ? 0.99 : 1 });
+        sprite.attr({ opacity: Math.random() > 0.5 ? 0.98 : 1 });
       }
     });
   }
