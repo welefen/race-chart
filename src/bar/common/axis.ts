@@ -35,6 +35,8 @@ export class Axis {
   private addTicks(values: number[]) {
     if (values.length === 0) return;
     values.forEach(value => {
+      const flag = this.ticks.some(tick => tick.value === value);
+      if (flag) return;
       const x = Math.floor(value / (this.maxValue || 1) * this.config.width);
       const group = this.generateTick(x, value);
       if (value > this.maxValue) {
