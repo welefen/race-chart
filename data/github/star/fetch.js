@@ -25,7 +25,7 @@ function fetchData() {
   getStarHistory(data.projects[index++]).then(fetchData);
 }
 
-;data.projects.slice(0, 5).forEach((_) => {
+;data.projects.slice(0, 2).forEach((_) => {
   fetchData();
 });
 
@@ -34,12 +34,14 @@ async function getStarHistory(data) {
   while (true) {
     const url = `${initUrl}?page=${data.page + 1}`;
     console.log(data.project, data.page);
-    const result = await axiosGit.get(url).catch((err) => {
+    const result = await axiosGit.get(url, {
+      timeout: 10 * 1000
+    }).catch((err) => {
       console.error(data.project, err.message);
       return err;
     });
-    if(result instanceof Error && result.message.indexOf('ECONNREFUSED') > 0) {
-      await sleep(3000);
+    if(result instanceof Error) {
+      await sleep(30000);
     }
     if (!result || result.data.length < 30) {
       break;
