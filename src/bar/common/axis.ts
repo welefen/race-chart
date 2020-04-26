@@ -55,7 +55,7 @@ export class Axis {
       width: 20,
       height: this.config.height
     })
-    const valueStr = this.config.formatter(value, 'axis');
+    const valueStr = this.config.formatter(value, 'axis').toString();
     const label = createLabel(valueStr, this.config);
     group.appendChild(label);
     label.textImageReady.then(() => {
