@@ -34,6 +34,6 @@
     "deepmerge": "^4.2.2",
     "eventemitter3": "^4.0.0",
     "is-mergeable-object": "^1.1.1",
-    "spritejs": "^3.4.24"
+    "spritejs": "^3.6.2"
   }
 }
