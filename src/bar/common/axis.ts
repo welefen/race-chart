@@ -35,7 +35,7 @@ export class Axis {
   private addTicks(values: number[]) {
     if (values.length === 0) return;
     values.forEach(value => {
-      const flag = this.ticks.some(tick => tick.value === value);
+      const flag = this.ticks.some(tick => tick.value === value && !tick.remove);
       if (flag) return;
       const x = Math.floor(value / (this.maxValue || 1) * this.config.width);
       const group = this.generateTick(x, value);
@@ -93,7 +93,7 @@ export class Axis {
     const max = this.ticks[this.ticks.length - 1].value;
     if (max + this.step < value) {
       let num = 0;
-      let max = 0;
+      let maxValue = 0;
       const newSteps = this.getSteps(value);
       if (max < newSteps[0]) {
         this.ticks.forEach((tick, index) => {
@@ -108,16 +108,16 @@ export class Axis {
             tick.remove = true;
             num++;
           } else {
-            max = tick.value;
+            maxValue = tick.value;
           }
         })
         this.step *= 2;
         if (num) {
           const values = [];
           while (num) {
-            values.push(this.getFormatValue(max + this.step));
+            values.push(this.getFormatValue(maxValue + this.step));
             num--;
-            max += this.step;
+            maxValue += this.step;
           }
           this.addTicks(values);
         }
@@ -135,7 +135,7 @@ export class Axis {
   update(barRace: BarRace, percent: number) {
     const prevValue = barRace.index === 0 ? 0 : barRace.maxValues[barRace.index - 1];
     const value = barRace.maxValues[barRace.index];
-    if (prevValue === value || value < this.maxValue) return;
+    if (prevValue === value) return;
     const v = Math.floor(prevValue + (value - prevValue) * percent);
     if (!v) return;
     this.maxValue = v;
