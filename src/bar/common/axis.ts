@@ -25,7 +25,7 @@ export class Axis {
     this.ticks.forEach(tick => {
       const x = tick.value / this.maxValue * this.config.width;
       tick.group.attr({ x });
-      if (tick.remove) {
+      if (tick.remove || tick.value > this.maxValue) {
         tick.group.attr({ opacity: Math.max(0, 1 - percent * 3) });
       } else if (tick.value < this.maxValue) {
         tick.group.attr({ opacity: 1 });
