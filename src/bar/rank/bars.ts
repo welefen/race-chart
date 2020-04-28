@@ -47,10 +47,12 @@ export class Bars {
   async beforeAnimate(barRank: BarRank) {
     const bar = await this.createBar(barRank);
     this.bars.push(bar);
-    const maxValue = barRank.config.data[barRank.index].value;
-    const lastData = barRank.index === barRank.config.data.length - 1;
+    const { data, showNum } = barRank.config;
+    const thirdValue = this.bars[Math.min(3, this.bars.length) - 1].values[0];
+    const maxValue = Math.max(data[barRank.index].value, thirdValue / 0.7);
+
+    const lastData = barRank.index === data.length - 1;
     const length = this.bars.length;
-    const showNum = barRank.config.showNum;
     this.animateData = this.bars.map((bar, index) => {
       const last = index === length - 1;
       let newPos = 0;
