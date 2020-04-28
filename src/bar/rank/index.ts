@@ -1,6 +1,6 @@
 import { BarTrend } from '../common/trend';
 import { BarRankConfig } from './types';
-import { deepmerge } from '../../common/util';
+import { deepmerge, timeout } from '../../common/util';
 import { barRankConfig } from './config';
 import { Bars } from './bars';
 import { Position } from '../../common/types';
@@ -47,7 +47,7 @@ export class BarRank extends BarTrend {
       await this.timer.start(dur);
       await this.afterAnimate();
       this.index++;
-      // break;
+      await timeout(this.config.delay);
     }
     this.emit('end');
   }

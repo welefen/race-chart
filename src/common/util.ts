@@ -58,3 +58,9 @@ export function createGroup(config?: Position): Group {
   const { x, y, width, height } = config;
   return new Group({ x, y, width, height });
 }
+
+export function timeout(time: number): Promise<void> {
+  return new Promise(resolve => {
+    setTimeout(resolve, time);
+  })
+}

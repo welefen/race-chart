@@ -14,6 +14,7 @@ const rank: RankConfig = {
 
 export const barRankConfig: BarRankConfig = {
   ...barTrendConfig,
+  delay: 300,
   bar: {
     ...barConfig,
     rank

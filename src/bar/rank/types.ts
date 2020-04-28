@@ -14,6 +14,7 @@ export interface BarDataItem {
 export interface BarRankConfig extends BarTrendConfig {
   data?: BarDataItem[];
   bar?: BarConfig;
+  delay?: number;
 }
 
 export interface AnimateData {
