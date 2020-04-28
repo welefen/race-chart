@@ -35,7 +35,7 @@ export class BarTrend extends Events {
       this.config.selector = <HTMLElement>document.querySelector(<string>selector);
     }
   }
-  async preload() {
+  protected async preload() {
     const { openingImage, background, endingImage } = this.config;
     const list = [{
       id: 'openingImage',

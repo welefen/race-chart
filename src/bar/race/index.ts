@@ -39,6 +39,17 @@ export class BarRace extends BarTrend {
     }
     this.maxValues = values;
   }
+  protected async preload() {
+    await super.preload();
+    const { logo } = this.config.bar;
+    if (!logo.disabled) {
+      const promises = this.config.data.data.map(item => {
+        if (!item.image) return;
+        return this.scene.preload({id: item.image, src: item.image})
+      })
+      return Promise.all(promises).then(() => { })
+    }
+  }
   async render() {
     await super.render();
     let [y, paddingRight, paddingBottom, x] = <number[]>this.config.padding;
