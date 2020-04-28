@@ -51,6 +51,8 @@ export interface BarLogoConfig {
   image?: string;
   opacity?: number;
   disabled?: boolean;
+  deltaSize?: number;
+  borderSize?: number;
 }
 
 export interface BarRectConfig {

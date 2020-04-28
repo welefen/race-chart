@@ -17,7 +17,7 @@ export interface Font {
   lineHeight?: number;
   color?: string;
   opactiy?: number;
-  padding?: number[];
+  padding?: [number, number, number, number];
   align?: Align;
 }
 

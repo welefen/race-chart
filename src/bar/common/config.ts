@@ -11,6 +11,8 @@ const label: BarLabelConfig = {
 
 const logo: BarLogoConfig = {
   disabled: false,
+  deltaSize: 0,
+  borderSize: 6
 }
 
 const axis: AxisConfig = {

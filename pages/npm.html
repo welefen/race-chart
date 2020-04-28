@@ -36,7 +36,7 @@
     </div>
     <script src="../dist/barRace.js"></script>
     <!-- <script src="http://s8.qhres.com/static/49dc5f5662a566ee.js"></script> -->
-    <script src="http://s8.qhres.com/static/8f1f3a4fcc9aaa3a/canvas2video.js"></script>
+    <script src="http://s8.qhres.com/static/f5d328097dd65d47/canvas2video.js"></script>
     <script src="https://unpkg.com/@ffmpeg/ffmpeg@0.7.0/dist/ffmpeg.min.js"></script>
     <script>
       fetch("../data/npm/pack_download.json")
@@ -52,7 +52,7 @@
             },
             padding: [15, 15, 15, 15],
             title: {
-              text: 'Webpack等前端打包工具NPM月下载量趋势',
+              text: '前端打包工具NPM月下载量趋势',
               padding: [10, 0, 30, 0]
             },
             bar: {
@@ -104,8 +104,8 @@
           });
           const videoInstance = new Canvas2Video({
             canvas: instance.layer.canvas,
-            mimeType: "video/webm",
-            outVideoType: "mp4",
+            mimeType: "video/webm;codecs=h264",
+            outVideoType: "webm",
             // audio: "http://s6.qhres.com/static/8b52098f6453e7dd.mp3",
             workerOptions: {
               logger: ({ message }) => console.log(message)

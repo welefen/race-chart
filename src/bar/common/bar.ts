@@ -130,19 +130,16 @@ export class Bar {
     const { logo } = this.config;
     if (!logo.image || logo.disabled) return;
     const sprite = new Sprite({
-      texture: logo.image
+      texture: logo.image,
+      height: this.config.height + logo.deltaSize,
+      width: this.config.height + logo.deltaSize,
+      border: [logo.borderSize, this.config.color],
+      y: -(logo.borderSize + logo.deltaSize / 2),
+      borderRadius: this.config.height
     })
     this.logo = sprite;
     this.group.appendChild(sprite);
-    return sprite.textureImageReady.then(() => {
-      let [width, height] = sprite.clientSize;
-      width *= this.config.height / height;
-      sprite.attr({
-        width,
-        height: this.config.height
-      })
-      this.updateLogoX();
-    })
+    this.updateLogoX();
   }
   set valueText(value: number) {
     this.config.value.value = value;
@@ -151,14 +148,24 @@ export class Bar {
   }
   private updateValueX() {
     if (!this.value) return;
+    const logoSize = this.logoSize;
+    const delta = this.config.rect.width > logoSize / 2 ? this.logoSize / 2 : 0
     this.value.attr({
-      x: this.config.label.width + this.config.rect.width + this.config.justifySpacing * 2
+      x: this.config.label.width + this.config.rect.width + this.config.justifySpacing * 2 + delta
     })
   }
+  private get logoSize() {
+    const { logo } = this.config;
+    if (!logo.image || logo.disabled) return 0;
+    return this.config.height + logo.deltaSize + logo.borderSize * 2;
+  }
+
   private updateLogoX() {
     if (!this.logo) return;
+    const logoSize = this.logoSize;
     this.logo.attr({
-      x: this.config.label.width + this.config.justifySpacing
+      opacity: this.config.rect.width > logoSize / 2 ? 1 : 0,
+      x: this.config.label.width + this.config.justifySpacing + this.config.rect.width - this.logoSize / 2
     })
   }
 }

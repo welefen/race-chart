@@ -35,7 +35,7 @@
     </div>
     <script src="../dist/barRace.js"></script>
     <!-- <script src="http://s8.qhres.com/static/49dc5f5662a566ee.js"></script> -->
-    <script src="http://s8.qhres.com/static/8f1f3a4fcc9aaa3a/canvas2video.js"></script>
+    <script src="http://s8.qhres.com/static/6052764f8f0b90c3/canvas2video.js"></script>
     <script src="https://unpkg.com/@ffmpeg/ffmpeg@0.7.0/dist/ffmpeg.min.js"></script>
     <script>
       fetch('../data/covid-19/con_en.json').then(res => res.json()).then(data => {
@@ -47,14 +47,14 @@
           color: "#fff",
         },
         padding: [10, 20, 20, 10],
-        openingImage: {
-          image: 'http://p7.qhimg.com/t01bb9b721b720e4f7a.png',
-          time: 3000
-        },
-        endingImage: {
-          image: 'http://p2.qhimg.com/t01d344f800431c9e13.png',
-          time: 3000
-        },
+        // openingImage: {
+        //   image: 'http://p7.qhimg.com/t01bb9b721b720e4f7a.png',
+        //   time: 3000
+        // },
+        // endingImage: {
+        //   image: 'http://p2.qhimg.com/t01d344f800431c9e13.png',
+        //   time: 3000
+        // },
         bar: {
           label: {
             width: 150,
@@ -66,10 +66,10 @@
             width: 100
           },
           logo: {
-            disabled: true
+            disabled: false
           },
           rect: {
-            type: '3d',
+            type: '2d',
             sideHeight: 10,
             radius: 5
           },
@@ -80,14 +80,14 @@
             fontSize: 40
           },
           justifySpacing: 20,
-          alignSpacing: 10,
+          alignSpacing: 12,
         },
         title: {
           // text: "Active cases of Coronavirus by Country",
           padding: [0, 0, 10, 0],
         },
         duration: function (column, index, length) {
-          // return 30;
+          return 30;
           if(index < 30) return 600;
           return 1500;
         },
@@ -102,9 +102,9 @@
       });
       const videoInstance = new Canvas2Video({
         canvas: instance.layer.canvas,
-        mimeType: "video/webm",
-        outVideoType: "mp4",
-        audio: "http://s5.qhres.com/static/465f1f953f1e6ff2.mp3",
+        mimeType: "video/webm;codecs=h264",
+        outVideoType: "webm",
+        // audio: "http://s5.qhres.com/static/465f1f953f1e6ff2.mp3",
       });
       
       instance.start();
