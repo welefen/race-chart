@@ -1,6 +1,6 @@
 import { BarsConfig, AnimateData } from './types';
-import { createGroup } from '../../common/util';
-import { Group, Layer } from 'spritejs';
+import { createGroup, createLabel } from '../../common/util';
+import { Group, Layer, Label } from 'spritejs';
 import { Bar } from '../common/bar';
 import { BarRank } from './index';
 import deepmerge from 'deepmerge';
@@ -9,6 +9,7 @@ export class Bars {
   private animateData: AnimateData[] = [];
   private rectMaxWidth: number; // 矩形最大宽度
   private barHeight: number; // 单个 bar 的高度
+  private rankLabels: Label[] = [];
   config: BarsConfig;
   group: Group;
   bars: Bar[] = [];
@@ -19,6 +20,30 @@ export class Bars {
     const { label, value, justifySpacing, alignSpacing } = this.config.bar;
     this.rectMaxWidth = width - label.width - value.width - 2 * justifySpacing;
     this.barHeight = (height - alignSpacing * (showNum - 1)) / showNum;
+  }
+  private async initRankLabel() {
+    const { rank } = this.config.bar;
+    const nameLabel = createLabel('', rank);
+    nameLabel.attr({
+      textAlign: 'right',
+      width: this.config.width,
+      boxSizing: 'border-box'
+    })
+    this.group.appendChild(nameLabel);
+    await nameLabel.textImageReady;
+    const [_, height] = nameLabel.clientSize;
+    nameLabel.attr({
+      y: this.config.height - height
+    })
+    const rankLabel = createLabel('', rank);
+    rankLabel.attr({
+      textAlign: 'right',
+      width: this.config.width,
+      y: this.config.height - height * 2,
+      boxSizing: 'border-box'
+    })
+    this.group.appendChild(rankLabel);
+    this.rankLabels = [rankLabel, nameLabel];
   }
   private async createBar(barRank: BarRank) {
     const { data, colors } = barRank.config;
@@ -47,9 +72,20 @@ export class Bars {
   async beforeAnimate(barRank: BarRank) {
     const bar = await this.createBar(barRank);
     this.bars.push(bar);
-    const { data, showNum } = barRank.config;
+    const { data, showNum, colors } = barRank.config;
+    const currentData = data[barRank.index];
+
+    this.rankLabels[0].attr({
+      text: this.config.bar.rank.formatter(data.length - barRank.index)
+    })
+    this.rankLabels[1].attr({
+      fillColor: colors[barRank.index % colors.length],
+      text: currentData.label
+    })
+
+
     const thirdValue = this.bars[Math.min(3, this.bars.length) - 1].values[0];
-    const maxValue = Math.max(data[barRank.index].value, thirdValue / 0.7);
+    const maxValue = Math.max(currentData.value, thirdValue / 0.7);
 
     const lastData = barRank.index === data.length - 1;
     const length = this.bars.length;
@@ -95,7 +131,8 @@ export class Bars {
       bar.removeBy(this.group);
     }
   }
-  appendTo(layer: Layer) {
+  async appendTo(layer: Layer) {
+    await this.initRankLabel();
     layer.appendChild(this.group);
   }
   private getBarY(index: number) {

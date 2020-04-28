@@ -1,5 +1,7 @@
-import { BarTrendConfig } from '../common/types';
-import { Position } from '../../common/types';
+import { BarTrendConfig, BarConfig as BarConfigDefault } from '../common/types';
+import { Position, Font } from '../../common/types';
+
+export type Formatter = (value: number) => string;
 
 
 export interface BarDataItem {
@@ -11,6 +13,7 @@ export interface BarDataItem {
 
 export interface BarRankConfig extends BarTrendConfig {
   data?: BarDataItem[];
+  bar?: BarConfig;
 }
 
 export interface AnimateData {
@@ -20,6 +23,14 @@ export interface AnimateData {
   pos?: number;
   newPos?: number;
   opacity?: number;
+}
+
+export interface RankConfig extends Font {
+  formatter?: Formatter;
+}
+
+export interface BarConfig extends BarConfigDefault {
+  rank?: RankConfig
 }
 
 export interface BarsConfig extends BarRankConfig, Position {

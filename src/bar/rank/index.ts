@@ -4,12 +4,12 @@ import { deepmerge } from '../../common/util';
 import { barRankConfig } from './config';
 import { Bars } from './bars';
 import { Position } from '../../common/types';
+import { Label } from 'spritejs';
 
 export class BarRank extends BarTrend {
+  private bars: Bars;
   config: BarRankConfig;
-  bars: Bars;
   index: number = 0; // 当前所在的数据 index
-  maxValue: number;
   constructor(config: BarRankConfig) {
     super(config);
   }
@@ -21,10 +21,6 @@ export class BarRank extends BarTrend {
     })
     // 可能数据长度不足 showNum 的大小
     this.config.showNum = Math.min(this.config.showNum, this.config.data.length);
-    this.initMaxValue();
-  }
-  private initMaxValue() {
-    this.maxValue = Math.max(...this.config.data.map(item => item.value));
   }
   private renderBars(pos: Position) {
     this.bars = new Bars({
