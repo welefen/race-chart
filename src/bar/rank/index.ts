@@ -36,8 +36,6 @@ export class BarRank extends BarTrend {
   async render() {
     await super.render();
     await this.renderBars({
-      x: 0,
-      y: 0,
       width: this.config.width,
       height: this.config.height,
     });
@@ -53,6 +51,7 @@ export class BarRank extends BarTrend {
       await this.timer.start(dur);
       await this.afterAnimate();
       this.index++;
+      // break;
     }
     this.emit('end');
   }

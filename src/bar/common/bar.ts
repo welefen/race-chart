@@ -20,7 +20,8 @@ export class Bar {
     this.index = index;
     this.values = values;
   }
-  attr(attrs: Record<string, any>) {
+  attr(attrs?: Record<string, any>) {
+    if (!attrs) return this.group.attributes;
     this.group.attr(attrs);
   }
   async appendTo(node: Group) {
@@ -29,6 +30,9 @@ export class Bar {
     this.initRect();
     await this.initLogo();
     return this.initValue();
+  }
+  removeBy(node: Group) {
+    node.removeChild(this.group);
   }
   private initLabel() {
     const { width, text } = this.config.label;
@@ -113,6 +117,9 @@ export class Bar {
     }
     this.updateValueX();
     this.updateLogoX();
+  }
+  get rectWidth() {
+    return this.config.rect.width || 0;
   }
   private initValue() {
     if (this.config.value.color === 'currentColor') {

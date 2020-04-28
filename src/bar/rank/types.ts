@@ -14,10 +14,12 @@ export interface BarRankConfig extends BarTrendConfig {
 }
 
 export interface AnimateData {
-  value?: number;
   width?: number;
-  index?: number;
+  newWidth?: number;
+  maxValue?: number;
   pos?: number;
+  newPos?: number;
+  opacity?: number;
 }
 
 export interface BarsConfig extends BarRankConfig, Position {
