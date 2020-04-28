@@ -1,5 +1,5 @@
 import { config, fontFamily } from '../../common/config';
-import { BarLogoConfig, BarTrendConfig, AxisConfig, BarConfig, BarLabelConfig, BarRectConfig, BarValueConfig, BarTotalConfig, BarColumnConfig } from './types';
+import { BarLogoConfig, BarTrendConfig, AxisConfig, BarConfig, BarLabelConfig, BarRectConfig, BarValueConfig, } from './types';
 import { valueFormatter } from '../../common/util';
 
 const label: BarLabelConfig = {
@@ -42,31 +42,13 @@ const value: BarValueConfig = {
   width: 100
 }
 
-const total: BarTotalConfig = {
-  disabled: false,
-  prefix: 'Total: ',
-  fontSize: 22,
-  fontFamily,
-  color: '#aaa',
-  align: 'right',
-}
 
-const column: BarColumnConfig = {
-  text: '',
-  fontSize: 80,
-  color: '#bbb',
-  fontFamily,
-  fontWeight: 'bold',
-  align: 'right'
-}
 
-const bar: BarConfig = {
+export const barConfig: BarConfig = {
   label,
   logo,
   rect,
   value,
-  total,
-  column,
   alignSpacing: 5,
   justifySpacing: 5,
 }
@@ -78,7 +60,6 @@ export const barTrendConfig: BarTrendConfig = {
   scaleType: 'dynamic',
   sortType: 'desc',
   formatter: valueFormatter,
-  bar,
   lastStayTime: 0,
   duration: 1000
 }

@@ -1,5 +1,5 @@
-import { BarTrendConfig } from '../common/types';
-import { Position } from '../../common/types';
+import { BarTrendConfig, BarConfig as BarConfigDefault } from '../common/types';
+import { Formatter, Position, Font } from '../../common/types';
 
 export interface BarDataItem {
   image?: string;
@@ -23,7 +23,26 @@ export interface AnimateData {
   newPos?: number;
 }
 
+export interface BarColumnConfig extends Font {
+  disabled?: boolean;
+  text?: string;
+}
+
+export interface BarTotalConfig extends Font {
+  disabled?: boolean; // 是否显示
+  value?: number;
+  prefix?: string; // 前缀
+  formatter?: Formatter;
+}
+
+
+export interface BarConfig extends BarConfigDefault {
+  total?: BarTotalConfig;
+  column?: BarColumnConfig;
+}
+
 export interface BarRaceConfig extends BarTrendConfig {
+  bar?: BarConfig;
   data?: BarData;
 }
 

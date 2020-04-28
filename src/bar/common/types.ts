@@ -22,17 +22,6 @@ export interface AxisTick {
   group?: Group;
 }
 
-export interface BarColumnConfig extends Font {
-  disabled?: boolean;
-  text?: string;
-}
-
-export interface BarTotalConfig extends Font {
-  disabled?: boolean; // 是否显示
-  value?: number;
-  prefix?: string; // 前缀
-  formatter?: Formatter;
-}
 
 export interface BarLabelConfig extends Font {
   text?: string;
@@ -72,8 +61,6 @@ export interface BarConfig extends Position {
   value?: BarValueConfig;
   logo?: BarLogoConfig;
   rect?: BarRectConfig;
-  total?: BarTotalConfig;
-  column?: BarColumnConfig;
   color?: string;
 }
 
@@ -83,8 +70,8 @@ export interface BarTrendConfig extends Config {
   scaleType?: ScaleType; // bar 缩放方式
   sortType?: SortType; // 数据排序方式
   formatter?: Formatter; //数据格式化函数
-  bar?: BarConfig;
   lastStayTime?: number;
   duration?: number | Duration;
+  bar?: BarConfig;
 }
 
