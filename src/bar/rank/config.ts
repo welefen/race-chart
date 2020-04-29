@@ -6,7 +6,6 @@ const rank: RankConfig = {
   fontFamily,
   fontSize: 60,
   color: '#aaa',
-  padding: [0, 20, 10, 0],
   formatter(index) {
     return `第${index}名`;
   }

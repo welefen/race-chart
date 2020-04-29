@@ -81,11 +81,14 @@ export class BarRank extends BarTrend {
   }
   protected onUpdate(percent: number) {
     this.bars.onUpdate(this, percent);
+    this.axis.update(this, percent);
   }
   beforeAnimate() {
     this.bars.beforeAnimate(this);
+    this.axis.beforeAnimate(this);
   }
   afterAnimate() {
     this.bars.afterAnimate(this);
+    this.axis.afterAnimate(this);
   }
 }
