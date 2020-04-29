@@ -4,7 +4,7 @@ import { deepmerge } from '../../common/util';
 import { BarConfig } from './types';
 import { createLabel, createGroup } from '../../common/util';
 
-export class Bar {
+export class BarNode {
   private group: Group;
   private label: Label;
   private rect: Group;

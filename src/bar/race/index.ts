@@ -3,7 +3,7 @@ import { BarRaceConfig } from './types';
 import { deepmerge } from '../../common/util';
 import { sortValues, parseData } from './util';
 import { barRaceConfig } from './config';
-import { Bars } from './bars';
+import { BarGroup } from './barGroup';
 import { Status } from '../../common/types';
 import { Position } from '../../common/types';
 
@@ -11,7 +11,7 @@ export class BarRace extends BarChart {
   private status: Status = 'run';
   config: BarRaceConfig;
   values: number[] = []; //当前 index 所在的 values
-  bars: Bars;
+  barGroup: BarGroup;
   setConfig(config: BarRaceConfig): void {
     config = deepmerge({}, barRaceConfig, this.config, config);
     super.setConfig(config);
@@ -70,11 +70,11 @@ export class BarRace extends BarChart {
     this.afterAnimate();
   }
   private renderBars(pos: Position) {
-    this.bars = new Bars({
+    this.barGroup = new BarGroup({
       ...this.config,
       ...pos
     });
-    return this.bars.appendTo(this.layer);
+    return this.barGroup.appendTo(this.layer);
   }
   async start() {
     await this.render();
@@ -106,15 +106,15 @@ export class BarRace extends BarChart {
   private beforeAnimate() {
     sortValues(this.config.data.data, this.index, this.config.sortType);
     this.values = this.config.data.data.map(item => item.values[this.index]);
-    this.bars.beforeAnimate(this);
+    this.barGroup.beforeAnimate(this);
     this.axis.beforeAnimate(this);
   }
   private afterAnimate() {
-    this.bars.afterAnimate(this);
+    this.barGroup.afterAnimate(this);
     this.axis.afterAnimate(this);
   }
   protected onUpdate(percent: number) {
-    this.bars.update(this, percent);
+    this.barGroup.update(this, percent);
     this.axis.update(this, percent);
   }
   stop() {

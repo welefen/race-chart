@@ -1,18 +1,18 @@
 import { BarsConfig, AnimateData } from './types';
 import { createGroup, createLabel } from '../../common/util';
 import { Group, Layer, Label } from 'spritejs';
-import { Bar } from '../common/bar';
+import { BarNode } from '../common/barNode';
 import { BarRank } from './index';
 import deepmerge from 'deepmerge';
 
-export class Bars {
+export class BarGroup {
   private animateData: AnimateData[] = [];
   private rectMaxWidth: number; // 矩形最大宽度
   private barHeight: number; // 单个 bar 的高度
   private rankLabels: Label[] = [];
   config: BarsConfig;
   group: Group;
-  bars: Bar[] = [];
+  bars: BarNode[] = [];
   constructor(config: BarsConfig) {
     this.config = config;
     this.group = createGroup(this.config);
@@ -64,7 +64,7 @@ export class Bars {
         image: item.image
       }
     })
-    const bar = new Bar(config, 0, [item.value]);
+    const bar = new BarNode(config, 0, [item.value]);
     await bar.appendTo(this.group);
     bar.valueText = item.value;
     return bar;

@@ -2,11 +2,11 @@ import { BarChart } from '../common/barChart';
 import { BarRankConfig } from './types';
 import { deepmerge, timeout } from '../../common/util';
 import { barRankConfig } from './config';
-import { Bars } from './bars';
+import { BarGroup } from './barGroup';
 import { Position } from '../../common/types';
 
 export class BarRank extends BarChart {
-  private bars: Bars;
+  private barGroup: BarGroup;
   config: BarRankConfig;
   setConfig(config: BarRankConfig) {
     config = deepmerge({}, barRankConfig, this.config || {}, config || {});
@@ -32,11 +32,11 @@ export class BarRank extends BarChart {
     this.maxValues = values;
   }
   private renderBars(pos: Position) {
-    this.bars = new Bars({
+    this.barGroup = new BarGroup({
       ...this.config,
       ...pos
     });
-    return this.bars.appendTo(this.layer);
+    return this.barGroup.appendTo(this.layer);
   }
   async render() {
     await super.render();
@@ -76,15 +76,15 @@ export class BarRank extends BarChart {
     this.emit('end');
   }
   protected onUpdate(percent: number) {
-    this.bars.onUpdate(this, percent);
+    this.barGroup.onUpdate(this, percent);
     this.axis.update(this, percent);
   }
   beforeAnimate() {
-    this.bars.beforeAnimate(this);
+    this.barGroup.beforeAnimate(this);
     this.axis.beforeAnimate(this);
   }
   afterAnimate() {
-    this.bars.afterAnimate(this);
+    this.barGroup.afterAnimate(this);
     this.axis.afterAnimate(this);
   }
 }

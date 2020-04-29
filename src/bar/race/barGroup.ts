@@ -1,14 +1,14 @@
 import { Group, Layer, Label } from 'spritejs';
 
-import { Bar } from '../common/bar';
+import { BarNode } from '../common/barNode';
 import { BarRace } from './index';
 import { BarsConfig, BarDataItem, AnimateData } from './types';
 import { BarConfig } from '../common/types';
 import { createGroup, createLabel } from '../../common/util';
 import deepmerge from 'deepmerge';
 
-export class Bars {
-  private bars: Bar[] = [];
+export class BarGroup {
+  private bars: BarNode[] = [];
   private group: Group;
   private config: BarsConfig;
   private rectMaxWidth: number; // 矩形最大宽度
@@ -101,7 +101,7 @@ export class Bars {
       })
     })
   }
-  private getBarInstance(item: BarDataItem, index: number): Bar {
+  private getBarInstance(item: BarDataItem, index: number): BarNode {
     const color = this.config.colors[index % this.config.colors.length];
     const data: BarConfig = {
       x: 0,
@@ -121,7 +121,7 @@ export class Bars {
       }
     }
     const config = deepmerge(this.config.bar, data);
-    return new Bar(config, index, item.values)
+    return new BarNode(config, index, item.values)
   }
   private initBars(): Promise<any> {
     const promises = this.config.data.data.map((item, index) => {
