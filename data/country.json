@@ -1,1 +1,1358 @@
-[{"en":"Afghanistan","locale":"AF","zh":"阿富汗","image":"http://p1.qhimg.com/t01310c1cd7c6a6335c.png"},{"en":"Aland Islands","locale":"AX","zh":"奥兰群岛","image":"http://p7.qhimg.com/t01c01a1fc72e005cec.png"},{"en":"Albania","locale":"AL","zh":"阿尔巴尼亚","image":"http://p9.qhimg.com/t0196e302ff12dc520f.png"},{"en":"Algeria","locale":"DZ","zh":"阿尔及利亚","image":"http://p8.qhimg.com/t01fe07188646e1fd24.png"},{"en":"American Samoa","locale":"AS","zh":"美属萨摩亚","image":"http://p0.qhimg.com/t01042026db1934b66a.png"},{"en":"Andorra","locale":"AD","zh":"安道尔","image":"http://p6.qhimg.com/t017d44d4d2de2835cc.png"},{"en":"Angola","locale":"AO","zh":"安哥拉","image":"http://p2.qhimg.com/t0150229507ac477b42.png"},{"en":"Anguilla","locale":"AI","zh":"安圭拉","image":"http://p3.qhimg.com/t015fe6dcd617b8a91c.png"},{"en":"Antigua and Barbuda","locale":"AG","zh":"安提瓜和巴布达","image":"http://p7.qhimg.com/t0195dc0ae191ebc475.png"},{"en":"Argentina","locale":"AR","zh":"阿根廷","image":"http://p2.qhimg.com/t0138da971dfb8180fe.png"},{"en":"Armenia","locale":"AM","zh":"亚美尼亚","image":"http://p0.qhimg.com/t01eadc0664cab9bdbb.png"},{"en":"Aruba","locale":"AW","zh":"阿鲁巴","image":"http://p2.qhimg.com/t01723bac9ff9b7d9ec.png"},{"en":"Australia","locale":"AU","zh":"澳大利亚","image":"http://p6.qhimg.com/t01041dbc8c899b77b3.png"},{"en":"Austria","locale":"AT","zh":"奥地利","image":"http://p1.qhimg.com/t01b36f006f9c3a3783.png"},{"en":"Azerbaijan","locale":"AZ","zh":"阿塞拜疆","image":"http://p1.qhimg.com/t01c305d3997d8c76d8.png"},{"en":"Bangladesh","locale":"BD","zh":"孟加拉国","image":"http://p4.qhimg.com/t0182ea70b2d4140190.png"},{"en":"Bahrain","locale":"BH","zh":"巴林","image":"http://p8.qhimg.com/t01c09827903a1ea38d.png"},{"en":"Bahamas","locale":"BS","zh":"巴哈马","image":"http://p1.qhimg.com/t01a54c2e981bd774a5.png"},{"en":"Barbados","locale":"BB","zh":"巴巴多斯","image":"http://p2.qhimg.com/t01f81778547b1d7f59.png"},{"en":"Belarus","locale":"BY","zh":"白俄罗斯","image":"http://p7.qhimg.com/t01468c8ee2d15dca98.png"},{"en":"Belgium","locale":"BE","zh":"比利时","image":"http://p1.qhimg.com/t0103a4d6c03e105228.png"},{"en":"Belize","locale":"BZ","zh":"伯利兹","image":"http://p6.qhimg.com/t013dfe843dc51d41c6.png"},{"en":"Benin","locale":"BJ","zh":"贝宁","image":"http://p8.qhimg.com/t016d9716c6db5adc53.png"},{"en":"Bermuda","locale":"BM","zh":"百慕大","image":"http://p4.qhimg.com/t0117930d3942dbc403.png"},{"en":"Bhutan","locale":"BT","zh":"不丹","image":"http://p4.qhimg.com/t012734f01dc970f396.png"},{"en":"Bolivia","locale":"BO","zh":"玻利维亚","image":"http://p0.qhimg.com/t013da38f7a3f945a87.png"},{"en":"Bosnia and Herzegovina","locale":"BA","zh":"波斯尼亚和黑塞哥维那","image":"http://p5.qhimg.com/t0126c6e786ac6ed00b.png"},{"en":"Botswana","locale":"BW","zh":"博茨瓦纳","image":"http://p7.qhimg.com/t013439de145ed085ef.png"},{"en":"Bouvet Island","locale":"BV","zh":"布维岛","image":"http://p0.qhimg.com/t01d1e5c7afd41ef930.png"},{"en":"Brazil","locale":"BR","zh":"巴西","image":"http://p9.qhimg.com/t017ae156ebab026fa3.png"},{"en":"Brunei","locale":"BN","zh":"文莱","image":"http://p7.qhimg.com/t01419942dc6af520b8.png"},{"en":"Bulgaria","locale":"BG","zh":"保加利亚","image":"http://p0.qhimg.com/t01c02d1e67f0a80b69.png"},{"en":"Burkina Faso","locale":"BF","zh":"布基纳法索","image":"http://p4.qhimg.com/t012d1f6395739ff579.png"},{"en":"Burundi","locale":"BI","zh":"布隆迪","image":"http://p1.qhimg.com/t010f2dbfe65265e948.png"},{"en":"Cambodia","locale":"KH","zh":"柬埔寨","image":"http://p4.qhimg.com/t015074691667db192e.png"},{"en":"Cameroon","locale":"CM","zh":"喀麦隆","image":"http://p1.qhimg.com/t01cf1be21e1f3b5453.png"},{"en":"Canada","locale":"CA","zh":"加拿大","image":"http://p8.qhimg.com/t01ea3568eb2c8ca133.png"},{"en":"Cape Verde","locale":"CV","zh":"佛得角","image":"http://p3.qhimg.com/t01abad2bb6b191f633.png"},{"en":"Central African Republic","locale":"CF","zh":"中非共和国","image":"http://p0.qhimg.com/t01b75b24011cba28f0.png"},{"en":"Chad","locale":"TD","zh":"乍得","image":"http://p8.qhimg.com/t01636b333b694f7f1e.png"},{"en":"Chile","locale":"CL","zh":"智利","image":"http://p1.qhimg.com/t015a1af7110a0829a3.png"},{"en":"Christmas Islands","locale":"CX","zh":"圣诞岛","image":"http://p8.qhimg.com/t0106cee26b2e0ef43c.png"},{"en":"Cocos (keeling) Islands","locale":"CC","zh":"科科斯（基林）群岛","image":"http://p5.qhimg.com/t0138547ec3c0634f62.png"},{"en":"Colombia","locale":"CO","zh":"哥伦比亚","image":"http://p2.qhimg.com/t0104245f9c88c63c53.png"},{"en":"Comoros","locale":"KM","zh":"科摩罗","image":"http://p8.qhimg.com/t01756deb2b3afcc3f8.png"},{"en":"Congo (Congo-Kinshasa)","locale":"CD","zh":"刚果（金）","image":"http://p9.qhimg.com/t013b05f247caea331d.png"},{"en":"Congo","locale":"CG","zh":"刚果（布）","image":"http://p6.qhimg.com/t01d5efb39f65759866.png"},{"en":"Cook Islands","locale":"CK","zh":"库克群岛","image":"http://p7.qhimg.com/t01122dea96286a1880.png"},{"en":"Costa Rica","locale":"CR","zh":"哥斯达黎加","image":"http://p7.qhimg.com/t01804f17423a797076.png"},{"en":"Cote D'Ivoire","locale":"CI","zh":"科特迪瓦","image":"http://p9.qhimg.com/t014a280845c1f6e191.png"},{"en":"China","locale":"CN","zh":"中国","image":"http://p7.qhimg.com/t01d74c8821aa09553c.png"},{"en":"Croatia","locale":"HR","zh":"克罗地亚","image":"http://p3.qhimg.com/t01ab79d5efa0cb03a2.png"},{"en":"Cuba","locale":"CU","zh":"古巴","image":"http://p6.qhimg.com/t01bc2332fc6beec2eb.png"},{"en":"Czech","locale":"CZ","zh":"捷克","image":"http://p1.qhimg.com/t01204421dd90d70bdc.png"},{"en":"Cyprus","locale":"CY","zh":"塞浦路斯","image":"http://p3.qhimg.com/t0142b893b13a057521.png"},{"en":"Denmark","locale":"DK","zh":"丹麦","image":"http://p4.qhimg.com/t01666de485365781d6.png"},{"en":"Djibouti","locale":"DJ","zh":"吉布提","image":"http://p4.qhimg.com/t01e215b0700e1baa03.png"},{"en":"The Dominican Republic","locale":"DO","zh":"多米尼加","image":"http://p5.qhimg.com/t0117bfd209d4d65d2a.png"},{"en":"Ecuador","locale":"EC","zh":"厄瓜多尔","image":"http://p5.qhimg.com/t019b35b4c08a012a95.png"},{"en":"Egypt","locale":"EG","zh":"埃及","image":"http://p1.qhimg.com/t0102bc4193a532feb7.png"},{"en":"Equatorial Guinea","locale":"GQ","zh":"赤道几内亚","image":"http://p8.qhimg.com/t01eece991353d1bf39.png"},{"en":"Eritrea","locale":"ER","zh":"厄立特里亚","image":"http://p1.qhimg.com/t012d18164730a06e83.png"},{"en":"Estonia","locale":"EE","zh":"爱沙尼亚","image":"http://p3.qhimg.com/t013be740da9ddeda56.png"},{"en":"Ethiopia","locale":"ET","zh":"埃塞俄比亚","image":"http://p1.qhimg.com/t01c45653c9f165db1f.png"},{"en":"Faroe Islands","locale":"FO","zh":"法罗群岛","image":"http://p2.qhimg.com/t015e17a87f566eb485.png"},{"en":"Fiji","locale":"FJ","zh":"斐济","image":"http://p9.qhimg.com/t019546f01479c2199a.png"},{"en":"Finland","locale":"FI","zh":"芬兰","image":"http://p7.qhimg.com/t01fe10decfc242f9ce.png"},{"en":"France","locale":"FR","zh":"法国","image":"http://p1.qhimg.com/t014253f127ae96453d.png"},{"en":"French Guiana","locale":"GF","zh":"法属圭亚那","image":"http://p8.qhimg.com/t01b4b0fcba1fc29720.png"},{"en":"French Polynesia","locale":"PF","zh":"法属波利尼西亚","image":"http://p3.qhimg.com/t01528ba831bee1e74c.png"},{"en":"Gabon","locale":"GA","zh":"加蓬","image":"http://p2.qhimg.com/t0108edcd2b1e9c6fc1.png"},{"en":"Gambia","locale":"GM","zh":"冈比亚","image":"http://p1.qhimg.com/t01aec93fae848d32d1.png"},{"en":"Georgia","locale":"GE","zh":"格鲁吉亚","image":"http://p6.qhimg.com/t016b007aba0d062edf.png"},{"en":"Germany","locale":"DE","zh":"德国","image":"http://p3.qhimg.com/t0159b5387163378ad8.png"},{"en":"Ghana","locale":"GH","zh":"加纳","image":"http://p0.qhimg.com/t0180443ed895b36cc3.png"},{"en":"Gibraltar","locale":"GI","zh":"直布罗陀","image":"http://p7.qhimg.com/t0116ae5ef214d0247f.png"},{"en":"Greece","locale":"GR","zh":"希腊","image":"http://p9.qhimg.com/t011f3f1072f670e5d1.png"},{"en":"Grenada","locale":"GD","zh":"格林纳达","image":"http://p1.qhimg.com/t0164b507e50b17e7b9.png"},{"en":"Guadeloupe","locale":"GP","zh":"瓜德罗普岛","image":"http://p7.qhimg.com/t0159fd79dc425eea83.png"},{"en":"Guam","locale":"GU","zh":"关岛","image":"http://p9.qhimg.com/t01c430965abe5bb9a3.png"},{"en":"Guatemala","locale":"GT","zh":"危地马拉","image":"http://p6.qhimg.com/t014c47de48ac095435.png"},{"en":"Guernsey","locale":"GG","zh":"根西岛","image":"http://p8.qhimg.com/t01f8a83d4f5139d482.png"},{"en":"Guinea-Bissau","locale":"GW","zh":"几内亚比绍","image":"http://p1.qhimg.com/t0105438d87c139b1f7.png"},{"en":"Guinea","locale":"GN","zh":"几内亚","image":"http://p6.qhimg.com/t01ea3c0353202633a4.png"},{"en":"Guyana","locale":"GY","zh":"圭亚那","image":"http://p1.qhimg.com/t01dd68a1e890475dda.png"},{"en":"Haiti","locale":"HT","zh":"海地","image":"http://p9.qhimg.com/t014f42d9b0fef4a9e7.png"},{"en":"Honduras","locale":"HN","zh":"洪都拉斯","image":"http://p2.qhimg.com/t012390eb267ff3b0f8.png"},{"en":"Hungary","locale":"HU","zh":"匈牙利","image":"http://p1.qhimg.com/t01d9bece585f071c35.png"},{"en":"Iceland","locale":"IS","zh":"冰岛","image":"http://p8.qhimg.com/t01aa06fd413ce24989.png"},{"en":"India","locale":"IN","zh":"印度","image":"http://p6.qhimg.com/t014fd5ac8623df61ac.png"},{"en":"Indonesia","locale":"ID","zh":"印度尼西亚","image":"http://p7.qhimg.com/t01a6921d96d9d7727a.png"},{"en":"Iran","locale":"IR","zh":"伊朗","image":"http://p9.qhimg.com/t012682fbec06a7f150.png"},{"en":"Iraq","locale":"IQ","zh":"伊拉克","image":"http://p6.qhimg.com/t01b1ded3da2a22962b.png"},{"en":"Ireland","locale":"IE","zh":"爱尔兰","image":"http://p9.qhimg.com/t0160f2ee376ecd9e4e.png"},{"en":"Isle of Man","locale":"IM","zh":"马恩岛","image":"http://p3.qhimg.com/t01c9416b16a14e8d7f.png"},{"en":"Israel","locale":"IL","zh":"以色列","image":"http://p7.qhimg.com/t010d63df9659778bef.png"},{"en":"Italy","locale":"IT","zh":"意大利","image":"http://p0.qhimg.com/t015be4a49bdc82b17d.png"},{"en":"Jamaica","locale":"JM","zh":"牙买加","image":"http://p2.qhimg.com/t018731eb3a862e0d7f.png"},{"en":"Japan","locale":"JP","zh":"日本","image":"http://p7.qhimg.com/t014ee2dc9bb2a48723.png"},{"en":"Jersey","locale":"JE","zh":"泽西岛","image":"http://p7.qhimg.com/t01611dcb44bdccf505.png"},{"en":"Jordan","locale":"JO","zh":"约旦","image":"http://p7.qhimg.com/t0191d16a3a8c742b31.png"},{"en":"Kazakhstan","locale":"KZ","zh":"哈萨克斯坦","image":"http://p1.qhimg.com/t01e7ba813e8256b90c.png"},{"en":"Kenya","locale":"KE","zh":"肯尼亚","image":"http://p2.qhimg.com/t01145c86050b1273dd.png"},{"en":"Kiribati","locale":"KI","zh":"基里巴斯","image":"http://p1.qhimg.com/t010178e916165dc18a.png"},{"en":"Korea (South)","locale":"KR","zh":"韩国","image":"http://p0.qhimg.com/t017b32408bfd508f2a.png"},{"en":"Korea (North)","locale":"KP","zh":"朝鲜","image":"http://p7.qhimg.com/t011655b91ecd1cb697.png"},{"en":"Kuwait","locale":"KW","zh":"科威特","image":"http://p5.qhimg.com/t015e8c5c243605fc77.png"},{"en":"Kyrgyzstan","locale":"KG","zh":"吉尔吉斯斯坦","image":"http://p6.qhimg.com/t017ad6499575969309.png"},{"en":"Laos","locale":"LA","zh":"老挝","image":"http://p3.qhimg.com/t01072096a5276247ce.png"},{"en":"Latvia","locale":"LV","zh":"拉脱维亚","image":"http://p0.qhimg.com/t019f9f5ca4e8a2bdcb.png"},{"en":"Lebanon","locale":"LB","zh":"黎巴嫩","image":"http://p2.qhimg.com/t01886448ffb848bc16.png"},{"en":"Lesotho","locale":"LS","zh":"莱索托","image":"http://p4.qhimg.com/t0143c5e4471c8963f5.png"},{"en":"Liberia","locale":"LR","zh":"利比里亚","image":"http://p1.qhimg.com/t015036a54d6409a6ac.png"},{"en":"Libya","locale":"LY","zh":"利比亚","image":"http://p3.qhimg.com/t01abce7dae320ede15.png"},{"en":"Liechtenstein","locale":"LI","zh":"列支敦士登公国","image":"http://p6.qhimg.com/t0177710ca2892f4cb0.png"},{"en":"Lithuania","locale":"LT","zh":"立陶宛","image":"http://p6.qhimg.com/t01376b011e9e8d5b85.png"},{"en":"Luxembourg","locale":"LU","zh":"卢森堡","image":"http://p8.qhimg.com/t01f178579a5aa8d851.png"},{"en":"Macedonia","locale":"MK","zh":"马其顿","image":"http://p5.qhimg.com/t018b63e308ab082d8f.png"},{"en":"Malawi","locale":"MW","zh":"马拉维","image":"http://p2.qhimg.com/t0167e30668ae3e94e1.png"},{"en":"Malaysia","locale":"MY","zh":"马来西亚","image":"http://p0.qhimg.com/t0191597076a622b0de.png"},{"en":"Madagascar","locale":"MG","zh":"马达加斯加","image":"http://p5.qhimg.com/t01126f6e7d4c4ea883.png"},{"en":"Maldives","locale":"MV","zh":"马尔代夫","image":"http://p9.qhimg.com/t015b516cd988291099.png"},{"en":"Mali","locale":"ML","zh":"马里","image":"http://p4.qhimg.com/t01861b6850363bb7d2.png"},{"en":"Malta","locale":"MT","zh":"马耳他","image":"http://p0.qhimg.com/t01dbcc318bb7b751b5.png"},{"en":"Marshall Islands","locale":"MH","zh":"马绍尔群岛","image":"http://p5.qhimg.com/t01c5c7035e04d59fab.png"},{"en":"Martinique","locale":"MQ","zh":"马提尼克岛","image":"http://p7.qhimg.com/t01cfcd9cd44b9d811c.png"},{"en":"Mauritania","locale":"MR","zh":"毛里塔尼亚","image":"http://p4.qhimg.com/t0158f22ee1412b8282.png"},{"en":"Mauritius","locale":"MU","zh":"毛里求斯","image":"http://p3.qhimg.com/t01e7de67701174b936.png"},{"en":"Mayotte","locale":"YT","zh":"马约特","image":"http://p5.qhimg.com/t011b16e7ddf2331c76.png"},{"en":"Mexico","locale":"MX","zh":"墨西哥","image":"http://p5.qhimg.com/t01909ddda2f477fe89.png"},{"en":"Micronesia","locale":"MF","zh":"密克罗尼西亚","image":"http://p1.qhimg.com/t014253f127ae96453d.png"},{"en":"Moldova","locale":"MD","zh":"摩尔多瓦","image":"http://p8.qhimg.com/t01efd7ad5ec241aee0.png"},{"en":"Monaco","locale":"MC","zh":"摩纳哥","image":"http://p6.qhimg.com/t01cb88173c217ddae5.png"},{"en":"Mongolia","locale":"MN","zh":"蒙古国","image":"http://p9.qhimg.com/t01280e57d420f57c60.png"},{"en":"Montenegro","locale":"ME","zh":"黑山","image":"http://p4.qhimg.com/t013f9f2de0017f378d.png"},{"en":"Montserrat","locale":"MS","zh":"蒙特塞拉特岛","image":"http://p4.qhimg.com/t01caf4a3d16d21853b.png"},{"en":"Morocco","locale":"MA","zh":"摩洛哥","image":"http://p5.qhimg.com/t01b6d4cef73f261207.png"},{"en":"Mozambique","locale":"MZ","zh":"莫桑比克","image":"http://p1.qhimg.com/t01a4417e37ec8924e5.png"},{"en":"Myanmar","locale":"MM","zh":"缅甸","image":"http://p7.qhimg.com/t01a9c8c0d43cb98fa6.png"},{"en":"Namibia","locale":"NA","zh":"纳米比亚","image":"http://p3.qhimg.com/t01f8f7c96159046eb9.png"},{"en":"Nauru","locale":"NR","zh":"瑙鲁","image":"http://p4.qhimg.com/t01effa0e75d921669c.png"},{"en":"Nepal","locale":"NP","zh":"尼泊尔","image":"http://p3.qhimg.com/t01f4f22de64f39622d.png"},{"en":"Netherlands","locale":"NL","zh":"荷兰","image":"http://p7.qhimg.com/t012b3108f9212d6f5c.png"},{"en":"New Caledonia","locale":"NC","zh":"新喀里多尼亚","image":"http://p7.qhimg.com/t0139d77851a17cff88.png"},{"en":"New Zealand","locale":"NZ","zh":"新西兰","image":"http://p6.qhimg.com/t0113b46431de1a2ac0.png"},{"en":"Nicaragua","locale":"NI","zh":"尼加拉瓜","image":"http://p9.qhimg.com/t01e982b9546b942a7f.png"},{"en":"Niger","locale":"NE","zh":"尼日尔","image":"http://p2.qhimg.com/t01ce980e07c5614739.png"},{"en":"Nigeria","locale":"NG","zh":"尼日利亚","image":"http://p3.qhimg.com/t01a821f32f000c5a45.png"},{"en":"Niue","locale":"NU","zh":"纽埃","image":"http://p5.qhimg.com/t01329a8d2eca25dc45.png"},{"en":"Norfolk Island","locale":"NF","zh":"诺福克岛","image":"http://p2.qhimg.com/t0161bb1ae0a4492a5d.png"},{"en":"Norway","locale":"NO","zh":"挪威","image":"http://p0.qhimg.com/t01d1e5c7afd41ef930.png"},{"en":"Oman","locale":"OM","zh":"阿曼","image":"http://p5.qhimg.com/t01009c93b112451def.png"},{"en":"Pakistan","locale":"PK","zh":"巴基斯坦","image":"http://p4.qhimg.com/t019274cd74a03abf62.png"},{"en":"Palau","locale":"PW","zh":"帕劳","image":"http://p8.qhimg.com/t01611a31c0ce9c79cd.png"},{"en":"Palestine","locale":"PS","zh":"巴勒斯坦","image":"http://p0.qhimg.com/t01775f9a6192d96224.png"},{"en":"Panama","locale":"PA","zh":"巴拿马","image":"http://p6.qhimg.com/t0131f0f98f316ef68b.png"},{"en":"Papua New Guinea","locale":"PG","zh":"巴布亚新几内亚","image":"http://p1.qhimg.com/t017755e997d5b026a1.png"},{"en":"Peru","locale":"PE","zh":"秘鲁","image":"http://p7.qhimg.com/t01861bce3fba9704a1.png"},{"en":"Philippines","locale":"PH","zh":"菲律宾","image":"http://p1.qhimg.com/t01af67640f9a874a44.png"},{"en":"Pitcairn Islands","locale":"PN","zh":"皮特凯恩群岛","image":"http://p3.qhimg.com/t01aa112c9e653206e7.png"},{"en":"Poland","locale":"PL","zh":"波兰","image":"http://p8.qhimg.com/t01c16fac7f8fa39a9c.png"},{"en":"Portugal","locale":"PT","zh":"葡萄牙","image":"http://p1.qhimg.com/t01648e1a771554bbc5.png"},{"en":"Puerto Rico","locale":"PR","zh":"波多黎各","image":"http://p0.qhimg.com/t014c0ba9fb83fb8cdd.png"},{"en":"Qatar","locale":"QA","zh":"卡塔尔","image":"http://p1.qhimg.com/t01a3cf9e9741b1ba3e.png"},{"en":"Reunion","locale":"RE","zh":"留尼汪岛","image":"http://p5.qhimg.com/t01351ff2554c43b88e.png"},{"en":"Romania","locale":"RO","zh":"罗马尼亚","image":"http://p5.qhimg.com/t0183eb772cc171cefe.png"},{"en":"Rwanda","locale":"RW","zh":"卢旺达","image":"http://p1.qhimg.com/t011c36cc4a16229daf.png"},{"en":"Russian Federation","locale":"RU","zh":"俄罗斯","image":"http://p8.qhimg.com/t0168a092df4f6e5fc7.png"},{"en":"Saint Helena","locale":"SH","zh":"圣赫勒拿","image":"http://p5.qhimg.com/t013ad28c3c6eaa3a3f.png"},{"en":"Saint Kitts-Nevis","locale":"KN","zh":"圣基茨和尼维斯","image":"http://p4.qhimg.com/t018844c24153750fa4.png"},{"en":"Saint Lucia","locale":"LC","zh":"圣卢西亚","image":"http://p0.qhimg.com/t012610bf95b3640234.png"},{"en":"Saint Vincent and the Grenadines","locale":"VG","zh":"圣文森特岛","image":"http://p8.qhimg.com/t01cc2eae36ad3f5ca6.png"},{"en":"El Salvador","locale":"SV","zh":"萨尔瓦多","image":"http://p9.qhimg.com/t0112c3c5406421f25b.png"},{"en":"Samoa","locale":"WS","zh":"萨摩亚","image":"http://p3.qhimg.com/t016707327fe8afcc37.png"},{"en":"San Marino","locale":"SM","zh":"圣马力诺","image":"http://p8.qhimg.com/t0110599b61c11f0161.png"},{"en":"Sao Tome and Principe","locale":"ST","zh":"圣多美和普林西比","image":"http://p3.qhimg.com/t014f3687b4b32a00c8.png"},{"en":"Saudi Arabia","locale":"SA","zh":"沙特阿拉伯","image":"http://p1.qhimg.com/t0127ad47b50a7fd9f0.png"},{"en":"Senegal","locale":"SN","zh":"塞内加尔","image":"http://p8.qhimg.com/t01fde6de37a501f408.png"},{"en":"Seychelles","locale":"SC","zh":"塞舌尔","image":"http://p1.qhimg.com/t01d18ab92ff153c1bb.png"},{"en":"Sierra Leone","locale":"SL","zh":"塞拉利昂","image":"http://p1.qhimg.com/t019bfc81196e0fa08b.png"},{"en":"Singapore","locale":"SG","zh":"新加坡","image":"http://p4.qhimg.com/t019c251d30e2e92e9b.png"},{"en":"Serbia","locale":"RS","zh":"塞尔维亚","image":"http://p3.qhimg.com/t0169797cd9e0c95277.png"},{"en":"Slovakia","locale":"SK","zh":"斯洛伐克","image":"http://p0.qhimg.com/t01d5b6d72b1902c7e6.png"},{"en":"Slovenia","locale":"SI","zh":"斯洛文尼亚","image":"http://p4.qhimg.com/t012101c19a3b1df857.png"},{"en":"Solomon Islands","locale":"SB","zh":"所罗门群岛","image":"http://p7.qhimg.com/t0192d43072fc251775.png"},{"en":"Somalia","locale":"SO","zh":"索马里","image":"http://p1.qhimg.com/t01c40c47a8183f0c1a.png"},{"en":"South Africa","locale":"ZA","zh":"南非","image":"http://p6.qhimg.com/t0130224538d6129328.png"},{"en":"Spain","locale":"ES","zh":"西班牙","image":"http://p4.qhimg.com/t01e6fdb20edf656182.png"},{"en":"Sri Lanka","locale":"LK","zh":"斯里兰卡","image":"http://p6.qhimg.com/t01cf7ba7ef7bbe8750.png"},{"en":"Sudan","locale":"SD","zh":"苏丹","image":"http://p4.qhimg.com/t010c67178bcab9cf34.png"},{"en":"Suriname","locale":"SR","zh":"苏里南","image":"http://p3.qhimg.com/t01d5d64bba6f5c8f3d.png"},{"en":"Swaziland","locale":"SZ","zh":"斯威士兰","image":"http://p0.qhimg.com/t018fb651ec6b00ec61.png"},{"en":"Sweden","locale":"SE","zh":"瑞典","image":"http://p7.qhimg.com/t018f7648dbe5842766.png"},{"en":"Switzerland","locale":"CH","zh":"瑞士","image":"http://p1.qhimg.com/t01050ea6f994788dfe.png"},{"en":"Syria","locale":"SY","zh":"叙利亚","image":"http://p9.qhimg.com/t0174d5a820e46236e6.png"},{"en":"Tajikistan","locale":"TJ","zh":"塔吉克斯坦","image":"http://p7.qhimg.com/t01058330fc1c74fabb.png"},{"en":"Tanzania","locale":"TZ","zh":"坦桑尼亚","image":"http://p6.qhimg.com/t01cc421bfbea9e003b.png"},{"en":"Thailand","locale":"TH","zh":"泰国","image":"http://p6.qhimg.com/t01c7cac70b39a9a0f8.png"},{"en":"Trinidad and Tobago","locale":"TT","zh":"特立尼达和多巴哥","image":"http://p5.qhimg.com/t0128d735273807a229.png"},{"en":"Timor-Leste","locale":"TL","zh":"东帝汶","image":"http://p3.qhimg.com/t01ba97112e0537db8e.png"},{"en":"Togo","locale":"TG","zh":"多哥","image":"http://p8.qhimg.com/t0141a20490e9a23678.png"},{"en":"Tokelau","locale":"TK","zh":"托克劳","image":"http://p5.qhimg.com/t0115a62a3e574f1e72.png"},{"en":"Tonga","locale":"TO","zh":"汤加","image":"http://p0.qhimg.com/t01dede61728660f70a.png"},{"en":"Tunisia","locale":"TN","zh":"突尼斯","image":"http://p8.qhimg.com/t01ccd2dbc97f51027c.png"},{"en":"Turkey","locale":"TR","zh":"土耳其","image":"http://p4.qhimg.com/t01538dc9dfa4691862.png"},{"en":"Turkmenistan","locale":"TM","zh":"土库曼斯坦","image":"http://p0.qhimg.com/t019a996fd9ceb1a866.png"},{"en":"Tuvalu","locale":"TV","zh":"图瓦卢","image":"http://p5.qhimg.com/t014ba8b5ebf41cc017.png"},{"en":"Uganda","locale":"UG","zh":"乌干达","image":"http://p0.qhimg.com/t01296515de11faab6d.png"},{"en":"Ukraine","locale":"UA","zh":"乌克兰","image":"http://p0.qhimg.com/t01e70c8129a4d85419.png"},{"en":"United Arab Emirates","locale":"AE","zh":"阿联酋","image":"http://p0.qhimg.com/t01c27c94ff21e37529.png"},{"en":"United Kingdom","locale":"UK","zh":"英国","image":"http://p6.qhimg.com/t01e8bacba3abe5a4af.png"},{"en":"United States","locale":"US","zh":"美国","image":"http://p9.qhimg.com/t01b1cd399af452498c.png"},{"en":"Uruguay","locale":"UY","zh":"乌拉圭","image":"http://p3.qhimg.com/t015f067ad7cc658735.png"},{"en":"Uzbekistan","locale":"UZ","zh":"乌兹别克斯坦","image":"http://p8.qhimg.com/t0152cb711bf015ed24.png"},{"en":"Vanuatu","locale":"VN","zh":"瓦努阿图","image":"http://p8.qhimg.com/t01a2482de1e81e8a7a.png"},{"en":"Vatican City","locale":"VA","zh":"梵蒂冈","image":"http://p9.qhimg.com/t010b3f74995faefb9c.png"},{"en":"Venezuela","locale":"VE","zh":"委内瑞拉","image":"http://p3.qhimg.com/t013008ce9ebb9e0268.png"},{"en":"Vietnam","locale":"VN","zh":"越南","image":"http://p8.qhimg.com/t01a2482de1e81e8a7a.png"},{"en":"Wallis and Futuna","locale":"WF","zh":"瓦利斯群岛和富图纳群岛","image":"http://p1.qhimg.com/t017e0ca1a8ba823f47.png"},{"en":"Western Sahara","locale":"EH","zh":"西撒哈拉","image":"http://p1.qhimg.com/t016df58a7740bcdec4.png"},{"en":"Yemen","locale":"YE","zh":"也门","image":"http://p9.qhimg.com/t01b979e21ad84b3bb8.png"},{"en":"Zambia","locale":"ZM","zh":"赞比亚","image":"http://p5.qhimg.com/t011787af943024694e.png"},{"en":"Zimbabwe","locale":"ZW","zh":"津巴布韦","image":"http://p2.qhimg.com/t014a31d0de14cd6f5f.png"},{"en":"Republic of Paraguay","locale":"PY","zh":"巴拉圭","image":"http://p1.qhimg.com/t01e9d32a3c5065b832.png"},{"en":"The Commonwealth of Dominica","locale":"DM","zh":"多米尼克","image":"http://p0.qhimg.com/t013312f2b6c645ffcb.png"},{"en":"The Turks and Caicos Islands","locale":"TC","zh":"特克斯和凯科斯群岛","image":"http://p4.qhimg.com/t01a971f942e2bab090.png"}]
+[
+  {
+    "en": "Afghanistan",
+    "locale": "AF",
+    "zh": "阿富汗",
+    "image": "http://p1.qhimg.com/t01310c1cd7c6a6335c.png"
+  },
+  {
+    "en": "Aland Islands",
+    "locale": "AX",
+    "zh": "奥兰群岛",
+    "image": "http://p7.qhimg.com/t01c01a1fc72e005cec.png"
+  },
+  {
+    "en": "Albania",
+    "locale": "AL",
+    "zh": "阿尔巴尼亚",
+    "image": "http://p9.qhimg.com/t0196e302ff12dc520f.png"
+  },
+  {
+    "en": "Algeria",
+    "locale": "DZ",
+    "zh": "阿尔及利亚",
+    "image": "http://p8.qhimg.com/t01fe07188646e1fd24.png"
+  },
+  {
+    "en": "American Samoa",
+    "locale": "AS",
+    "zh": "美属萨摩亚",
+    "image": "http://p0.qhimg.com/t01042026db1934b66a.png"
+  },
+  {
+    "en": "Andorra",
+    "locale": "AD",
+    "zh": "安道尔",
+    "image": "http://p6.qhimg.com/t017d44d4d2de2835cc.png"
+  },
+  {
+    "en": "Angola",
+    "locale": "AO",
+    "zh": "安哥拉",
+    "image": "http://p2.qhimg.com/t0150229507ac477b42.png"
+  },
+  {
+    "en": "Anguilla",
+    "locale": "AI",
+    "zh": "安圭拉",
+    "image": "http://p3.qhimg.com/t015fe6dcd617b8a91c.png"
+  },
+  {
+    "en": "Antigua and Barbuda",
+    "locale": "AG",
+    "zh": "安提瓜和巴布达",
+    "image": "http://p7.qhimg.com/t0195dc0ae191ebc475.png"
+  },
+  {
+    "en": "Argentina",
+    "locale": "AR",
+    "zh": "阿根廷",
+    "image": "http://p2.qhimg.com/t0138da971dfb8180fe.png"
+  },
+  {
+    "en": "Armenia",
+    "locale": "AM",
+    "zh": "亚美尼亚",
+    "image": "http://p0.qhimg.com/t01eadc0664cab9bdbb.png"
+  },
+  {
+    "en": "Aruba",
+    "locale": "AW",
+    "zh": "阿鲁巴",
+    "image": "http://p2.qhimg.com/t01723bac9ff9b7d9ec.png"
+  },
+  {
+    "en": "Australia",
+    "locale": "AU",
+    "zh": "澳大利亚",
+    "image": "http://p6.qhimg.com/t01041dbc8c899b77b3.png"
+  },
+  {
+    "en": "Austria",
+    "locale": "AT",
+    "zh": "奥地利",
+    "image": "http://p1.qhimg.com/t01b36f006f9c3a3783.png"
+  },
+  {
+    "en": "Azerbaijan",
+    "locale": "AZ",
+    "zh": "阿塞拜疆",
+    "image": "http://p1.qhimg.com/t01c305d3997d8c76d8.png"
+  },
+  {
+    "en": "Bangladesh",
+    "locale": "BD",
+    "zh": "孟加拉国",
+    "image": "http://p4.qhimg.com/t0182ea70b2d4140190.png"
+  },
+  {
+    "en": "Bahrain",
+    "locale": "BH",
+    "zh": "巴林",
+    "image": "http://p8.qhimg.com/t01c09827903a1ea38d.png"
+  },
+  {
+    "en": "Bahamas",
+    "locale": "BS",
+    "zh": "巴哈马",
+    "image": "http://p1.qhimg.com/t01a54c2e981bd774a5.png"
+  },
+  {
+    "en": "Barbados",
+    "locale": "BB",
+    "zh": "巴巴多斯",
+    "image": "http://p2.qhimg.com/t01f81778547b1d7f59.png"
+  },
+  {
+    "en": "Belarus",
+    "locale": "BY",
+    "zh": "白俄罗斯",
+    "image": "http://p7.qhimg.com/t01468c8ee2d15dca98.png"
+  },
+  {
+    "en": "Belgium",
+    "locale": "BE",
+    "zh": "比利时",
+    "image": "http://p1.qhimg.com/t0103a4d6c03e105228.png"
+  },
+  {
+    "en": "Belize",
+    "locale": "BZ",
+    "zh": "伯利兹",
+    "image": "http://p6.qhimg.com/t013dfe843dc51d41c6.png"
+  },
+  {
+    "en": "Benin",
+    "locale": "BJ",
+    "zh": "贝宁",
+    "image": "http://p8.qhimg.com/t016d9716c6db5adc53.png"
+  },
+  {
+    "en": "Bermuda",
+    "locale": "BM",
+    "zh": "百慕大",
+    "image": "http://p4.qhimg.com/t0117930d3942dbc403.png"
+  },
+  {
+    "en": "Bhutan",
+    "locale": "BT",
+    "zh": "不丹",
+    "image": "http://p4.qhimg.com/t012734f01dc970f396.png"
+  },
+  {
+    "en": "Bolivia",
+    "locale": "BO",
+    "zh": "玻利维亚",
+    "image": "http://p0.qhimg.com/t013da38f7a3f945a87.png"
+  },
+  {
+    "en": "Bosnia and Herzegovina",
+    "locale": "BA",
+    "zh": "波斯尼亚和黑塞哥维那",
+    "image": "http://p5.qhimg.com/t0126c6e786ac6ed00b.png"
+  },
+  {
+    "en": "Botswana",
+    "locale": "BW",
+    "zh": "博茨瓦纳",
+    "image": "http://p7.qhimg.com/t013439de145ed085ef.png"
+  },
+  {
+    "en": "Bouvet Island",
+    "locale": "BV",
+    "zh": "布维岛",
+    "image": "http://p0.qhimg.com/t01d1e5c7afd41ef930.png"
+  },
+  {
+    "en": "Brazil",
+    "locale": "BR",
+    "zh": "巴西",
+    "image": "http://p9.qhimg.com/t017ae156ebab026fa3.png"
+  },
+  {
+    "en": "Brunei",
+    "locale": "BN",
+    "zh": "文莱",
+    "image": "http://p7.qhimg.com/t01419942dc6af520b8.png"
+  },
+  {
+    "en": "Bulgaria",
+    "locale": "BG",
+    "zh": "保加利亚",
+    "image": "http://p0.qhimg.com/t01c02d1e67f0a80b69.png"
+  },
+  {
+    "en": "Burkina Faso",
+    "locale": "BF",
+    "zh": "布基纳法索",
+    "image": "http://p4.qhimg.com/t012d1f6395739ff579.png"
+  },
+  {
+    "en": "Burundi",
+    "locale": "BI",
+    "zh": "布隆迪",
+    "image": "http://p1.qhimg.com/t010f2dbfe65265e948.png"
+  },
+  {
+    "en": "Cambodia",
+    "locale": "KH",
+    "zh": "柬埔寨",
+    "image": "http://p4.qhimg.com/t015074691667db192e.png"
+  },
+  {
+    "en": "Cameroon",
+    "locale": "CM",
+    "zh": "喀麦隆",
+    "image": "http://p1.qhimg.com/t01cf1be21e1f3b5453.png"
+  },
+  {
+    "en": "Canada",
+    "locale": "CA",
+    "zh": "加拿大",
+    "image": "http://p8.qhimg.com/t01ea3568eb2c8ca133.png"
+  },
+  {
+    "en": "Cape Verde",
+    "locale": "CV",
+    "zh": "佛得角",
+    "image": "http://p3.qhimg.com/t01abad2bb6b191f633.png"
+  },
+  {
+    "en": "Central African Republic",
+    "locale": "CF",
+    "zh": "中非共和国",
+    "image": "http://p0.qhimg.com/t01b75b24011cba28f0.png"
+  },
+  {
+    "en": "Chad",
+    "locale": "TD",
+    "zh": "乍得",
+    "image": "http://p8.qhimg.com/t01636b333b694f7f1e.png"
+  },
+  {
+    "en": "Chile",
+    "locale": "CL",
+    "zh": "智利",
+    "image": "http://p1.qhimg.com/t015a1af7110a0829a3.png"
+  },
+  {
+    "en": "Christmas Islands",
+    "locale": "CX",
+    "zh": "圣诞岛",
+    "image": "http://p8.qhimg.com/t0106cee26b2e0ef43c.png"
+  },
+  {
+    "en": "Cocos (keeling) Islands",
+    "locale": "CC",
+    "zh": "科科斯（基林）群岛",
+    "image": "http://p5.qhimg.com/t0138547ec3c0634f62.png"
+  },
+  {
+    "en": "Colombia",
+    "locale": "CO",
+    "zh": "哥伦比亚",
+    "image": "http://p2.qhimg.com/t0104245f9c88c63c53.png"
+  },
+  {
+    "en": "Comoros",
+    "locale": "KM",
+    "zh": "科摩罗",
+    "image": "http://p8.qhimg.com/t01756deb2b3afcc3f8.png"
+  },
+  {
+    "en": "Congo (Congo-Kinshasa)",
+    "locale": "CD",
+    "zh": "刚果（金）",
+    "image": "http://p9.qhimg.com/t013b05f247caea331d.png"
+  },
+  {
+    "en": "Congo",
+    "locale": "CG",
+    "zh": "刚果（布）",
+    "image": "http://p6.qhimg.com/t01d5efb39f65759866.png"
+  },
+  {
+    "en": "Cook Islands",
+    "locale": "CK",
+    "zh": "库克群岛",
+    "image": "http://p7.qhimg.com/t01122dea96286a1880.png"
+  },
+  {
+    "en": "Costa Rica",
+    "locale": "CR",
+    "zh": "哥斯达黎加",
+    "image": "http://p7.qhimg.com/t01804f17423a797076.png"
+  },
+  {
+    "en": "Cote D'Ivoire",
+    "locale": "CI",
+    "zh": "科特迪瓦",
+    "image": "http://p9.qhimg.com/t014a280845c1f6e191.png"
+  },
+  {
+    "en": "China",
+    "locale": "CN",
+    "zh": "中国",
+    "image": "http://p7.qhimg.com/t01d74c8821aa09553c.png"
+  },
+  {
+    "en": "Croatia",
+    "locale": "HR",
+    "zh": "克罗地亚",
+    "image": "http://p3.qhimg.com/t01ab79d5efa0cb03a2.png"
+  },
+  {
+    "en": "Cuba",
+    "locale": "CU",
+    "zh": "古巴",
+    "image": "http://p6.qhimg.com/t01bc2332fc6beec2eb.png"
+  },
+  {
+    "en": "Czech",
+    "locale": "CZ",
+    "zh": "捷克",
+    "image": "http://p1.qhimg.com/t01204421dd90d70bdc.png"
+  },
+  {
+    "en": "Cyprus",
+    "locale": "CY",
+    "zh": "塞浦路斯",
+    "image": "http://p3.qhimg.com/t0142b893b13a057521.png"
+  },
+  {
+    "en": "Denmark",
+    "locale": "DK",
+    "zh": "丹麦",
+    "image": "http://p4.qhimg.com/t01666de485365781d6.png"
+  },
+  {
+    "en": "Djibouti",
+    "locale": "DJ",
+    "zh": "吉布提",
+    "image": "http://p4.qhimg.com/t01e215b0700e1baa03.png"
+  },
+  {
+    "en": "The Dominican Republic",
+    "locale": "DO",
+    "zh": "多米尼加",
+    "image": "http://p5.qhimg.com/t0117bfd209d4d65d2a.png"
+  },
+  {
+    "en": "Ecuador",
+    "locale": "EC",
+    "zh": "厄瓜多尔",
+    "image": "http://p5.qhimg.com/t019b35b4c08a012a95.png"
+  },
+  {
+    "en": "Egypt",
+    "locale": "EG",
+    "zh": "埃及",
+    "image": "http://p1.qhimg.com/t0102bc4193a532feb7.png"
+  },
+  {
+    "en": "Equatorial Guinea",
+    "locale": "GQ",
+    "zh": "赤道几内亚",
+    "image": "http://p8.qhimg.com/t01eece991353d1bf39.png"
+  },
+  {
+    "en": "Eritrea",
+    "locale": "ER",
+    "zh": "厄立特里亚",
+    "image": "http://p1.qhimg.com/t012d18164730a06e83.png"
+  },
+  {
+    "en": "Estonia",
+    "locale": "EE",
+    "zh": "爱沙尼亚",
+    "image": "http://p3.qhimg.com/t013be740da9ddeda56.png"
+  },
+  {
+    "en": "Ethiopia",
+    "locale": "ET",
+    "zh": "埃塞俄比亚",
+    "image": "http://p1.qhimg.com/t01c45653c9f165db1f.png"
+  },
+  {
+    "en": "Faroe Islands",
+    "locale": "FO",
+    "zh": "法罗群岛",
+    "image": "http://p2.qhimg.com/t015e17a87f566eb485.png"
+  },
+  {
+    "en": "Fiji",
+    "locale": "FJ",
+    "zh": "斐济",
+    "image": "http://p9.qhimg.com/t019546f01479c2199a.png"
+  },
+  {
+    "en": "Finland",
+    "locale": "FI",
+    "zh": "芬兰",
+    "image": "http://p7.qhimg.com/t01fe10decfc242f9ce.png"
+  },
+  {
+    "en": "France",
+    "locale": "FR",
+    "zh": "法国",
+    "image": "http://p1.qhimg.com/t014253f127ae96453d.png"
+  },
+  {
+    "en": "French Guiana",
+    "locale": "GF",
+    "zh": "法属圭亚那",
+    "image": "http://p8.qhimg.com/t01b4b0fcba1fc29720.png"
+  },
+  {
+    "en": "French Polynesia",
+    "locale": "PF",
+    "zh": "法属波利尼西亚",
+    "image": "http://p3.qhimg.com/t01528ba831bee1e74c.png"
+  },
+  {
+    "en": "Gabon",
+    "locale": "GA",
+    "zh": "加蓬",
+    "image": "http://p2.qhimg.com/t0108edcd2b1e9c6fc1.png"
+  },
+  {
+    "en": "Gambia",
+    "locale": "GM",
+    "zh": "冈比亚",
+    "image": "http://p1.qhimg.com/t01aec93fae848d32d1.png"
+  },
+  {
+    "en": "Georgia",
+    "locale": "GE",
+    "zh": "格鲁吉亚",
+    "image": "http://p6.qhimg.com/t016b007aba0d062edf.png"
+  },
+  {
+    "en": "Germany",
+    "locale": "DE",
+    "zh": "德国",
+    "image": "http://p3.qhimg.com/t0159b5387163378ad8.png"
+  },
+  {
+    "en": "Ghana",
+    "locale": "GH",
+    "zh": "加纳",
+    "image": "http://p0.qhimg.com/t0180443ed895b36cc3.png"
+  },
+  {
+    "en": "Gibraltar",
+    "locale": "GI",
+    "zh": "直布罗陀",
+    "image": "http://p7.qhimg.com/t0116ae5ef214d0247f.png"
+  },
+  {
+    "en": "Greece",
+    "locale": "GR",
+    "zh": "希腊",
+    "image": "http://p9.qhimg.com/t011f3f1072f670e5d1.png"
+  },
+  {
+    "en": "Grenada",
+    "locale": "GD",
+    "zh": "格林纳达",
+    "image": "http://p1.qhimg.com/t0164b507e50b17e7b9.png"
+  },
+  {
+    "en": "Guadeloupe",
+    "locale": "GP",
+    "zh": "瓜德罗普岛",
+    "image": "http://p7.qhimg.com/t0159fd79dc425eea83.png"
+  },
+  {
+    "en": "Guam",
+    "locale": "GU",
+    "zh": "关岛",
+    "image": "http://p9.qhimg.com/t01c430965abe5bb9a3.png"
+  },
+  {
+    "en": "Guatemala",
+    "locale": "GT",
+    "zh": "危地马拉",
+    "image": "http://p6.qhimg.com/t014c47de48ac095435.png"
+  },
+  {
+    "en": "Guernsey",
+    "locale": "GG",
+    "zh": "根西岛",
+    "image": "http://p8.qhimg.com/t01f8a83d4f5139d482.png"
+  },
+  {
+    "en": "Guinea-Bissau",
+    "locale": "GW",
+    "zh": "几内亚比绍",
+    "image": "http://p1.qhimg.com/t0105438d87c139b1f7.png"
+  },
+  {
+    "en": "Guinea",
+    "locale": "GN",
+    "zh": "几内亚",
+    "image": "http://p6.qhimg.com/t01ea3c0353202633a4.png"
+  },
+  {
+    "en": "Guyana",
+    "locale": "GY",
+    "zh": "圭亚那",
+    "image": "http://p1.qhimg.com/t01dd68a1e890475dda.png"
+  },
+  {
+    "en": "Haiti",
+    "locale": "HT",
+    "zh": "海地",
+    "image": "http://p9.qhimg.com/t014f42d9b0fef4a9e7.png"
+  },
+  {
+    "en": "Honduras",
+    "locale": "HN",
+    "zh": "洪都拉斯",
+    "image": "http://p2.qhimg.com/t012390eb267ff3b0f8.png"
+  },
+  {
+    "en": "Hungary",
+    "locale": "HU",
+    "zh": "匈牙利",
+    "image": "http://p1.qhimg.com/t01d9bece585f071c35.png"
+  },
+  {
+    "en": "Iceland",
+    "locale": "IS",
+    "zh": "冰岛",
+    "image": "http://p8.qhimg.com/t01aa06fd413ce24989.png"
+  },
+  {
+    "en": "India",
+    "locale": "IN",
+    "zh": "印度",
+    "image": "http://p6.qhimg.com/t014fd5ac8623df61ac.png"
+  },
+  {
+    "en": "Indonesia",
+    "locale": "ID",
+    "zh": "印度尼西亚",
+    "image": "http://p7.qhimg.com/t01a6921d96d9d7727a.png"
+  },
+  {
+    "en": "Iran",
+    "locale": "IR",
+    "zh": "伊朗",
+    "image": "http://p9.qhimg.com/t012682fbec06a7f150.png"
+  },
+  {
+    "en": "Iraq",
+    "locale": "IQ",
+    "zh": "伊拉克",
+    "image": "http://p6.qhimg.com/t01b1ded3da2a22962b.png"
+  },
+  {
+    "en": "Ireland",
+    "locale": "IE",
+    "zh": "爱尔兰",
+    "image": "http://p9.qhimg.com/t0160f2ee376ecd9e4e.png"
+  },
+  {
+    "en": "Isle of Man",
+    "locale": "IM",
+    "zh": "马恩岛",
+    "image": "http://p3.qhimg.com/t01c9416b16a14e8d7f.png"
+  },
+  {
+    "en": "Israel",
+    "locale": "IL",
+    "zh": "以色列",
+    "image": "http://p7.qhimg.com/t010d63df9659778bef.png"
+  },
+  {
+    "en": "Italy",
+    "locale": "IT",
+    "zh": "意大利",
+    "image": "http://p0.qhimg.com/t015be4a49bdc82b17d.png"
+  },
+  {
+    "en": "Jamaica",
+    "locale": "JM",
+    "zh": "牙买加",
+    "image": "http://p2.qhimg.com/t018731eb3a862e0d7f.png"
+  },
+  {
+    "en": "Japan",
+    "locale": "JP",
+    "zh": "日本",
+    "image": "http://p7.qhimg.com/t014ee2dc9bb2a48723.png"
+  },
+  {
+    "en": "Jersey",
+    "locale": "JE",
+    "zh": "泽西岛",
+    "image": "http://p7.qhimg.com/t01611dcb44bdccf505.png"
+  },
+  {
+    "en": "Jordan",
+    "locale": "JO",
+    "zh": "约旦",
+    "image": "http://p7.qhimg.com/t0191d16a3a8c742b31.png"
+  },
+  {
+    "en": "Kazakhstan",
+    "locale": "KZ",
+    "zh": "哈萨克斯坦",
+    "image": "http://p1.qhimg.com/t01e7ba813e8256b90c.png"
+  },
+  {
+    "en": "Kenya",
+    "locale": "KE",
+    "zh": "肯尼亚",
+    "image": "http://p2.qhimg.com/t01145c86050b1273dd.png"
+  },
+  {
+    "en": "Kiribati",
+    "locale": "KI",
+    "zh": "基里巴斯",
+    "image": "http://p1.qhimg.com/t010178e916165dc18a.png"
+  },
+  {
+    "en": "Korea (South)",
+    "locale": "KR",
+    "zh": "韩国",
+    "image": "http://p0.qhimg.com/t017b32408bfd508f2a.png"
+  },
+  {
+    "en": "Korea (North)",
+    "locale": "KP",
+    "zh": "朝鲜",
+    "image": "http://p7.qhimg.com/t011655b91ecd1cb697.png"
+  },
+  {
+    "en": "Kuwait",
+    "locale": "KW",
+    "zh": "科威特",
+    "image": "http://p5.qhimg.com/t015e8c5c243605fc77.png"
+  },
+  {
+    "en": "Kyrgyzstan",
+    "locale": "KG",
+    "zh": "吉尔吉斯斯坦",
+    "image": "http://p6.qhimg.com/t017ad6499575969309.png"
+  },
+  {
+    "en": "Laos",
+    "locale": "LA",
+    "zh": "老挝",
+    "image": "http://p3.qhimg.com/t01072096a5276247ce.png"
+  },
+  {
+    "en": "Latvia",
+    "locale": "LV",
+    "zh": "拉脱维亚",
+    "image": "http://p0.qhimg.com/t019f9f5ca4e8a2bdcb.png"
+  },
+  {
+    "en": "Lebanon",
+    "locale": "LB",
+    "zh": "黎巴嫩",
+    "image": "http://p2.qhimg.com/t01886448ffb848bc16.png"
+  },
+  {
+    "en": "Lesotho",
+    "locale": "LS",
+    "zh": "莱索托",
+    "image": "http://p4.qhimg.com/t0143c5e4471c8963f5.png"
+  },
+  {
+    "en": "Liberia",
+    "locale": "LR",
+    "zh": "利比里亚",
+    "image": "http://p1.qhimg.com/t015036a54d6409a6ac.png"
+  },
+  {
+    "en": "Libya",
+    "locale": "LY",
+    "zh": "利比亚",
+    "image": "http://p3.qhimg.com/t01abce7dae320ede15.png"
+  },
+  {
+    "en": "Liechtenstein",
+    "locale": "LI",
+    "zh": "列支敦士登公国",
+    "image": "http://p6.qhimg.com/t0177710ca2892f4cb0.png"
+  },
+  {
+    "en": "Lithuania",
+    "locale": "LT",
+    "zh": "立陶宛",
+    "image": "http://p6.qhimg.com/t01376b011e9e8d5b85.png"
+  },
+  {
+    "en": "Luxembourg",
+    "locale": "LU",
+    "zh": "卢森堡",
+    "image": "http://p8.qhimg.com/t01f178579a5aa8d851.png"
+  },
+  {
+    "en": "Macedonia",
+    "locale": "MK",
+    "zh": "马其顿",
+    "image": "http://p5.qhimg.com/t018b63e308ab082d8f.png"
+  },
+  {
+    "en": "Malawi",
+    "locale": "MW",
+    "zh": "马拉维",
+    "image": "http://p2.qhimg.com/t0167e30668ae3e94e1.png"
+  },
+  {
+    "en": "Malaysia",
+    "locale": "MY",
+    "zh": "马来西亚",
+    "image": "http://p0.qhimg.com/t0191597076a622b0de.png"
+  },
+  {
+    "en": "Madagascar",
+    "locale": "MG",
+    "zh": "马达加斯加",
+    "image": "http://p5.qhimg.com/t01126f6e7d4c4ea883.png"
+  },
+  {
+    "en": "Maldives",
+    "locale": "MV",
+    "zh": "马尔代夫",
+    "image": "http://p9.qhimg.com/t015b516cd988291099.png"
+  },
+  {
+    "en": "Mali",
+    "locale": "ML",
+    "zh": "马里",
+    "image": "http://p4.qhimg.com/t01861b6850363bb7d2.png"
+  },
+  {
+    "en": "Malta",
+    "locale": "MT",
+    "zh": "马耳他",
+    "image": "http://p0.qhimg.com/t01dbcc318bb7b751b5.png"
+  },
+  {
+    "en": "Marshall Islands",
+    "locale": "MH",
+    "zh": "马绍尔群岛",
+    "image": "http://p5.qhimg.com/t01c5c7035e04d59fab.png"
+  },
+  {
+    "en": "Martinique",
+    "locale": "MQ",
+    "zh": "马提尼克岛",
+    "image": "http://p7.qhimg.com/t01cfcd9cd44b9d811c.png"
+  },
+  {
+    "en": "Mauritania",
+    "locale": "MR",
+    "zh": "毛里塔尼亚",
+    "image": "http://p4.qhimg.com/t0158f22ee1412b8282.png"
+  },
+  {
+    "en": "Mauritius",
+    "locale": "MU",
+    "zh": "毛里求斯",
+    "image": "http://p3.qhimg.com/t01e7de67701174b936.png"
+  },
+  {
+    "en": "Mayotte",
+    "locale": "YT",
+    "zh": "马约特",
+    "image": "http://p5.qhimg.com/t011b16e7ddf2331c76.png"
+  },
+  {
+    "en": "Mexico",
+    "locale": "MX",
+    "zh": "墨西哥",
+    "image": "http://p5.qhimg.com/t01909ddda2f477fe89.png"
+  },
+  {
+    "en": "Micronesia",
+    "locale": "MF",
+    "zh": "密克罗尼西亚",
+    "image": "http://p1.qhimg.com/t014253f127ae96453d.png"
+  },
+  {
+    "en": "Moldova",
+    "locale": "MD",
+    "zh": "摩尔多瓦",
+    "image": "http://p8.qhimg.com/t01efd7ad5ec241aee0.png"
+  },
+  {
+    "en": "Monaco",
+    "locale": "MC",
+    "zh": "摩纳哥",
+    "image": "http://p6.qhimg.com/t01cb88173c217ddae5.png"
+  },
+  {
+    "en": "Mongolia",
+    "locale": "MN",
+    "zh": "蒙古国",
+    "image": "http://p9.qhimg.com/t01280e57d420f57c60.png"
+  },
+  {
+    "en": "Montenegro",
+    "locale": "ME",
+    "zh": "黑山",
+    "image": "http://p4.qhimg.com/t013f9f2de0017f378d.png"
+  },
+  {
+    "en": "Montserrat",
+    "locale": "MS",
+    "zh": "蒙特塞拉特岛",
+    "image": "http://p4.qhimg.com/t01caf4a3d16d21853b.png"
+  },
+  {
+    "en": "Morocco",
+    "locale": "MA",
+    "zh": "摩洛哥",
+    "image": "http://p5.qhimg.com/t01b6d4cef73f261207.png"
+  },
+  {
+    "en": "Mozambique",
+    "locale": "MZ",
+    "zh": "莫桑比克",
+    "image": "http://p1.qhimg.com/t01a4417e37ec8924e5.png"
+  },
+  {
+    "en": "Myanmar",
+    "locale": "MM",
+    "zh": "缅甸",
+    "image": "http://p7.qhimg.com/t01a9c8c0d43cb98fa6.png"
+  },
+  {
+    "en": "Namibia",
+    "locale": "NA",
+    "zh": "纳米比亚",
+    "image": "http://p3.qhimg.com/t01f8f7c96159046eb9.png"
+  },
+  {
+    "en": "Nauru",
+    "locale": "NR",
+    "zh": "瑙鲁",
+    "image": "http://p4.qhimg.com/t01effa0e75d921669c.png"
+  },
+  {
+    "en": "Nepal",
+    "locale": "NP",
+    "zh": "尼泊尔",
+    "image": "http://p3.qhimg.com/t01f4f22de64f39622d.png"
+  },
+  {
+    "en": "Netherlands",
+    "locale": "NL",
+    "zh": "荷兰",
+    "image": "http://p7.qhimg.com/t012b3108f9212d6f5c.png"
+  },
+  {
+    "en": "New Caledonia",
+    "locale": "NC",
+    "zh": "新喀里多尼亚",
+    "image": "http://p7.qhimg.com/t0139d77851a17cff88.png"
+  },
+  {
+    "en": "New Zealand",
+    "locale": "NZ",
+    "zh": "新西兰",
+    "image": "http://p6.qhimg.com/t0113b46431de1a2ac0.png"
+  },
+  {
+    "en": "Nicaragua",
+    "locale": "NI",
+    "zh": "尼加拉瓜",
+    "image": "http://p9.qhimg.com/t01e982b9546b942a7f.png"
+  },
+  {
+    "en": "Niger",
+    "locale": "NE",
+    "zh": "尼日尔",
+    "image": "http://p2.qhimg.com/t01ce980e07c5614739.png"
+  },
+  {
+    "en": "Nigeria",
+    "locale": "NG",
+    "zh": "尼日利亚",
+    "image": "http://p3.qhimg.com/t01a821f32f000c5a45.png"
+  },
+  {
+    "en": "Niue",
+    "locale": "NU",
+    "zh": "纽埃",
+    "image": "http://p5.qhimg.com/t01329a8d2eca25dc45.png"
+  },
+  {
+    "en": "Norfolk Island",
+    "locale": "NF",
+    "zh": "诺福克岛",
+    "image": "http://p2.qhimg.com/t0161bb1ae0a4492a5d.png"
+  },
+  {
+    "en": "Norway",
+    "locale": "NO",
+    "zh": "挪威",
+    "image": "http://p0.qhimg.com/t01d1e5c7afd41ef930.png"
+  },
+  {
+    "en": "Oman",
+    "locale": "OM",
+    "zh": "阿曼",
+    "image": "http://p5.qhimg.com/t01009c93b112451def.png"
+  },
+  {
+    "en": "Pakistan",
+    "locale": "PK",
+    "zh": "巴基斯坦",
+    "image": "http://p4.qhimg.com/t019274cd74a03abf62.png"
+  },
+  {
+    "en": "Palau",
+    "locale": "PW",
+    "zh": "帕劳",
+    "image": "http://p8.qhimg.com/t01611a31c0ce9c79cd.png"
+  },
+  {
+    "en": "Palestine",
+    "locale": "PS",
+    "zh": "巴勒斯坦",
+    "image": "http://p0.qhimg.com/t01775f9a6192d96224.png"
+  },
+  {
+    "en": "Panama",
+    "locale": "PA",
+    "zh": "巴拿马",
+    "image": "http://p6.qhimg.com/t0131f0f98f316ef68b.png"
+  },
+  {
+    "en": "Papua New Guinea",
+    "locale": "PG",
+    "zh": "巴布亚新几内亚",
+    "image": "http://p1.qhimg.com/t017755e997d5b026a1.png"
+  },
+  {
+    "en": "Peru",
+    "locale": "PE",
+    "zh": "秘鲁",
+    "image": "http://p7.qhimg.com/t01861bce3fba9704a1.png"
+  },
+  {
+    "en": "Philippines",
+    "locale": "PH",
+    "zh": "菲律宾",
+    "image": "http://p1.qhimg.com/t01af67640f9a874a44.png"
+  },
+  {
+    "en": "Pitcairn Islands",
+    "locale": "PN",
+    "zh": "皮特凯恩群岛",
+    "image": "http://p3.qhimg.com/t01aa112c9e653206e7.png"
+  },
+  {
+    "en": "Poland",
+    "locale": "PL",
+    "zh": "波兰",
+    "image": "http://p8.qhimg.com/t01c16fac7f8fa39a9c.png"
+  },
+  {
+    "en": "Portugal",
+    "locale": "PT",
+    "zh": "葡萄牙",
+    "image": "http://p1.qhimg.com/t01648e1a771554bbc5.png"
+  },
+  {
+    "en": "Puerto Rico",
+    "locale": "PR",
+    "zh": "波多黎各",
+    "image": "http://p0.qhimg.com/t014c0ba9fb83fb8cdd.png"
+  },
+  {
+    "en": "Qatar",
+    "locale": "QA",
+    "zh": "卡塔尔",
+    "image": "http://p1.qhimg.com/t01a3cf9e9741b1ba3e.png"
+  },
+  {
+    "en": "Reunion",
+    "locale": "RE",
+    "zh": "留尼汪岛",
+    "image": "http://p5.qhimg.com/t01351ff2554c43b88e.png"
+  },
+  {
+    "en": "Romania",
+    "locale": "RO",
+    "zh": "罗马尼亚",
+    "image": "http://p5.qhimg.com/t0183eb772cc171cefe.png"
+  },
+  {
+    "en": "Rwanda",
+    "locale": "RW",
+    "zh": "卢旺达",
+    "image": "http://p1.qhimg.com/t011c36cc4a16229daf.png"
+  },
+  {
+    "en": "Russian Federation",
+    "locale": "RU",
+    "zh": "俄罗斯",
+    "image": "http://p8.qhimg.com/t0168a092df4f6e5fc7.png"
+  },
+  {
+    "en": "Saint Helena",
+    "locale": "SH",
+    "zh": "圣赫勒拿",
+    "image": "http://p5.qhimg.com/t013ad28c3c6eaa3a3f.png"
+  },
+  {
+    "en": "Saint Kitts-Nevis",
+    "locale": "KN",
+    "zh": "圣基茨和尼维斯",
+    "image": "http://p4.qhimg.com/t018844c24153750fa4.png"
+  },
+  {
+    "en": "Saint Lucia",
+    "locale": "LC",
+    "zh": "圣卢西亚",
+    "image": "http://p0.qhimg.com/t012610bf95b3640234.png"
+  },
+  {
+    "en": "Saint Vincent and the Grenadines",
+    "locale": "VG",
+    "zh": "圣文森特岛",
+    "image": "http://p8.qhimg.com/t01cc2eae36ad3f5ca6.png"
+  },
+  {
+    "en": "El Salvador",
+    "locale": "SV",
+    "zh": "萨尔瓦多",
+    "image": "http://p9.qhimg.com/t0112c3c5406421f25b.png"
+  },
+  {
+    "en": "Samoa",
+    "locale": "WS",
+    "zh": "萨摩亚",
+    "image": "http://p3.qhimg.com/t016707327fe8afcc37.png"
+  },
+  {
+    "en": "San Marino",
+    "locale": "SM",
+    "zh": "圣马力诺",
+    "image": "http://p8.qhimg.com/t0110599b61c11f0161.png"
+  },
+  {
+    "en": "Sao Tome and Principe",
+    "locale": "ST",
+    "zh": "圣多美和普林西比",
+    "image": "http://p3.qhimg.com/t014f3687b4b32a00c8.png"
+  },
+  {
+    "en": "Saudi Arabia",
+    "locale": "SA",
+    "zh": "沙特阿拉伯",
+    "image": "http://p1.qhimg.com/t0127ad47b50a7fd9f0.png"
+  },
+  {
+    "en": "Senegal",
+    "locale": "SN",
+    "zh": "塞内加尔",
+    "image": "http://p8.qhimg.com/t01fde6de37a501f408.png"
+  },
+  {
+    "en": "Seychelles",
+    "locale": "SC",
+    "zh": "塞舌尔",
+    "image": "http://p1.qhimg.com/t01d18ab92ff153c1bb.png"
+  },
+  {
+    "en": "Sierra Leone",
+    "locale": "SL",
+    "zh": "塞拉利昂",
+    "image": "http://p1.qhimg.com/t019bfc81196e0fa08b.png"
+  },
+  {
+    "en": "Singapore",
+    "locale": "SG",
+    "zh": "新加坡",
+    "image": "http://p4.qhimg.com/t019c251d30e2e92e9b.png"
+  },
+  {
+    "en": "Serbia",
+    "locale": "RS",
+    "zh": "塞尔维亚",
+    "image": "http://p3.qhimg.com/t0169797cd9e0c95277.png"
+  },
+  {
+    "en": "Slovakia",
+    "locale": "SK",
+    "zh": "斯洛伐克",
+    "image": "http://p0.qhimg.com/t01d5b6d72b1902c7e6.png"
+  },
+  {
+    "en": "Slovenia",
+    "locale": "SI",
+    "zh": "斯洛文尼亚",
+    "image": "http://p4.qhimg.com/t012101c19a3b1df857.png"
+  },
+  {
+    "en": "Solomon Islands",
+    "locale": "SB",
+    "zh": "所罗门群岛",
+    "image": "http://p7.qhimg.com/t0192d43072fc251775.png"
+  },
+  {
+    "en": "Somalia",
+    "locale": "SO",
+    "zh": "索马里",
+    "image": "http://p1.qhimg.com/t01c40c47a8183f0c1a.png"
+  },
+  {
+    "en": "South Africa",
+    "locale": "ZA",
+    "zh": "南非",
+    "image": "http://p6.qhimg.com/t0130224538d6129328.png"
+  },
+  {
+    "en": "Spain",
+    "locale": "ES",
+    "zh": "西班牙",
+    "image": "http://p4.qhimg.com/t01e6fdb20edf656182.png"
+  },
+  {
+    "en": "Sri Lanka",
+    "locale": "LK",
+    "zh": "斯里兰卡",
+    "image": "http://p6.qhimg.com/t01cf7ba7ef7bbe8750.png"
+  },
+  {
+    "en": "Sudan",
+    "locale": "SD",
+    "zh": "苏丹",
+    "image": "http://p4.qhimg.com/t010c67178bcab9cf34.png"
+  },
+  {
+    "en": "Suriname",
+    "locale": "SR",
+    "zh": "苏里南",
+    "image": "http://p3.qhimg.com/t01d5d64bba6f5c8f3d.png"
+  },
+  {
+    "en": "Swaziland",
+    "locale": "SZ",
+    "zh": "斯威士兰",
+    "image": "http://p0.qhimg.com/t018fb651ec6b00ec61.png"
+  },
+  {
+    "en": "Sweden",
+    "locale": "SE",
+    "zh": "瑞典",
+    "image": "http://p7.qhimg.com/t018f7648dbe5842766.png"
+  },
+  {
+    "en": "Switzerland",
+    "locale": "CH",
+    "zh": "瑞士",
+    "image": "http://p1.qhimg.com/t01050ea6f994788dfe.png"
+  },
+  {
+    "en": "Syria",
+    "locale": "SY",
+    "zh": "叙利亚",
+    "image": "http://p9.qhimg.com/t0174d5a820e46236e6.png"
+  },
+  {
+    "en": "Tajikistan",
+    "locale": "TJ",
+    "zh": "塔吉克斯坦",
+    "image": "http://p7.qhimg.com/t01058330fc1c74fabb.png"
+  },
+  {
+    "en": "Tanzania",
+    "locale": "TZ",
+    "zh": "坦桑尼亚",
+    "image": "http://p6.qhimg.com/t01cc421bfbea9e003b.png"
+  },
+  {
+    "en": "Thailand",
+    "locale": "TH",
+    "zh": "泰国",
+    "image": "http://p6.qhimg.com/t01c7cac70b39a9a0f8.png"
+  },
+  {
+    "en": "Trinidad and Tobago",
+    "locale": "TT",
+    "zh": "特立尼达和多巴哥",
+    "image": "http://p5.qhimg.com/t0128d735273807a229.png"
+  },
+  {
+    "en": "Timor-Leste",
+    "locale": "TL",
+    "zh": "东帝汶",
+    "image": "http://p3.qhimg.com/t01ba97112e0537db8e.png"
+  },
+  {
+    "en": "Togo",
+    "locale": "TG",
+    "zh": "多哥",
+    "image": "http://p8.qhimg.com/t0141a20490e9a23678.png"
+  },
+  {
+    "en": "Tokelau",
+    "locale": "TK",
+    "zh": "托克劳",
+    "image": "http://p5.qhimg.com/t0115a62a3e574f1e72.png"
+  },
+  {
+    "en": "Tonga",
+    "locale": "TO",
+    "zh": "汤加",
+    "image": "http://p0.qhimg.com/t01dede61728660f70a.png"
+  },
+  {
+    "en": "Tunisia",
+    "locale": "TN",
+    "zh": "突尼斯",
+    "image": "http://p8.qhimg.com/t01ccd2dbc97f51027c.png"
+  },
+  {
+    "en": "Turkey",
+    "locale": "TR",
+    "zh": "土耳其",
+    "image": "http://p4.qhimg.com/t01538dc9dfa4691862.png"
+  },
+  {
+    "en": "Turkmenistan",
+    "locale": "TM",
+    "zh": "土库曼斯坦",
+    "image": "http://p0.qhimg.com/t019a996fd9ceb1a866.png"
+  },
+  {
+    "en": "Tuvalu",
+    "locale": "TV",
+    "zh": "图瓦卢",
+    "image": "http://p5.qhimg.com/t014ba8b5ebf41cc017.png"
+  },
+  {
+    "en": "Uganda",
+    "locale": "UG",
+    "zh": "乌干达",
+    "image": "http://p0.qhimg.com/t01296515de11faab6d.png"
+  },
+  {
+    "en": "Ukraine",
+    "locale": "UA",
+    "zh": "乌克兰",
+    "image": "http://p0.qhimg.com/t01e70c8129a4d85419.png"
+  },
+  {
+    "en": "United Arab Emirates",
+    "locale": "AE",
+    "zh": "阿联酋",
+    "image": "http://p0.qhimg.com/t01c27c94ff21e37529.png"
+  },
+  {
+    "en": "United Kingdom",
+    "locale": "UK",
+    "zh": "英国",
+    "image": "http://p6.qhimg.com/t01e8bacba3abe5a4af.png"
+  },
+  {
+    "en": "United States",
+    "locale": "US",
+    "zh": "美国",
+    "image": "http://p9.qhimg.com/t01b1cd399af452498c.png"
+  },
+  {
+    "en": "Uruguay",
+    "locale": "UY",
+    "zh": "乌拉圭",
+    "image": "http://p3.qhimg.com/t015f067ad7cc658735.png"
+  },
+  {
+    "en": "Uzbekistan",
+    "locale": "UZ",
+    "zh": "乌兹别克斯坦",
+    "image": "http://p8.qhimg.com/t0152cb711bf015ed24.png"
+  },
+  {
+    "en": "Vanuatu",
+    "locale": "VN",
+    "zh": "瓦努阿图",
+    "image": "http://p8.qhimg.com/t01a2482de1e81e8a7a.png"
+  },
+  {
+    "en": "Vatican City",
+    "locale": "VA",
+    "zh": "梵蒂冈",
+    "image": "http://p9.qhimg.com/t010b3f74995faefb9c.png"
+  },
+  {
+    "en": "Venezuela",
+    "locale": "VE",
+    "zh": "委内瑞拉",
+    "image": "http://p3.qhimg.com/t013008ce9ebb9e0268.png"
+  },
+  {
+    "en": "Vietnam",
+    "locale": "VN",
+    "zh": "越南",
+    "image": "http://p8.qhimg.com/t01a2482de1e81e8a7a.png"
+  },
+  {
+    "en": "Wallis and Futuna",
+    "locale": "WF",
+    "zh": "瓦利斯群岛和富图纳群岛",
+    "image": "http://p1.qhimg.com/t017e0ca1a8ba823f47.png"
+  },
+  {
+    "en": "Western Sahara",
+    "locale": "EH",
+    "zh": "西撒哈拉",
+    "image": "http://p1.qhimg.com/t016df58a7740bcdec4.png"
+  },
+  {
+    "en": "Yemen",
+    "locale": "YE",
+    "zh": "也门",
+    "image": "http://p9.qhimg.com/t01b979e21ad84b3bb8.png"
+  },
+  {
+    "en": "Zambia",
+    "locale": "ZM",
+    "zh": "赞比亚",
+    "image": "http://p5.qhimg.com/t011787af943024694e.png"
+  },
+  {
+    "en": "Zimbabwe",
+    "locale": "ZW",
+    "zh": "津巴布韦",
+    "image": "http://p2.qhimg.com/t014a31d0de14cd6f5f.png"
+  },
+  {
+    "en": "Republic of Paraguay",
+    "locale": "PY",
+    "zh": "巴拉圭",
+    "image": "http://p1.qhimg.com/t01e9d32a3c5065b832.png"
+  },
+  {
+    "en": "The Commonwealth of Dominica",
+    "locale": "DM",
+    "zh": "多米尼克",
+    "image": "http://p0.qhimg.com/t013312f2b6c645ffcb.png"
+  },
+  {
+    "en": "The Turks and Caicos Islands",
+    "locale": "TC",
+    "zh": "特克斯和凯科斯群岛",
+    "image": "http://p4.qhimg.com/t01a971f942e2bab090.png"
+  }
+]
