@@ -4,7 +4,6 @@ import { deepmerge, timeout } from '../../common/util';
 import { barRankConfig } from './config';
 import { Bars } from './bars';
 import { Position } from '../../common/types';
-import { Label } from 'spritejs';
 
 export class BarRank extends BarTrend {
   private bars: Bars;
@@ -21,6 +20,20 @@ export class BarRank extends BarTrend {
     })
     // 可能数据长度不足 showNum 的大小
     this.config.showNum = Math.min(this.config.showNum, this.config.data.length);
+    this.initMaxValues();
+  }
+  private initMaxValues() {
+    let values = this.config.data.map(item => item.value);
+    values = values.map((val, index) => {
+      if (index < 3) {
+        return Math.max(val, values[3]);
+      }
+      if (index > this.config.showNum) {
+        return Math.max(val, values[Math.max(3, index % this.config.showNum)]);
+      }
+      return val;
+    })
+    this.maxValues = values;
   }
   private renderBars(pos: Position) {
     this.bars = new Bars({
@@ -31,10 +44,25 @@ export class BarRank extends BarTrend {
   }
   async render() {
     await super.render();
-    await this.renderBars({
-      width: this.config.width,
-      height: this.config.height,
-    });
+    let [y, paddingRight, paddingBottom, x] = <number[]>this.config.padding;
+    let width = this.config.width - x - paddingRight;
+    let height = this.config.height - y - paddingBottom;
+    const titleHeight = await this.renderTitle({
+      ...this.config.title,
+      x, y, width, height
+    })
+    y += titleHeight;
+    height -= titleHeight;
+    const subTitleHeight = await this.renderTitle({
+      ...this.config.subTitle,
+      x, y, width, height
+    })
+    y += subTitleHeight;
+    height -= subTitleHeight;
+
+    this.renderAxis(x, y, width, height);
+    const { tipHeight } = this.config.axis;
+    await this.renderBars({ x, y: y + tipHeight, width, height: height - tipHeight });
   }
   async start() {
     await this.render();

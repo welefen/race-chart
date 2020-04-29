@@ -12,7 +12,6 @@ export class BarRace extends BarTrend {
   config: BarRaceConfig;
   index: number = 0; // 当前所在的数据 index
   values: number[] = []; //当前 index 所在的 values
-  maxValues: number[]; // 最大的 values 列表
   bars: Bars;
   constructor(config: BarRaceConfig) {
     super(config);

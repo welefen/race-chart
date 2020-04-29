@@ -84,8 +84,7 @@ export class Bars {
     })
 
 
-    const thirdValue = this.bars[Math.min(3, this.bars.length) - 1].values[0];
-    const maxValue = Math.max(currentData.value, thirdValue / 0.7);
+    const maxValue = barRank.maxValues[barRank.index];
 
     const lastData = barRank.index === data.length - 1;
     const length = this.bars.length;
