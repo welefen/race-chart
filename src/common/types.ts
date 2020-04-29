@@ -1,12 +1,11 @@
-
 export type Align = 'left' | 'center' | 'right';
-
 export type Formatter = (value: number, type: string) => string;
+export type NumberOrString = number | string;
+export type Duration = (...args: NumberOrString[]) => number;
+export type ScaleType = 'fixed' | 'dynamic';
+export type SortType = 'asc' | 'desc';
+export type Status = 'run' | 'stop';
 
-
-/**
- * 字体，其他地方继承
- */
 export interface Font {
   fontSize?: number;
   fontFamily?: string;
@@ -21,9 +20,6 @@ export interface Font {
   align?: Align;
 }
 
-/**
- * 位置，其他地方继承
- */
 export interface Position {
   x?: number;
   y?: number;
@@ -34,7 +30,7 @@ export interface Position {
 /**
  * 画布背景
  */
-export interface Background {
+export interface BackgroundConfig {
   color?: string;
   image?: string;
   opacity?: number;
@@ -67,21 +63,18 @@ export interface SubTitleConfig extends TitleConfig {
 
 }
 
-export interface TimeData {
-  time: number;
-}
-
-export interface Config {
+export interface ChartConfig {
   selector?: string | HTMLElement; // 选择器
   width?: number;
   height?: number;
   displayRatio?: number;
   padding?: number | number[];
-  background?: Background; // 背景
+  background?: BackgroundConfig; // 背景
   watermark?: WatermarkConfig; // 水印
   openingImage?: OpeningImageConfig; // 片头
   endingImage?: EndingImageConfig; // 片尾
   colors?: string[]; // 颜色列表
   title?: TitleConfig; // 标题
   subTitle?: SubTitleConfig; //副标题
+  duration?: number | Duration;
 }

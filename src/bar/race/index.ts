@@ -1,21 +1,17 @@
-import { BarTrend } from '../common/trend';
+import { BarChart } from '../common/barChart';
 import { BarRaceConfig } from './types';
 import { deepmerge } from '../../common/util';
 import { sortValues, parseData } from './util';
 import { barRaceConfig } from './config';
 import { Bars } from './bars';
-import { Status } from '../common/types';
+import { Status } from '../../common/types';
 import { Position } from '../../common/types';
 
-export class BarRace extends BarTrend {
+export class BarRace extends BarChart {
   private status: Status = 'run';
   config: BarRaceConfig;
-  index: number = 0; // 当前所在的数据 index
   values: number[] = []; //当前 index 所在的 values
   bars: Bars;
-  constructor(config: BarRaceConfig) {
-    super(config);
-  }
   setConfig(config: BarRaceConfig): void {
     config = deepmerge({}, barRaceConfig, this.config, config);
     super.setConfig(config);

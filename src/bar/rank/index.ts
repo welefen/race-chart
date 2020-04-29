@@ -1,19 +1,15 @@
-import { BarTrend } from '../common/trend';
+import { BarChart } from '../common/barChart';
 import { BarRankConfig } from './types';
 import { deepmerge, timeout } from '../../common/util';
 import { barRankConfig } from './config';
 import { Bars } from './bars';
 import { Position } from '../../common/types';
 
-export class BarRank extends BarTrend {
+export class BarRank extends BarChart {
   private bars: Bars;
   config: BarRankConfig;
-  index: number = 0; // 当前所在的数据 index
-  constructor(config: BarRankConfig) {
-    super(config);
-  }
   setConfig(config: BarRankConfig) {
-    config = deepmerge({}, barRankConfig, this.config, config);
+    config = deepmerge({}, barRankConfig, this.config || {}, config || {});
     super.setConfig(config);
     this.config.data.sort((a, b) => {
       return a.value > b.value ? 1 : -1;

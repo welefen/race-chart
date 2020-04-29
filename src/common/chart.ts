@@ -1,21 +1,17 @@
-import { BarTrendConfig } from './types';
 import { Scene, Layer, Rect, Sprite } from 'spritejs';
 import Events from 'eventemitter3';
-import { createLabel } from '../../common/util';
-import { Timer } from '../../common/timer';
-import { Watermark } from '../../common/watermark';
-import { TitleConfig, Font } from '../../common/types';
-import { Axis } from './axis';
+import { createLabel } from './util';
+import { Timer } from './timer';
+import { Watermark } from './watermark';
+import { TitleConfig, Font } from './types';
+import { ChartConfig } from './types';
 
-export class BarTrend extends Events {
+export class Chart extends Events {
   protected timer: Timer;
-  maxValues: number[];
-  index: number = 0;
-  config: BarTrendConfig = {};
+  config: ChartConfig;
   scene: Scene;
   layer: Layer;
-  axis: Axis;
-  constructor(config: BarTrendConfig) {
+  constructor(config: ChartConfig) {
     super();
     this.setConfig(config);
     this.scene = new Scene({
@@ -29,10 +25,10 @@ export class BarTrend extends Events {
       handleEvent: false
     });
   }
-  setConfig(config: BarTrendConfig): void {
+  setConfig(config: ChartConfig): void {
     this.config = config;
-    this.timer = new Timer(<number>this.config.duration, this.onUpdate.bind(this));
-    const { selector } = this.config;
+    const { selector, duration } = this.config;
+    this.timer = new Timer(<number>duration, this.onUpdate.bind(this));
     if (typeof selector === 'string') {
       this.config.selector = <HTMLElement>document.querySelector(<string>selector);
     }
@@ -115,28 +111,6 @@ export class BarTrend extends Events {
     return label.clientSize[1];
   }
 
-  protected renderAxis(x: number, y: number, width: number, height: number) {
-    const { label, justifySpacing, value } = this.config.bar;
-    this.axis = new Axis({
-      x: x + label.width + justifySpacing,
-      y,
-      width: width - label.width - justifySpacing * 2 - value.width,
-      height,
-      formatter: this.config.formatter,
-      ...this.config.axis,
-    });
-    this.axis.appendTo(this.layer);
-  }
-  async render() {
-    await this.preload();
-    this.layer.removeAllChildren();
-    await this.renderBackground();
-    await this.renderWatermark();
-    this.emit('start');
-    await this.renderOpeningImage();
-    this.emit('startRace')
-  }
-
   protected async renderEndingImage() {
     const { image, time } = this.config.endingImage;
     if (!image) return;
@@ -154,6 +128,16 @@ export class BarTrend extends Events {
         sprite.attr({ opacity: Math.random() > 0.5 ? 0.98 : 1 });
       }
     });
+  }
+
+  async render() {
+    await this.preload();
+    this.layer.removeAllChildren();
+    await this.renderBackground();
+    await this.renderWatermark();
+    this.emit('start');
+    await this.renderOpeningImage();
+    this.emit('startRace')
   }
 
   protected onUpdate(percent: number): void {

@@ -1,4 +1,4 @@
-import { BarTrendConfig, BarConfig as BarConfigDefault } from '../common/types';
+import { BarChartConfig, BarConfig as BarConfigDefault } from '../common/types';
 import { Formatter, Position, Font } from '../../common/types';
 
 export interface BarDataItem {
@@ -41,7 +41,7 @@ export interface BarConfig extends BarConfigDefault {
   column?: BarColumnConfig;
 }
 
-export interface BarRaceConfig extends BarTrendConfig {
+export interface BarRaceConfig extends BarChartConfig {
   bar?: BarConfig;
   data?: BarData;
 }

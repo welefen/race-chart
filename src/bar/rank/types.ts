@@ -1,4 +1,4 @@
-import { BarTrendConfig, BarConfig as BarConfigDefault } from '../common/types';
+import { BarChartConfig, BarConfig as BarConfigDefault } from '../common/types';
 import { Position, Font } from '../../common/types';
 
 export type Formatter = (value: number) => string;
@@ -11,7 +11,7 @@ export interface BarDataItem {
   ext?: Record<string, any>;
 }
 
-export interface BarRankConfig extends BarTrendConfig {
+export interface BarRankConfig extends BarChartConfig {
   data?: BarDataItem[];
   bar?: BarConfig;
   delay?: number;

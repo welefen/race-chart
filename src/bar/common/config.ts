@@ -1,5 +1,5 @@
-import { config, fontFamily } from '../../common/config';
-import { BarLogoConfig, BarTrendConfig, AxisConfig, BarConfig, BarLabelConfig, BarRectConfig, BarValueConfig, } from './types';
+import { chartConfig, fontFamily } from '../../common/config';
+import { BarLogoConfig, BarChartConfig, AxisConfig, BarConfig, BarLabelConfig, BarRectConfig, BarValueConfig, } from './types';
 import { valueFormatter } from '../../common/util';
 
 const label: BarLabelConfig = {
@@ -53,8 +53,8 @@ export const barConfig: BarConfig = {
   justifySpacing: 5,
 }
 
-export const barTrendConfig: BarTrendConfig = {
-  ...config,
+export const barChartConfig: BarChartConfig = {
+  ...chartConfig,
   axis,
   showNum: 10,
   scaleType: 'dynamic',

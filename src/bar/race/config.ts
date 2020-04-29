@@ -1,4 +1,4 @@
-import { barTrendConfig, barConfig } from '../common/config';
+import { barChartConfig, barConfig } from '../common/config';
 import { BarRaceConfig, BarTotalConfig, BarColumnConfig } from './types';
 import { fontFamily } from '../../common/config';
 import { BarConfig } from './types';
@@ -28,6 +28,6 @@ const bar: BarConfig = {
 }
 
 export const barRaceConfig: BarRaceConfig = {
-  ...barTrendConfig,
+  ...barChartConfig,
   bar
 }

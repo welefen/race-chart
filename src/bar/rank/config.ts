@@ -1,4 +1,4 @@
-import { barTrendConfig, barConfig } from '../common/config';
+import { barChartConfig, barConfig } from '../common/config';
 import { BarRankConfig, RankConfig } from './types';
 import { fontFamily } from '../../common/config';
 
@@ -12,7 +12,7 @@ const rank: RankConfig = {
 }
 
 export const barRankConfig: BarRankConfig = {
-  ...barTrendConfig,
+  ...barChartConfig,
   delay: 300,
   bar: {
     ...barConfig,

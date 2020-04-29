@@ -1,7 +1,7 @@
 import { Group, Layer, Polyline } from 'spritejs';
 import { AxisConfig, AxisTick } from './types';
 import { createLabel, createGroup } from '../../common/util';
-import { BarTrend } from './trend';
+import { BarChart } from './barChart';
 
 export class Axis {
   config: AxisConfig;
@@ -79,9 +79,9 @@ export class Axis {
     if (str.length <= 2) return value;
     return parseInt(str.substr(0, 2)) * Math.pow(10, str.length - 2);
   }
-  beforeAnimate(barTrend: BarTrend) {
-    const value = barTrend.maxValues[barTrend.index];
-    const scaleType = barTrend.config.scaleType;
+  beforeAnimate(barChart: BarChart) {
+    const value = barChart.maxValues[barChart.index];
+    const scaleType = barChart.config.scaleType;
     if (!this.maxValue) {
       this.maxValue = value;
       const steps = this.getSteps(value);
@@ -123,17 +123,17 @@ export class Axis {
       }
     }
   }
-  afterAnimate(barTrend: BarTrend) {
-    const scaleType = barTrend.config.scaleType;
+  afterAnimate(barChart: BarChart) {
+    const scaleType = barChart.config.scaleType;
     if (scaleType === 'fixed') return;
     this.ticks = this.ticks.filter(tick => {
       if (!tick.remove) return true;
       this.group.removeChild(tick.group);
     })
   }
-  update(barTrend: BarTrend, percent: number) {
-    const prevValue = barTrend.index === 0 ? 0 : barTrend.maxValues[barTrend.index - 1];
-    const value = barTrend.maxValues[barTrend.index];
+  update(barChart: BarChart, percent: number) {
+    const prevValue = barChart.index === 0 ? 0 : barChart.maxValues[barChart.index - 1];
+    const value = barChart.maxValues[barChart.index];
     if (prevValue === value) return;
     const v = Math.floor(prevValue + (value - prevValue) * percent);
     if (!v) return;

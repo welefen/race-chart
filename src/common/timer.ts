@@ -1,6 +1,8 @@
 import TWEEN from '@tweenjs/tween.js';
 
-import { TimeData } from './types';
+interface TimeData {
+  time: number;
+}
 
 type UPDATE_CALLBACK = (percent: number) => void;
 
