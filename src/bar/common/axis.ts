@@ -12,7 +12,6 @@ export class Axis {
   constructor(config: AxisConfig) {
     this.config = config;
     this.group = createGroup(this.config);
-    this.addTicks([0]);
   }
   private getSteps(value: number) {
     const item = Math.floor(value / this.config.maxTick).toString();
@@ -87,7 +86,7 @@ export class Axis {
       this.maxValue = value;
       const steps = this.getSteps(value);
       this.step = steps[0];
-      return this.addTicks(steps);
+      return this.addTicks([0].concat(steps));
     }
     if (scaleType === 'fixed') return;
     const max = this.ticks[this.ticks.length - 1].value;
