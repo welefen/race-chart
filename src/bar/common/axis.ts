@@ -1,5 +1,6 @@
 import { Group, Layer, Polyline } from 'spritejs';
-import { AxisConfig, AxisTick } from './types';
+import { AxisTick } from './types';
+import { AxisConfig } from '../../common/types';
 import { createLabel, createGroup } from '../../common/util';
 import { BarChart } from './barChart';
 

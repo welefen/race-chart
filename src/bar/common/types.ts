@@ -1,13 +1,5 @@
-import { ChartConfig, Font, Position, Formatter, ScaleType, SortType } from '../../common/types';
+import { ChartConfig, Font, Position, Formatter, ScaleType, SortType, AxisConfig } from '../../common/types';
 import { Group } from 'spritejs';
-
-
-export interface AxisConfig extends Font, Position {
-  maxTick?: number; // 最多显示几个
-  lineColor?: string;
-  tipHeight?: number;
-  formatter?: Formatter;
-}
 
 export interface AxisTick {
   value?: number;

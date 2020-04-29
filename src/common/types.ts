@@ -5,6 +5,7 @@ export type Duration = (...args: NumberOrString[]) => number;
 export type ScaleType = 'fixed' | 'dynamic';
 export type SortType = 'asc' | 'desc';
 export type Status = 'run' | 'stop';
+export type AxisType = 'row' | 'column';
 
 export interface Font {
   fontSize?: number;
@@ -77,4 +78,12 @@ export interface ChartConfig {
   title?: TitleConfig; // 标题
   subTitle?: SubTitleConfig; //副标题
   duration?: number | Duration;
+}
+
+export interface AxisConfig extends Font, Position {
+  type?: AxisType;
+  maxTick?: number; // 最多显示几个
+  lineColor?: string;
+  tipHeight?: number;
+  formatter?: Formatter;
 }

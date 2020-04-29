@@ -1,4 +1,4 @@
-import { WatermarkConfig, TitleConfig, ChartConfig, SubTitleConfig } from './types';
+import { WatermarkConfig, TitleConfig, ChartConfig, SubTitleConfig, AxisConfig } from './types';
 
 export const fontFamily = '"宋体"';
 const colors: string[] = ["#67b7dc", "#6794dc", "#6771dc", "#8067dc", "#a367dc", "#c767dc", "#dc67ce", "#dc67ab", "#dc6788", "#dc6967", "#dc8c67", "#dcaf67", "#dcd267", "#c3dc67", "#a0dc67", "#7ddc67", "#67dc75", "#67dc98", "#67dcbb", "#67dadc"];
@@ -41,4 +41,13 @@ export const chartConfig: ChartConfig = {
   openingImage: {},
   endingImage: {},
   colors,
+}
+
+export const axisConfig: AxisConfig = {
+  maxTick: 4,
+  color: '#666',
+  lineColor: '#eee',
+  fontSize: 12,
+  fontFamily,
+  tipHeight: 25
 }
