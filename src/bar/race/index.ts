@@ -13,7 +13,7 @@ export class BarRace extends BarChart {
   values: number[] = []; //当前 index 所在的 values
   barGroup: BarGroup;
   setConfig(config: BarRaceConfig): void {
-    config = deepmerge({}, barRaceConfig, this.config, config);
+    config = deepmerge({}, barRaceConfig, this.config || {}, config);
     super.setConfig(config);
     this.config.data = parseData(this.config.data, this.config.showNum);
     // 按第一个数据从大到小排序
@@ -40,7 +40,7 @@ export class BarRace extends BarChart {
     if (!logo.disabled) {
       const promises = this.config.data.data.map(item => {
         if (!item.image) return;
-        return this.scene.preload({id: item.image, src: item.image})
+        return this.scene.preload({ id: item.image, src: item.image })
       })
       return Promise.all(promises).then(() => { })
     }
