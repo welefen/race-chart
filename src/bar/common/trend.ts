@@ -10,6 +10,7 @@ import { Axis } from './axis';
 export class BarTrend extends Events {
   protected timer: Timer;
   maxValues: number[];
+  index: number = 0;
   config: BarTrendConfig = {};
   scene: Scene;
   layer: Layer;
