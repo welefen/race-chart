@@ -1,3 +1,5 @@
+import { Group } from 'spritejs';
+
 export type Align = 'left' | 'center' | 'right';
 export type Formatter = (value: number, type: string) => string;
 export type NumberOrString = number | string;
@@ -6,6 +8,7 @@ export type ScaleType = 'fixed' | 'dynamic';
 export type SortType = 'asc' | 'desc';
 export type Status = 'run' | 'stop';
 export type AxisType = 'row' | 'column';
+export type AxisLabelPosition = 'top' | 'bottom';
 
 export interface Font {
   fontSize?: number;
@@ -80,10 +83,28 @@ export interface ChartConfig {
   duration?: number | Duration;
 }
 
-export interface AxisConfig extends Font, Position {
-  type?: AxisType;
-  maxTick?: number; // 最多显示几个
-  lineColor?: string;
-  tipHeight?: number;
+export interface AxisLabelConfig extends Font {
+  text?: string;
+  pos?: AxisLabelPosition;
+  width?: number;
+  height?: number;
   formatter?: Formatter;
+}
+export interface AxisLineConfig {
+  color?: string;
+  width?: number;
+}
+
+export interface AxisConfig extends Position {
+  type?: AxisType;
+  maxTick?: number;
+  label?: AxisLabelConfig;
+  line?: AxisLineConfig;
+}
+
+export interface AxisTick {
+  value?: number;
+  label?: string;
+  remove?: boolean;
+  group?: Group;
 }

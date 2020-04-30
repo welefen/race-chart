@@ -62,8 +62,8 @@ export class BarRank extends BarChart {
     height -= subTitleHeight;
 
     this.renderAxis(x, y, width, height);
-    const { tipHeight } = this.config.axis;
-    await this.renderBars({ x, y: y + tipHeight, width, height: height - tipHeight });
+    const axisHeight = this.config.axis.label.height;
+    await this.renderBars({ x, y: y + axisHeight, width, height: height - axisHeight });
   }
   async start() {
     await this.render();
@@ -82,14 +82,17 @@ export class BarRank extends BarChart {
   }
   protected onUpdate(percent: number) {
     this.barGroup.onUpdate(this, percent);
-    this.axis.update(this, percent);
+    const oldMaxValue = this.index ? this.maxValues[this.index - 1] : 0;
+    const maxValue = this.maxValues[this.index];
+    this.axis.update(oldMaxValue, maxValue, percent);
   }
   beforeAnimate() {
     this.barGroup.beforeAnimate(this);
-    this.axis.beforeAnimate(this);
+    const maxValue = this.maxValues[this.index];
+    this.axis.beforeAnimate(maxValue, this.config.scaleType);
   }
   afterAnimate() {
     this.barGroup.afterAnimate(this);
-    this.axis.afterAnimate(this);
+    this.axis.afterAnimate();
   }
 }

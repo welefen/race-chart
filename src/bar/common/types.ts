@@ -1,12 +1,6 @@
 import { ChartConfig, Font, Position, Formatter, ScaleType, SortType, AxisConfig } from '../../common/types';
 import { Group } from 'spritejs';
 
-export interface AxisTick {
-  value?: number;
-  remove?: boolean;
-  group?: Group;
-}
-
 
 export interface BarLabelConfig extends Font {
   text?: string;
