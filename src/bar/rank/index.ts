@@ -24,10 +24,10 @@ export class BarRank extends BarChart {
     const { percent, maxValueIndex } = this.config.bar;
     while (index < values.length) {
       if (index < maxValueIndex) {
-        values[index] = Math.max(values[index] / percent, values[maxValueIndex] || 0);
+        values[index] = values[index] / percent;
       } else if (index > this.config.showNum) {
-        const idx = index % this.config.showNum + maxValueIndex;
-        values[index] = Math.max(values[index], (values[idx] || 0) / percent);
+        const idx = index - this.config.showNum;
+        values[index] = Math.max(values[index], values[idx] / percent);
       }
       if (index && values[index] < values[index - 1]) {
         values[index] = values[index - 1];
