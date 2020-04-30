@@ -18,16 +18,18 @@ export class BaseAxis {
       width: this.config.line.width,
       height: this.config.height
     })
+    const { pos, height } = this.config.label;
+    const props = pos === 'top' ? [height, this.config.height, 0] : [0, this.config.height - height, this.config.height - height];
     const label = createLabel(str, this.config.label);
     group.appendChild(label);
     label.textImageReady.then(() => {
       const [width] = label.clientSize;
       label.attr({
-        x: - Math.floor(width / 2)
+        height: this.config.label.height,
+        x: - Math.floor(width / 2),
+        y: props[2]
       })
     });
-    const { pos, height } = this.config.label;
-    const props = pos === 'top' ? [height, this.config.height] : [0, this.config.height - height];
     const line = new Polyline({
       points: [0, props[0], 0, props[1]],
       strokeColor: this.config.line.color,
@@ -39,18 +41,19 @@ export class BaseAxis {
   private generateRowTick(str: string) {
     const group = new Group({
       width: this.config.width,
-      height: this.config.line.width
+      height: this.config.line.width,
     })
     const label = createLabel(str, this.config.label);
     label.attr({
       width: this.config.label.width,
-      textAlign: 'right'
+      textAlign: 'right',
+      paddingRight: 5,
     })
     group.appendChild(label);
     label.textImageReady.then(() => {
-      const [height] = label.clientSize;
+      const [_, height] = label.clientSize;
       label.attr({
-        y: - Math.floor(height / 2)
+        y: - height / 2 - 1
       })
     });
     const line = new Polyline({

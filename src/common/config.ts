@@ -54,6 +54,7 @@ export const axisConfig: AxisConfig = {
     pos: 'top',
     width: 100,
     height: 20,
+    lineHeight: 20,
     formatter: valueFormatter
   },
   line: {

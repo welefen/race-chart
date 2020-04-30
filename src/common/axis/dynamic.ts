@@ -23,7 +23,10 @@ export class DynamicAxis extends BaseAxis {
     const size = isRow ? this.config.height : this.config.width;
     const prop = isRow ? 'y' : 'x';
     this.ticks.forEach(tick => {
-      const val = tick.value / this.maxValue * size;
+      let val = tick.value / this.maxValue * size;
+      if (isRow) {
+        val = this.config.height - val;
+      }
       tick.group.attr({ [prop]: val });
       if (tick.remove) {
         tick.group.attr({ opacity: Math.max(0, 1 - percent * 3) });
@@ -34,12 +37,7 @@ export class DynamicAxis extends BaseAxis {
   }
   protected addTicks(ticks: AxisTick[]) {
     super.addTicks(ticks);
-    const isRow = this.config.type === 'row';
-    const size = isRow ? this.config.height : this.config.width;
-    const prop = isRow ? 'y' : 'x';
     this.ticks.forEach(tick => {
-      const pos = Math.floor(tick.value / (this.maxValue || 1) * size);
-      tick.group.attr({ [prop]: pos });
       if (tick.value > this.maxValue) {
         tick.group.attr({ opacity: 0 });
       }
@@ -47,6 +45,7 @@ export class DynamicAxis extends BaseAxis {
     this.ticks.sort((a, b) => {
       return a.value > b.value ? 1 : -1;
     })
+    this.updateTicksPos(1);
   }
   public beforeAnimate(value: number, scaleType: string) {
     if (!this.maxValue) {

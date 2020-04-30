@@ -4,7 +4,8 @@ module.exports = {
   mode: 'production',
   entry: {
     barRace: './src/bar/race/index.ts',
-    barRank: './src/bar/rank/index.ts'
+    barRank: './src/bar/rank/index.ts',
+    lineRace: './src/line/race/index.ts',
   },
   module: {
     rules: [
