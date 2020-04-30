@@ -10,6 +10,7 @@ export class BarChart extends Chart {
   protected renderAxis(x: number, y: number, width: number, height: number) {
     const { label, justifySpacing, value } = this.config.bar;
     this.axis = new DynamicAxis({
+      type: 'column',
       x: x + label.width + justifySpacing,
       y,
       width: width - label.width - justifySpacing * 2 - value.width,
