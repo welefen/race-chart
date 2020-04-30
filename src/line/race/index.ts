@@ -4,10 +4,11 @@ import { FixedAxis } from '../../common/axis/fixed';
 import { LineRaceConfig } from './types';
 import { lineRaceConfig } from './config';
 import { deepmerge } from '../../common/util';
+import { LineGroup } from './lineGroup';
 
 export class LineRace extends Chart {
   protected yAxis: DynamicAxis;
-  protected xAxis: DynamicAxis;
+  protected xAxis: FixedAxis;
   config: LineRaceConfig;
   setConfig(config: LineRaceConfig) {
     config = deepmerge({}, lineRaceConfig, this.config || {}, config || {});
@@ -26,7 +27,7 @@ export class LineRace extends Chart {
     this.yAxis.appendTo(this.layer);
   }
   protected renderXAxis(x: number, y: number, width: number, height: number) {
-    this.xAxis = new DynamicAxis({
+    this.xAxis = new FixedAxis({
       type: 'column',
       x,
       y,
@@ -61,9 +62,16 @@ export class LineRace extends Chart {
     this.yAxis.beforeAnimate(1000000, '');
 
     this.renderXAxis(x + yAxisLabelWidth, y, width - yAxisLabelWidth, height);
-    this.xAxis.beforeAnimate(100000, '');
-    // const axisHeight = this.config.axis.label.height;
-    // await this.renderBars({ x, y: y + axisHeight, width, height: height - axisHeight });
+    this.xAxis.initTicks(this.config.data.columnNames);
+
+    const lineGroup = new LineGroup({
+      ...this.config,
+      x: x + yAxisLabelWidth,
+      y,
+      width: width - yAxisLabelWidth,
+      height: height - xAxisLabelHeight
+    })
+    lineGroup.appendTo(this.layer);
   }
   async start() {
     await this.render();

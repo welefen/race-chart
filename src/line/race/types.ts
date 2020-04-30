@@ -1,4 +1,4 @@
-import { ChartConfig, AxisConfig } from "../../common/types";
+import { ChartConfig, AxisConfig, Position } from "../../common/types";
 
 export interface LineDataItem {
   image?: string;
@@ -11,8 +11,16 @@ export interface LineData {
   data?: LineDataItem[];
 }
 
+export interface LineNodeConfig extends Position {
+  color?: string;
+}
+
 export interface LineRaceConfig extends ChartConfig {
   data?: LineData;
   yAxis?: AxisConfig;
   xAxis?: AxisConfig;
+}
+
+export interface LineGroupConfig extends LineRaceConfig, Position {
+  
 }
