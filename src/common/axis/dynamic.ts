@@ -90,7 +90,9 @@ export class DynamicAxis extends BaseAxis {
             num--;
             maxValue += this.step;
           }
-          this.addTicks(values);
+          this.addTicks(values.map(item => {
+            return { value: item, label: this.config.label.formatter(item, 'axis') }
+          }));
         }
       }
     }
