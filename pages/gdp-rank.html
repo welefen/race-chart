@@ -39,21 +39,15 @@
     <script src="http://s8.qhres.com/static/8f1f3a4fcc9aaa3a/canvas2video.js"></script>
     <script src="https://unpkg.com/@ffmpeg/ffmpeg@0.7.0/dist/ffmpeg.min.js"></script>
     <script>
-      fetch("../data/gdp/china_province/province.json")
+      fetch("../data/gdp/country/rank_en.json")
         .then((res) => res.json())
         .then((data) => {
-          data = data.data.map((item) => {
-            return {
-              label: item.label,
-              value: item.values[item.values.length - 1],
-            };
-          });
           const instance = new BarRank({
             selector: document.querySelector("#container"),
             data,
             background: {
-              // image: "http://p1.qhimg.com/t010bcafe1844b67796.png",
-              opacity: 0.8,
+              image: "https://p2.ssl.qhimg.com/t0146b4c543914fa3a4.png",
+              opacity: 0.1,
               color: "#fff",
             },
             padding: [10, 10, 10, 10],
@@ -76,9 +70,9 @@
                 // padding: [20, 20, 20, 20]
               },
               justifySpacing: 10,
-              alignSpacing: 10,
+              alignSpacing: 12,
             },
-            duration: 3000,
+            duration: 500,
             showNum: 10,
             formatter(value, type) {
               value = Math.floor(value);

@@ -31,7 +31,9 @@ export interface RankConfig extends Font {
 }
 
 export interface BarConfig extends BarConfigDefault {
-  rank?: RankConfig
+  rank?: RankConfig,
+  percent?: number;
+  maxValueIndex?: number;
 }
 
 export interface BarsConfig extends BarRankConfig, Position {

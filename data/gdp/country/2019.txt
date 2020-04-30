@@ -1,5 +1,5 @@
 1	 United States	21,439,453
-2	 China[n 2]	14,140,163
+2	 China	14,140,163
 3	 Japan	5,154,475
 4	 Germany	3,863,344
 5	 India	2,935,570
@@ -8,7 +8,7 @@
 8	 Italy	1,988,636
 9	 Brazil	1,847,020
 10	 Canada	1,730,914
-11	 Russia[n 3]	1,637,892
+11	 Russian Federation	1,637,892
 12	 Korea (South)	1,629,532
 13	 Spain	1,397,870
 14	 Australia	1,376,255
@@ -42,7 +42,7 @@
 42	 Pakistan	284,214
 43	 Finland	269,654
 44	 Vietnam	261,637
-45	 Czech Republic	246,953
+45	 Czech	246,953
 46	 Romania	243,698
 47	 Portugal	236,408
 48	 Peru	228,989
@@ -61,7 +61,7 @@
 61	 Kenya	98,607
 62	 Angola	91,527
 63	 Ethiopia	91,166
-64	 Dominican Republic	89,475
+64	 The Dominican Republic	89,475
 65	 Sri Lanka	86,566
 66	 Guatemala	81,318
 67	 Oman	76,609
@@ -76,16 +76,15 @@
 76	 Costa Rica	61,021
 77	 Croatia	60,702
 78	 Uzbekistan	60,490
-79	 Syria[n 4]	60,043/Na
+79	 Syria	60,043/Na
 80	 Uruguay	59,918
 81	 Lebanon	58,565
 82	 Slovenia	54,154
 83	 Lithuania	53,641
 84	 Serbia	51,523
-85	 Congo, Democratic Republic of the	48,994
+85	 Congo (Congo-Kinshasa)	48,994
 86	 Azerbaijan	47,171
 87	 Turkmenistan	46,674
-88	 Côte d'Ivoire	44,439
 89	 Jordan	44,172
 90	 Bolivia	42,401
 91	 Paraguay	40,714
@@ -127,14 +126,14 @@
 127	 Armenia	13,444
 128	 Guinea	13,368
 129	 Zimbabwe	12,818
-130	 North Macedonia	12,672
-131	 Bahamas, The	12,664
+130	 Macedonia	12,672
+131	 Bahamas	12,664
 132	 Madagascar	12,550
 133	 Nicaragua	12,528
 134	 Brunei	12,455
 135	 Equatorial Guinea	12,142
 136	 Moldova	11,688
-137	 Congo, Republic of the	11,576
+137	 Congo	11,576
 138	 Chad	11,026
 139	 Rwanda	10,209
 140	 Niger	9,443
@@ -149,11 +148,9 @@
 149	 Fiji	5,708
 150	 Barbados	5,189
 151	 Somalia	4,958
-152	 Eswatini	4,657
 153	 Sierra Leone	4,229
 154	 Guyana	4,121
 155	 Suriname	3,774
-156	 South Sudan	3,681
 157	 Burundi	3,573
 158	 Liberia	3,221
 159	 Djibouti	3,166
@@ -163,7 +160,6 @@
 163	 Central African Republic	2,321
 164	 Eritrea	2,110
 165	 Belize	2,001
-166	 St. Lucia	1,992
 167	 Gambia	1,773
 168	 Antigua and Barbuda	1,688
 169	 Seychelles	1,644
@@ -171,14 +167,9 @@
 171	 Solomon Islands	1,440
 172	 Grenada	1,238
 173	 Comoros	1,179
-174	 St. Kitts and Nevis	1,032
 175	 Vanuatu	951
 176	 Samoa	905
-177	 St. Vincent and the Grenadines	856
-178	 Dominica	593
 179	 Tonga	488
-180	 São Tomé and Príncipe	430
-181	 Micronesia, Federated States of	381
 182	 Palau	291
 183	 Marshall Islands	220
 184	 Kiribati	184

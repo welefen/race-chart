@@ -20,15 +20,20 @@ export class BarRank extends BarChart {
   }
   private initMaxValues() {
     let values = this.config.data.map(item => item.value);
-    values = values.map((val, index) => {
-      if (index < 3) {
-        return Math.max(val, values[3]);
+    let index = 0;
+    const { percent, maxValueIndex } = this.config.bar;
+    while (index < values.length) {
+      if (index < maxValueIndex) {
+        values[index] = Math.max(values[index] / percent, values[maxValueIndex] || 0);
+      } else if (index > this.config.showNum) {
+        const idx = index % this.config.showNum + maxValueIndex;
+        values[index] = Math.max(values[index], (values[idx] || 0) / percent);
       }
-      if (index > this.config.showNum) {
-        return Math.max(val, values[Math.max(3, index % this.config.showNum)]);
+      if (index && values[index] < values[index - 1]) {
+        values[index] = values[index - 1];
       }
-      return val;
-    })
+      index++;
+    }
     this.maxValues = values;
   }
   private renderBars(pos: Position) {
