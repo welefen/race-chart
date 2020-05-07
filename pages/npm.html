@@ -17,7 +17,7 @@
           inset 0 0 0 1px hsla(0, 0%, 100%, 0.2);
       }
     </style>
-    <script src="https://unpkg.com/spritejs@3.4.26/dist/spritejs.min.js"></script>
+    <script src="https://unpkg.com/spritejs@3/dist/spritejs.js"></script>
     <script src="http://s9.qhres.com/static/0847e42b9c814c4b/tween.js"></script>
   </head>
   <body>
@@ -39,7 +39,7 @@
     <script src="http://s8.qhres.com/static/f5d328097dd65d47/canvas2video.js"></script>
     <script src="https://unpkg.com/@ffmpeg/ffmpeg@0.7.0/dist/ffmpeg.min.js"></script>
     <script>
-      fetch("../data/npm/pack_download.json")
+      fetch("../data/npm/fe_download.json")
         .then((res) => res.json())
         .then((data) => {
           const instance = new BarRace({
@@ -52,7 +52,7 @@
             },
             padding: [15, 15, 15, 15],
             title: {
-              text: '前端打包工具NPM月下载量趋势',
+              text: '前端框架/UI NPM月下载量趋势',
               padding: [10, 0, 30, 0]
             },
             bar: {
@@ -83,10 +83,10 @@
               alignSpacing: 10,
             },
             showNum: 20,
-            formatter(value, type) {
-              value = Math.floor(value);
-              return value;
-            },
+            // formatter(value, type) {
+            //   value = Math.floor(value);
+            //   return value;
+            // },
             duration: function (column, index, length) {
               column = parseInt(column);
               return 1000;

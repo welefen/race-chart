@@ -59,6 +59,6 @@ export const axisConfig: AxisConfig = {
   },
   line: {
     color: '#eee',
-    width: 1,
+    width: 0.5,
   }
 }

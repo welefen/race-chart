@@ -19,8 +19,17 @@ export interface LineRaceConfig extends ChartConfig {
   data?: LineData;
   yAxis?: AxisConfig;
   xAxis?: AxisConfig;
+  showNum?: number;
+  sortType?: string;
 }
 
 export interface LineGroupConfig extends LineRaceConfig, Position {
-  
+
+}
+
+export interface AnimateData {
+  value?: number;
+  oldValue?: number;
+  maxValue?: number;
+  oldMaxValue?: number;
 }

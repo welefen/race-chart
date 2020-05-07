@@ -5,17 +5,35 @@ import { LineRaceConfig } from './types';
 import { lineRaceConfig } from './config';
 import { deepmerge } from '../../common/util';
 import { LineGroup } from './lineGroup';
+import { parseData, sortValues } from '../../bar/race/util';
 
 export class LineRace extends Chart {
-  protected yAxis: DynamicAxis;
-  protected xAxis: FixedAxis;
+  private index: number = 0;
+  private yAxis: DynamicAxis;
+  private xAxis: FixedAxis;
+  private lineGroup: LineGroup;
+  private maxValues: number[];
   config: LineRaceConfig;
   setConfig(config: LineRaceConfig) {
-    config = deepmerge({}, lineRaceConfig, this.config || {}, config || {});
+    config = deepmerge({}, lineRaceConfig, this.config || {}, config);
     super.setConfig(config);
+    this.config.data = parseData(this.config.data, this.config.showNum);
+    // 按第一个数据从大到小排序
+    sortValues(this.config.data.data, 0, this.config.sortType);
+    // 可能数据长度不足 showNum 的大小
+    this.config.showNum = Math.min(this.config.showNum, this.config.data.data.length);
+    this.initMaxValues();
+  }
+  private initMaxValues() {
+    const { columnNames, data } = this.config.data;
+    let values: number[] = columnNames.map((_, idx) => {
+      const values = data.map(item => item.values[idx]);
+      return Math.max(...values) / 0.9;
+    })
+    this.maxValues = values;
   }
 
-  protected renderYAxis(x: number, y: number, width: number, height: number) {
+  private renderYAxis(x: number, y: number, width: number, height: number) {
     this.yAxis = new DynamicAxis({
       type: 'row',
       x,
@@ -26,7 +44,7 @@ export class LineRace extends Chart {
     });
     this.yAxis.appendTo(this.layer);
   }
-  protected renderXAxis(x: number, y: number, width: number, height: number) {
+  private renderXAxis(x: number, y: number, width: number, height: number) {
     this.xAxis = new FixedAxis({
       type: 'column',
       x,
@@ -59,7 +77,6 @@ export class LineRace extends Chart {
     const xAxisLabelHeight = this.config.xAxis.label.height;
 
     this.renderYAxis(x, y, width, height - xAxisLabelHeight);
-    this.yAxis.beforeAnimate(1000000, '');
 
     this.renderXAxis(x + yAxisLabelWidth, y, width - yAxisLabelWidth, height);
     this.xAxis.initTicks(this.config.data.columnNames);
@@ -72,20 +89,35 @@ export class LineRace extends Chart {
       height: height - xAxisLabelHeight
     })
     lineGroup.appendTo(this.layer);
+    this.lineGroup = lineGroup;
   }
   async start() {
     await this.render();
-    // const length = this.config.data.length;
-    // let { duration } = this.config;
-    // while (this.index < length) {
-    //   this.emit('change', this.index);
-    //   await this.beforeAnimate();
-    //   const dur = typeof duration === 'function' ? duration(this.index, length) : duration;
-    //   await this.timer.start(dur);
-    //   await this.afterAnimate();
-    //   this.index++;
-    //   await timeout(this.config.delay);
-    // }
-    // this.emit('end');
+    const length = this.config.data.columnNames.length;
+    let { duration } = this.config;
+    while (this.index < length) {
+      this.emit('change', this.index);
+      await this.beforeAnimate();
+      const dur = typeof duration === 'function' ? duration(this.index, length) : duration;
+      await this.timer.start(dur);
+      await this.afterAnimate();
+      this.index++;
+      // await timeout(this.config.delay);
+    }
+    this.emit('end');
+  }
+  private beforeAnimate() {
+    this.yAxis.beforeAnimate(this.maxValues[this.index], '');
+    const oldMaxValue = this.maxValues[Math.max(0, this.index - 1)];
+    this.lineGroup.beforeAnimate(this.index, this.maxValues[this.index], oldMaxValue);
+  }
+  protected onUpdate(percent: number) {
+    const oldMaxValue = this.maxValues[Math.max(0, this.index - 1)];
+    this.yAxis.update(oldMaxValue, this.maxValues[this.index], percent);
+    this.lineGroup.onUpdate(this.index, percent);
+  }
+  private afterAnimate() {
+    this.yAxis.afterAnimate();
+    this.lineGroup.afterAnimate();
   }
 }
