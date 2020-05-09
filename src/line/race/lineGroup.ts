@@ -14,16 +14,13 @@ export class LineGroup {
   }
   public initLineNodes() {
     const { colors } = this.config;
-    this.lineNodes = this.config.data.data.map((item, index) => {
+    this.lineNodes = this.config.data.data.slice(0, 1).map((item, index) => {
       const instance = new LineNode({
         color: colors[index % colors.length]
       }, item.values);
       instance.appendTo(this.group);
       return instance;
     })
-  }
-  public beforeAnimate(index: number, maxValue: number, oldMaxValue: number) {
-
   }
   public onUpdate(index: number, percent: number, maxTick: number, oldMaxValue: number, maxValue: number) {
     const { height, width } = this.config;
@@ -63,7 +60,7 @@ export class LineGroup {
     })
   }
   public afterAnimate() {
-
+    // console.log('after')
   }
   public appendTo(layer: Layer) {
     layer.appendChild(this.group);

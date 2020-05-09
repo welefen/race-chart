@@ -47,7 +47,7 @@ export class DynamicAxis extends BaseAxis {
     })
     this.updateTicksPos(1);
   }
-  public beforeAnimate(value: number, scaleType: string) {
+  public beforeAnimate(value: number, scaleType?: string) {
     if (!this.maxValue) {
       this.maxValue = value;
       const steps = this.getSteps(value);

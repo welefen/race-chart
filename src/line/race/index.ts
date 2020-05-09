@@ -106,9 +106,8 @@ export class LineRace extends Chart {
     this.emit('end');
   }
   private beforeAnimate() {
-    this.yAxis.beforeAnimate(this.maxValues[this.index], '');
-    const oldMaxValue = this.maxValues[Math.max(0, this.index - 1)];
-    this.lineGroup.beforeAnimate(this.index, this.maxValues[this.index], oldMaxValue);
+    const maxValue = this.maxValues[this.index]
+    this.yAxis.beforeAnimate(maxValue);
     this.xAxis.beforeAnimate(this.index);
   }
   protected onUpdate(percent: number) {
