@@ -38,7 +38,7 @@
     <script src="http://s8.qhres.com/static/6052764f8f0b90c3/canvas2video.js"></script>
     <script src="https://unpkg.com/@ffmpeg/ffmpeg@0.7.0/dist/ffmpeg.min.js"></script>
     <script>
-      fetch('../data/covid-19/con_cn.json').then(res => res.json()).then(data => {
+      fetch('../data/gdp/china_province/province.json').then(res => res.json()).then(data => {
         const instance = new LineRace({
         selector: document.querySelector("#container"),
         data: data,
@@ -64,8 +64,11 @@
           if(index < 30) return 600;
           return 1500;
         },
+        yAxis: {
+          maxTick: 8,
+        },
         xAxis: {
-          maxTick: 110
+          maxTick: 8
         },
         watermark: {
           text: "DataRace",

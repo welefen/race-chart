@@ -26,10 +26,3 @@ export interface LineRaceConfig extends ChartConfig {
 export interface LineGroupConfig extends LineRaceConfig, Position {
 
 }
-
-export interface AnimateData {
-  value?: number;
-  oldValue?: number;
-  maxValue?: number;
-  oldMaxValue?: number;
-}

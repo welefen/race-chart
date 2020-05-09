@@ -36,8 +36,8 @@
     </div>
     <script src="../dist/barRace.js"></script>
     <!-- <script src="http://s8.qhres.com/static/49dc5f5662a566ee.js"></script> -->
-    <script src="http://s8.qhres.com/static/f5d328097dd65d47/canvas2video.js"></script>
-    <script src="https://unpkg.com/@ffmpeg/ffmpeg@0.7.0/dist/ffmpeg.min.js"></script>
+    <script src="http://s8.qhres.com/static/162287d05f35ddab/canvas2video.js"></script>
+    <script src="https://unpkg.com/@ffmpeg/ffmpeg/dist/ffmpeg.min.js"></script>
     <script>
       fetch("../data/npm/fe_download.json")
         .then((res) => res.json())
@@ -89,7 +89,7 @@
             // },
             duration: function (column, index, length) {
               column = parseInt(column);
-              return 1000;
+              return 100;
             },
             axis: {
               tipHeight: 20,
@@ -104,9 +104,10 @@
           });
           const videoInstance = new Canvas2Video({
             canvas: instance.layer.canvas,
-            mimeType: "video/webm;codecs=h264",
-            outVideoType: "webm",
-            // audio: "http://s6.qhres.com/static/8b52098f6453e7dd.mp3",
+            // mimeType: "video/webm",
+            // outVideoType: "mp4",
+            // concatDemuxerOptions: '-af apad -map 0:v -map 1:a -shortest',
+            audio: "http://s6.qhres.com/static/8b52098f6453e7dd.mp3",
             workerOptions: {
               logger: ({ message }) => console.log(message)
             }

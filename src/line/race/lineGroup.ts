@@ -1,14 +1,12 @@
-import { LineGroupConfig, AnimateData } from './types';
+import { LineGroupConfig } from './types';
 import { Group, Layer } from 'spritejs';
 import { createGroup } from '../../common/util';
 import { LineNode } from './lineNode';
 
-const allPoints = [];
 export class LineGroup {
   private config: LineGroupConfig;
   private group: Group;
   private lineNodes: LineNode[] = [];
-  private animateData: AnimateData[];
   constructor(config: LineGroupConfig) {
     this.config = config;
     this.group = createGroup(config);
@@ -25,44 +23,47 @@ export class LineGroup {
     })
   }
   public beforeAnimate(index: number, maxValue: number, oldMaxValue: number) {
-    const prevIndex = index ? index - 1 : index;
-    this.animateData = this.lineNodes.map(lineNode => {
-      return {
-        value: lineNode.values[index],
-        oldValue: lineNode.values[prevIndex],
-        maxValue,
-        oldMaxValue
-      }
-    })
+
   }
-  public onUpdate(index: number, percent: number) {
-    const maxTick = this.config.xAxis.maxTick;
+  public onUpdate(index: number, percent: number, maxTick: number, oldMaxValue: number, maxValue: number) {
     const { height, width } = this.config;
     const itemWidth = width / maxTick;
+    const delta = index > maxTick ? index - maxTick : 0;
+    maxValue = oldMaxValue + (maxValue - oldMaxValue) * percent;
     this.lineNodes.forEach((lineNode, idx) => {
       const points = [];
-      const animateData = this.animateData[idx];
-      const maxValue = animateData.oldMaxValue + (animateData.maxValue - animateData.oldMaxValue) * percent;
       lineNode.values.some((value, valIdx) => {
         if (valIdx > index) return true;
+        if (valIdx < index - maxTick) return;
+        // 最后一个
         if (index && valIdx === index) {
-          const x = (valIdx - 1) * itemWidth + itemWidth * percent;
+          let x = (valIdx - 1) * itemWidth + itemWidth * percent;
+          if (delta) {
+            x = width;
+          }
           const prevValue = lineNode.values[index - 1];
           const curValue = prevValue + (value - prevValue) * percent;
           const y = (maxValue - curValue) / maxValue * height;
           points.push(x, y);
+        } else if (delta && valIdx === delta) {
+          const prevValue = lineNode.values[valIdx - 1];
+          const curValue = prevValue + (value - prevValue) * percent;
+          const y = (maxValue - curValue) / maxValue * height;
+          points.push(0, y);
         } else if (valIdx < index) {
-          const x = valIdx * itemWidth;
+          let x = valIdx * itemWidth;
+          if (delta) {
+            x = (valIdx - delta) * itemWidth + itemWidth * (1 - percent);
+          }
           const y = (maxValue - value) / maxValue * height;
           points.push(x, y);
         }
       })
       lineNode.update(points, 1);
-      allPoints.push(points)
     })
   }
   public afterAnimate() {
-    // console.log(JSON.stringify(allPoints))
+
   }
   public appendTo(layer: Layer) {
     layer.appendChild(this.group);

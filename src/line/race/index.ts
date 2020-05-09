@@ -102,7 +102,6 @@ export class LineRace extends Chart {
       await this.timer.start(dur);
       await this.afterAnimate();
       this.index++;
-      // await timeout(this.config.delay);
     }
     this.emit('end');
   }
@@ -110,14 +109,19 @@ export class LineRace extends Chart {
     this.yAxis.beforeAnimate(this.maxValues[this.index], '');
     const oldMaxValue = this.maxValues[Math.max(0, this.index - 1)];
     this.lineGroup.beforeAnimate(this.index, this.maxValues[this.index], oldMaxValue);
+    this.xAxis.beforeAnimate(this.index);
   }
   protected onUpdate(percent: number) {
+    const { maxTick } = this.config.xAxis;
     const oldMaxValue = this.maxValues[Math.max(0, this.index - 1)];
-    this.yAxis.update(oldMaxValue, this.maxValues[this.index], percent);
-    this.lineGroup.onUpdate(this.index, percent);
+    const maxValue = this.maxValues[this.index];
+    this.yAxis.update(oldMaxValue, maxValue, percent);
+    this.lineGroup.onUpdate(this.index, percent, maxTick, oldMaxValue, maxValue);
+    this.xAxis.onUpdate(this.index, percent);
   }
   private afterAnimate() {
     this.yAxis.afterAnimate();
     this.lineGroup.afterAnimate();
+    this.xAxis.afterAnimate(this.index);
   }
 }
