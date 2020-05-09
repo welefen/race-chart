@@ -14,7 +14,7 @@ export class LineGroup {
   }
   public initLineNodes() {
     const { colors } = this.config;
-    this.lineNodes = this.config.data.data.slice(0, 1).map((item, index) => {
+    this.lineNodes = this.config.data.data.map((item, index) => {
       const instance = new LineNode({
         color: colors[index % colors.length]
       }, item.values);
