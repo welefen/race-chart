@@ -1,15 +1,14 @@
 const fetch = require("node-fetch");
 const fs = require("fs");
 const path = require("path");
-const filepath = path.join(__dirname, "fe_download.json");
+const filepath = path.join(__dirname, "charts_download.json");
 const pkgImgs = require("../pkg.json");
 
 const urlPrefix = "https://api.npmjs.org/downloads/range/";
 // const packages = 'express,koa,@hapi/hapi,fastify,@nestjs/core,sails,loopback,restify,egg,thinkjs'.split(',');
 // const packages = 'lodash,chalk,request,commander,react,express,debug,async,fs-extra,moment,prop-types,react-dom,bluebird,underscore,vue,axios,tslib,mkdirp,glob,yargs,colors,webpack,inquirer,uuid,classnames,minimist,body-parser,rxjs,babel-runtime,jquery,yeoman-generator,through2,babel-core,core-js,semver,babel-loader,cheerio,rimraf,q,eslint,css-loader,shelljs,dotenv,typescript,@types/node,@angular/core,js-yaml,style-loader'.split(',');
-const packages = "react,vue,jquery,angular,backbone,zepto,ember-cli,element-ui,antd,bootstrap".split(
-  ","
-);
+// const packages = "react,vue,jquery,angular,backbone,zepto,ember-cli,element-ui,antd,bootstrap".split(",");
+const packages = "d3,echarts,highcharts,chart.js,@amcharts/amcharts4,chartist,@antv/g2,fusioncharts,ember-charts,spritejs,three,mapbox,mapbox-gl,cytoscape,babylonjs,cesium,pixi.js".split(",");
 // const packages = 'webpack,rollup,gulp,grunt,parcel,fis'.split(',');
 
 (async function () {
