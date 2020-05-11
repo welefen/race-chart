@@ -5,7 +5,6 @@ import { LineRaceConfig } from './types';
 import { lineRaceConfig } from './config';
 import { deepmerge } from '../../common/util';
 import { LineGroup } from './lineGroup';
-import { parseData, sortValues } from '../../bar/race/util';
 
 export class LineRace extends Chart {
   private index: number = 0;
@@ -17,11 +16,6 @@ export class LineRace extends Chart {
   setConfig(config: LineRaceConfig) {
     config = deepmerge({}, lineRaceConfig, this.config || {}, config);
     super.setConfig(config);
-    this.config.data = parseData(this.config.data, this.config.showNum);
-    // 按第一个数据从大到小排序
-    sortValues(this.config.data.data, 0, this.config.sortType);
-    // 可能数据长度不足 showNum 的大小
-    this.config.showNum = Math.min(this.config.showNum, this.config.data.data.length);
     this.initMaxValues();
   }
   private initMaxValues() {

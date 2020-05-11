@@ -45,8 +45,6 @@ export interface LineRaceConfig extends ChartConfig {
   data?: LineData;
   yAxis?: AxisConfig;
   xAxis?: AxisConfig;
-  showNum?: number;
-  sortType?: string;
   scoreType?: string;
   line?: LineNodeConfig;
 }
