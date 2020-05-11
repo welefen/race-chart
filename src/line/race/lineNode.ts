@@ -5,17 +5,15 @@ export class LineNode {
   private group: Group;
   private config: LineNodeConfig;
   private lines: Polyline[];
-  private circle: Block;
-  private label: Label;
-  private labelSize: number[] = [0, 0];
-  private value: Label;
+  private labelGroup: Group;
+  private labelValue: Label;
   public values: number[];
   constructor(config: LineNodeConfig, values: number[]) {
     this.config = config;
     this.group = createGroup(config);
     this.values = values;
   }
-  private initLine() {
+  private async initLine() {
     const { color, shadeOpacity, shadeWidth, width } = this.config.line;
     let points = [];
     const line = new Polyline({
@@ -38,57 +36,72 @@ export class LineNode {
     });
     this.group.appendChild(line2);
     this.lines = [line, line2];
+
+    this.labelGroup = createGroup({ x: 0, y: 0, width: 10, height: 10 });
+    this.labelGroup.attr({ opacity: 0 });
+    this.group.appendChild(this.labelGroup);
     const { radius } = this.config.circle;
     const circle = new Block({
       bgcolor: color,
       width: radius,
       height: radius,
+      x: -radius / 2,
+      y: -radius / 2,
       borderRadius: radius,
-      opacity: 0
     })
-    this.group.appendChild(circle);
-    this.circle = circle;
+    this.labelGroup.appendChild(circle);
 
     const { label } = this.config;
     const labelNode = createLabel(label.text, label);
-    labelNode.attr({ fillColor: color, opacity: 0 });
-    labelNode.textImageReady.then(() => {
-      this.labelSize = labelNode.clientSize;
-    })
-    this.group.appendChild(labelNode);
-    this.label = labelNode;
+    labelNode.attr({
+      height: radius,
+      lineHeight: radius,
+      fillColor: color,
+      x: radius / 2 + this.config.justifySpacing,
+      y: -radius / 2
+    });
+    this.labelGroup.appendChild(labelNode);
+
+    await labelNode.textImageReady;
+    const [labelWidth, _] = labelNode.clientSize;
 
     // 数字
     const { value } = this.config;
     const valueNode = createLabel('', value);
-    valueNode.attr({ fillColor: color, opacity: 0 });
-    this.group.appendChild(valueNode);
-    this.value = valueNode;
+    if (this.config.value.pos === 'inside') {
+      valueNode.attr({
+        fillColor: '#fff',
+        height: radius,
+        width: radius,
+        lineHeight: radius,
+        textAlign: 'center',
+        x: -radius / 2,
+        y: -radius / 2,
+      })
+    } else {
+      valueNode.attr({
+        fillColor: color,
+        height: radius,
+        lineHeight: radius,
+        x: radius / 2 + this.config.justifySpacing * 2 + labelWidth,
+        y: -radius / 2
+      });
+    }
+    this.labelGroup.appendChild(valueNode);
+    this.labelValue = valueNode;
   }
   update(points: number[], value: number) {
     this.lines.forEach(line => {
       line.attr({ points })
     })
     if (points.length) {
-      const { radius } = this.config.circle;
       const length = points.length;
-      this.circle.attr({
+      this.labelGroup.attr({
         opacity: 1,
-        x: points[length - 2] - radius / 2,
-        y: points[length - 1] - radius / 2
+        x: points[length - 2],
+        y: points[length - 1]
       })
-      this.label.attr({
-        opacity: 1,
-        x: points[length - 2] + radius / 2 + this.config.justifySpacing,
-        y: points[length - 1] - this.labelSize[1] / 2
-      })
-      const text = this.config.value.formatter(value, 'value');
-      // this.value.attr({
-      //   text,
-      //   opacity: 1,
-      //   x: points[length - 2] + radius / 2 + this.config.justifySpacing * 2 + this.labelSize[0],
-      //   y: points[length - 1] - this.labelSize[1] / 2
-      // })
+      this.labelValue.attr({ text: value.toString() });
     }
   }
   appendTo(parent: Group) {

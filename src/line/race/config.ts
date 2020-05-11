@@ -24,7 +24,7 @@ export const lineRaceConfig: LineRaceConfig = {
     value: {
       fontSize: 12,
       fontFamily,
-      pos: 'outside',
+      pos: 'inside',
       formatter: valueFormatter
     }
   },
