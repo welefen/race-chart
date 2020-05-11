@@ -75,17 +75,20 @@ export class LineRace extends Chart {
 
     const yAxisLabelWidth = this.config.yAxis.label.width;
     const xAxisLabelHeight = this.config.xAxis.label.height;
+    let yAxisY = y;
+    if(this.config.xAxis.label.pos === 'top') {
+      yAxisY = y + xAxisLabelHeight;
+    }
+    this.renderYAxis(x, yAxisY, width - 100, height - xAxisLabelHeight);
 
-    this.renderYAxis(x, y, width, height - xAxisLabelHeight);
-
-    this.renderXAxis(x + yAxisLabelWidth, y, width - yAxisLabelWidth, height);
+    this.renderXAxis(x + yAxisLabelWidth, y, width - yAxisLabelWidth - 100, height);
     this.xAxis.initTicks(this.config.data.columnNames);
 
     const lineGroup = new LineGroup({
       ...this.config,
       x: x + yAxisLabelWidth,
-      y,
-      width: width - yAxisLabelWidth,
+      y: yAxisY,
+      width: width - yAxisLabelWidth - 100,
       height: height - xAxisLabelHeight
     })
     lineGroup.appendTo(this.layer);

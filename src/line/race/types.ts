@@ -1,4 +1,4 @@
-import { ChartConfig, AxisConfig, Position } from "../../common/types";
+import { ChartConfig, AxisConfig, Position, Font, Formatter } from "../../common/types";
 
 export interface LineDataItem {
   image?: string;
@@ -11,8 +11,34 @@ export interface LineData {
   data?: LineDataItem[];
 }
 
-export interface LineNodeConfig extends Position {
+export interface lineLineConfig {
   color?: string;
+  width?: number;
+  shadeWidth?: number;
+  shadeOpacity?: number;
+}
+
+export interface lineCircleConfig {
+  radius?: number;
+  image?: string;
+}
+
+export interface lineLabelConfig extends Font {
+  text?: string;
+  width?: number;
+}
+
+export interface lineValueConfig extends Font {
+  pos?: string;
+  formatter?: Formatter;
+}
+
+export interface LineNodeConfig extends Position {
+  line?: lineLineConfig;
+  circle?: lineCircleConfig;
+  label?: lineLabelConfig;
+  value?: lineValueConfig;
+  justifySpacing?: number;
 }
 
 export interface LineRaceConfig extends ChartConfig {
@@ -21,6 +47,8 @@ export interface LineRaceConfig extends ChartConfig {
   xAxis?: AxisConfig;
   showNum?: number;
   sortType?: string;
+  scoreType?: string;
+  line?: LineNodeConfig;
 }
 
 export interface LineGroupConfig extends LineRaceConfig, Position {

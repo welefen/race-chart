@@ -17,7 +17,12 @@ export function deepmerge<T extends Record<string, any>>(...source: T[]): T {
 }
 
 export function valueFormatter(value: number, type: string): string {
-  return Math.floor(value).toString().replace(/(?=(?!\b)(\d{3})+$)/g, ',');
+  const str = value.toString();
+  let fract = '';
+  if (str.indexOf('.') > -1) {
+    fract = `${str.slice(str.indexOf('.'))}`;
+  }
+  return Math.floor(value).toString().replace(/(?=(?!\b)(\d{3})+$)/g, ',') + fract;
 }
 
 export function parseCombineValue(value: number | number[]): number[] {

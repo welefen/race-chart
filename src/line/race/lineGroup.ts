@@ -1,6 +1,6 @@
 import { LineGroupConfig } from './types';
 import { Group, Layer } from 'spritejs';
-import { createGroup } from '../../common/util';
+import { createGroup, deepmerge } from '../../common/util';
 import { LineNode } from './lineNode';
 
 export class LineGroup {
@@ -15,9 +15,14 @@ export class LineGroup {
   public initLineNodes() {
     const { colors } = this.config;
     this.lineNodes = this.config.data.data.map((item, index) => {
-      const instance = new LineNode({
-        color: colors[index % colors.length]
-      }, item.values);
+      const instance = new LineNode(deepmerge(this.config.line, {
+        label: {
+          text: item.label
+        },
+        line: {
+          color: colors[index % colors.length]
+        }
+      }), item.values);
       instance.appendTo(this.group);
       return instance;
     })
@@ -56,7 +61,7 @@ export class LineGroup {
           points.push(x, y);
         }
       })
-      lineNode.update(points, 1);
+      lineNode.update(points, lineNode.values[index]);
     })
   }
   public afterAnimate() {
