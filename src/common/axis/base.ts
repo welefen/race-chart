@@ -1,4 +1,4 @@
-import { AxisConfig, AxisTick } from "../types";
+import { AxisConfig, AxisTick, AnimateConfig } from "../types";
 import { Layer, Group, Polyline } from 'spritejs';
 import { createGroup, createLabel } from "../util";
 
@@ -79,5 +79,14 @@ export class BaseAxis {
       this.group.appendChild(group);
       this.ticks.push({ label: item.label, value: item.value, group });
     })
+  }
+  protected beforeAnimate(data: AnimateConfig) {
+
+  }
+  protected onUpdate(data: AnimateConfig) {
+
+  }
+  protected afterAnimate(data: AnimateConfig) {
+
   }
 }

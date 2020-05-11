@@ -53,8 +53,8 @@ export const axisConfig: AxisConfig = {
     fontFamily,
     pos: 'top',
     width: 100,
-    height: 20,
-    lineHeight: 20,
+    height: 30,
+    lineHeight: 30,
     formatter: valueFormatter
   },
   line: {

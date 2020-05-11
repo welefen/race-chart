@@ -84,7 +84,7 @@ export class BarRank extends BarChart {
     this.barGroup.onUpdate(this, percent);
     const oldMaxValue = this.index ? this.maxValues[this.index - 1] : 0;
     const maxValue = this.maxValues[this.index];
-    this.axis.update({ oldMaxValue, maxValue, percent });
+    this.axis.onUpdate({ oldMaxValue, maxValue, percent });
   }
   beforeAnimate() {
     this.barGroup.beforeAnimate(this);

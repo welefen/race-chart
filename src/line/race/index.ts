@@ -9,7 +9,7 @@ import { parseDataByRank } from './util';
 
 export class LineRace extends Chart {
   private index: number = 0;
-  private yAxis: DynamicAxis;
+  private yAxis: DynamicAxis | FixedAxis;
   private xAxis: FixedAxis;
   private lineGroup: LineGroup;
   private maxValues: number[];
@@ -24,23 +24,43 @@ export class LineRace extends Chart {
   }
   private initMaxValues() {
     const { columnNames, data } = this.config.data;
-    let values: number[] = columnNames.map((_, idx) => {
-      const values = data.map(item => item.values[idx]);
-      return Math.max(...values) / 0.9;
-    })
-    this.maxValues = values;
+    if (this.config.scoreType === 'score') {
+      let values: number[] = columnNames.map((_, idx) => {
+        const values = data.map(item => item.values[idx]);
+        return Math.max(...values) / 0.9;
+      })
+      this.maxValues = values;
+    } else {
+      const { data, columnNames } = this.config.data;
+      this.maxValues = [...new Array(columnNames.length)].fill(data.length);
+    }
   }
 
   private renderYAxis(x: number, y: number, width: number, height: number) {
-    this.yAxis = new DynamicAxis({
-      type: 'row',
-      x,
-      y,
-      width,
-      height,
-      ...this.config.yAxis,
-    });
-    this.yAxis.appendTo(this.layer);
+    if (this.config.scoreType === 'score') {
+      this.yAxis = new DynamicAxis({
+        type: 'row',
+        x,
+        y,
+        width,
+        height,
+        ...this.config.yAxis,
+      });
+      this.yAxis.appendTo(this.layer);
+    } else {
+      const length = this.config.data.data.length;
+      this.yAxis = new FixedAxis({
+        type: 'row',
+        x, y,
+        width,
+        height,
+        ...this.config.yAxis,
+        maxTick: length - 1,
+      })
+      const columns = [...new Array(length)].map((_, index) => (index + 1).toString());
+      this.yAxis.appendTo(this.layer);
+      this.yAxis.initTicks(columns);
+    }
   }
   private renderXAxis(x: number, y: number, width: number, height: number) {
     this.xAxis = new FixedAxis({
@@ -108,20 +128,25 @@ export class LineRace extends Chart {
     this.emit('end');
   }
   private beforeAnimate() {
-    const maxValue = this.maxValues[this.index]
-    this.yAxis.beforeAnimate({ maxValue });
+    const maxValue = this.maxValues[this.index];
+    if (this.config.scoreType === 'score') {
+      this.yAxis.beforeAnimate({ maxValue, index: this.index });
+    }
     this.xAxis.beforeAnimate({ index: this.index });
   }
   protected onUpdate(percent: number) {
-    const { maxTick } = this.config.xAxis;
     const oldMaxValue = this.maxValues[Math.max(0, this.index - 1)];
     const maxValue = this.maxValues[this.index];
-    this.yAxis.update({ oldMaxValue, maxValue, percent });
-    this.lineGroup.onUpdate(this.index, percent, maxTick, oldMaxValue, maxValue);
+    if (this.config.scoreType === 'score') {
+      this.yAxis.onUpdate({ oldMaxValue, maxValue, percent, index: this.index });
+    }
+    this.lineGroup.onUpdate({ index: this.index, percent, oldMaxValue, maxValue });
     this.xAxis.onUpdate({ index: this.index, percent });
   }
   private afterAnimate() {
-    this.yAxis.afterAnimate({});
+    if (this.config.scoreType === 'score') {
+      this.yAxis.afterAnimate({ index: this.index });
+    }
     this.lineGroup.afterAnimate();
     this.xAxis.afterAnimate({ index: this.index });
   }

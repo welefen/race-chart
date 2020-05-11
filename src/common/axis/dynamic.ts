@@ -96,7 +96,7 @@ export class DynamicAxis extends BaseAxis {
       }
     }
   }
-  public update(data: AnimateConfig) {
+  public onUpdate(data: AnimateConfig) {
     const { oldMaxValue, maxValue, percent } = data;
     if (oldMaxValue === maxValue) return;
     const v = Math.floor(oldMaxValue + (maxValue - oldMaxValue) * percent);

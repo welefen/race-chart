@@ -83,12 +83,12 @@ export class LineNode {
         y: points[length - 1] - this.labelSize[1] / 2
       })
       const text = this.config.value.formatter(value, 'value');
-      this.value.attr({
-        text,
-        opacity: 1,
-        x: points[length - 2] + radius / 2 + this.config.justifySpacing * 2 + this.labelSize[0],
-        y: points[length - 1] - this.labelSize[1] / 2
-      })
+      // this.value.attr({
+      //   text,
+      //   opacity: 1,
+      //   x: points[length - 2] + radius / 2 + this.config.justifySpacing * 2 + this.labelSize[0],
+      //   y: points[length - 1] - this.labelSize[1] / 2
+      // })
     }
   }
   appendTo(parent: Group) {

@@ -118,7 +118,7 @@ export class BarRace extends BarChart {
     this.barGroup.update(this, percent);
     const oldMaxValue = this.index ? this.maxValues[this.index - 1] : 0;
     const maxValue = this.maxValues[this.index];
-    this.axis.update({ oldMaxValue, maxValue, percent });
+    this.axis.onUpdate({ oldMaxValue, maxValue, percent });
   }
   stop() {
     this.status = 'stop';

@@ -7,16 +7,17 @@ export class FixedAxis extends BaseAxis {
   private maxTick: number;
   initTicks(columns: string[]) {
     this.columns = columns;
-    const { width, maxTick } = this.config;
-    this.itemWidth = width / maxTick;
+    const { width, height, maxTick, type } = this.config;
+    this.itemWidth = (type === 'column' ? width : height) / maxTick;
     this.maxTick = maxTick;
     const arr = [...new Array(maxTick + 1)].map((_, index) => {
       return { value: index, label: columns[index] };
     })
     this.addTicks(arr);
+    const prop = type === 'column' ? 'x' : 'y';
     this.ticks.forEach((tick, index) => {
       tick.group.attr({
-        x: this.itemWidth * index
+        [prop]: this.itemWidth * index
       })
     })
   }
