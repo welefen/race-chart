@@ -4,8 +4,6 @@ import { deepmerge, valueFormatter } from '../../common/util';
 
 export const lineRaceConfig: LineRaceConfig = {
   ...chartConfig,
-  showNum: 10,
-  sortType: 'desc',
   scoreType: 'score',
   line: {
     justifySpacing: 5,
@@ -20,7 +18,8 @@ export const lineRaceConfig: LineRaceConfig = {
     label: {
       fontSize: 12,
       fontFamily,
-      fontWeight: 'bold'
+      fontWeight: 'bold',
+      width: 100,
     },
     value: {
       fontSize: 12,

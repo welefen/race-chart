@@ -108,3 +108,10 @@ export interface AxisTick {
   remove?: boolean;
   group?: Group;
 }
+
+export interface AnimateConfig {
+  maxValue?: number;
+  oldMaxValue?: number;
+  index?: number;
+  percent?: number;
+}

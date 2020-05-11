@@ -1,5 +1,7 @@
 import { ChartConfig, AxisConfig, Position, Font, Formatter } from "../../common/types";
 
+type ScoreType = 'score' | 'rank';
+
 export interface LineDataItem {
   image?: string;
   label?: string;
@@ -45,7 +47,7 @@ export interface LineRaceConfig extends ChartConfig {
   data?: LineData;
   yAxis?: AxisConfig;
   xAxis?: AxisConfig;
-  scoreType?: string;
+  scoreType?: ScoreType;
   line?: LineNodeConfig;
 }
 

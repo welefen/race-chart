@@ -1,5 +1,5 @@
 import { BaseAxis } from './base';
-import { AxisTick } from '../types';
+import { AxisTick, AnimateConfig } from '../types';
 
 export class DynamicAxis extends BaseAxis {
   private maxValue: number = 0;
@@ -47,22 +47,22 @@ export class DynamicAxis extends BaseAxis {
     })
     this.updateTicksPos(1);
   }
-  public beforeAnimate(value: number, scaleType?: string) {
+  public beforeAnimate(data: AnimateConfig) {
+    const { maxValue } = data;
     if (!this.maxValue) {
-      this.maxValue = value;
-      const steps = this.getSteps(value);
+      this.maxValue = maxValue;
+      const steps = this.getSteps(maxValue);
       this.step = steps[0];
       const ticks = [0].concat(steps).map(item => {
         return { value: item, label: this.config.label.formatter(item, 'axis') };
       });
       return this.addTicks(ticks);
     }
-    if (scaleType === 'fixed') return;
     const max = this.ticks[this.ticks.length - 1].value;
-    if (max + this.step < value) {
+    if (max + this.step < maxValue) {
       let num = 0;
       let maxValue = 0;
-      const newSteps = this.getSteps(value);
+      const newSteps = this.getSteps(maxValue);
       if (max < newSteps[0]) {
         this.ticks.forEach((tick, index) => {
           if (!index) return;
@@ -96,14 +96,15 @@ export class DynamicAxis extends BaseAxis {
       }
     }
   }
-  public update(oldMaxValue: number, maxValue: number, percent: number) {
+  public update(data: AnimateConfig) {
+    const { oldMaxValue, maxValue, percent } = data;
     if (oldMaxValue === maxValue) return;
     const v = Math.floor(oldMaxValue + (maxValue - oldMaxValue) * percent);
     if (!v) return;
     this.maxValue = v;
     this.updateTicksPos(percent);
   }
-  public afterAnimate() {
+  public afterAnimate(data: AnimateConfig) {
     this.ticks = this.ticks.filter(tick => {
       if (!tick.remove) return true;
       this.group.removeChild(tick.group);

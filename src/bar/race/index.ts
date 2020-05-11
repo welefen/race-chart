@@ -108,17 +108,17 @@ export class BarRace extends BarChart {
     this.values = this.config.data.data.map(item => item.values[this.index]);
     this.barGroup.beforeAnimate(this);
     const maxValue = this.maxValues[this.index];
-    this.axis.beforeAnimate(maxValue, this.config.scaleType);
+    this.axis.beforeAnimate({ maxValue });
   }
   private afterAnimate() {
     this.barGroup.afterAnimate(this);
-    this.axis.afterAnimate();
+    this.axis.afterAnimate({});
   }
   protected onUpdate(percent: number) {
     this.barGroup.update(this, percent);
     const oldMaxValue = this.index ? this.maxValues[this.index - 1] : 0;
     const maxValue = this.maxValues[this.index];
-    this.axis.update(oldMaxValue, maxValue, percent);
+    this.axis.update({ oldMaxValue, maxValue, percent });
   }
   stop() {
     this.status = 'stop';

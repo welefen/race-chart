@@ -5,6 +5,7 @@ import { LineRaceConfig } from './types';
 import { lineRaceConfig } from './config';
 import { deepmerge } from '../../common/util';
 import { LineGroup } from './lineGroup';
+import { parseDataByRank } from './util';
 
 export class LineRace extends Chart {
   private index: number = 0;
@@ -15,6 +16,9 @@ export class LineRace extends Chart {
   config: LineRaceConfig;
   setConfig(config: LineRaceConfig) {
     config = deepmerge({}, lineRaceConfig, this.config || {}, config);
+    if (config.scoreType === 'rank') {
+      parseDataByRank(config.data);
+    }
     super.setConfig(config);
     this.initMaxValues();
   }
@@ -70,19 +74,20 @@ export class LineRace extends Chart {
     const yAxisLabelWidth = this.config.yAxis.label.width;
     const xAxisLabelHeight = this.config.xAxis.label.height;
     let yAxisY = y;
-    if(this.config.xAxis.label.pos === 'top') {
+    if (this.config.xAxis.label.pos === 'top') {
       yAxisY = y + xAxisLabelHeight;
     }
-    this.renderYAxis(x, yAxisY, width - 100, height - xAxisLabelHeight);
+    const labelWidth = this.config.line.label.width;
+    this.renderYAxis(x, yAxisY, width - labelWidth, height - xAxisLabelHeight);
 
-    this.renderXAxis(x + yAxisLabelWidth, y, width - yAxisLabelWidth - 100, height);
+    this.renderXAxis(x + yAxisLabelWidth, y, width - yAxisLabelWidth - labelWidth, height);
     this.xAxis.initTicks(this.config.data.columnNames);
 
     const lineGroup = new LineGroup({
       ...this.config,
       x: x + yAxisLabelWidth,
       y: yAxisY,
-      width: width - yAxisLabelWidth - 100,
+      width: width - yAxisLabelWidth - labelWidth,
       height: height - xAxisLabelHeight
     })
     lineGroup.appendTo(this.layer);
@@ -104,20 +109,20 @@ export class LineRace extends Chart {
   }
   private beforeAnimate() {
     const maxValue = this.maxValues[this.index]
-    this.yAxis.beforeAnimate(maxValue);
-    this.xAxis.beforeAnimate(this.index);
+    this.yAxis.beforeAnimate({ maxValue });
+    this.xAxis.beforeAnimate({ index: this.index });
   }
   protected onUpdate(percent: number) {
     const { maxTick } = this.config.xAxis;
     const oldMaxValue = this.maxValues[Math.max(0, this.index - 1)];
     const maxValue = this.maxValues[this.index];
-    this.yAxis.update(oldMaxValue, maxValue, percent);
+    this.yAxis.update({ oldMaxValue, maxValue, percent });
     this.lineGroup.onUpdate(this.index, percent, maxTick, oldMaxValue, maxValue);
-    this.xAxis.onUpdate(this.index, percent);
+    this.xAxis.onUpdate({ index: this.index, percent });
   }
   private afterAnimate() {
-    this.yAxis.afterAnimate();
+    this.yAxis.afterAnimate({});
     this.lineGroup.afterAnimate();
-    this.xAxis.afterAnimate(this.index);
+    this.xAxis.afterAnimate({ index: this.index });
   }
 }

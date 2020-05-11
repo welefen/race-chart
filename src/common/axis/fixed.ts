@@ -1,4 +1,5 @@
 import { BaseAxis } from './base';
+import { AnimateConfig } from '../types';
 
 export class FixedAxis extends BaseAxis {
   private columns: string[];
@@ -19,10 +20,11 @@ export class FixedAxis extends BaseAxis {
       })
     })
   }
-  beforeAnimate(index: number) {
+  beforeAnimate(data: AnimateConfig) {
 
   }
-  onUpdate(index: number, percent: number) {
+  onUpdate(data: AnimateConfig) {
+    const { index, percent } = data;
     if (index <= this.maxTick) return;
     const first = this.ticks[0];
     first.group.children[0].attr({
@@ -35,7 +37,8 @@ export class FixedAxis extends BaseAxis {
       })
     })
   }
-  afterAnimate(index: number) {
+  afterAnimate(data: AnimateConfig) {
+    const { index } = data;
     if (index <= this.maxTick) return;
     this.group.removeChild(this.ticks[0].group);
     this.ticks = this.ticks.slice(1);
