@@ -7,8 +7,8 @@ export class DynamicAxis extends BaseAxis {
 
   private getFormatValue(value: number) {
     const str = value.toString();
-    if (str.length <= 2) return value;
-    return parseInt(str.substr(0, 2)) * Math.pow(10, str.length - 2);
+    if (str.length <= 3) return value;
+    return parseInt(str.substr(0, 3)) * Math.pow(10, str.length - 3);
   }
 
   private getSteps(value: number) {
