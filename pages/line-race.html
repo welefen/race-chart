@@ -39,7 +39,7 @@
     <script src="https://unpkg.com/@ffmpeg/ffmpeg@0.7.0/dist/ffmpeg.min.js"></script>
     <script>
       fetch('../data/gdp/china_province/province.json').then(res => res.json()).then(data => {
-        data.data = data.data.slice(0, 10)
+        data.data = data.data.slice(0, 20)
         const instance = new LineRace({
         selector: document.querySelector("#container"),
         data: data,
@@ -58,7 +58,7 @@
         //   time: 3000
         // },
         title: {
-          text: "test",
+          // text: "test",
           padding: [0, 0, 10, 0],
         },
         duration: function (column, index, length) {
