@@ -27,7 +27,7 @@ export class BarRank extends BarChart {
         values[index] = values[index] / percent;
       } else if (index > this.config.showNum) {
         const idx = index - this.config.showNum;
-        values[index] = Math.max(values[index], values[idx] / percent);
+        values[index] = Math.max(values[index], values[idx]);
       }
       if (index && values[index] < values[index - 1]) {
         values[index] = values[index - 1];
@@ -78,6 +78,14 @@ export class BarRank extends BarChart {
       this.index++;
       await timeout(this.config.delay);
     }
+    const { lastStayTime } = this.config;
+    if (lastStayTime) {
+      const el = this.layer.children[0];
+      await this.timer.start(lastStayTime, _ => {
+        el.attr({ opacity: Math.random() > 0.5 ? 0.99 : 1 });
+      })
+    }
+    await this.renderEndingImage();
     this.emit('end');
   }
   protected onUpdate(percent: number) {
