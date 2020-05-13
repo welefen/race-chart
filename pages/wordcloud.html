@@ -36,8 +36,8 @@
     </div>
     <script src="../dist/wordCloud.js"></script>
     <!-- <script src="http://s8.qhres.com/static/49dc5f5662a566ee.js"></script> -->
-    <script src="http://s8.qhres.com/static/162287d05f35ddab/canvas2video.js"></script>
-    <script src="https://unpkg.com/@ffmpeg/ffmpeg/dist/ffmpeg.min.js"></script>
+    <!-- <script src="http://s8.qhres.com/static/162287d05f35ddab/canvas2video.js"></script> -->
+    <!-- <script src="https://unpkg.com/@ffmpeg/ffmpeg/dist/ffmpeg.min.js"></script> -->
     <script>
       fetch("../data/salary/2020.json")
         .then((res) => res.json())
@@ -66,10 +66,10 @@
             },
             lastStayTime: 2000,
           });
-          const videoInstance = new Canvas2Video({
-            canvas: instance.layer.canvas,
-            audio: "http://s6.qhres.com/static/8b52098f6453e7dd.mp3",
-          });
+          // const videoInstance = new Canvas2Video({
+          //   canvas: instance.layer.canvas,
+          //   audio: "http://s6.qhres.com/static/8b52098f6453e7dd.mp3",
+          // });
           
           instance.start();
 

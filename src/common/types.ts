@@ -22,6 +22,7 @@ export interface Font {
   opactiy?: number;
   padding?: [number, number, number, number];
   align?: Align;
+  rotate?: number;
 }
 
 export interface Position {

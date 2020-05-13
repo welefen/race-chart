@@ -15,6 +15,7 @@ export interface CloudConfig extends ChartConfig {
   mask?: MaskConfig;
   data?: CloudDataItem[];
   gridSize?: number;
-  minSize?: number;
-  color?: string;
+  weightFactor?: number;
+  minFontSize?: number;
+  textStyle?: Font;
 }

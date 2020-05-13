@@ -41,7 +41,7 @@ export function parseCombineValue(value: number | number[]): number[] {
 
 export function createLabel(text?: string, config?: Font): Label {
   const label = new Label(text || '');
-  const { fontSize, fontStretch, fontFamily, fontWeight, fontStyle, fontVariant, lineHeight, color, opactiy, padding, align } = config;
+  const { fontSize, fontStretch, fontFamily, fontWeight, fontStyle, fontVariant, lineHeight, color, opactiy, padding, align, rotate } = config;
   label.attr({
     fontSize,
     fontFamily,
@@ -54,7 +54,8 @@ export function createLabel(text?: string, config?: Font): Label {
     fillColor: color,
     padding,
     textAlign: align,
-    boxSizing: 'border-box'
+    boxSizing: 'border-box',
+    rotate
   })
   return label;
 }
