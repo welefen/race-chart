@@ -140,6 +140,16 @@ export class Chart extends Events {
     this.emit('startRace')
   }
 
+  protected async renderLastStayTime() {
+    const { lastStayTime } = this.config;
+    if (lastStayTime) {
+      const el = this.layer.children[0];
+      await this.timer.start(lastStayTime, _ => {
+        el.attr({ opacity: Math.random() > 0.5 ? 0.99 : 1 });
+      })
+    }
+  }
+
   protected onUpdate(percent: number): void {
 
   }

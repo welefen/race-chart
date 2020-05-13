@@ -49,7 +49,6 @@ export interface BarChartConfig extends ChartConfig {
   scaleType?: ScaleType; // bar 缩放方式
   sortType?: SortType; // 数据排序方式
   formatter?: Formatter; //数据格式化函数
-  lastStayTime?: number;
   bar?: BarConfig;
 }
 

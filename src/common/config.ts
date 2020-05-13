@@ -43,6 +43,7 @@ export const chartConfig: ChartConfig = {
   openingImage: {},
   endingImage: {},
   colors,
+  lastStayTime: 2000
 }
 
 export const axisConfig: AxisConfig = {

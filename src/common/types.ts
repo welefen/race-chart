@@ -81,6 +81,7 @@ export interface ChartConfig {
   title?: TitleConfig; // 标题
   subTitle?: SubTitleConfig; //副标题
   duration?: number | Duration;
+  lastStayTime?: number;
 }
 
 export interface AxisLabelConfig extends Font {

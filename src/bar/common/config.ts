@@ -53,6 +53,5 @@ export const barChartConfig: BarChartConfig = {
   scaleType: 'dynamic',
   sortType: 'desc',
   formatter: valueFormatter,
-  lastStayTime: 0,
   duration: 1000
 }

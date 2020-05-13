@@ -125,6 +125,8 @@ export class LineRace extends Chart {
       await this.afterAnimate();
       this.index++;
     }
+    await this.renderLastStayTime();
+    await this.renderEndingImage();
     this.emit('end');
   }
   private beforeAnimate() {

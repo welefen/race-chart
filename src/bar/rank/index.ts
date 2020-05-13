@@ -78,13 +78,7 @@ export class BarRank extends BarChart {
       this.index++;
       await timeout(this.config.delay);
     }
-    const { lastStayTime } = this.config;
-    if (lastStayTime) {
-      const el = this.layer.children[0];
-      await this.timer.start(lastStayTime, _ => {
-        el.attr({ opacity: Math.random() > 0.5 ? 0.99 : 1 });
-      })
-    }
+    await this.renderLastStayTime();
     await this.renderEndingImage();
     this.emit('end');
   }
