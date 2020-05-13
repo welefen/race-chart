@@ -39,7 +39,7 @@
     <script src="http://s8.qhres.com/static/162287d05f35ddab/canvas2video.js"></script>
     <script src="https://unpkg.com/@ffmpeg/ffmpeg/dist/ffmpeg.min.js"></script>
     <script>
-      fetch("../data/salary/2020.json")
+      fetch("../data/other/zeren/data.json")
         .then((res) => res.json())
         .then((data) => {
           const instance = new BarRank({
@@ -52,6 +52,7 @@
             },
             padding: [10, 10, 10, 10],
             bar: {
+              percent: 0.6,
               label: {
                 width: 100,
                 fontSize: 14,
@@ -72,19 +73,19 @@
               justifySpacing: 10,
               alignSpacing: 12,
             },
-            duration: 1500,
+            duration: 1000,
             showNum: 10,
             formatter(value, type) {
-              value = Math.floor(value);
-              if (type === "axis") return `${value}`;
-              return `${value}元`;
+              const v = Math.floor(value);
+              if (type === "axis") return `${v}`;
+              return `${value}`;
             },
             watermark: {
               // text: "DataRace",
               opacity: 0.2,
             },
             title: {
-              text: '你达标了吗？2020年春季招聘平均薪资排名',
+              text: '人民日报：中国企业社会责任领先指数',
               padding: [10, 0, 30, 0]
             },
             lastStayTime: 2000,
