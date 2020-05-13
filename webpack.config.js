@@ -6,6 +6,7 @@ module.exports = {
     barRace: './src/bar/race/index.ts',
     barRank: './src/bar/rank/index.ts',
     lineRace: './src/line/race/index.ts',
+    wordCloud: './src/cloud/word/index.ts'
   },
   module: {
     rules: [
