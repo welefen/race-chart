@@ -42,14 +42,13 @@
       fetch("../data/github/user_followers/data.json")
         .then((res) => res.json())
         .then((data) => {
-          data = data.filter(item => item.isChina).map(item => {
+          data = data.map(item => {
             return {
               label: item.name,
               image: item.avatar_url,
               value: item.followers
             }
-          }).slice(0, 50)
-          console.log(data.length)
+          }).slice(0, 50);
           const instance = new BarRank({
             selector: document.querySelector("#container"),
             data,
@@ -69,7 +68,7 @@
                 sideHeight: 25,
               },
               rank: {
-                
+                fontSize: 30
               },
               column: {
                 fontSize: 120,
@@ -80,7 +79,7 @@
               justifySpacing: 10,
               alignSpacing: 12,
             },
-            duration: 1500,
+            duration: 1000,
             showNum: 10,
             formatter(value, type) {
               return value
@@ -93,11 +92,11 @@
               opacity: 0.2,
             },
             title: {
-              text: 'GitHub 中国区名人榜 Top50',
+              text: '第一实至名归！GitHub 名人榜 Top50',
               padding: [10, 0, 0, 0]
             },
             subTitle: {
-              text: '根据关注数排名，统计日期：2020.05.10',
+              text: '根据关注数排名，统计日期：2020.05.14',
               fontSize: 16,
               color: '#aaa',
               padding: [0, 0, 10, 0]
