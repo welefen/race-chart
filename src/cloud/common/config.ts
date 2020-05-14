@@ -11,4 +11,5 @@ export const cloudConfig: CloudConfig = {
   weightFactor: 1,
   minFontSize: 0,
   textStyle: {},
+  debug: true
 };
