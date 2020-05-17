@@ -11,5 +11,11 @@ export const cloudConfig: CloudConfig = {
   weightFactor: 1,
   minFontSize: 0,
   textStyle: {},
-  debug: true
+  debug: true,
+  rotate: {
+    disabled: false,
+    min: 0,
+    max: 360,
+    step: 10
+  }
 };

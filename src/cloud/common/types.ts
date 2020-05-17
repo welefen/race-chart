@@ -26,6 +26,12 @@ export interface CloudItemInfo {
   occupied?: Placement[];
   fontSize?: number;
 }
+export interface CloudRotate {
+  disabled?: boolean;
+  min?: number;
+  max?: number;
+  step?: number;
+}
 
 export interface CloudConfig extends ChartConfig {
   mask?: MaskConfig;
@@ -35,4 +41,5 @@ export interface CloudConfig extends ChartConfig {
   minFontSize?: number;
   textStyle?: Font;
   debug?: boolean;
+  rotate?: CloudRotate;
 }

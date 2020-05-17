@@ -17,14 +17,14 @@ export class Cloud extends Chart {
     config.gridSize = Math.max(4, config.gridSize);
     super.setConfig(config);
   }
-  protected drawGridItems(grid: boolean[][]) {
+  protected drawGridItems(grid: boolean[][], color: string = 'rgba(0, 0, 0, 0.2)') {
     grid.forEach((lines, i) => {
       lines.forEach((item, j) => {
         if (!item) return;
         const x = this.maskPos.x + j * this.config.gridSize;
         const y = this.maskPos.y + i * this.config.gridSize;
         const node = new Block({
-          bgcolor: 'rgba(0, 0, 0, 0.2)',
+          bgcolor: color,
           width: this.config.gridSize,
           height: this.config.gridSize,
           x,
@@ -159,7 +159,7 @@ export class Cloud extends Chart {
   protected getImageOccupied(imageData: ImageData) {
     const grid = this.parseGridData(imageData, true);
     if (this.config.debug) {
-      // this.drawGridItems(grid);
+      this.drawGridItems(grid, 'blue');
     }
     const occupied = [];
     grid.forEach((line, i) => {
@@ -220,6 +220,12 @@ export class Cloud extends Chart {
     return true;
   }
   protected getRotateDeg() {
-    return Math.random();
+    const { disabled, min, max, step } = this.config.rotate;
+    if (disabled) return 0;
+    let rotate = Math.random() * 360;
+    if (step) {
+      rotate = Math.floor(rotate / step) * step;
+    }
+    return Math.max(min, Math.min(max, rotate));
   }
 }
