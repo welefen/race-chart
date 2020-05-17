@@ -32,6 +32,10 @@ export interface BarRectConfig {
   sideHeight?: number; // 3d 下有效
   type?: BarType;
 }
+export interface BarDescConfig extends Font {
+  text?: string;
+  width?: number;
+}
 
 export interface BarConfig extends Position {
   alignSpacing?: number; // 垂直间距
@@ -40,6 +44,7 @@ export interface BarConfig extends Position {
   value?: BarValueConfig;
   logo?: BarLogoConfig;
   rect?: BarRectConfig;
+  desc?: BarDescConfig;
   color?: string;
 }
 

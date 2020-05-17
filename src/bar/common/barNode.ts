@@ -10,6 +10,7 @@ export class BarNode {
   private rect: Group;
   private polylines: Polyline[] = [];
   private value: Label;
+  private desc: Label;
   private logo: Sprite;
   config: BarConfig;
   values?: number[] = [];
@@ -29,7 +30,8 @@ export class BarNode {
     this.initLabel();
     this.initRect();
     await this.initLogo();
-    return this.initValue();
+    await this.initValue();
+    await this.initDesc();
   }
   removeBy(node: Group) {
     node.removeChild(this.group);
@@ -117,6 +119,7 @@ export class BarNode {
     }
     this.updateValueX();
     this.updateLogoX();
+    this.updateDescX();
   }
   get rectWidth() {
     return this.config.rect.width || 0;
@@ -134,8 +137,8 @@ export class BarNode {
     this.updateValueX();
   }
   private initLogo() {
+    if (!this.logoEnabled) return;
     const { logo } = this.config;
-    if (!logo.image || logo.disabled) return;
     const sprite = new Sprite({
       texture: logo.image,
       height: this.config.height + logo.deltaSize,
@@ -147,6 +150,29 @@ export class BarNode {
     this.logo = sprite;
     this.group.appendChild(sprite);
     this.updateLogoX();
+  }
+  private get logoEnabled(): boolean {
+    const { logo } = this.config;
+    if (!logo.image || logo.disabled) return false;
+    return true;
+  }
+  private initDesc() {
+    const { desc } = this.config;
+    if (!desc.text) return;
+    this.desc = createLabel(desc.text, desc);
+    this.desc.attr({
+      fillColor: desc.color,
+      textAlign: 'right',
+      x: this.config.label.width + this.config.justifySpacing,
+      lineHeight: this.config.height
+    })
+    this.group.appendChild(this.desc);
+  }
+  private updateDescX() {
+    if (!this.desc) return;
+    this.desc.attr({
+      width: this.config.rect.width - (this.logoSize / 2 || this.config.justifySpacing)
+    })
   }
   set valueText(value: number) {
     this.config.value.value = value;
@@ -162,8 +188,8 @@ export class BarNode {
     })
   }
   private get logoSize() {
+    if (!this.logoEnabled) return 0;
     const { logo } = this.config;
-    if (!logo.image || logo.disabled) return 0;
     return this.config.height + logo.deltaSize + logo.borderSize * 2;
   }
 

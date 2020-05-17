@@ -9,7 +9,6 @@ export class BarGroup {
   private animateData: AnimateData[] = [];
   private rectMaxWidth: number; // 矩形最大宽度
   private barHeight: number; // 单个 bar 的高度
-  private rankLabels: Label[] = [];
   config: BarsConfig;
   group: Group;
   bars: BarNode[] = [];
@@ -21,30 +20,6 @@ export class BarGroup {
     this.rectMaxWidth = width - label.width - value.width - 2 * justifySpacing;
     this.barHeight = (height - alignSpacing * (showNum - 1)) / showNum;
   }
-  private async initRankLabel() {
-    const { rank } = this.config.bar;
-    const nameLabel = createLabel('', rank);
-    nameLabel.attr({
-      textAlign: 'right',
-      width: this.config.width,
-      boxSizing: 'border-box'
-    })
-    this.group.appendChild(nameLabel);
-    await nameLabel.textImageReady;
-    const [_, height] = nameLabel.clientSize;
-    nameLabel.attr({
-      y: this.config.height - height
-    })
-    const rankLabel = createLabel('', rank);
-    rankLabel.attr({
-      textAlign: 'right',
-      width: this.config.width,
-      y: this.config.height - height * 2,
-      boxSizing: 'border-box'
-    })
-    this.group.appendChild(rankLabel);
-    this.rankLabels = [rankLabel, nameLabel];
-  }
   private async createBar(barRank: BarRank) {
     const { data, colors } = barRank.config;
     const item = data[barRank.index];
@@ -53,7 +28,7 @@ export class BarGroup {
       width: this.config.width,
       height: this.barHeight,
       label: {
-        text: item.label
+        text: this.config.bar.rank.formatter(data.length - barRank.index)
       },
       color,
       value: {
@@ -62,6 +37,9 @@ export class BarGroup {
       },
       logo: {
         image: item.image
+      },
+      desc: {
+        text: item.label
       }
     })
     const bar = new BarNode(config, 0, [item.value]);
@@ -74,15 +52,6 @@ export class BarGroup {
     this.bars.push(bar);
     const { data, showNum, colors } = barRank.config;
     const currentData = data[barRank.index];
-
-    this.rankLabels[0].attr({
-      text: this.config.bar.rank.formatter(data.length - barRank.index)
-    })
-    this.rankLabels[1].attr({
-      fillColor: colors[barRank.index % colors.length],
-      text: currentData.label
-    })
-
 
     const maxValue = barRank.maxValues[barRank.index];
 
@@ -131,7 +100,6 @@ export class BarGroup {
     }
   }
   async appendTo(layer: Layer) {
-    await this.initRankLabel();
     layer.appendChild(this.group);
   }
   private getBarY(index: number) {

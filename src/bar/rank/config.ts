@@ -16,8 +16,6 @@ export const barRankConfig: BarRankConfig = {
   delay: 300,
   bar: {
     ...barConfig,
-    rank,
-    percent: 0.7,
-    maxValueIndex: 3
+    rank
   }
 }

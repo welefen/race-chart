@@ -1,9 +1,9 @@
 import { chartConfig, fontFamily, axisConfig } from '../../common/config';
-import { BarLogoConfig, BarChartConfig, BarConfig, BarLabelConfig, BarRectConfig, BarValueConfig, } from './types';
+import { BarLogoConfig, BarChartConfig, BarConfig, BarLabelConfig, BarRectConfig, BarValueConfig, BarDescConfig } from './types';
 import { valueFormatter } from '../../common/util';
 
 const label: BarLabelConfig = {
-  fontSize: 16,
+  fontSize: 18,
   fontFamily,
   color: 'currentColor',
   width: 100
@@ -35,13 +35,18 @@ const value: BarValueConfig = {
   width: 100
 }
 
-
+const desc: BarDescConfig = {
+  fontSize: 14,
+  fontFamily,
+  color: '#333'
+}
 
 export const barConfig: BarConfig = {
   label,
   logo,
   rect,
   value,
+  desc,
   alignSpacing: 5,
   justifySpacing: 5,
 }
