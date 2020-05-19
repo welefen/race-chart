@@ -145,7 +145,8 @@ export class BarNode {
       width: this.config.height + logo.deltaSize,
       border: [logo.borderSize, this.config.color],
       y: -(logo.borderSize + logo.deltaSize / 2),
-      borderRadius: this.config.height
+      borderRadius: this.config.height,
+      bgcolor: this.config.color
     })
     this.logo = sprite;
     this.group.appendChild(sprite);

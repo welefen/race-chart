@@ -62,7 +62,7 @@ export class WordCloud extends Cloud {
     const x = -anchor[0] * w;
     const y = -anchor[1] * h;
     ctx.drawImage(image, x, y, w, h);
-    document.body.appendChild(cc);
+    // document.body.appendChild(cc);
 
     const imageData = ctx.getImageData(0, 0, width * dpr, height * dpr);
     const occupied = this.getImageOccupied(imageData);

@@ -52,13 +52,13 @@
 
       const text = new Label("中国人啊");
       text.attr({
-        anchor: 0.5,
-        // x: 60,
-        // y: 60,
+        // anchor: 0.5,
+        x: 70,
+        // y: 0,
         fontSize: "5rem",
         fillColor: "red",
         bgcolor: "blue",
-        rotate: 0,
+        rotate: 45,
         padding: 10
       });
 
@@ -73,10 +73,10 @@
         console.log(text.borderSize)
         const hw = text.borderSize[0] / 2;
         const hh = text.borderSize[1] / 2;
-        text.attr({
-          x: Math.sqrt((hw * cos) ** 2 + (hh * sin) ** 2),
-          y: Math.sqrt((hw * sin) ** 2 + (hh * cos) ** 2),
-        });
+        // text.attr({
+        //   x: Math.sqrt((hw * cos) ** 2 + (hh * sin) ** 2),
+        //   y: Math.sqrt((hw * sin) ** 2 + (hh * cos) ** 2),
+        // });
         const dpr = fglayer.displayRatio;
         let { width, height } = text.getBoundingClientRect();
         cc.width = width * dpr;

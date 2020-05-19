@@ -7,7 +7,7 @@ export const cloudConfig: CloudConfig = {
     fontFamily,
     fontSize: 30
   },
-  gridSize: 8,
+  gridSize: 4,
   weightFactor: 1,
   minFontSize: 0,
   textStyle: {},

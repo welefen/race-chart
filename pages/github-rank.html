@@ -39,16 +39,10 @@
     <script src="http://s8.qhres.com/static/162287d05f35ddab/canvas2video.js"></script>
     <script src="https://unpkg.com/@ffmpeg/ffmpeg/dist/ffmpeg.min.js"></script>
     <script>
-      fetch("../data/github/user_followers/data.json")
+      fetch("../data/github/project_stars/data.json")
         .then((res) => res.json())
         .then((data) => {
-          data = data.map(item => {
-            return {
-              label: item.name,
-              image: item.avatar_url,
-              value: item.followers
-            }
-          }).slice(0, 50);
+          data = data.slice(0, 50);
           const instance = new BarRank({
             selector: document.querySelector("#container"),
             data,

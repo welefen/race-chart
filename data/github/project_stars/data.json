@@ -1,0 +1,332 @@
+[
+  {
+    "label": "freeCodeCamp/freeCodeCamp",
+    "image": "https://avatars0.githubusercontent.com/u/9892522?v=4",
+    "value": 310902
+  },
+  {
+    "label": "996icu/996.ICU",
+    "image": "https://avatars3.githubusercontent.com/u/48942249?v=4",
+    "value": 249589
+  },
+  {
+    "label": "vuejs/vue",
+    "image": "https://avatars1.githubusercontent.com/u/6128107?v=4",
+    "value": 164235
+  },
+  {
+    "label": "facebook/react",
+    "image": "https://avatars3.githubusercontent.com/u/69631?v=4",
+    "value": 148867
+  },
+  {
+    "label": "EbookFoundation/free-programming-books",
+    "image": "https://avatars0.githubusercontent.com/u/14127308?v=4",
+    "value": 147838
+  },
+  {
+    "label": "tensorflow/tensorflow",
+    "image": "https://avatars1.githubusercontent.com/u/15658638?v=4",
+    "value": 144473
+  },
+  {
+    "label": "twbs/bootstrap",
+    "image": "https://avatars0.githubusercontent.com/u/2918581?v=4",
+    "value": 140860
+  },
+  {
+    "label": "sindresorhus/awesome",
+    "image": "https://avatars1.githubusercontent.com/u/170270?v=4",
+    "value": 133293
+  },
+  {
+    "label": "getify/You-Dont-Know-JS",
+    "image": "https://avatars1.githubusercontent.com/u/150330?v=4",
+    "value": 121315
+  },
+  {
+    "label": "jwasham/coding-interview-university",
+    "image": "https://avatars2.githubusercontent.com/u/3771963?v=4",
+    "value": 115545
+  },
+  {
+    "label": "ohmyzsh/ohmyzsh",
+    "image": "https://avatars1.githubusercontent.com/u/22552083?v=4",
+    "value": 109913
+  },
+  {
+    "label": "kamranahmedse/developer-roadmap",
+    "image": "https://avatars2.githubusercontent.com/u/4921183?v=4",
+    "value": 108466
+  },
+  {
+    "label": "github/gitignore",
+    "image": "https://avatars1.githubusercontent.com/u/9919?v=4",
+    "value": 101740
+  },
+  {
+    "label": "CyC2018/CS-Notes",
+    "image": "https://avatars3.githubusercontent.com/u/36260787?v=4",
+    "value": 101256
+  },
+  {
+    "label": "microsoft/vscode",
+    "image": "https://avatars2.githubusercontent.com/u/6154722?v=4",
+    "value": 96523
+  },
+  {
+    "label": "donnemartin/system-design-primer",
+    "image": "https://avatars2.githubusercontent.com/u/5458997?v=4",
+    "value": 95657
+  },
+  {
+    "label": "airbnb/javascript",
+    "image": "https://avatars3.githubusercontent.com/u/698437?v=4",
+    "value": 95496
+  },
+  {
+    "label": "flutter/flutter",
+    "image": "https://avatars3.githubusercontent.com/u/14101776?v=4",
+    "value": 92662
+  },
+  {
+    "label": "d3/d3",
+    "image": "https://avatars1.githubusercontent.com/u/1562726?v=4",
+    "value": 91535
+  },
+  {
+    "label": "torvalds/linux",
+    "image": "https://avatars0.githubusercontent.com/u/1024025?v=4",
+    "value": 91121
+  },
+  {
+    "label": "facebook/react-native",
+    "image": "https://avatars3.githubusercontent.com/u/69631?v=4",
+    "value": 87286
+  },
+  {
+    "label": "jackfrued/Python-100-Days",
+    "image": "https://avatars0.githubusercontent.com/u/7474657?v=4",
+    "value": 85955
+  },
+  {
+    "label": "electron/electron",
+    "image": "https://avatars1.githubusercontent.com/u/13409222?v=4",
+    "value": 82765
+  },
+  {
+    "label": "public-apis/public-apis",
+    "image": "https://avatars0.githubusercontent.com/u/51121562?v=4",
+    "value": 82597
+  },
+  {
+    "label": "vinta/awesome-python",
+    "image": "https://avatars2.githubusercontent.com/u/652070?v=4",
+    "value": 82564
+  },
+  {
+    "label": "Snailclimb/JavaGuide",
+    "image": "https://avatars0.githubusercontent.com/u/29880145?v=4",
+    "value": 79051
+  },
+  {
+    "label": "facebook/create-react-app",
+    "image": "https://avatars3.githubusercontent.com/u/69631?v=4",
+    "value": 78759
+  },
+  {
+    "label": "jlevy/the-art-of-command-line",
+    "image": "https://avatars1.githubusercontent.com/u/2058167?v=4",
+    "value": 75435
+  },
+  {
+    "label": "axios/axios",
+    "image": "https://avatars1.githubusercontent.com/u/32372333?v=4",
+    "value": 73369
+  },
+  {
+    "label": "TheAlgorithms/Python",
+    "image": "https://avatars1.githubusercontent.com/u/20487725?v=4",
+    "value": 72991
+  },
+  {
+    "label": "golang/go",
+    "image": "https://avatars3.githubusercontent.com/u/4314092?v=4",
+    "value": 72660
+  },
+  {
+    "label": "danistefanovic/build-your-own-x",
+    "image": "https://avatars3.githubusercontent.com/u/1736595?v=4",
+    "value": 70894
+  },
+  {
+    "label": "trekhleb/javascript-algorithms",
+    "image": "https://avatars2.githubusercontent.com/u/3000285?v=4",
+    "value": 70322
+  },
+  {
+    "label": "nodejs/node",
+    "image": "https://avatars3.githubusercontent.com/u/9950313?v=4",
+    "value": 70156
+  },
+  {
+    "label": "animate-css/animate.css",
+    "image": "https://avatars2.githubusercontent.com/u/64791939?v=4",
+    "value": 66685
+  },
+  {
+    "label": "justjavac/free-programming-books-zh_CN",
+    "image": "https://avatars1.githubusercontent.com/u/359395?v=4",
+    "value": 66555
+  },
+  {
+    "label": "ytdl-org/youtube-dl",
+    "image": "https://avatars1.githubusercontent.com/u/48381040?v=4",
+    "value": 66285
+  },
+  {
+    "label": "kubernetes/kubernetes",
+    "image": "https://avatars2.githubusercontent.com/u/13629408?v=4",
+    "value": 66150
+  },
+  {
+    "label": "tensorflow/models",
+    "image": "https://avatars1.githubusercontent.com/u/15658638?v=4",
+    "value": 63782
+  },
+  {
+    "label": "FortAwesome/Font-Awesome",
+    "image": "https://avatars0.githubusercontent.com/u/1505683?v=4",
+    "value": 62841
+  },
+  {
+    "label": "microsoft/terminal",
+    "image": "https://avatars2.githubusercontent.com/u/6154722?v=4",
+    "value": 61647
+  },
+  {
+    "label": "puppeteer/puppeteer",
+    "image": "https://avatars3.githubusercontent.com/u/6906516?v=4",
+    "value": 61408
+  },
+  {
+    "label": "angular/angular",
+    "image": "https://avatars3.githubusercontent.com/u/139426?v=4",
+    "value": 61163
+  },
+  {
+    "label": "mrdoob/three.js",
+    "image": "https://avatars0.githubusercontent.com/u/97088?v=4",
+    "value": 60661
+  },
+  {
+    "label": "microsoft/TypeScript",
+    "image": "https://avatars2.githubusercontent.com/u/6154722?v=4",
+    "value": 60514
+  },
+  {
+    "label": "ossu/computer-science",
+    "image": "https://avatars2.githubusercontent.com/u/14957346?v=4",
+    "value": 59941
+  },
+  {
+    "label": "ant-design/ant-design",
+    "image": "https://avatars3.githubusercontent.com/u/12101536?v=4",
+    "value": 59823
+  },
+  {
+    "label": "angular/angular.js",
+    "image": "https://avatars3.githubusercontent.com/u/139426?v=4",
+    "value": 59519
+  },
+  {
+    "label": "laravel/laravel",
+    "image": "https://avatars3.githubusercontent.com/u/958072?v=4",
+    "value": 59186
+  },
+  {
+    "label": "iluwatar/java-design-patterns",
+    "image": "https://avatars1.githubusercontent.com/u/582346?v=4",
+    "value": 57785
+  },
+  {
+    "label": "denoland/deno",
+    "image": "https://avatars1.githubusercontent.com/u/42048915?v=4",
+    "value": 57561
+  },
+  {
+    "label": "mui-org/material-ui",
+    "image": "https://avatars2.githubusercontent.com/u/33663932?v=4",
+    "value": 57462
+  },
+  {
+    "label": "moby/moby",
+    "image": "https://avatars1.githubusercontent.com/u/27259197?v=4",
+    "value": 57064
+  },
+  {
+    "label": "30-seconds/30-seconds-of-code",
+    "image": "https://avatars3.githubusercontent.com/u/43479428?v=4",
+    "value": 56635
+  },
+  {
+    "label": "PanJiaChen/vue-element-admin",
+    "image": "https://avatars1.githubusercontent.com/u/8121621?v=4",
+    "value": 54476
+  },
+  {
+    "label": "avelino/awesome-go",
+    "image": "https://avatars2.githubusercontent.com/u/31996?v=4",
+    "value": 54455
+  },
+  {
+    "label": "webpack/webpack",
+    "image": "https://avatars2.githubusercontent.com/u/2105791?v=4",
+    "value": 54240
+  },
+  {
+    "label": "MisterBooo/LeetCodeAnimation",
+    "image": "https://avatars1.githubusercontent.com/u/15308811?v=4",
+    "value": 54179
+  },
+  {
+    "label": "vuejs/awesome-vue",
+    "image": "https://avatars1.githubusercontent.com/u/6128107?v=4",
+    "value": 54162
+  },
+  {
+    "label": "nvbn/thefuck",
+    "image": "https://avatars1.githubusercontent.com/u/1114542?v=4",
+    "value": 53538
+  },
+  {
+    "label": "jquery/jquery",
+    "image": "https://avatars1.githubusercontent.com/u/70142?v=4",
+    "value": 53331
+  },
+  {
+    "label": "reduxjs/redux",
+    "image": "https://avatars3.githubusercontent.com/u/13142323?v=4",
+    "value": 53238
+  },
+  {
+    "label": "atom/atom",
+    "image": "https://avatars2.githubusercontent.com/u/1089146?v=4",
+    "value": 51933
+  },
+  {
+    "label": "apple/swift",
+    "image": "https://avatars0.githubusercontent.com/u/10639145?v=4",
+    "value": 51664
+  },
+  {
+    "label": "hakimel/reveal.js",
+    "image": "https://avatars0.githubusercontent.com/u/629429?v=4",
+    "value": 51624
+  },
+  {
+    "label": "pallets/flask",
+    "image": "https://avatars3.githubusercontent.com/u/16748505?v=4",
+    "value": 50378
+  }
+]

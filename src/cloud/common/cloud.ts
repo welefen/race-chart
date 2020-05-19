@@ -203,6 +203,7 @@ export class Cloud extends Chart {
       }
     }
     item.node.attr({
+      anchor: [0, 0],
       opacity: 1,
       x: gridX * this.config.gridSize + this.maskPos.x,
       y: gridY * this.config.gridSize + this.maskPos.y
