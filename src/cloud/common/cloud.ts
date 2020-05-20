@@ -55,7 +55,7 @@ export class Cloud extends Chart {
     const imageData: ImageData = await this.getMaskData(this.maskPos);
     this.grid = this.parseGridData(imageData);
     if (this.config.debug) {
-      // this.drawGridItems(this.grid);
+      this.drawGridItems(this.grid);
     }
     const ngx = this.grid.length;
     const ngy = this.grid[0].length;
@@ -93,7 +93,7 @@ export class Cloud extends Chart {
     const ctx = canvas.getContext('2d');
     ctx.drawImage(img, 0, 0, width, height, 0, 0, newWidth, newHeight);
     if (this.config.debug) {
-      // this.drawMaskImage(img);
+      this.drawMaskImage(img);
     }
     const imageData: ImageData = ctx.getImageData(0, 0, newWidth, newHeight);
     const data = imageData.data;
@@ -158,7 +158,7 @@ export class Cloud extends Chart {
   protected getImageOccupied(imageData: ImageData, gridSize?: number) {
     const grid = this.parseGridData(imageData, true, gridSize);
     if (this.config.debug) {
-      // this.drawGridItems(grid, 'blue');
+      this.drawGridItems(grid, 'blue');
     }
     const occupied = [];
     grid.forEach((line, i) => {
