@@ -66,9 +66,6 @@ export class WordCloud extends Cloud {
     const anchor = label.attributes.anchor;
     const x = -anchor[0] * w;
     const y = -anchor[1] * h;
-    if (!w || !h) {
-      console.log(image, str, weight, deg, color);
-    }
     ctx.drawImage(image, x, y, w, h);
     // document.body.appendChild(cc);
 
