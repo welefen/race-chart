@@ -35,35 +35,25 @@
       </div>
     </div>
     <script>
-      const { Scene, Layer, Polyline } = spritejs;
+     const {Scene, Layer, Sprite, Polyline} = spritejs;
+
+      const container = document.querySelector('#container');
       const scene = new Scene({
-        container: document.querySelector("#container"),
+        container,
         width: 960,
         height: 540,
         displayRatio: 2,
       });
-      const layer = scene.layer("layer", {
-        handleEvent: false,
+
+      const fglayer = scene.layer();
+
+      const line = new Polyline({
+        points: [10, 10, 10, 100],
+        strokeColor: 'red',
+        lineWidth: 0.5
       });
-      line = new Polyline({
-        points: [
-          0,
-          87.8542335707851,
-          19.761904761904763,
-          67.77716403973452,
-          20.336778571931756,
-          66.68540867059392,
-        ],
-        close: false,
-        strokeColor: "red",
-        lineJoin: 'miter',
-        miterLimit: 10,
-        lineWidth: 22,
-        lineCap: "square",
-        opacity: 0.2,
-        smooth: true,
-      });
-      layer.appendChild(line);
+
+      fglayer.appendChild(line);
     </script>
   </body>
 </html>

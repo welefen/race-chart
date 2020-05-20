@@ -18,7 +18,7 @@ export interface Placement {
 }
 
 export interface CloudItemInfo {
-  node?: Label | Sprite;
+  canvas?: HTMLCanvasElement;
   width?: number;
   height?: number;
   gridWidth?: number;
@@ -39,7 +39,10 @@ export interface CloudConfig extends ChartConfig {
   gridSize?: number;
   weightFactor?: number;
   minFontSize?: number;
+  maxFontSize?: number;
   textStyle?: Font;
   debug?: boolean;
   rotate?: CloudRotate;
+  autoShrink?: boolean;
+  shrinkPercent?: number;
 }

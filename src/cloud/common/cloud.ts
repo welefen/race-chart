@@ -55,7 +55,7 @@ export class Cloud extends Chart {
     const imageData: ImageData = await this.getMaskData(this.maskPos);
     this.grid = this.parseGridData(imageData);
     if (this.config.debug) {
-      this.drawGridItems(this.grid);
+      // this.drawGridItems(this.grid);
     }
     const ngx = this.grid.length;
     const ngy = this.grid[0].length;
@@ -142,9 +142,8 @@ export class Cloud extends Chart {
     }
     return flag ? false : true;
   }
-  protected parseGridData(imageData: ImageData, flag?: boolean): boolean[][] {
+  protected parseGridData(imageData: ImageData, flag?: boolean, gridSize: number = this.config.gridSize): boolean[][] {
     const { width, height } = imageData;
-    const { gridSize } = this.config;
     const gridWidth = Math.ceil(width / gridSize);
     const gridHeight = Math.ceil(height / gridSize);
     const grid = [];
@@ -156,10 +155,10 @@ export class Cloud extends Chart {
     }
     return grid;
   }
-  protected getImageOccupied(imageData: ImageData) {
-    const grid = this.parseGridData(imageData, true);
+  protected getImageOccupied(imageData: ImageData, gridSize?: number) {
+    const grid = this.parseGridData(imageData, true, gridSize);
     if (this.config.debug) {
-      this.drawGridItems(grid, 'blue');
+      // this.drawGridItems(grid, 'blue');
     }
     const occupied = [];
     grid.forEach((line, i) => {
@@ -187,6 +186,7 @@ export class Cloud extends Chart {
     return points;
   }
   protected tryToPutAtPoint(point: number[], item: CloudItemInfo) {
+    const { gridSize } = this.config;
     const gridX = Math.floor(point[0] - item.gridWidth / 2);
     const gridY = Math.floor(point[1] - item.gridHeight / 2);
     const gh = this.grid.length;
@@ -202,20 +202,19 @@ export class Cloud extends Chart {
         return false;
       }
     }
-    item.node.attr({
-      anchor: [0, 0],
-      opacity: 1,
-      x: gridX * this.config.gridSize + this.maskPos.x,
-      y: gridY * this.config.gridSize + this.maskPos.y
+    const sprite = new Sprite({
+      texture: item.canvas,
+      width: item.width,
+      height: item.height,
+      x: gridX * gridSize + this.maskPos.x,
+      y: gridY * gridSize + this.maskPos.y
     })
+    this.layer.appendChild(sprite);
     // update status in grid
     let idx = item.occupied.length;
     while (idx--) {
       const x = gridX + item.occupied[idx].column;
       const y = gridY + item.occupied[idx].row;
-      if (x < 0 || y < 0 || x >= gw || y >= gh) {
-        return false;
-      }
       this.grid[y][x] = false;
     }
     return true;

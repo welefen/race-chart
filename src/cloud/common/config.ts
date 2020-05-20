@@ -9,13 +9,16 @@ export const cloudConfig: CloudConfig = {
   },
   gridSize: 4,
   weightFactor: 1,
-  minFontSize: 0,
+  minFontSize: 1,
+  maxFontSize: 300,
   textStyle: {},
   debug: true,
+  autoShrink: true,
+  shrinkPercent: 0.8,
   rotate: {
     disabled: false,
     min: 0,
     max: 360,
-    step: 10
+    step: 18
   }
 };
