@@ -3,7 +3,7 @@ import { deepmerge } from '../../common/util';
 import { cloudConfig } from './config';
 import { CloudConfig, CloudItemInfo, Placement } from './types';
 import { Position } from '../../common/types';
-import { Sprite, Block } from 'spritejs';
+import { Sprite, Block, Polyline } from 'spritejs';
 
 export class Cloud extends Chart {
   protected maxRadius: number;
@@ -55,11 +55,11 @@ export class Cloud extends Chart {
     const imageData: ImageData = await this.getMaskData(this.maskPos);
     this.grid = this.parseGridData(imageData);
     if (this.config.debug) {
-      this.drawGridItems(this.grid);
+      // this.drawGridItems(this.grid);
     }
-    const ngx = this.grid.length;
-    const ngy = this.grid[0].length;
-    this.maxRadius = Math.floor(Math.sqrt(ngx * ngx + ngy * ngy));
+    const ngy = this.grid.length;
+    const ngx = this.grid[0].length;
+    this.maxRadius = Math.floor(Math.sqrt(ngx * ngx + ngy * ngy) / 2);
     this.center = [ngx / 2, ngy / 2];
   }
   private async getImageMaskData(pos: Position): Promise<ImageData> {
@@ -93,7 +93,7 @@ export class Cloud extends Chart {
     const ctx = canvas.getContext('2d');
     ctx.drawImage(img, 0, 0, width, height, 0, 0, newWidth, newHeight);
     if (this.config.debug) {
-      this.drawMaskImage(img);
+      // this.drawMaskImage(img);
     }
     const imageData: ImageData = ctx.getImageData(0, 0, newWidth, newHeight);
     const data = imageData.data;
@@ -158,7 +158,7 @@ export class Cloud extends Chart {
   protected getImageOccupied(imageData: ImageData, gridSize?: number) {
     const grid = this.parseGridData(imageData, true, gridSize);
     if (this.config.debug) {
-      this.drawGridItems(grid, 'blue');
+      // this.drawGridItems(grid, 'blue');
     }
     const occupied = [];
     grid.forEach((line, i) => {
@@ -170,17 +170,35 @@ export class Cloud extends Chart {
     })
     return occupied;
   }
+  private drawPoints(points: number[][]) {
+    const data = [];
+    points.forEach(item => {
+      const x = item[0] * this.config.gridSize + this.maskPos.x;
+      const y = item[1] * this.config.gridSize + this.maskPos.y;
+      data.push(x, y);
+    })
+    const line = new Polyline({
+      points: data,
+      close: true,
+      strokeColor: 'blue'
+    })
+    this.layer.appendChild(line);
+  }
   protected getPointsAtRadius(radius: number, center: number[]): number[][] {
     if (this.pointsAtRadius[radius]) return this.pointsAtRadius[radius];
     if (!radius) return [[center[0], center[1], 0]];
     const num = radius * 8;
     const points = [];
+    const rate = this.maskPos.height / this.maskPos.width;
     let cur = num;
     while (cur--) {
       const r = center[0] + radius * Math.cos(-cur / num * 2 * Math.PI);
-      const th = center[1] + radius * Math.sin(-cur / num * 2 * Math.PI);
+      const th = center[1] + radius * Math.sin(-cur / num * 2 * Math.PI) * rate;
       const i = cur / num * 2 * Math.PI;
       points.push([r, th, i]);
+    }
+    if (this.config.debug) {
+      // this.drawPoints(points);
     }
     this.pointsAtRadius[radius] = points;
     return points;

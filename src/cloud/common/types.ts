@@ -24,13 +24,21 @@ export interface CloudItemInfo {
   gridWidth?: number;
   gridHeight?: number;
   occupied?: Placement[];
-  fontSize?: number;
 }
 export interface CloudRotate {
   disabled?: boolean;
   min?: number;
   max?: number;
   step?: number;
+}
+
+export interface CloudWordConfig {
+  text?: string;
+  color?: string;
+  deg?: number;
+  fontSize?: number;
+  realFontSize?: number;
+  shrinks?: number;
 }
 
 export interface CloudConfig extends ChartConfig {
@@ -45,4 +53,5 @@ export interface CloudConfig extends ChartConfig {
   rotate?: CloudRotate;
   autoShrink?: boolean;
   shrinkPercent?: number;
+  shufflePoints?: boolean;
 }

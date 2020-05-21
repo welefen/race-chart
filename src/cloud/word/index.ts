@@ -1,39 +1,48 @@
 import { Cloud } from '../common/cloud';
 import { createLabel } from '../../common/util';
-import { CloudItemInfo } from '../common/types';
+import { CloudItemInfo, CloudWordConfig } from '../common/types';
 
 export class WordCloud extends Cloud {
-  private async putWord(str: string, weight: number, color: string) {
-    const deg = this.getRotateDeg();
-    const info = await this.getTextInfo(str, weight, deg, color).catch(() => false);
+  private async putWord(word: CloudWordConfig): Promise<boolean> {
+    if (!word.deg) {
+      word.deg = this.getRotateDeg();
+    }
+    const info = await this.getTextInfo(word).catch(() => false);
     if (!info) return false;
     let r = this.maxRadius + 1;
     while (r--) {
-      const points = this.getPointsAtRadius(r, this.center);
-      points.sort(() => Math.random() > 0.5 ? 1 : -1);
+      let points = this.getPointsAtRadius(r, this.center);
+      if (this.config.shufflePoints) {
+        points = [].concat(points);
+        points.sort(() => Math.random() > 0.5 ? 1 : -1);
+      }
       const drawn = points.some(point => {
         return this.tryToPutAtPoint(point, <CloudItemInfo>info);
       })
       if (drawn) return true;
     }
     if (this.config.autoShrink) {
-      return this.putWord(str, weight * this.config.shrinkPercent, color);
+      word.fontSize *= this.config.shrinkPercent;
+      word.shrinks = (word.shrinks || 0) + 1;
+      return this.putWord(word);
     }
+    return false;
   }
-  private async getTextInfo(str: string, weight: number, deg: number, color: string): Promise<CloudItemInfo> {
-    const { gridSize, weightFactor, minFontSize, maxFontSize, textStyle } = this.config;
-    const fontSize = Math.min(maxFontSize, Math.max(minFontSize, weight * weightFactor));
-    const styles = { ...textStyle, fontSize, rotate: deg };
-    const label = createLabel(str, styles);
+  private async getTextInfo(word: CloudWordConfig): Promise<CloudItemInfo> {
+    const { gridSize, minFontSize, maxFontSize, textStyle } = this.config;
+    word.fontSize = Math.min(maxFontSize, Math.max(minFontSize, word.fontSize));
+    const styles = { ...textStyle, fontSize: word.fontSize, rotate: word.deg };
+    const label = createLabel(word.text, styles);
     this.layer.appendChild(label);
-    label.attr({ fillColor: color, anchor: [0.5, 0.5], padding: [gridSize, gridSize, gridSize, gridSize] });
+    label.attr({ fillColor: word.color, anchor: [0.5, 0.5], padding: [gridSize, gridSize, gridSize, gridSize] });
     await label.textImageReady;
-    const cos = Math.cos(deg * Math.PI / 180);
-    const sin = Math.sin(deg * Math.PI / 180);
+    const cos = Math.cos(word.deg * Math.PI / 180);
+    const sin = Math.sin(word.deg * Math.PI / 180);
     const { image } = label.textImage;
     if (!image.width || !image.height) {
       return Promise.reject(new Error('text image empty'));
     }
+
     const borderSize = label.borderSize;
     const hw = borderSize[0] / 2;
     const hh = borderSize[1] / 2;
@@ -43,8 +52,7 @@ export class WordCloud extends Cloud {
     });
     this.layer.removeChild(label);
 
-
-    const dpr = this.config.displayRatio
+    const dpr = this.config.displayRatio;
     let { width, height } = label.getBoundingClientRect();
     const gridWidth = Math.ceil(width / gridSize);
     const gridHeight = Math.ceil(height / gridSize);
@@ -77,8 +85,7 @@ export class WordCloud extends Cloud {
       gridHeight,
       width,
       height,
-      occupied,
-      fontSize
+      occupied
     }
   }
   async start() {
@@ -86,11 +93,13 @@ export class WordCloud extends Cloud {
     let i = 100;
     const length = this.config.colors.length;
     while (i--) {
-      await this.putWord('中' + i, i + 1, this.config.colors[i % length]);
-      await this.putWord('China' + i, i + 1, this.config.colors[i % length]);
-      await this.putWord('test' + i, i + 1, this.config.colors[i % length]);
+      // const start = Date.now();
+      await this.putWord({ text: '中' + i, fontSize: i + 50, color: this.config.colors[i % length] });
+      // console.log(Date.now() - start)
+      // await this.putWord('China' + i, i + 50, this.config.colors[i % length]);
+      // await this.putWord('test' + i, i + 50, this.config.colors[i % length]);
       await new Promise(resolve => {
-        setTimeout(resolve, 30)
+        setTimeout(resolve, 10)
       })
     }
   }

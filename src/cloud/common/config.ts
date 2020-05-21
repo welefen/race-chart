@@ -7,14 +7,15 @@ export const cloudConfig: CloudConfig = {
     fontFamily,
     fontSize: 30
   },
-  gridSize: 4,
+  gridSize: 8,
   weightFactor: 1,
   minFontSize: 1,
   maxFontSize: 300,
   textStyle: {},
   debug: true,
   autoShrink: true,
-  shrinkPercent: 0.8,
+  shrinkPercent: 0.75,
+  shufflePoints: true,
   rotate: {
     disabled: false,
     min: 0,
