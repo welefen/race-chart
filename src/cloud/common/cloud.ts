@@ -16,6 +16,10 @@ export class Cloud extends Chart {
     config = deepmerge({}, cloudConfig, this.config || {}, config || {});
     config.gridSize = Math.max(4, config.gridSize);
     super.setConfig(config);
+    this.parseData();
+  }
+  private parseData() {
+
   }
   protected drawGridItems(grid: boolean[][], color: string = 'rgba(0, 0, 0, 0.2)') {
     grid.forEach((lines, i) => {
@@ -198,7 +202,7 @@ export class Cloud extends Chart {
       points.push([r, th, i]);
     }
     if (this.config.debug) {
-      // this.drawPoints(points);
+      this.drawPoints(points);
     }
     this.pointsAtRadius[radius] = points;
     return points;
@@ -240,7 +244,7 @@ export class Cloud extends Chart {
   protected getRotateDeg() {
     const { disabled, min, max, step } = this.config.rotate;
     if (disabled) return 0;
-    let rotate = Math.random() * 360;
+    let rotate = Math.random() * (max - min) + min;
     if (step) {
       rotate = Math.floor(rotate / step) * step;
     }

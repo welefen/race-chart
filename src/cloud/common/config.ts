@@ -5,21 +5,22 @@ export const cloudConfig: CloudConfig = {
   ...chartConfig,
   mask: {
     fontFamily,
-    fontSize: 30
+    fontSize: 50
   },
   gridSize: 8,
   weightFactor: 1,
-  minFontSize: 1,
+  minFontSize: 10,
   maxFontSize: 300,
   textStyle: {},
-  debug: true,
+  debug: false,
+  delay: 100,
   autoShrink: true,
-  shrinkPercent: 0.75,
+  shrinkPercent: 0.9,
   shufflePoints: true,
   rotate: {
     disabled: false,
-    min: 0,
-    max: 360,
-    step: 18
+    min: -90,
+    max: 90,
+    step: 45
   }
 };

@@ -1,5 +1,4 @@
 import { ChartConfig, Font } from '../../common/types';
-import { Label, Sprite } from 'spritejs';
 
 export interface MaskConfig extends Font {
   image?: string;
@@ -37,7 +36,7 @@ export interface CloudWordConfig {
   color?: string;
   deg?: number;
   fontSize?: number;
-  realFontSize?: number;
+  preFontSize?: number;
   shrinks?: number;
 }
 
@@ -52,6 +51,7 @@ export interface CloudConfig extends ChartConfig {
   debug?: boolean;
   rotate?: CloudRotate;
   autoShrink?: boolean;
+  delay?: number;
   shrinkPercent?: number;
   shufflePoints?: boolean;
 }

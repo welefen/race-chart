@@ -4,7 +4,7 @@ import { CloudItemInfo, CloudWordConfig } from '../common/types';
 
 export class WordCloud extends Cloud {
   private async putWord(word: CloudWordConfig): Promise<boolean> {
-    if (!word.deg) {
+    if (typeof word.deg !== 'number') {
       word.deg = this.getRotateDeg();
     }
     const info = await this.getTextInfo(word).catch(() => false);
@@ -22,6 +22,7 @@ export class WordCloud extends Cloud {
       if (drawn) return true;
     }
     if (this.config.autoShrink) {
+      word.preFontSize = word.fontSize;
       word.fontSize *= this.config.shrinkPercent;
       word.shrinks = (word.shrinks || 0) + 1;
       return this.putWord(word);
@@ -31,6 +32,9 @@ export class WordCloud extends Cloud {
   private async getTextInfo(word: CloudWordConfig): Promise<CloudItemInfo> {
     const { gridSize, minFontSize, maxFontSize, textStyle } = this.config;
     word.fontSize = Math.min(maxFontSize, Math.max(minFontSize, word.fontSize));
+    if (word.shrinks && word.fontSize === word.preFontSize) {
+      return Promise.reject(new Error('fontSize can not shrink'));
+    }
     const styles = { ...textStyle, fontSize: word.fontSize, rotate: word.deg };
     const label = createLabel(word.text, styles);
     this.layer.appendChild(label);
@@ -90,17 +94,19 @@ export class WordCloud extends Cloud {
   }
   async start() {
     await this.render();
-    let i = 100;
-    const length = this.config.colors.length;
-    while (i--) {
-      // const start = Date.now();
-      await this.putWord({ text: '中' + i, fontSize: i + 50, color: this.config.colors[i % length] });
-      // console.log(Date.now() - start)
-      // await this.putWord('China' + i, i + 50, this.config.colors[i % length]);
-      // await this.putWord('test' + i, i + 50, this.config.colors[i % length]);
+    const colorLength = this.config.colors.length;
+    const length = this.config.data.length;
+    let i = 0;
+    while (i < length) {
+      const { text, value } = this.config.data[i];
+      await this.putWord({ text, fontSize: value, color: this.config.colors[i % colorLength] });
       await new Promise(resolve => {
-        setTimeout(resolve, 10)
-      })
+        setTimeout(resolve, this.config.delay);
+      });
+      i++;
     }
+    await this.renderLastStayTime();
+    await this.renderEndingImage();
+    this.emit('end');
   }
 }
