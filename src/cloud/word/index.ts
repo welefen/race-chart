@@ -30,8 +30,8 @@ export class WordCloud extends Cloud {
     return false;
   }
   private async getTextInfo(word: CloudWordConfig): Promise<CloudItemInfo> {
-    const { gridSize, minFontSize, maxFontSize, textStyle } = this.config;
-    word.fontSize = Math.min(maxFontSize, Math.max(minFontSize, word.fontSize));
+    const { gridSize, minSize, maxSize, textStyle } = this.config;
+    word.fontSize = Math.min(maxSize, Math.max(minSize, word.fontSize));
     if (word.shrinks && word.fontSize === word.preFontSize) {
       return Promise.reject(new Error('fontSize can not shrink'));
     }

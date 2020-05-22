@@ -10,9 +10,8 @@ export const cloudConfig: CloudConfig = {
     color: '#000'
   },
   gridSize: 8,
-  weightFactor: 1,
-  minFontSize: 10,
-  maxFontSize: 300,
+  minSize: 10,
+  maxSize: 300,
   textStyle: {},
   debug: {
     drawGridItems: false,

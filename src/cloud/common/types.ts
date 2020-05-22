@@ -44,9 +44,8 @@ export interface CloudConfig extends ChartConfig {
   mask?: MaskConfig;
   data?: CloudDataItem[];
   gridSize?: number;
-  weightFactor?: number;
-  minFontSize?: number;
-  maxFontSize?: number;
+  minSize?: number;
+  maxSize?: number;
   textStyle?: Font;
   debug?: {
     drawGridItems?: boolean;
