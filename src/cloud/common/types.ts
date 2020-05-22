@@ -48,7 +48,11 @@ export interface CloudConfig extends ChartConfig {
   minFontSize?: number;
   maxFontSize?: number;
   textStyle?: Font;
-  debug?: boolean;
+  debug?: {
+    drawGridItems?: boolean;
+    drawMaskImage?: boolean;
+    drawPoints?: boolean;
+  };
   rotate?: CloudRotate;
   autoShrink?: boolean;
   delay?: number;

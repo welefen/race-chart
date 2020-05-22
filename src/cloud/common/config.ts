@@ -5,14 +5,20 @@ export const cloudConfig: CloudConfig = {
   ...chartConfig,
   mask: {
     fontFamily,
-    fontSize: 50
+    fontSize: 450,
+    fontWeight: 'bold',
+    color: '#000'
   },
   gridSize: 8,
   weightFactor: 1,
   minFontSize: 10,
   maxFontSize: 300,
   textStyle: {},
-  debug: false,
+  debug: {
+    drawGridItems: false,
+    drawMaskImage: false,
+    drawPoints: false
+  },
   delay: 100,
   autoShrink: true,
   shrinkPercent: 0.9,
@@ -21,6 +27,6 @@ export const cloudConfig: CloudConfig = {
     disabled: false,
     min: -90,
     max: 90,
-    step: 45
+    step: 90
   }
 };

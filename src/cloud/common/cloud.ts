@@ -1,9 +1,9 @@
 import { Chart } from '../../common/chart';
-import { deepmerge } from '../../common/util';
+import { deepmerge, createLabel } from '../../common/util';
 import { cloudConfig } from './config';
 import { CloudConfig, CloudItemInfo, Placement } from './types';
 import { Position } from '../../common/types';
-import { Sprite, Block, Polyline } from 'spritejs';
+import { Sprite, Block, Polyline, Label } from 'spritejs';
 
 export class Cloud extends Chart {
   protected maxRadius: number;
@@ -56,15 +56,26 @@ export class Cloud extends Chart {
     y += subTitleHeight;
     height -= subTitleHeight;
     this.maskPos = { x, y, width, height };
-    const imageData: ImageData = await this.getMaskData(this.maskPos);
-    this.grid = this.parseGridData(imageData);
-    if (this.config.debug) {
-      // this.drawGridItems(this.grid);
+    this.grid = await this.parseMaskGrid(this.maskPos);
+    if (this.config.debug.drawGridItems) {
+      this.drawGridItems(this.grid);
     }
     const ngy = this.grid.length;
     const ngx = this.grid[0].length;
-    this.maxRadius = Math.floor(Math.sqrt(ngx * ngx + ngy * ngy) / 2);
+    this.maxRadius = Math.floor(Math.sqrt(ngx * ngx + ngy * ngy) / Math.sqrt(2));
     this.center = [ngx / 2, ngy / 2];
+  }
+  private updatePosition(width: number, height: number, pos: Position): Position {
+    const widthRatio = width / pos.width;
+    const heightRatio = height / pos.height;
+    const ratio = Math.max(widthRatio, heightRatio);
+    const newWidth = Math.floor(width / ratio);
+    const newHeight = Math.floor(height / ratio);
+    pos.x += Math.floor((pos.width - newWidth) / 2);
+    pos.y += Math.floor((pos.height - newHeight) / 2);
+    pos.width = newWidth;
+    pos.height = newHeight;
+    return pos;
   }
   private async getImageMaskData(pos: Position): Promise<ImageData> {
     const { image } = this.config.mask;
@@ -81,25 +92,17 @@ export class Cloud extends Chart {
   }
   private getImageData(img: HTMLImageElement, pos: Position): ImageData {
     const { width, height } = img;
-    const widthRatio = width / pos.width;
-    const heightRatio = height / pos.height;
-    const ratio = Math.max(widthRatio, heightRatio);
-    const newWidth = Math.floor(width / ratio);
-    const newHeight = Math.floor(height / ratio);
-    pos.x += Math.floor((pos.width - newWidth) / 2);
-    pos.y += Math.floor((pos.height - newHeight) / 2);
-    pos.width = newWidth;
-    pos.height = newHeight;
+    this.updatePosition(width, height, pos);
 
     let canvas = document.createElement('canvas');
-    canvas.width = newWidth;
-    canvas.height = newHeight;
+    canvas.width = pos.width;
+    canvas.height = pos.height;
     const ctx = canvas.getContext('2d');
-    ctx.drawImage(img, 0, 0, width, height, 0, 0, newWidth, newHeight);
-    if (this.config.debug) {
-      // this.drawMaskImage(img);
+    ctx.drawImage(img, 0, 0, width, height, 0, 0, pos.width, pos.height);
+    if (this.config.debug.drawMaskImage) {
+      this.drawMaskImage(img);
     }
-    const imageData: ImageData = ctx.getImageData(0, 0, newWidth, newHeight);
+    const imageData: ImageData = ctx.getImageData(0, 0, pos.width, pos.height);
     const data = imageData.data;
     let toneSum = 0;
     let toneCnt = 0;
@@ -125,10 +128,28 @@ export class Cloud extends Chart {
     canvas = null;
     return imageData;
   }
-  protected getMaskData(pos: Position): Promise<ImageData> {
+  protected async parseMaskGrid(pos: Position) {
     const { image, text } = this.config.mask;
     if (image) {
-      return this.getImageMaskData(pos);
+      const imageData: ImageData = await this.getImageMaskData(pos);
+      return this.parseGridData(imageData);
+    } else if (text) {
+      const label = createLabel(text, this.config.mask);
+      this.layer.appendChild(label);
+      await label.textImageReady;
+      const { image, rect } = label.textImage;
+      this.updatePosition(rect[2], rect[3], pos);
+      if (this.config.debug.drawMaskImage) {
+        label.attr({ x: pos.x, y: pos.y });
+      } else {
+        this.layer.removeChild(label);
+      }
+      const ctx = image.getContext('2d');
+      const imageData = ctx.getImageData(0, 0, image.width, image.height);
+      return this.parseGridData(imageData, false, this.config.gridSize * this.config.displayRatio);
+    } else {
+      const imageData: ImageData = { width: pos.width, height: pos.height, data: new Uint8ClampedArray() };
+      return this.parseGridData(imageData);
     }
   }
   private getGridItemStatus(imageData: ImageData, row: number, column: number, gridSize: number, flag: boolean = false) {
@@ -138,7 +159,7 @@ export class Cloud extends Chart {
       for (let j = 0; j < gridSize; j++) {
         index = (row * width * gridSize + i * width + column * gridSize + j) * 4 + 3;
         if (!flag) {
-          if (!data[index]) return false;
+          if (data[index] === 0) return false;
         } else {
           if (data[index]) return true;
         }
@@ -146,7 +167,7 @@ export class Cloud extends Chart {
     }
     return flag ? false : true;
   }
-  protected parseGridData(imageData: ImageData, flag?: boolean, gridSize: number = this.config.gridSize): boolean[][] {
+  protected parseGridData(imageData: ImageData, flag: boolean = false, gridSize: number = this.config.gridSize): boolean[][] {
     const { width, height } = imageData;
     const gridWidth = Math.ceil(width / gridSize);
     const gridHeight = Math.ceil(height / gridSize);
@@ -161,8 +182,8 @@ export class Cloud extends Chart {
   }
   protected getImageOccupied(imageData: ImageData, gridSize?: number) {
     const grid = this.parseGridData(imageData, true, gridSize);
-    if (this.config.debug) {
-      // this.drawGridItems(grid, 'blue');
+    if (this.config.debug.drawGridItems) {
+      this.drawGridItems(grid, 'blue');
     }
     const occupied = [];
     grid.forEach((line, i) => {
@@ -201,7 +222,7 @@ export class Cloud extends Chart {
       const i = cur / num * 2 * Math.PI;
       points.push([r, th, i]);
     }
-    if (this.config.debug) {
+    if (this.config.debug.drawPoints) {
       this.drawPoints(points);
     }
     this.pointsAtRadius[radius] = points;
