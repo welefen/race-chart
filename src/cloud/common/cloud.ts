@@ -19,7 +19,17 @@ export class Cloud extends Chart {
     this.parseData();
   }
   private parseData() {
-
+    const { minSize, maxSize } = this.config;
+    const values = this.config.data.map(item => item.value);
+    const min = Math.min(...values);
+    const max = Math.max(...values);
+    this.config.data.forEach(item => {
+      if (min === max) {
+        item.value = maxSize;
+      } else {
+        item.value = minSize + (maxSize - minSize) / (max - min) * (item.value - min);
+      }
+    });
   }
   protected drawGridItems(grid: boolean[][], color: string = 'rgba(0, 0, 0, 0.2)') {
     grid.forEach((lines, i) => {
