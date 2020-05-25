@@ -52,17 +52,17 @@
             },
             padding: [15, 15, 15, 15],
             title: {
-              text: '前端框架/UI NPM月下载量趋势',
-              padding: [10, 0, 30, 0]
+              // text: '可视化框架NPM月下载量趋势',
+              // padding: [10, 0, 30, 0]
             },
             bar: {
               label: {
-                width: 120,
-                fontSize: 18,
+                width: 140,
+                fontSize: 22,
                 fontWeight: 'bold'
               },
               value: {
-                fontSize: 18,
+                fontSize: 22,
                 width: 120
               },
               rect: {
@@ -80,16 +80,15 @@
                 // padding: [20, 20, 20, 20]
               },
               justifySpacing: 10,
-              alignSpacing: 10,
+              alignSpacing: 5,
             },
             showNum: 10,
-            // formatter(value, type) {
-            //   value = Math.floor(value);
-            //   return value;
-            // },
+            formatter(value, type) {
+              return Math.floor(value).toString().replace(/(?=(?!\b)(\d{3})+$)/g, ',');
+            },
             duration: function (column, index, length) {
               column = parseInt(column);
-              return 100;
+              return 1000;
             },
             axis: {
               tipHeight: 20,

@@ -5,7 +5,7 @@ export const cloudConfig: CloudConfig = {
   ...chartConfig,
   mask: {
     fontFamily,
-    fontSize: 450,
+    fontSize: 300,
     fontWeight: 'bold',
     color: '#000'
   },

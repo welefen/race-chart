@@ -78,9 +78,9 @@ export class Cloud extends Chart {
   private updatePosition(width: number, height: number, pos: Position): Position {
     const widthRatio = width / pos.width;
     const heightRatio = height / pos.height;
-    const ratio = Math.max(widthRatio, heightRatio);
-    const newWidth = Math.floor(width / ratio);
-    const newHeight = Math.floor(height / ratio);
+    const ratio = Math.min(widthRatio, heightRatio);
+    const newWidth = Math.floor(pos.width * ratio);
+    const newHeight = Math.floor(pos.height * ratio);
     pos.x += Math.floor((pos.width - newWidth) / 2);
     pos.y += Math.floor((pos.height - newHeight) / 2);
     pos.width = newWidth;

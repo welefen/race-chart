@@ -63,8 +63,12 @@
               padding: [10, 0, 30, 0]
             },
             mask: {
-              // text: '中国'
+              text: '互联',
+              fontSize: 400,
               // image: 'https://p4.ssl.qhimg.com/t01e5691d89a0b11db4.jpg'
+            },
+            debug: {
+              drawMaskImage: true
             },
             lastStayTime: 2000,
           });
@@ -73,20 +77,23 @@
           //   audio: "http://s6.qhres.com/static/8b52098f6453e7dd.mp3",
           // });
           
-          instance.start();
+          instance.start().catch(err => {
+            console.error(err);
+          })
 
           // instance.on("start", () => {
           //   videoInstance.startRecord();
           // });
           // instance.on("change", (column) => {});
-          // instance.on("end", () => {
-          //   videoInstance.getStreamURL().then((url) => {
-          //     const container = document.querySelector("#videoContainer");
-          //     container.style.display = "block";
-          //     container.querySelector("video").src = url;
-          //   });
-          //   videoInstance.stopRecord();
-          // });
+          instance.on("end", () => {
+            console.log('end')
+            // videoInstance.getStreamURL().then((url) => {
+            //   const container = document.querySelector("#videoContainer");
+            //   container.style.display = "block";
+            //   container.querySelector("video").src = url;
+            // });
+            // videoInstance.stopRecord();
+          });
         });
     </script>
   </body>
