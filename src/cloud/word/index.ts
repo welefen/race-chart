@@ -40,8 +40,9 @@ export class WordCloud extends Cloud {
     this.layer.appendChild(label);
     label.attr({ fillColor: word.color, anchor: [0.5, 0.5], padding: [gridSize, gridSize, gridSize, gridSize] });
     await label.textImageReady;
-    const cos = Math.cos(word.deg * Math.PI / 180);
-    const sin = Math.sin(word.deg * Math.PI / 180);
+    const deg = word.deg * Math.PI / 180;
+    const cos = Math.cos(deg);
+    const sin = Math.sin(deg);
     const { image } = label.textImage;
     if (!image.width || !image.height) {
       return Promise.reject(new Error('text image empty'));
