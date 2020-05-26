@@ -35,7 +35,7 @@ export const chartConfig: ChartConfig = {
   width: 960,
   height: 540,
   displayRatio: 2,
-  padding: 0,
+  padding: [0, 0, 0, 0],
   watermark,
   title,
   subTitle,

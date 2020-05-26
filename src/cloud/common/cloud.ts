@@ -76,15 +76,16 @@ export class Cloud extends Chart {
     this.center = [ngx / 2, ngy / 2];
   }
   private updatePosition(width: number, height: number, pos: Position): Position {
-    const widthRatio = width / pos.width;
-    const heightRatio = height / pos.height;
+    const widthRatio = pos.width / width;
+    const heightRatio = pos.height / height;
     const ratio = Math.min(widthRatio, heightRatio);
-    const newWidth = Math.floor(pos.width * ratio);
-    const newHeight = Math.floor(pos.height * ratio);
+    const newWidth = Math.floor(width * ratio);
+    const newHeight = Math.floor(height * ratio);
     pos.x += Math.floor((pos.width - newWidth) / 2);
     pos.y += Math.floor((pos.height - newHeight) / 2);
     pos.width = newWidth;
     pos.height = newHeight;
+    console.log(pos, widthRatio, heightRatio)
     return pos;
   }
   private async getImageMaskData(pos: Position): Promise<ImageData> {
