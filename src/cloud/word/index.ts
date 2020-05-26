@@ -1,5 +1,5 @@
 import { Cloud } from '../common/cloud';
-import { createLabel } from '../../common/util';
+import { createLabel, timeout } from '../../common/util';
 import { CloudItemInfo, CloudWordConfig } from '../common/types';
 
 export class WordCloud extends Cloud {
@@ -97,12 +97,16 @@ export class WordCloud extends Cloud {
     const colorLength = this.config.colors.length;
     const length = this.config.data.length;
     let i = 0;
+    let prevWord;
     while (i < length) {
       const { text, value } = this.config.data[i];
-      await this.putWord({ text, fontSize: value, color: this.config.colors[i % colorLength] });
-      await new Promise(resolve => {
-        setTimeout(resolve, this.config.delay);
-      });
+      const word = { text, fontSize: value, color: this.config.colors[i % colorLength] };
+      if (prevWord) {
+        word.fontSize = prevWord.fontSize * Math.max(1, text.length / prevWord.text.length);
+      }
+      await this.putWord(word);
+      await timeout(this.config.delay);
+      prevWord = word;
       i++;
     }
     await this.renderLastStayTime();
