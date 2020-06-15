@@ -3,7 +3,7 @@ import { deepmerge, createLabel } from '../../common/util';
 import { cloudConfig } from './config';
 import { CloudConfig, CloudItemInfo } from './types';
 import { Position } from '../../common/types';
-import { Sprite, Block, Polyline, Label } from 'spritejs';
+import { Sprite, Block, Polyline } from 'spritejs';
 
 export class Cloud extends Chart {
   protected maxRadius: number;
