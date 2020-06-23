@@ -92,12 +92,8 @@ export class Chart extends Events {
     })
     this.layer.appendChild(sprite);
     await sprite.textureImageReady;
-    const lastSecondPercent = 1 - 300 / time;
-    await this.timer.start(time, percent => {
-      if (percent > lastSecondPercent) {
-        const opacity = 1 - (percent - lastSecondPercent) / (1 - lastSecondPercent);
-        sprite.attr({ opacity })
-      }
+    await this.timer.start(time, _ => {
+      sprite.attr({ opacity: Math.random() > 0.5 ? 0.98 : 1 });
     });
     this.layer.removeChild(sprite);
   }
@@ -122,11 +118,8 @@ export class Chart extends Events {
     })
     this.layer.appendChild(sprite);
     await sprite.textureImageReady;
-    const lastSecondPercent = 1 - 300 / time;
-    return this.timer.start(time, percent => {
-      if (percent > lastSecondPercent) {
-        sprite.attr({ opacity: Math.random() > 0.5 ? 0.98 : 1 });
-      }
+    return this.timer.start(time, _ => {
+      sprite.attr({ opacity: Math.random() > 0.5 ? 0.99 : 1 });
     });
   }
 

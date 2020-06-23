@@ -40,8 +40,12 @@ export const chartConfig: ChartConfig = {
   title,
   subTitle,
   background: {},
-  openingImage: {},
-  endingImage: {},
+  openingImage: {
+    time: 2000
+  },
+  endingImage: {
+    time: 2000
+  },
   colors,
   lastStayTime: 2000
 }
