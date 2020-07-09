@@ -97,6 +97,10 @@ export class Chart extends Events {
     });
     this.layer.removeChild(sprite);
   }
+  /**
+   * 标题
+   * @param config 
+   */
   protected async renderTitle(config: TitleConfig): Promise<number> {
     if (!config.text) return 0;
     const label = createLabel(config.text, <Font>config);
@@ -106,7 +110,9 @@ export class Chart extends Events {
     await label.textImageReady;
     return label.clientSize[1];
   }
-
+  /**
+   * 片尾
+   */
   protected async renderEndingImage() {
     const { image, time } = this.config.endingImage;
     if (!image) return;
@@ -133,6 +139,9 @@ export class Chart extends Events {
     this.emit('startRace')
   }
 
+  /**
+   * 最后停留时间
+   */
   protected async renderLastStayTime() {
     const { lastStayTime } = this.config;
     if (lastStayTime) {
