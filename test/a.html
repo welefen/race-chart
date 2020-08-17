@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      canvas,
+      #container {
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2),
+          inset 0 0 0 1px hsla(0, 0%, 100%, 0.2);
+      }
+      #container {
+        margin-top: 20px;
+        width: 600px;
+        height: 600px;
+      }
+    </style>
+    <script src="https://unpkg.com/spritejs@3/dist/spritejs.min.js"></script>
+    <!-- <script src="https://s.ssl.qhres.com/static/0847e42b9c814c4b/tween.js"></script> -->
+  </head>
+  <body>
+    <div style="width: 960px; margin: auto;">
+      <div id="container"></div>
+      <div id="videoContainer" style="display: none;">
+        <h2>视频</h2>
+        <video
+          width="960"
+          height="540"
+          controls="true"
+          autoplay="true"
+          id="video"
+        ></video>
+      </div>
+    </div>
+    <script>
+      const { Scene, Layer, Sprite, Label } = spritejs;
+
+      const container = document.querySelector("#container");
+      const scene = new Scene({
+        container,
+        width: 600,
+        height: 600,
+        displayRatio: 2,
+      });
+
+      const fglayer = scene.layer();
+
+      const text = new Label("中国人啊");
+      text.attr({
+        // anchor: 0.5,
+        x: 70,
+        // y: 0,
+        fontSize: "5rem",
+        fillColor: "red",
+        bgcolor: "blue",
+        rotate: 45,
+        padding: 10
+      });
+
+      fglayer.append(text);
+
+      // const cc = fglayer.canvas.cloneNode();
+      const cc = document.createElement("canvas");
+      const deg = (0 * Math.PI) / 180;
+      const cos = Math.cos(deg);
+      const sin = Math.sin(deg);
+      text.textImageReady.then(({ image, rect }) => {
+        console.log(text.borderSize)
+        const hw = text.borderSize[0] / 2;
+        const hh = text.borderSize[1] / 2;
+        // text.attr({
+        //   x: Math.sqrt((hw * cos) ** 2 + (hh * sin) ** 2),
+        //   y: Math.sqrt((hw * sin) ** 2 + (hh * cos) ** 2),
+        // });
+        const dpr = fglayer.displayRatio;
+        let { width, height } = text.getBoundingClientRect();
+        cc.width = width * dpr;
+        cc.height = height * dpr;
+        cc.style.width = `${width}px`;
+        cc.style.height = `${height}px`;
+
+        const ctx = cc.getContext("2d");
+
+        ctx.scale(dpr, dpr);
+        ctx.transform(...text.renderMatrix);
+        const w = image.width / dpr;
+        const h = image.height / dpr;
+        const anchor = text.attributes.anchor;
+        const x = -anchor[0] * w;
+        const y = -anchor[1] * h;
+        ctx.drawImage(image, x, y, w, h);
+        document.body.appendChild(cc);
+      });
+    </script>
+  </body>
+</html>

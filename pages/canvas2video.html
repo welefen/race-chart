@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      #container {
+        margin-top: 20px;
+        width: 300px;
+        height: 200px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2),
+          inset 0 0 0 1px hsla(0, 0%, 100%, 0.2);
+      }
+      #video {
+        width: 300px;
+        height: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <div style="margin: auto;">
+      <div id="container">
+        <canvas id="canvas" style="width: 300px; height: 200px;"></canvas>
+      </div>
+      <div id="videoContainer" style="display: none;">
+        <h2>视频</h2>
+        <video controls="true" autoplay="true" id="video"></video>
+      </div>
+    </div>
+    <script src="https://s.ssl.qhres.com/static/162287d05f35ddab/canvas2video.js"></script>
+    <script src="https://unpkg.com/@ffmpeg/ffmpeg/dist/ffmpeg.min.js"></script>
+    <script>
+      const videoInstance = new Canvas2Video({
+        canvas: document.getElementById("canvas"),
+        outVideoType: "webm",
+        mimeType: "video/webm",
+        // audio: "http://s6.qhres.com/static/8b52098f6453e7dd.mp3",
+      });
+      videoInstance.startRecord();
+
+      const canvas = document.getElementById("canvas");
+      const ctx = canvas.getContext("2d");
+      ctx.fillStyle = 'red';
+      ctx.fillRect(0, 0, 300, 200);
+
+      setInterval(() => {
+        // ctx.clearRect(0, 0, 300, 200);
+        // ctx.fillStyle = 'red'
+        // // ctx.fillStyle = "#ff00" + Math.floor(Math.random() * 100);
+        // ctx.fillRect(0, 0, 300, 200);
+      }, 16);
+
+      setTimeout(() => {
+        videoInstance.getStreamURL().then((url) => {
+          const container = document.querySelector("#videoContainer");
+          container.style.display = "block";
+          container.querySelector("video").src = url;
+        });
+        videoInstance.stopRecord();
+      }, 5500);
+    </script>
+  </body>
+</html>

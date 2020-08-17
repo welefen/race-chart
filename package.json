@@ -1,0 +1,39 @@
+{
+  "name": "@welefen/bar-race",
+  "version": "1.0.6",
+  "description": "dynamic bar race, support 2d & 3d",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "build": "tsc -d",
+    "start": "webpack --watch",
+    "prepublish": "npm run build && npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/welefen/DataRace.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/welefen/DataRace/issues"
+  },
+  "devDependencies": {
+    "@types/tween.js": "^18.5.0",
+    "axios": "^0.19.2",
+    "cheerio": "^1.0.0-rc.3",
+    "node-fetch": "^2.6.0",
+    "ts-loader": "^6.2.2",
+    "typescript": "^3.8.3",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11"
+  },
+  "homepage": "https://github.com/welefen/DataRace#readme",
+  "dependencies": {
+    "@tweenjs/tween.js": "^18.5.0",
+    "deepmerge": "^4.2.2",
+    "eventemitter3": "^4.0.0",
+    "is-mergeable-object": "^1.1.1",
+    "spritejs": "^3.7.15"
+  }
+}

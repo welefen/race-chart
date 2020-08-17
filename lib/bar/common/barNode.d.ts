@@ -1,0 +1,31 @@
+import { Group } from 'spritejs';
+import { BarConfig } from './types';
+export declare class BarNode {
+    private group;
+    private label;
+    private rect;
+    private polylines;
+    private value;
+    private desc;
+    private logo;
+    config: BarConfig;
+    values?: number[];
+    index: number;
+    constructor(config: BarConfig, index?: number, values?: number[]);
+    attr(attrs?: Record<string, any>): import("spritejs").Attrs;
+    appendTo(node: Group): Promise<void>;
+    removeBy(node: Group): void;
+    private initLabel;
+    private initRect;
+    set rectWidth(width: number);
+    get rectWidth(): number;
+    private initValue;
+    private initLogo;
+    private get logoEnabled();
+    private initDesc;
+    private updateDescX;
+    set valueText(value: number);
+    private updateValueX;
+    private get logoSize();
+    private updateLogoX;
+}
