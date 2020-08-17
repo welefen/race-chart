@@ -1,6 +1,6 @@
 {
-  "name": "@welefen/bar-race",
-  "version": "1.0.6",
+  "name": "race-chart",
+  "version": "1.0.0",
   "description": "dynamic bar race, support 2d & 3d",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -11,12 +11,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/welefen/DataRace.git"
+    "url": "git+https://github.com/welefen/race-chart.git"
   },
   "author": "",
-  "license": "MIT",
+  "license": "Apache 2.0",
   "bugs": {
-    "url": "https://github.com/welefen/DataRace/issues"
+    "url": "https://github.com/welefen/race-chart"
   },
   "devDependencies": {
     "@types/tween.js": "^18.5.0",
@@ -28,7 +28,7 @@
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11"
   },
-  "homepage": "https://github.com/welefen/DataRace#readme",
+  "homepage": "https://github.com/welefen/race-chart#readme",
   "dependencies": {
     "@tweenjs/tween.js": "^18.5.0",
     "deepmerge": "^4.2.2",
