@@ -39,7 +39,7 @@
     <script src="http://s8.qhres.com/static/c60ba2e1611b06cc/canvas2video.js"></script>
     <script src="https://unpkg.com/@ffmpeg/ffmpeg/dist/ffmpeg.min.js"></script>
     <script>
-      fetch("../data/search/data.json")
+      fetch("../data/railway/data.json")
         .then((res) => res.json())
         .then((data) => {
           data = data.slice(0, 50);
@@ -55,62 +55,59 @@
             bar: {
               label: {
                 width: 100,
-                fontSize: 24,
+                fontSize: 20,
               },
               rect: {
                 type: "2d",
                 sideHeight: 10,
               },
               desc: {
-                fontSize: 18
+                fontSize: 18,
               },
               value: {
-                fontSize: 16
+                fontSize: 16,
               },
               justifySpacing: 10,
               alignSpacing: 5,
             },
-            duration: 1000,
+            duration: 1500,
             showNum: 10,
-            // formatter(value, type) {
-            //   return value
-            // },
+            formatter(value, type) {
+              if (type === "column") {
+                return `${value}公里`;
+              }
+              return value;
+            },
             axis: {
               tipHeight: 20,
               label: {
-                color: '#888'
+                color: "#888",
               },
               line: {
-                color: '#888'
-              }
+                color: "#888",
+              },
             },
             watermark: {
               // text: "DataRace",
               opacity: 0.2,
             },
             title: {
-              text: '肖战vs杨紫，2020.11娱乐人物行业排行',
-              // padding: [10, 0, 0, 0]
+              text: "第一名想不到！截止2020年底全国各省高铁里程排行榜",
+              padding: [10, 0, 0, 0],
             },
-            // subTitle: {
-            //   text: '根据关注数排名，统计日期：2020.05.14',
-            //   fontSize: 16,
-            //   color: '#aaa',
-            //   padding: [0, 0, 10, 0]
-            // },
             lastStayTime: 2000,
-            // openingImage: {
-            //   image: 'https://p4.ssl.qhimg.com/t0196678e075cf415ae.png'
-            // },
+            openingImage: {
+            //   image: "https://p4.ssl.qhimg.com/t0196678e075cf415ae.png",
+            },
             endingImage: {
-              image: 'https://p3.ssl.qhimg.com/t01c40cbda9ac183e68.png'
-            }
+              image: "https://p3.ssl.qhimg.com/t01c40cbda9ac183e68.png",
+            },
           });
           const videoInstance = new Canvas2Video({
             canvas: instance.layer.canvas,
             audio: "http://s6.qhres.com/static/8b52098f6453e7dd.mp3",
           });
-          
+
           instance.start();
 
           instance.on("start", () => {

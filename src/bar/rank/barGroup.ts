@@ -50,8 +50,8 @@ export class BarGroup {
   async beforeAnimate(barRank: BarRank) {
     const bar = await this.createBar(barRank);
     this.bars.push(bar);
-    const { data, showNum, colors } = barRank.config;
-    const currentData = data[barRank.index];
+    const { data, showNum } = barRank.config;
+    // const currentData = data[barRank.index];
 
     const maxValue = barRank.maxValues[barRank.index];
 
@@ -76,18 +76,12 @@ export class BarGroup {
     })
   }
   onUpdate(barRank: BarRank, percent: number) {
-    if (percent < 0.5) {
-      this.bars.forEach((bar, index) => {
-        const { width, newWidth } = this.animateData[index];
-        bar.rectWidth = width + (newWidth - width) * percent * 2;
-      })
-      return;
-    }
     this.bars.forEach((bar, index) => {
-      const item = this.animateData[index];
+      const { width, newWidth, newPos, pos, opacity } = this.animateData[index];
+      bar.rectWidth = width + (newWidth - width) * percent;
       bar.attr({
-        y: item.pos + (item.newPos - item.pos) * (percent - 0.5) * 2,
-        opacity: 1 + (item.opacity - 1) * (percent - 0.5) * 2
+        y: pos + (newPos - pos) * percent,
+        opacity: 1 - (1 - opacity) * percent
       })
     })
   }
